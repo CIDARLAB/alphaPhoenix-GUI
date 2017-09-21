@@ -1,95 +1,64 @@
-// this has been modified for Boostrap 4
+// this has been modified for Bootstrap 4
 var json;
 $(function() {
 
 	json = '[' +
 		'{' +
-		'"text": "B1_BM3R1",' +
+		'"text": "Module A",' +
 		'"hasData": ["0"],' +
 		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-		'"children": ["4"],' +
-		'"childNum": ["-1"],' +
+		'"combos": "blah, blah, blah",' +  
 		'"nodes": [' +
 			'{' +
-			'"text": "SarJ",' +
+			'"text": "Promoter",' +
 			'"hasData": ["1"],' +
 			'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-			'"children": ["2"],' +
-			'"childNum": ["0"],' +
-			'"nodes": [' +
-				'{' +
-				'"text": "RiboJ10",' +
-				'"hasData": ["0"],' +
-				'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-				'"children": ["0"],' +
-				'"childNum": ["-1"]' +
-				'},' +
-				'{' +
-				'"text": "RiboJ51",' +
-				'"hasData": ["0"],' +
-				'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-				'"children": ["0"],' +
-				'"childNum": ["-1"]' +
-				'}' +
-			']' +
+			'"combos": "pTet, pLac, pBad"' +
 			'},' +
 			'{' +
-			'"text": "B1",' +
+			'"text": "RBS",' +
 			'"hasData": ["1"],' +
 			'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-			'"children": ["0"],' +
-			'"childNum": ["1"]' +
+			'"combos": "RBS1, RBS2, RBS3"' +
 			'},' +
 			'{' +
-			'"text": "BM3R1",' +
+			'"text": "CDS",' +
 			'"hasData": ["1"],' +
 			'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-			'"children": ["0"],' +
-			'"childNum": ["2"]' +
+			'"combos": "CDS1, CDS2, CDS3"' +
 			'},' +
 			'{' +
-			'"text": "L3S2P11",' +
+			'"text": "Terminator",' +
 			'"hasData": ["1"],' +
 			'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-			'"children": ["0"],' +
-			'"childNum": ["3"]' +
+			'"combos": "Ter1, Ter2, Ter3"' +
 			'}' +
 		']' +
 		'},' +
 		'{' +
 		'"text": "AAV",' +
 		'"hasData": ["0"],' +
-		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-		'"children": ["0"],' +
-		'"childNum": ["-1"]' +
+		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
 		'},' +
 		'{' +
 		'"text": "BCD13",' +
 		'"hasData": ["0"],' +
-		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-		'"children": ["0"],' +
-		'"childNum": ["-1"]' +
+		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
 		'},' +
 		'{' +
 		'"text": "L3S1P22_",' +
 		'"hasData": ["0"],' +
-		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-		'"children": ["0"],' +
-		'"childNum": ["-1"]' +
+		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
 		'},' +
 		'{' +
 		'"text": "mRFP1_4m",' +
 		'"hasData": ["1"],' +
-		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-		'"children": ["0"],' +
-		'"childNum": ["-1"]' +
+		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
 		'},' +
 		'{' +
 		'"text": "pBM3R1",' +
 		'"hasData": ["0"],' +
-		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-		'"children": ["0"],' +
-		'"childNum": ["-1"]' +
+		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
 		'}' +
 	']';
 
@@ -178,7 +147,7 @@ $(function() {
 		showIcon: true,
 		showCheckbox: false,
 		showTags: true,
-		multiSelect: true,
+		multiSelect: false,
 
 		// Event handlers
 		onNodeChecked: undefined,
@@ -456,32 +425,29 @@ $(function() {
 
 		loadVisBOL(node.sbol)
 
-		var nNames = [];
-		var nData = [];
-		var nNums = [];
-		var childNames = [];
-		var childData = [];
-		var gchildNames = [];
-		var gchildData = [];
-		var panel = [];
+		var selectedItem = [];
+		var jsonData = [];
+		// var nData = [];
+		// var panel = [];
 		rectLayer.removeChildren(); // removes any boxes
 
 		$.each(this.findNodes('true', 'g', 'state.selected'), $.proxy(function (index, node) {
 			// iterates through to find currently selected names, data status (tag), and highlights any subparts
-			panel.push(node);
-			nNames.push(node.text);
-			nData.push(node.hasData[0]);
-			if (typeof(node.childNum) == "object") {
-				var num = Number(node.childNum);
-			}
-			if (num >= 0) {
-				highlightPart(num);
-			}
+			jsonData.push(node.combos);
+			selectedItem.push(node.text);
+			// nData.push(node.hasData[0]);
+			// if (typeof(node.childNum) == "object") {
+			// 	var num = Number(node.childNum);
+			// }
+			// if (num >= 0) {
+			// 	highlightPart(num);
+			// }
 			// this.setSelectedState(node, false, options);
 		}, this));
-		paneljson = JSON.stringify(panel);
-		genPanel(paneljson);
-		updateDataPanel(nNames, nData);
+		var jsonDataString = JSON.stringify(jsonData);
+		// genPanel(jsonDataString);
+		updateSearchPanel(selectedItem, jsonDataString)
+		// updateDataPanel(nNames, nData);
 	};
 
 	// Looks up the DOM for the closest parent list item to retrieve the
@@ -533,7 +499,11 @@ $(function() {
 		if (state === node.state.selected) return;
 		if (state) {
 			// If multiSelect false, unselect previously selected
-			if ((ctrl && cmd) || (!ctrl && !cmd))  {
+			if (this.options.multiSelect == false) {
+				$.each(this.findNodes('true', 'g', 'state.selected'), $.proxy(function (index, node) {
+					this.setSelectedState(node, false, options);
+				}, this));
+			} else if ((ctrl && cmd) || (!ctrl && !cmd))  {
 				$.each(this.findNodes('true', 'g', 'state.selected'), $.proxy(function (index, node) {
 					this.setSelectedState(node, false, options);
 				}, this));
@@ -627,8 +597,9 @@ $(function() {
 				.attr('data-nodeid', node.nodeId)
 				.attr('style', _this.buildStyleOverride(node))
 				.attr('sbol-link', node.sbol)
-				.attr('has-children', node.children)
-				.attr('child-num', node.childNum);
+				.attr('combo-opts', node.combos)
+				// .attr('has-children', node.children)
+				// .attr('child-num', node.childNum);
 
 			// Add indent/spacer to mimic tree structure
 			for (var i = 0; i < (level - 1); i++) {

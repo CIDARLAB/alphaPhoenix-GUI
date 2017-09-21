@@ -30,6 +30,24 @@ function highlightPart(partNumber) {
     rectLayer.sendToBack(); // ensure all rectangles are behind the svgLayer
 }
 
+// Search Window
+function updateSearchPanel(selectedItem,searchString) {
+    // console.log(selectedItem)
+    // console.log(searchString)
+    if (searchString == "[]") {
+        return;
+    }
+    $("#search-window ul li").remove(); // remove all list items to begin
+    var subItems = searchString.substring(2,searchString.length-2).split(", ") // removes brackets and spaces 
+    // console.log(subItems)
+    for (var i = 0; i < subItems.length; i++) {
+        $("#search-window ul").append(
+            '<li class="input-group justify-content-between" id="' + subItems[i] + '">' +
+                subItems[i] +
+            '</li>');
+    }
+}
+
 // Convert Upload/File Info Area
 function updateDataPanel(names, hasData) {
     len = names.length;

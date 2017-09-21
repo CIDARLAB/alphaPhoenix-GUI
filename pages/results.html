@@ -40,7 +40,7 @@
                         <option>Solution 4</option>
                         <option>Solution 5</option>
                     </select>
-                    <p id="results-robustness">Robustness</p>
+                    <p id="results-robustness">Robustness: </p><span id="robustness-value"></span>
                 </div>
             </div>
 			<div class="col-9 result-graph" id="graphZone">
@@ -49,8 +49,8 @@
 		</div>
         <div class="row">
             <div class="col-3 result-btns">
-                <button class="btn btn-secondary">Download SBOL</button>
-                <button class="btn btn-secondary">Download Results</button>
+                <button class="btn btn-primary">Download SBOL</button>
+                <button class="btn btn-primary">Download Results</button>
             </div>
             <div class="col-9 result-svg">
                 <canvas id="sbolCanvas" resize="true"></canvas>    
@@ -68,5 +68,4 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </body>
-    
 </html>

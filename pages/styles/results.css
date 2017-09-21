@@ -45,6 +45,15 @@
     margin-bottom: 15px;   
 }
 
+.btn.btn-primary {
+    border-color: #0275d8;
+    background-color: white;
+    border-width: 3px;
+    color: #0275d8;
+    font-size: 14px;
+    width: 100%;
+}
+
 .result-svg {
     height: 240px;
     border: 2px solid lightgray;

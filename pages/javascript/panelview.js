@@ -214,6 +214,11 @@ function genPanel(paneljson) {
 		level += 1;
 		var _this = this;
 		$.each(nodes, function addNodes(id, node) {
+			// Recursively add child nodes
+			if (node.nodes) {
+				return _this.buildPanel(node.nodes, level);
+			}
+
 			var panelItem = $(_this.template.item)
 				.addClass('node-' + _this.elementId)
 				.addClass(node.state.selected ? 'node-selected' : '')
@@ -252,10 +257,7 @@ function genPanel(paneljson) {
 
 			// Add item to the panel
 			_this.$wrapper.append(panelItem);
-			// Recursively add child nodes //removed from panelview
-			// if (node.nodes) {
-			// 	return _this.buildPanel(node.nodes, level);
-			// }
+			
 		});
 	};
 

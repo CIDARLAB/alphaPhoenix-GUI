@@ -144,7 +144,7 @@ function getVisBOL(sbol) {
         data: sbol,
         async: false,
         success: function(data) {
-            console.log(data)
+            // console.log(data)
             visdata = data;
         },
         error: function(){

@@ -12,8 +12,9 @@ function closeUserSettings() {
 }
 
 // NAVBAR
+/*
 $(function(){
-    $('.navbar').html(
+    $('navbar').html(
         '<div class="container">' +
             '<div class="row">' +
                 '<div class="col-2">' +
@@ -30,13 +31,13 @@ $(function(){
                     '<div class="row">' +
                         '<div class="col-12">' +
                             '<ul class="nav justify-content-center">' +
-                                '<li class="nav-item spc">' + 
+                                '<li class="nav-item spc">' +
                                     '<a class="nav-link" href="./specify.html">SPECIFY</a>' +
-                                '</li>' + 
-                                '<li class="nav-item dsg">' + 
+                                '</li>' +
+                                '<li class="nav-item dsg">' +
                                     '<a class="nav-link" href="./design.html">DESIGN</a>' +
                                 '</li>' +
-                                '<li class="nav-item rst">' + 
+                                '<li class="nav-item rst">' +
                                     '<a class="nav-link" href="./results.html">RESULTS</a>' +
                                 '</li>' +
                             '</ul>' +
@@ -59,7 +60,7 @@ $(function(){
         '</div>'
     );
 });
-
+*/
 // fixes the links based on the id
 $(function(){
     if ($('#spc-navbar').length == 1) {

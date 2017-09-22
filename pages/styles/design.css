@@ -1,37 +1,5 @@
-.container.grid-border {
-    padding-top: 0px;
-    border: 2px solid lightgray;
-    border-radius: 24px;
-}
-
-.des-height {
-    height: 340px;
-    border-bottom: 2px solid lightgray;
-}
-
 .border-right {
     border-right: 2px solid lightgray;
-}
-
-/*** TREEVIEW ***/
-.treeview .list-group-item {
-    font-size: 12px;
-    height: 26px;
-}
-
-.form-inline.treeview .form-control {
-    font-size: 12px;
-    height: 26px;
-}
-
-.form-inline.treeview .checkbox {
-    font-size: 12px;
-    margin: 0px 6px;
-}
-
-#treeview-searchable {
-    max-height: 280px;
-    overflow-y: scroll;
 }
 
  span.bd {
@@ -59,8 +27,6 @@ span.icon.fa {
 #sbolCanvas {
     width: 100%;
     height: 160px;
-    /* background: transparent; */
-    /* position: absolute; */
 }
 
 #svg {
@@ -70,11 +36,6 @@ span.icon.fa {
     position: absolute;
     z-index: 1;
 }
-
-.sbolvisbox {
-    height: 200px;
-}
-
 
 /*** DRAG N DROP ***/
 
@@ -249,4 +210,23 @@ span.icon.fa {
 
  #multiModData ul li {
     border: 0px;
-} 
+}
+
+
+
+/*Greg Added CSS*/
+.col-4.borderline {
+    border-right: solid;
+    border-top: none;
+    border-color: #ccc;
+}
+
+hr > .borderline {
+
+}
+
+.borderline {
+    border-top: solid;
+    border-color: #ccc;
+    border-width: 2px;
+}

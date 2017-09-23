@@ -13,6 +13,10 @@
     border-right: 2px solid lightgray;
 }
 
+input {
+    margin-top: 2px;
+}
+
 /*** TREEVIEW ***/
 .treeview .list-group-item {
     font-size: 12px;

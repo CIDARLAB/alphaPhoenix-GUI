@@ -92,10 +92,14 @@
                             <div class="tab stl">
                                 <button class="tab-btn active" id="tab-editor-btn" onclick="changeTab(event, 'tab-editor')">STL Editor</button>
                                 <button class="tab-btn" id="tab-grid-btn" onclick="changeTab(event, 'tab-grid')">GridTLI</button>
-                                <button class="tab-btn" id="tab-timerails-btn" onclick="changeTab(event, 'tab-timerails')">TimeRails</button>
+                                <!-- <button class="tab-btn" id="tab-timerails-btn" onclick="changeTab(event, 'tab-timerails')">TimeRails</button> -->
                             </div>
                             <p class="text-muted struct">Powered By
                                 <img src="./images/logo/logo-Eugene-Color.png" class="img-logo-small">
+                                Solution Size: 
+                                <select id="eugSolSize" class="form-control struct"></select>
+                                Number of Solutions:
+                                <select id="eugNumSol" class="form-control struct"></select>
                             </p>
                         </div>
                         <div class="col-2">
@@ -331,18 +335,18 @@
                         <div class="col-2">
                             <button id="btn-help" class="btn btn-primary">HELP</button>
                         </div>
-                        <div class="col-2 offset-2">
+                        <div class="col-2 offset-6">
                             <button id="btn-save" class="btn btn-primary">SAVE</button>
                         </div>
                         <div class="col-2">
                             <button id="btn-upload" class="btn btn-primary">UPLOAD</button>
                         </div>
-                        <div class="col-2">
+                        <!-- <div class="col-2">
                             <button id="btn-prevPage" class="btn btn-primary disabled">PREVIOUS</button>
                         </div>
                         <div class="col-2">
                             <button id="btn-nextPage" class="btn btn-primary" onClick="activateStructPage()">NEXT</button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

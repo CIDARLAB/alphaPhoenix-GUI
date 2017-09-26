@@ -26,10 +26,10 @@ function getPointsFromPath(path) {
 }
 
 function getPathIndex(path) {
-    var currentChildren = project.activeLayer.children;
+    var currentChildren = gC.project.activeLayer.children;
     for (i = 0; i < currentChildren.length; i++) {
-        if (currentChildren[i] == project.getItems({ selected: true })[1]) {
-            path = project.activeLayer.children[i];
+        if (currentChildren[i] == gC.project.getItems({ selected: true })[1]) {
+            path = gC.project.activeLayer.children[i];
             var pathIndex = i; // will be appended to existing path
         }
     }
@@ -98,6 +98,7 @@ function changeGraphAxes() {
 };
 
 function drawGrid(nWide, nTall, xAxisVals, yAxisVals, cnvsSize) {
+    gC.activate();
     grid.activate() // Define active layer:
 
     var xlabel = new gC.PointText({

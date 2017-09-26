@@ -280,7 +280,7 @@ window.onload = function() {
             if (event.point.x > path.segments[numSegments-1].point.x) {
                 path.add(event.point)
             }
-        textItem.content = event.point.x + ", " + event.point.y; // for testing ONLY
+        // textItem.content = event.point.x + ", " + event.point.y; // for testing ONLY
         } 
     }
 

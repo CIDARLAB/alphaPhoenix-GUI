@@ -14,11 +14,11 @@
     <!-- load general functions -->
     <script type="text/javascript" src="./javascript/functions.js"></script>
     <!-- load script implementing menu, GridTLI canvas -->
-    <script type="text/javascript" src="./javascript/specifyCanvasjs"></script>
+    <script type="text/javascript" src="./javascript/specifyCanvas.js"></script>
     <!-- load specify functions -->
     <script type="text/javascript" src="./javascript/specifyFunctions.js"></script>
     <!-- load grid functions script -->
-    <script type="text/javascript" src="./javascript/gridfunctions.js"></script>
+    <script type="text/javascript" src="./javascript/gridFunctions.js"></script>
 
     <!-- load font support for STL editor -->
     <script async="true" src="https://use.edgefonts.net/source-code-pro.js"></script>
@@ -45,6 +45,7 @@
     <!-- load font awesome (glyphicons) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- load custom stylesheet -->
+    <link rel="stylesheet" href="./styles/gridtli.css"></link>
 
     <!--<link rel="stylesheet" href="./styles/style.css"></link>-->
     <link rel="stylesheet" href="./styles/specify.css"></link>
@@ -102,9 +103,7 @@
 
         <!-- Main Panel -->
         <div class="col-sm-9 ml-sm-auto col-md-10 pt-3 bg-light">
-            <div class="card" style="padding: 20px">
-                <h5>Specify</h5>
-                <hr />
+            <div class="card" style="padding: 20px; height: 1000px; min-width: 100%; /* TODO: need to calculate max height of window */; word-break: none;">
                 <div class="col-8">
                     <div class="row">
                         <div class="col-8">
@@ -126,6 +125,7 @@
                     </div>
                     <div class="row grid-border" id="editor-row">
                         <div class="col-12">
+                            <!-- Begin STL editor -->
                             <div class="tab-content tab-editor" id="tab-editor">
                                 <div class="col-12 editor" id="editor"></div>
                                 <script src="stl.js" type="text/javascript" charset="utf-8"></script>
@@ -207,6 +207,8 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- End STL editor -->
+                            <!-- Begin GridTLI -->
                             <div class="tab-content tab-grid" id="tab-grid">
                                 <div class="row grid">
                                     <div class="col-12" id="divCanvas">
@@ -340,10 +342,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- End GridTLI -->
+                            <!-- Begin TimeRails -->
                             <div class="tab-content tab-timerails" id="tab-timerails">
                                 <div class="col-12">
                                 </div>
                             </div>
+                            <!-- End TimeRails -->
                         </div>
                     </div>
                     <div class="row">

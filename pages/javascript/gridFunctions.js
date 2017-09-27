@@ -37,16 +37,27 @@ function getPathIndex(path) {
 }
 
 function checkInputValues(ids, vars) {
-    emsg = [];
+    var emsg = [];
     for (var i = 0; i < ids.length; i++) {
-        msg = "Error! ";
+        var msg = "Error! ";
+        var test = ($('#' + ids[i]).val() <= 0);
         // defines error message according to ID
         if (ids[i] == 'smin') {
             msg += "Spatial Minimum must be a number less than Spatial Max. Using last defined value: " +
                     spatialMin + ".\n";
+            if ($('#' + ids[i+1]).val() == "") {
+                test = ($('#' + ids[i]).val() >= vars[i+1]);
+            } else {
+                test = ($('#' + ids[i]).val() >= $('#' + ids[i+1]).val());
+            }
         } else if (ids[i] == 'smax') {
-            msg += "Spatial Maximum must be a number greater than Spatial Minimum. Using last defined values: [" + 
-                    spatialMin + ", " + spatialMax + "].\n";
+            msg += "Spatial Maximum must be a number greater than Spatial Minimum. Using last defined value: " + 
+                    spatialMax + ".\n";
+            if ($('#' + ids[i-1]).val() == "") {
+                test = ($('#' + ids[i]).val() <= vars[i-1]);
+            } else {
+                test = ($('#' + ids[i]).val() <= $('#' + ids[i-1]).val());
+            }
         } else if (ids[i] == 'sThresh') {
             msg += "Spatial Threshold must be a number greater zero. Using last defined value: " + 
                     spatialThresh + ".\n";
@@ -61,13 +72,14 @@ function checkInputValues(ids, vars) {
                     clusterThresh + ".\n";
         }
 
-        if ($('#' + ids[i]).val() == "") {
-            // do nothing, will use last defined value
-        } else if (isNaN($('#' + ids[i]).val())) {
+        if (isNaN($('#' + ids[i]).val())) {
             emsg += msg;
             $('#' + ids[i]).val(vars[i]);            
-        } else {
-            vars[i] = $('#' + ids[i]).val();
+        } else if ((test == true) && ($('#' + ids[i]).val() != "")) {
+            emsg += msg;      
+            $('#' + ids[i]).val(vars[i]); // assigns previous value to field
+        } else if (test == false) {
+            vars[i] = $('#' + ids[i]).val(); // assigns new value to field
         }
     }
     if (emsg != '') {

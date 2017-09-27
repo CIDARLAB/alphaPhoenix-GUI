@@ -49,6 +49,16 @@ var inactiveCaption = {
     fontSize: '14px',
 }
 
+var incompleteCheck = {
+    fillColor: null,
+    strokeColor: null,
+}
+
+var completeCheck = {
+    fillColor: '#dff0d8',
+    strokeColor: '#3c763d',
+}
+
 function activateSTLPage() {
     circleOne.style = activeCircle;
     circleOne.radius = radiusLarge;
@@ -76,9 +86,6 @@ function activateSTLPage() {
 
     // update buttons
     $("#btn-upload").removeClass('disabled');
-    // $("#btn-prevPage").addClass('disabled');
-    // $("#btn-nextPage").text('NEXT');
-    // $("#btn-nextPage").attr("onClick",'activateStructPage()');
 
     // update page layout:
     $(".stl").show();
@@ -131,10 +138,6 @@ function activateStructPage() {
 
     // update buttons
     $("#btn-upload").removeClass('disabled');
-    // $("#btn-prevPage").removeClass('disabled');
-    // $("#btn-prevPage").attr("onClick",'activateSTLPage()');
-    // $("#btn-nextPage").text('NEXT');
-    // $("#btn-nextPage").attr("onClick",'activateLibraryPage()');
 
     // update page layout:
     $(".stl").hide();
@@ -184,10 +187,6 @@ function activateLibraryPage() {
 
     // update buttons
     $("#btn-upload").addClass('disabled');
-    // $("#btn-prevPage").removeClass('disabled');
-    // $("#btn-prevPage").attr("onClick",'activateStructPage()');
-    // $("#btn-nextPage").text('RUN');
-    // $("#btn-nextPage").attr("onClick",'');
 
     // update page layout:
     $(".stl").hide();
@@ -518,3 +517,9 @@ function changeTab(evt, tabName) {
 //     // var $select = $(".1-100");
     
 // });​
+
+function checkSpecifyCriteria() {
+    // if stl is valid, add green check box
+    // if eugene is valid, add green check box
+    // if Database is valid, add green check box
+}

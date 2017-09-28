@@ -45,6 +45,13 @@ body {
     width: 200px;
 }
 
+.btn-splash:hover,
+.btn-splash:active,
+.btn-splash:focus {
+    background-Color: #D41367;
+    color: lightgray;
+}
+
 .about {
     position: absolute;
     bottom: 8px;
@@ -56,6 +63,8 @@ body {
     color: white;
 }
 
-.about a:hover {
-    color: #f44a9e;
+.about a:hover,
+.about a:active,
+.about a:focus {
+    color: #D41367;
 }

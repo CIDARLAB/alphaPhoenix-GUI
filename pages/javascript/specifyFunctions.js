@@ -319,7 +319,6 @@ $(document).on('change','#registrySelect', function() {
     } else {
         registryURI = $(this).val() + "/rootCollections";
     }
-    // console.log(registryURI)
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -341,7 +340,6 @@ $(document).on('change','#registrySelect', function() {
 })
 
 $(document).on('change','#collectionsSelect', function() {
-    console.log($(this));
     var collectionURI = $("option:selected", this).val();
     // necessary reformatting for the API
     var rep = '/';

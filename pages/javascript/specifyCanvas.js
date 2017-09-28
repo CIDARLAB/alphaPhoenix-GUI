@@ -18,10 +18,12 @@ var circleOne, circleTwo, circleThree;
 var textOne, textTwo, textThree;
 var captionOne, captionTwo, captionThree;
 var subCaptOne, subCaptTwo, subCaptThree;
+var checkOne, checkTwo, checkThree;
 
 // Initialize List of tools
 var selectLine, drawLine, drawPoints, deleteLine, movePoints;
-var yLabel;
+var yLabel, check, checkmark;
+var ckOne, ckTwo, ckThree;
 
 // Initialize Graph values
 var timeValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
@@ -49,6 +51,12 @@ window.onload = function() {
     sL = new paper.PaperScope(); // define grid PaperScope
     sL.setup('sidebarLeft'); // setup using canvas id
     sidebarLeft.style.background = 'transparent'; 
+
+    // check mark for checkboxes
+    check = new sL.Raster('checkmark');
+    check.position = sL.view.center;
+    check.scale(0.03);
+    checkmark = new Symbol(check); // allows the Raster to be reused
 
     // center line
     var centerPath = new Path();
@@ -84,7 +92,14 @@ window.onload = function() {
         fontSize: '12px',
     });
 
-    groupOne = new Group([circleOne, textOne, captionOne, subCaptOne]);
+    checkOne = new Shape.Circle(new Point(circleOne.position.x + radiusLarge/Math.sqrt(2), xOne - radiusLarge/Math.sqrt(2)), radiusSmall - 10);
+    checkOne.style = incompleteCheck;
+    
+    ckOne = checkmark.place(new Point(circleOne.position.x + radiusLarge/Math.sqrt(2), xOne - radiusLarge/Math.sqrt(2)));
+    ckOne.bringToFront();
+    ckOne.visible = false;
+
+    groupOne = new Group([circleOne, textOne, captionOne, subCaptOne, checkOne, ckOne]);
 
     circleTwo = new Shape.Circle(new Point(yAxis, xTwo), radiusSmall);
     circleTwo.fillColor = 'white';
@@ -114,7 +129,14 @@ window.onload = function() {
     });
     subCaptTwo.visible = false;
 
-    groupTwo = new Group([circleTwo, textTwo, captionTwo, subCaptTwo]);
+    checkTwo = new Shape.Circle(new Point(circleTwo.position.x + radiusSmall/Math.sqrt(2), xTwo - radiusSmall/Math.sqrt(2)), radiusSmall - 10);
+    checkTwo.style = incompleteCheck;
+    
+    ckTwo = checkmark.place(new Point(circleTwo.position.x + radiusSmall/Math.sqrt(2), xTwo - radiusSmall/Math.sqrt(2)));
+    ckTwo.bringToFront();
+    ckTwo.visible = false;
+
+    groupTwo = new Group([circleTwo, textTwo, captionTwo, subCaptTwo, checkTwo, ckTwo]);
 
     
     circleThree = new Shape.Circle(new Point(yAxis, xThree), radiusSmall);
@@ -145,7 +167,14 @@ window.onload = function() {
     });
     subCaptThree.visible = false;
 
-    groupThree = new Group([circleThree, textThree, captionThree, subCaptThree]);
+    checkThree = new Shape.Circle(new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2)), radiusSmall - 10);
+    checkThree.style = incompleteCheck;
+    
+    ckThree = checkmark.place(new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2)));
+    ckThree.bringToFront();
+    ckThree.visible = false;
+
+    groupThree = new Group([circleThree, textThree, captionThree, subCaptThree, checkThree, ckThree]);
 
     var hitOptionsSL = {
         segments: true,
@@ -280,7 +309,7 @@ window.onload = function() {
             if (event.point.x > path.segments[numSegments-1].point.x) {
                 path.add(event.point)
             }
-        textItem.content = event.point.x + ", " + event.point.y; // for testing ONLY
+        // textItem.content = event.point.x + ", " + event.point.y; // for testing ONLY
         } 
     }
 

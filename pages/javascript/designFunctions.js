@@ -41,10 +41,27 @@ function updateSearchPanel(selectedItem,searchString) {
     var subItems = searchString.substring(2,searchString.length-2).split(", ") // removes brackets and spaces 
     // console.log(subItems)
     for (var i = 0; i < subItems.length; i++) {
+        if (subItems[i] == "ul") { // if "combos" node isn't defined, it will be skipped
+            return;
+        }
         $("#search-window ul").append(
             '<li class="input-group justify-content-between" id="' + subItems[i] + '">' +
                 subItems[i] +
             '</li>');
+    }
+}
+
+function searchOptions() {
+    var filter = $("#search-box").val().toUpperCase();
+    var li = $("#search-window li") // gets all li within the search-window
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (var i = 0; i < li.length; i++) {
+        if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
     }
 }
 

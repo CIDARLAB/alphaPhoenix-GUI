@@ -581,7 +581,11 @@ function sendSpecifications() {
         data: {
             jobid: window.localStorage.job,
             registry: registryURI,
-            collection: collectionURI
+            collection: collectionURI,
+            eug: structScript,
+            solSize: eugSolSize,
+            numSol: eugNumSize,
+            stl:stlScript
         },
         success: function (response) {
             console.log(response);
@@ -592,9 +596,6 @@ function sendSpecifications() {
     });
 }
 
-function sendSpecify() {
-    
-    sendEugene();
-    sendParts();
-    sendSTL();
+function sendSpecify() {  
+    sendSpecifications(); 
 }

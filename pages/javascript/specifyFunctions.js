@@ -495,7 +495,10 @@ function sendSTL() {
     $.ajax({
         url: "/performance",
         type: "POST",
-        data: stlScript,
+        data: {
+            jobid: window.localStorage.job,
+            stl:stlScript
+        },
         success: function (response) {
             console.log(response);
         },
@@ -510,6 +513,7 @@ function sendEugene() {
         url: "/structure",
         type: "POST",
         data: {
+            jobid: window.localStorage.job,
             eug: structScript,
             solSize: eugSolSize,
             numSol: eugNumSize
@@ -528,6 +532,7 @@ function sendParts() {
         url: "/parts",
         type: "POST",
         data: {
+            jobid: window.localStorage.job,
             registry: registryURI,
             collection: collectionURI
         },

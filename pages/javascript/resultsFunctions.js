@@ -13,3 +13,41 @@ $(window).on('load', function() {
     loadPaths(traceData);
 })
 
+function getSBOL() {
+     $.ajax({
+        url: "/getSBOL",
+        type: "GET",
+        success: function (response) {
+            fname = "sbol.xml"
+            writeSBOL(response);
+        },
+        error: function () {
+            console.log("ERROR!!");
+        }
+    });
+}
+
+function getResults() {
+    $.ajax({
+        url: "/getResults",
+        type: "GET",
+        success: function (response) {
+            fname = "results.zip"
+            writeSBOL(response);
+        },
+        error: function () {
+            console.log("ERROR!!");
+        }
+    });
+}
+
+function writeFile(result, filename) {
+    // converts result/response file to a document and "clicks" to download
+    var hiddenElement;
+    var data = "data:text/json;charset=utf-8," + encodeURIComponent(result);
+    hiddenElement = document.createElement('a');
+    hiddenElement.setAttribute('href', data);
+    hiddenElement.setAttribute('download', filename);
+    document.body.appendChild(hiddenElement);
+    hiddenElement.click();
+}

@@ -545,8 +545,27 @@ function sendParts() {
     });
 }
 
+function sendSpecifications() {
+    $.ajax({
+        url: "/specifications",
+        type: "POST",
+        data: {
+            jobid: window.localStorage.job,
+            registry: registryURI,
+            collection: collectionURI
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function () {
+            console.log("ERROR!!");
+        }
+    });
+}
+
 function sendSpecify() {
-    sendSTL();
+    
     sendEugene();
     sendParts();
+    sendSTL();
 }

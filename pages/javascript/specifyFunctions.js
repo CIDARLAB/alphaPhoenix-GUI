@@ -97,6 +97,10 @@ function activateSTLPage() {
     $(".tab-content").css("border-top-left-radius","0px"); // fixes styling for tabs
     changeTab($("#" + lastTab + "-btn").click(), lastTab); // reactivates the last activated tab
 
+    if ($(".struct").is(":visible")) {
+        structScript = editor.getValue();
+    }
+
     // update the editor:
     editor.setValue(stlScript);
     editor.getSession().setMode("ace/mode/stl");
@@ -141,12 +145,15 @@ function activateStructPage() {
     $("#btn-sample").removeClass('disabled');
     $("#btn-sample").attr("onClick","loadSample()");
     
-    
     // update page layout:
     $(".stl").hide();
     $(".struct").show();
     $(".editor").show();
     $(".library").hide();
+
+    if ($(".stl").is(":visible")) {
+        stlScript = editor.getValue();
+    }
 
     // update the editor:
     editor.setValue(structScript);
@@ -197,6 +204,12 @@ function activateLibraryPage() {
     $(".struct").hide();
     $(".editor").hide();
     $(".library").show();
+
+    if ($(".stl").is(":visible")) {
+        stlScript = editor.getValue();
+    } else if ($(".struct").is(":visible")) {
+        structScript = editor.getValue();
+    }
 }
 
 function loadSample() {
@@ -478,20 +491,36 @@ function changeTab(evt, tabName) {
 }
 
 
-// populate Eugene selectbox
-// $(function(){
-//     // var $select = $(".1-100");
-    
-// });​
+$("#editor").change(function() {
+    if ($(".stl").is(":visible")) {
+        if ($("#tab-editor").is(":visible")) {
+            if (editor.getSession().getAnnotations() == '') {
+                checkOne.style = completeCheck;
+            } else {
+                checkOne.style = incompleteCheck;
+            }
+        }
+    }
+    if ($(".struct").is(":visible")) {
+        if (editor.getSession().getAnnotations() == '') {
+            checkTwo.style = completeCheck;
+        } else {
+            checkTwo.style = incompleteCheck;
+        }
+    }
+})
 
-function checkSpecifyCriteria() {
-    // if stl is valid, add green check box
-    // if eugene is valid, add green check box
-    // if Database is valid, add green check box
-}
+$("#collectionsSelect").change(function() {
+    if ($(".library").is(":visible")) {
+        if ((registryURI != '') && (collectionsURI != '')) {
+            checkThree.style = completeCheck;
+        } else {
+            checkThree.style = incompleteCheck;
+        }
+    }
+});
 
 function sendSTL() {
-
     $.ajax({
         url: "/performance",
         type: "POST",

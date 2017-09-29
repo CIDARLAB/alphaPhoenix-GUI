@@ -65,20 +65,19 @@ $(function(){
     if ($('#spc-navbar').length == 1) {
         $('.spc').addClass('active');
         $('.dsg a').addClass('disabled');
-        $('.bld a').addClass('disabled');
+        $('.dsg a').attr('href','');
         $('.rst a').addClass('disabled');
+        $('.rst a').attr('href','');
     }
     if ($('#dsg-navbar').length == 1) {
         $('.dsg').addClass('active');
-        $('.bld a').addClass('disabled');
+        $('.dsg a').attr('href','./design.html')
         $('.rst a').addClass('disabled');
-    }
-    if ($('#bld-navbar').length == 1) {
-        $('.bld').addClass('active');
-        $('.rst a').addClass('disabled');
+        $('.rst a').attr('href','');
     }
     if ($('#rst-navbar').length == 1) {
         $('.rst').addClass('active');
+        $('.rst a').attr('href','./results.html')
     }
 });
     

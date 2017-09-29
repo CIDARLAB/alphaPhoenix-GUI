@@ -85,8 +85,9 @@ function activateSTLPage() {
     subCaptThree.visible = false;
 
     // update buttons
-    $("#btn-upload").removeClass('disabled');
-
+    $("#btn-sample").removeClass('disabled');
+    $("#btn-sample").attr("onClick","loadSample()");    
+    
     // update page layout:
     $(".stl").show();
     $(".struct").hide();
@@ -137,8 +138,10 @@ function activateStructPage() {
     $(".tab-content").css("border-top-left-radius","12px");
 
     // update buttons
-    $("#btn-upload").removeClass('disabled');
-
+    $("#btn-sample").removeClass('disabled');
+    $("#btn-sample").attr("onClick","loadSample()");
+    
+    
     // update page layout:
     $(".stl").hide();
     $(".struct").show();
@@ -186,8 +189,9 @@ function activateLibraryPage() {
     $(".tab-content").css("border-top-left-radius","12px");
 
     // update buttons
-    $("#btn-upload").addClass('disabled');
-
+    $("#btn-sample").addClass('disabled');
+    $("#btn-sample").attr("onClick","");
+    
     // update page layout:
     $(".stl").hide();
     $(".struct").hide();
@@ -340,7 +344,7 @@ $(document).on('change','#registrySelect', function() {
 })
 
 $(document).on('change','#collectionsSelect', function() {
-    var collectionURI = $("option:selected", this).val();
+    collectionURI = $("option:selected", this).val();
     // necessary reformatting for the API
     var rep = '/';
     var rep2 = ':';
@@ -381,48 +385,6 @@ $(document).on('change','#collectionsSelect', function() {
 function runEugene() {
     alert('Running Eugene (except not really b/c nothing works)!');
 }
-// for cyto upload
-// var form = $("#cyto-upload-form");
-// var fileSelect = $("#cyto-upload-file");
-// var uploadButton = $("#cyto-upload-submit");
-
-// form.onsubmit = function(event) {
-//     event.preventDefault();
-    
-//     // Update button text.
-//     uploadButton.innerHTML = 'Uploading...';
-
-//     // Get the selected file from the input.
-//     var file = fileSelect.file;
-
-//     // Create a new FormData object.
-//     var formData = new FormData();
-
-//     // Check the file type.
-//     if (file.type.match('text.*')) {
-//         formData.append('file[]',file,file.name);
-//     }
-
-//     // Set up the request.
-//     var xhr = new XMLHttpRequest();
-
-//     // Open the connection.
-//     xhr.open('POST', 'uploadCyto', true);
-    
-//     // Set up a handler for when the request finishes.
-//     xhr.onload = function () {
-//         if (xhr.status === 200) {
-//             // File(s) uploaded.
-//             uploadButton.innerHTML = 'Upload';
-//         } else {
-//             alert('An error occurred!');
-//         }
-//     };
-
-//     // Send the Data.
-//     xhr.send(formData);
-    
-// }
 
 // window load
 $(window).ready(function() {
@@ -448,7 +410,8 @@ $(window).on('load', function() {
     }
 
     for (i=1;i<=100;i++){
-        $("select").append($('<option></option>').val(i).html(i))
+        $("#eugSolSize").append($('<option></option>').val(i).html(i))
+        $("#eugNumSol").append($('<option></option>').val(i).html(i))
     }
 })
 
@@ -497,6 +460,8 @@ function changeTab(evt, tabName) {
     }
 
     if (tabName == "tab-grid") {
+        $("#btn-sample").addClass('disabled');      
+        $("#btn-sample").attr("onClick","");
         gC.activate() // Define active scope        
         // resize gridCanvas
         $("#gridCanvas").css("height", $("#tab-grid").height() * gridScaleVal); // height is percentage of tab, axis controls are below
@@ -506,6 +471,9 @@ function changeTab(evt, tabName) {
 
         // force redraw of the grid
         changeGraphAxes();
+    } else {
+        $("#btn-sample").removeClass('disabled');
+        $("#btn-sample").attr("onClick","loadSample()");
     }
 }
 
@@ -520,4 +488,60 @@ function checkSpecifyCriteria() {
     // if stl is valid, add green check box
     // if eugene is valid, add green check box
     // if Database is valid, add green check box
+}
+
+function sendSTL() {
+
+    $.ajax({
+        url: "/performance",
+        type: "POST",
+        data: stlScript,
+        success: function (response) {
+            console.log(response);
+        },
+        error: function () {
+            console.log("ERROR!!");
+        }
+    });
+}
+
+function sendEugene() {    
+    $.ajax({
+        url: "/structure",
+        type: "POST",
+        data: {
+            eug: structScript,
+            solSize: eugSolSize,
+            numSol: eugNumSize
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function () {
+            console.log("ERROR!!");
+        }
+    });
+}
+
+function sendParts() {
+    $.ajax({
+        url: "/parts",
+        type: "POST",
+        data: {
+            registry: registryURI,
+            collection: collectionURI
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function () {
+            console.log("ERROR!!");
+        }
+    });
+}
+
+function sendSpecify() {
+    sendSTL();
+    sendEugene();
+    sendParts();
 }

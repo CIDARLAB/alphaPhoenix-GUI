@@ -542,6 +542,8 @@ function sendSTL() {
 }
 
 function sendEugene() {    
+    var eugSolSize = $("#eugSolSize").val();
+    var eugNumSize = $("#eugNumSize").val();
     $.ajax({
         url: "/structure",
         type: "POST",

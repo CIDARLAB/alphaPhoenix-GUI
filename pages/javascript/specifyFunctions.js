@@ -88,6 +88,11 @@ function activateSTLPage() {
     $("#btn-sample").removeClass('disabled');
     $("#btn-sample").attr("onClick","loadSample()");    
     
+    // get editor data if necessary
+    if ($(".struct").is(":visible")) {
+        structScript = editor.getValue();
+    }
+
     // update page layout:
     $(".stl").show();
     $(".struct").hide();
@@ -96,10 +101,6 @@ function activateSTLPage() {
 
     $(".tab-content").css("border-top-left-radius","0px"); // fixes styling for tabs
     changeTab($("#" + lastTab + "-btn").click(), lastTab); // reactivates the last activated tab
-
-    if ($(".struct").is(":visible")) {
-        structScript = editor.getValue();
-    }
 
     // update the editor:
     editor.setValue(stlScript);
@@ -138,6 +139,10 @@ function activateStructPage() {
         changeTab($("#tab-editor").click(), "tab-editor");
     }
 
+    // get editor script if necessary
+    if ($(".stl").is(":visible")) {
+        stlScript = editor.getValue();
+    }
     // fix styling
     $(".tab-content").css("border-top-left-radius","12px");
 
@@ -150,10 +155,6 @@ function activateStructPage() {
     $(".struct").show();
     $(".editor").show();
     $(".library").hide();
-
-    if ($(".stl").is(":visible")) {
-        stlScript = editor.getValue();
-    }
 
     // update the editor:
     editor.setValue(structScript);
@@ -192,6 +193,13 @@ function activateLibraryPage() {
         changeTab($("#tab-editor").click(), "tab-editor");
     }
 
+    // get editor script if necessary 
+    if ($(".stl").is(":visible")) {
+        stlScript = editor.getValue();
+    } else if ($(".struct").is(":visible")) {
+        structScript = editor.getValue();
+    }
+
     // fix styling
     $(".tab-content").css("border-top-left-radius","12px");
 
@@ -205,11 +213,7 @@ function activateLibraryPage() {
     $(".editor").hide();
     $(".library").show();
 
-    if ($(".stl").is(":visible")) {
-        stlScript = editor.getValue();
-    } else if ($(".struct").is(":visible")) {
-        structScript = editor.getValue();
-    }
+
 }
 
 function loadSample() {

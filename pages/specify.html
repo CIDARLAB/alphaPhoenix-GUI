@@ -124,25 +124,6 @@
                                     editor.getSession().setMode("ace/mode/stl");
                                 </script>
                                 <div class="col-12 library librarybox">
-                                    <div class="row flex">
-                                        <div class="col-2 flex">
-                                            <p class="library-text">Cytometer</p>
-                                        </div>
-                                        <div class="col-9">
-                                            <form action="" method="post" enctype="multipart/form-data" id="cyto-upload-form">
-                                                <div class="row">
-                                                    <div class="col-9">
-                                                        <input type="file" class="form-control-file" name="file[]" id="cyto-upload-file">
-                                                    </div>
-                                                    <div class="col-3 flex-right">
-                                                        <button type="submit" class="btn btn-sm btn-primary" id="cyto-upload-submit">UPLOAD</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-1">
-                                        </div>
-                                    </div>
                                     <div class="row">
                                         <div class="col-2">
                                             <p class="library-text">Registry</p>
@@ -325,28 +306,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="tab-content tab-timerails" id="tab-timerails">
-                                <div class="col-12">
-                                </div>  
-                            </div> -->
+                            <div class="row justify-content-end">
+                                <div class="col-2">
+                                    <button id="btn-sample" class="btn btn-primary" onClick="sendSpecify()">NEXT</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <button id="btn-help" class="btn btn-primary">HELP</button>
-                        </div>
-                        <div class="col-2 offset-6">
-                            <button id="btn-save" class="btn btn-primary">SAVE</button>
-                        </div>
-                        <div class="col-2">
-                            <button id="btn-upload" class="btn btn-primary">UPLOAD</button>
-                        </div>
-                        <!-- <div class="col-2">
-                            <button id="btn-prevPage" class="btn btn-primary disabled">PREVIOUS</button>
-                        </div>
-                        <div class="col-2">
-                            <button id="btn-nextPage" class="btn btn-primary" onClick="activateStructPage()">NEXT</button>
-                        </div> -->
                     </div>
                 </div>
             </div>

@@ -581,6 +581,8 @@ function sendParts() {
 }
 
 function sendSpecifications() {
+    var eugSolSize = $("#eugSolSize").val();
+    var eugNumSize = $("#eugNumSol").val();
     $.ajax({
         url: "/specifications",
         type: "POST",

@@ -8,30 +8,35 @@ $(function() {
 		'"hasData": ["0"],' +
 		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
 		'"combos": "blah, blah, blah",' +  
+		'"isLink": "true",' +
 		'"nodes": [' +
 			'{' +
 			'"text": "Promoter",' +
 			'"hasData": ["1"],' +
-			'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-			'"combos": "pTet, pLac, pBad"' +
+			'"sbol": "https://synbiohub.cidarlab.org/public/AlphaPhoenix/cp1/1/sbol",' +
+			'"combos": "pTet, pLac, pBad",' +
+			'"isLink": "true"' +
 			'},' +
 			'{' +
 			'"text": "RBS",' +
 			'"hasData": ["1"],' +
 			'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-			'"combos": "RBS1, RBS2, RBS3"' +
+			'"combos": "RBS1, RBS2, RBS3",' +
+			'"isLink": "true"' +
 			'},' +
 			'{' +
 			'"text": "CDS",' +
 			'"hasData": ["1"],' +
 			'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-			'"combos": "CDS1, CDS2, CDS3"' +
+			'"combos": "CDS1, CDS2, CDS3",' +
+			'"isLink": "true"' +
 			'},' +
 			'{' +
 			'"text": "Terminator",' +
 			'"hasData": ["1"],' +
 			'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-			'"combos": "Ter1, Ter2, Ter3"' +
+			'"combos": "Ter1, Ter2, Ter3",' +
+			'"isLink": "true"' +
 			'}' +
 		']' +
 		'},' +
@@ -423,31 +428,21 @@ $(function() {
 			this.render();
 		}
 
-		loadVisBOL(node.sbol)
+		// loadVisBOL(node.sbol, node.isLink)
+		loadXML("");
 
 		var selectedItem = [];
 		var jsonData = [];
-		// var nData = [];
-		// var panel = [];
 		rectLayer.removeChildren(); // removes any boxes
 
 		$.each(this.findNodes('true', 'g', 'state.selected'), $.proxy(function (index, node) {
 			// iterates through to find currently selected names, data status (tag), and highlights any subparts
 			jsonData.push(node.combos);
 			selectedItem.push(node.text);
-			// nData.push(node.hasData[0]);
-			// if (typeof(node.childNum) == "object") {
-			// 	var num = Number(node.childNum);
-			// }
-			// if (num >= 0) {
-			// 	highlightPart(num);
-			// }
-			// this.setSelectedState(node, false, options);
 		}, this));
 		var jsonDataString = JSON.stringify(jsonData);
-		// genPanel(jsonDataString);
 		updateSearchPanel(selectedItem, jsonDataString)
-		// updateDataPanel(nNames, nData);
+
 	};
 
 	// Looks up the DOM for the closest parent list item to retrieve the

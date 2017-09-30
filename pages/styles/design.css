@@ -6,6 +6,7 @@
 
 .des-height {
     height: 340px;
+    padding: 4px;
     border-bottom: 2px solid lightgray;
 }
 
@@ -17,6 +18,28 @@ input {
     margin-top: 2px;
 }
 
+#displayXML button {
+    /* margin-right: px; */
+    border-top-right-radius: 12px;
+}
+#displayXML input {
+    border: none;
+}
+
+#editor {
+    width: 100%;
+    height: calc(100% - 40px);
+    resize: none;
+    border: 1px solid lightgray;
+}
+
+#search-box {
+    font-size: 14px;
+}
+
+.title-bar {
+    height: 40px;
+}
 /*** TREEVIEW ***/
 .treeview .list-group-item {
     font-size: 12px;

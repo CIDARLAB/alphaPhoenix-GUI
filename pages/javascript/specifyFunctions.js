@@ -1,4 +1,4 @@
-var lastTab = ""; // stores the lastTab 
+var lastTab = "tab-editor"; // stores the lastTab 
 
 // defines hitOptions - used to check if a click lands on a line or not for the MENU
 var hitOptions = {
@@ -27,16 +27,19 @@ var inactiveCircleComplete = {
 var activeText = {
     fontSize: '30px',
     fillColor: 'white',
+    fontWeight: 'bold',
 };
 
 var inactiveText = {
     fontSize: '15px',
     fillColor: '#0275d8',
+    fontWeight: 'bold',
 };
 
 var inactiveTextComplete = {
     fontSize: '15px',
     fillColor: 'white',
+    fontWeight: 'bold',
 }
 
 var activeCaption = {
@@ -495,31 +498,37 @@ function changeTab(evt, tabName) {
 }
 
 
-$("#editor").change(function() {
+function checkEditors() {
     if ($(".stl").is(":visible")) {
         if ($("#tab-editor").is(":visible")) {
             if (editor.getSession().getAnnotations() == '') {
                 checkOne.style = completeCheck;
+                ckOne.visible = true;
             } else {
                 checkOne.style = incompleteCheck;
+                ckOne.visible = false;
             }
         }
     }
     if ($(".struct").is(":visible")) {
         if (editor.getSession().getAnnotations() == '') {
             checkTwo.style = completeCheck;
+            ckTwo.visible = true;
         } else {
             checkTwo.style = incompleteCheck;
+            ckTwo.visible = false;
         }
     }
-})
+}
 
 $("#collectionsSelect").change(function() {
     if ($(".library").is(":visible")) {
         if ((registryURI != '') && (collectionsURI != '')) {
             checkThree.style = completeCheck;
+            ckThree.visible = true;
         } else {
             checkThree.style = incompleteCheck;
+            ckThree.visible = false;
         }
     }
 });
@@ -581,7 +590,19 @@ function sendParts() {
 }
 
 function sendSpecify() {
-    sendSTL();
-    sendEugene();
-    sendParts();
+    if ((ckOne.visible == true) && (ckTwo.visible == true) && (ckThree.visible == true)) {
+        sendSTL();
+        sendEugene();
+        sendParts();
+    } else {
+        var msg = [];
+        if (ckOne.visible == false) {
+            msg += "STL formula missing or invalid.\n";
+        } else if (ckTwo.visible = false) {
+            msg += "Structural Specification missing or invalid.\n";
+        } else if (ckThree.visible = false) {
+            msg += "Library of Parts missing.";
+        }
+        alert(msg)
+    }
 }

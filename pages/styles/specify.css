@@ -7,26 +7,6 @@
 
 /*** GENERAL SPECIFY PAGES ***/
 
-.wrap .btn-sm {
-    /* border-radius: 20px;  */
-    width: 80%;
-    font-size: 12px;
-}
-
- .wrap .btn.btn-primary {
-    border-color: #0275d8;
-    background-color: white;
-    border-width: 3px;
-    color: #0275d8;
-    font-size: 14px;
-    width: 100%;
-}
-
-.wrap .btn.btn-primary:hover {
-    background-color: #0275d8;
-    color: white;
-}
-
 .grid-border {
      height: calc(100% - 90px); 
 }

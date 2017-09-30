@@ -219,8 +219,7 @@ function activateLibraryPage() {
 function loadSample() {
     console.log("load sample...")
     if ($(".stl").is(":visible")) {
-        stlScript = "((G[0,60] inducer <= 5) => (F[0,90]G[0,30] output > 10) \n\
-^ (G[0,60] inducer > 5) => (F[0,90]G[0,30] output <= 10))";
+        stlScript = "((G[0,100] in0 <= 4) && (G[0,100] in0 >= 0)) &&\n (((G[0,50] out0 >= 0)&&(G[0,50] out0 <= 25))&&((G[50,100] out0 >= 25)&&(G[50,100] out0 <= 36)))";
         editor.setValue(stlScript);
     } else if ($(".struct").is(":visible")) {
         structScript = 

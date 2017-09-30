@@ -222,8 +222,7 @@ function activateLibraryPage() {
 function loadSample() {
     console.log("load sample...")
     if ($(".stl").is(":visible")) {
-        stlScript = "((G[0,60] inducer <= 5) => (F[0,90]G[0,30] output > 10) \n\
-^ (G[0,60] inducer > 5) => (F[0,90]G[0,30] output <= 10))";
+        stlScript = "((G[0,100] in0 <= 4) && (G[0,100] in0 >= 0)) &&\n (((G[0,50] out0 >= 0)&&(G[0,50] out0 <= 25))&&((G[50,100] out0 >= 25)&&(G[50,100] out0 <= 36)))";
         editor.setValue(stlScript);
     } else if ($(".struct").is(":visible")) {
         structScript = 
@@ -533,12 +532,19 @@ $("#collectionsSelect").change(function() {
     }
 });
 
-function sendSTL() {
+function sendSpecifications() {
+    var eugSolSize = $("#eugSolSize").val();
+    var eugNumSize = $("#eugNumSol").val();
     $.ajax({
-        url: "/performance",
+        url: "/specifications",
         type: "POST",
         data: {
             jobid: window.localStorage.job,
+            registry: registryURI,
+            collection: collectionURI,
+            eug: structScript,
+            solSize: eugSolSize,
+            numSol: eugNumSize,
             stl:stlScript
         },
         success: function (response) {
@@ -550,50 +556,9 @@ function sendSTL() {
     });
 }
 
-function sendEugene() {    
-    var eugSolSize = $("#eugSolSize").val();
-    var eugNumSize = $("#eugNumSize").val();
-    $.ajax({
-        url: "/structure",
-        type: "POST",
-        data: {
-            jobid: window.localStorage.job,
-            eug: structScript,
-            solSize: eugSolSize,
-            numSol: eugNumSize
-        },
-        success: function (response) {
-            console.log(response);
-        },
-        error: function () {
-            console.log("ERROR!!");
-        }
-    });
-}
-
-function sendParts() {
-    $.ajax({
-        url: "/parts",
-        type: "POST",
-        data: {
-            jobid: window.localStorage.job,
-            registry: registryURI,
-            collection: collectionURI
-        },
-        success: function (response) {
-            console.log(response);
-        },
-        error: function () {
-            console.log("ERROR!!");
-        }
-    });
-}
-
-function sendSpecify() {
+function sendSpecify() {  
     if ((ckOne.visible == true) && (ckTwo.visible == true) && (ckThree.visible == true)) {
-        sendSTL();
-        sendEugene();
-        sendParts();
+        sendSpecifications();         
     } else {
         var msg = [];
         if (ckOne.visible == false) {
@@ -605,4 +570,5 @@ function sendSpecify() {
         }
         alert(msg)
     }
+
 }

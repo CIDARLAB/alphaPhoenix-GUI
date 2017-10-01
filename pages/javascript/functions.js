@@ -139,7 +139,7 @@ function getVisBOL(sbol) {
 
     var postSettings = {
         url: "http://api.synform.io/render/svg/",
-        type: "post",
+        type: "POST",
         data: sbol,
         async: false,
         success: function(data) {
@@ -160,16 +160,16 @@ function getVisBOL(sbol) {
     return visdata;
 }
 
-function loadVisBOL(sbolURI, isLink) {
+function loadVisBOL(sbolURI) {
     svgLayer.activate(); // activate correct Layer
 
-    if (isLink == true) {
-        sbol = getSBOL(sbolURI);            
-    } else {
-        sbol = sbolURI;
-    }
+    // if (isLink == true) {
+    //     sbol = getSBOL(sbolURI);            
+    // } else {
+    //     sbol = sbolURI;
+    // }
 
-    visdata = getVisBOL(sbol);
+    visdata = getVisBOL(sbolURI);
 
     if (svgLayer._children.length > 0) {
         // var numChildren = project._children[0]._children.length;

@@ -108,6 +108,14 @@ function activateSTLPage() {
     // update the editor:
     editor.setValue(stlScript);
     editor.getSession().setMode("ace/mode/stl");
+
+    // update check marks
+    checkOne.position = new Point(circleOne.position.x + radiusLarge/Math.sqrt(2), xOne - radiusLarge/Math.sqrt(2));
+    ckOne.position = new Point(circleOne.position.x + radiusLarge/Math.sqrt(2), xOne - radiusLarge/Math.sqrt(2));
+    checkTwo.position = new Point(circleTwo.position.x + radiusSmall/Math.sqrt(2), xTwo - radiusSmall/Math.sqrt(2));
+    ckTwo.position = new Point(circleTwo.position.x + radiusSmall/Math.sqrt(2), xTwo - radiusSmall/Math.sqrt(2));
+    checkThree = new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2));
+    ckThree = new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2));
 }
 
 function activateStructPage() {
@@ -162,6 +170,14 @@ function activateStructPage() {
     // update the editor:
     editor.setValue(structScript);
     editor.getSession().setMode("ace/mode/eugene");
+
+     // update check marks
+     checkOne.position = new Point(circleOne.position.x + radiusSmall/Math.sqrt(2), xOne - radiusSmall/Math.sqrt(2));
+     ckOne.position = new Point(circleOne.position.x + radiusSmall/Math.sqrt(2), xOne - radiusSmall/Math.sqrt(2));
+     checkTwo.position = new Point(circleTwo.position.x + radiusLarge/Math.sqrt(2), xTwo - radiusLarge/Math.sqrt(2));
+     ckTwo.position = new Point(circleTwo.position.x + radiusLarge/Math.sqrt(2), xTwo - radiusLarge/Math.sqrt(2));
+     checkThree = new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2));
+     ckThree = new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2));
 }
         
 function activateLibraryPage() {
@@ -216,7 +232,13 @@ function activateLibraryPage() {
     $(".editor").hide();
     $(".library").show();
 
-
+     // update check marks
+     checkOne.position = new Point(circleOne.position.x + radiusSmall/Math.sqrt(2), xOne - radiusSmall/Math.sqrt(2));
+     ckOne.position = new Point(circleOne.position.x + radiusSmall/Math.sqrt(2), xOne - radiusSmall/Math.sqrt(2));
+     checkTwo.position = new Point(circleTwo.position.x + radiusSmall/Math.sqrt(2), xTwo - radiusSmall/Math.sqrt(2));
+     ckTwo.position = new Point(circleTwo.position.x + radiusSmall/Math.sqrt(2), xTwo - radiusSmall/Math.sqrt(2));
+     checkThree = new Point(circleThree.position.x + radiusLarge/Math.sqrt(2), xThree - radiusLarge/Math.sqrt(2));
+     ckThree = new Point(circleThree.position.x + radiusLarge/Math.sqrt(2), xThree - radiusLarge/Math.sqrt(2));
 }
 
 function loadSample() {
@@ -500,7 +522,7 @@ function changeTab(evt, tabName) {
 function checkEditors() {
     if ($(".stl").is(":visible")) {
         if ($("#tab-editor").is(":visible")) {
-            if (editor.getSession().getAnnotations() == '') {
+            if ((editor.getSession().getAnnotations() == '') && (editor.getValue() != '')) {
                 checkOne.style = completeCheck;
                 ckOne.visible = true;
             } else {
@@ -510,7 +532,7 @@ function checkEditors() {
         }
     }
     if ($(".struct").is(":visible")) {
-        if (editor.getSession().getAnnotations() == '') {
+        if ((editor.getSession().getAnnotations() == '') && (editor.getValue() != '')) {
             checkTwo.style = completeCheck;
             ckTwo.visible = true;
         } else {
@@ -521,14 +543,12 @@ function checkEditors() {
 }
 
 $("#collectionsSelect").change(function() {
-    if ($(".library").is(":visible")) {
-        if ((registryURI != '') && (collectionsURI != '')) {
-            checkThree.style = completeCheck;
-            ckThree.visible = true;
-        } else {
-            checkThree.style = incompleteCheck;
-            ckThree.visible = false;
-        }
+    if ((registryURI != '') && (collectionURI != '')) {
+        checkThree.style = completeCheck;
+        ckThree.visible = true;
+    } else {
+        checkThree.style = incompleteCheck;
+        ckThree.visible = false;
     }
 });
 

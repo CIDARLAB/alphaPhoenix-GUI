@@ -428,7 +428,7 @@ $(function() {
 			this.render();
 		}
 
-		// loadVisBOL(node.sbol, node.isLink)
+		loadVisBOL(node.sbol)
 		loadXML("");
 
 		var selectedItem = [];

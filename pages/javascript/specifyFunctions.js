@@ -109,13 +109,13 @@ function activateSTLPage() {
     editor.setValue(stlScript);
     editor.getSession().setMode("ace/mode/stl");
 
-    // update check marks
+    // update check mark positions
     checkOne.position = new Point(circleOne.position.x + radiusLarge/Math.sqrt(2), xOne - radiusLarge/Math.sqrt(2));
     ckOne.position = new Point(circleOne.position.x + radiusLarge/Math.sqrt(2), xOne - radiusLarge/Math.sqrt(2));
     checkTwo.position = new Point(circleTwo.position.x + radiusSmall/Math.sqrt(2), xTwo - radiusSmall/Math.sqrt(2));
     ckTwo.position = new Point(circleTwo.position.x + radiusSmall/Math.sqrt(2), xTwo - radiusSmall/Math.sqrt(2));
-    checkThree = new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2));
-    ckThree = new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2));
+    checkThree.position = new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2));
+    ckThree.position = new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2));
 }
 
 function activateStructPage() {
@@ -171,13 +171,13 @@ function activateStructPage() {
     editor.setValue(structScript);
     editor.getSession().setMode("ace/mode/eugene");
 
-     // update check marks
+     // update check mark positions
      checkOne.position = new Point(circleOne.position.x + radiusSmall/Math.sqrt(2), xOne - radiusSmall/Math.sqrt(2));
      ckOne.position = new Point(circleOne.position.x + radiusSmall/Math.sqrt(2), xOne - radiusSmall/Math.sqrt(2));
      checkTwo.position = new Point(circleTwo.position.x + radiusLarge/Math.sqrt(2), xTwo - radiusLarge/Math.sqrt(2));
      ckTwo.position = new Point(circleTwo.position.x + radiusLarge/Math.sqrt(2), xTwo - radiusLarge/Math.sqrt(2));
-     checkThree = new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2));
-     ckThree = new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2));
+     checkThree.position = new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2));
+     ckThree.position = new Point(circleThree.position.x + radiusSmall/Math.sqrt(2), xThree - radiusSmall/Math.sqrt(2));
 }
         
 function activateLibraryPage() {
@@ -232,13 +232,13 @@ function activateLibraryPage() {
     $(".editor").hide();
     $(".library").show();
 
-     // update check marks
+     // update check mark positions
      checkOne.position = new Point(circleOne.position.x + radiusSmall/Math.sqrt(2), xOne - radiusSmall/Math.sqrt(2));
      ckOne.position = new Point(circleOne.position.x + radiusSmall/Math.sqrt(2), xOne - radiusSmall/Math.sqrt(2));
      checkTwo.position = new Point(circleTwo.position.x + radiusSmall/Math.sqrt(2), xTwo - radiusSmall/Math.sqrt(2));
      ckTwo.position = new Point(circleTwo.position.x + radiusSmall/Math.sqrt(2), xTwo - radiusSmall/Math.sqrt(2));
-     checkThree = new Point(circleThree.position.x + radiusLarge/Math.sqrt(2), xThree - radiusLarge/Math.sqrt(2));
-     ckThree = new Point(circleThree.position.x + radiusLarge/Math.sqrt(2), xThree - radiusLarge/Math.sqrt(2));
+     checkThree.position = new Point(circleThree.position.x + radiusLarge/Math.sqrt(2), xThree - radiusLarge/Math.sqrt(2));
+     ckThree.position = new Point(circleThree.position.x + radiusLarge/Math.sqrt(2), xThree - radiusLarge/Math.sqrt(2));
 }
 
 function loadSample() {
@@ -382,6 +382,10 @@ $(document).on('change','#registrySelect', function() {
             }));
         });
     });
+
+    // if this has been updated, the collection must be updated therefore incomplete
+    checkThree.style = incompleteCheck;
+    ckThree.visible = false;
 })
 
 $(document).on('change','#collectionsSelect', function() {
@@ -419,7 +423,16 @@ $(document).on('change','#collectionsSelect', function() {
     });
 
     // resize the height of the table
-    $("tbody").height($("#tab-editor").height()*.45) // height will be 45% of the tab-editor window size
+    $("tbody").height($("#tab-editor").height()*.5) // height will be 50% of the tab-editor window size
+
+    // if complete, add green check mark
+    if ((registryURI != '') && (collectionURI != '')) {
+        checkThree.style = completeCheck;
+        ckThree.visible = true;
+    } else {
+        checkThree.style = incompleteCheck;
+        ckThree.visible = false;
+    }
 
 })
 
@@ -542,16 +555,6 @@ function checkEditors() {
     }
 }
 
-$("#collectionsSelect").change(function() {
-    if ((registryURI != '') && (collectionURI != '')) {
-        checkThree.style = completeCheck;
-        ckThree.visible = true;
-    } else {
-        checkThree.style = incompleteCheck;
-        ckThree.visible = false;
-    }
-});
-
 function sendSpecifications() {
     var eugSolSize = $("#eugSolSize").val();
     var eugNumSize = $("#eugNumSol").val();
@@ -569,11 +572,81 @@ function sendSpecifications() {
         },
         success: function (response) {
             console.log(response);
+ 
         },
         error: function () {
             console.log("ERROR!!");
         }
     });
+
+
+var jsonString = '[' +
+'{' +
+'"text": "Module A",' +
+'"hasData": ["0"],' +
+'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
+'"combos": "blah, blah, blah",' +  
+'"isLink": "true",' +
+'"nodes": [' +
+	'{' +
+	'"text": "Promoter",' +
+	'"hasData": ["1"],' +
+	'"sbol": "https://synbiohub.cidarlab.org/public/AlphaPhoenix/cp1/1/sbol",' +
+	'"combos": "pTet, pLac, pBad",' +
+	'"isLink": "true"' +
+	'},' +
+	'{' +
+	'"text": "RBS",' +
+	'"hasData": ["1"],' +
+	'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
+	'"combos": "RBS1, RBS2, RBS3",' +
+	'"isLink": "true"' +
+	'},' +
+	'{' +
+	'"text": "CDS",' +
+	'"hasData": ["1"],' +
+	'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
+	'"combos": "CDS1, CDS2, CDS3",' +
+	'"isLink": "true"' +
+	'},' +
+	'{' +
+	'"text": "Terminator",' +
+	'"hasData": ["1"],' +
+	'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
+	'"combos": "Ter1, Ter2, Ter3",' +
+	'"isLink": "true"' +
+	'}' +
+']' +
+'},' +
+'{' +
+'"text": "AAV",' +
+'"hasData": ["0"],' +
+'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
+'},' +
+'{' +
+'"text": "BCD13",' +
+'"hasData": ["0"],' +
+'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
+'},' +
+'{' +
+'"text": "L3S1P22_",' +
+'"hasData": ["0"],' +
+'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
+'},' +
+'{' +
+'"text": "mRFP1_4m",' +
+'"hasData": ["1"],' +
+'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
+'},' +
+'{' +
+'"text": "pBM3R1",' +
+'"hasData": ["0"],' +
+'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
+'}' +
+']';
+
+    window.localStorage.setItem("json",jsonString);
+    window.location.href = "./design.html";
 }
 
 function sendSpecify() {  
@@ -583,12 +656,13 @@ function sendSpecify() {
         var msg = [];
         if (ckOne.visible == false) {
             msg += "STL formula missing or invalid.\n";
-        } else if (ckTwo.visible = false) {
+        } 
+        if (ckTwo.visible = false) {
             msg += "Structural Specification missing or invalid.\n";
-        } else if (ckThree.visible = false) {
+        } 
+        if (ckThree.visible = false) {
             msg += "Library of Parts missing.";
         }
         alert(msg)
     }
-
 }

@@ -1,71 +1,71 @@
 // this has been modified for Bootstrap 4
-var json;
-$(function() {
+var json = (window.localStorage.json);
+// var json = '[' +
+// '{' +
+// '"text": "Module A",' +
+// '"hasData": ["0"],' +
+// '"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
+// '"combos": "blah, blah, blah",' +  
+// '"isLink": "true",' +
+// '"nodes": [' +
+// 	'{' +
+// 	'"text": "Promoter",' +
+// 	'"hasData": ["1"],' +
+// 	'"sbol": "https://synbiohub.cidarlab.org/public/AlphaPhoenix/cp1/1/sbol",' +
+// 	'"combos": "pTet, pLac, pBad",' +
+// 	'"isLink": "true"' +
+// 	'},' +
+// 	'{' +
+// 	'"text": "RBS",' +
+// 	'"hasData": ["1"],' +
+// 	'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
+// 	'"combos": "RBS1, RBS2, RBS3",' +
+// 	'"isLink": "true"' +
+// 	'},' +
+// 	'{' +
+// 	'"text": "CDS",' +
+// 	'"hasData": ["1"],' +
+// 	'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
+// 	'"combos": "CDS1, CDS2, CDS3",' +
+// 	'"isLink": "true"' +
+// 	'},' +
+// 	'{' +
+// 	'"text": "Terminator",' +
+// 	'"hasData": ["1"],' +
+// 	'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
+// 	'"combos": "Ter1, Ter2, Ter3",' +
+// 	'"isLink": "true"' +
+// 	'}' +
+// ']' +
+// '},' +
+// '{' +
+// '"text": "AAV",' +
+// '"hasData": ["0"],' +
+// '"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
+// '},' +
+// '{' +
+// '"text": "BCD13",' +
+// '"hasData": ["0"],' +
+// '"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
+// '},' +
+// '{' +
+// '"text": "L3S1P22_",' +
+// '"hasData": ["0"],' +
+// '"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
+// '},' +
+// '{' +
+// '"text": "mRFP1_4m",' +
+// '"hasData": ["1"],' +
+// '"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
+// '},' +
+// '{' +
+// '"text": "pBM3R1",' +
+// '"hasData": ["0"],' +
+// '"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
+// '}' +
+// ']';
 
-	json = '[' +
-		'{' +
-		'"text": "Module A",' +
-		'"hasData": ["0"],' +
-		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-		'"combos": "blah, blah, blah",' +  
-		'"isLink": "true",' +
-		'"nodes": [' +
-			'{' +
-			'"text": "Promoter",' +
-			'"hasData": ["1"],' +
-			'"sbol": "https://synbiohub.cidarlab.org/public/AlphaPhoenix/cp1/1/sbol",' +
-			'"combos": "pTet, pLac, pBad",' +
-			'"isLink": "true"' +
-			'},' +
-			'{' +
-			'"text": "RBS",' +
-			'"hasData": ["1"],' +
-			'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-			'"combos": "RBS1, RBS2, RBS3",' +
-			'"isLink": "true"' +
-			'},' +
-			'{' +
-			'"text": "CDS",' +
-			'"hasData": ["1"],' +
-			'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-			'"combos": "CDS1, CDS2, CDS3",' +
-			'"isLink": "true"' +
-			'},' +
-			'{' +
-			'"text": "Terminator",' +
-			'"hasData": ["1"],' +
-			'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol",' +
-			'"combos": "Ter1, Ter2, Ter3",' +
-			'"isLink": "true"' +
-			'}' +
-		']' +
-		'},' +
-		'{' +
-		'"text": "AAV",' +
-		'"hasData": ["0"],' +
-		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
-		'},' +
-		'{' +
-		'"text": "BCD13",' +
-		'"hasData": ["0"],' +
-		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
-		'},' +
-		'{' +
-		'"text": "L3S1P22_",' +
-		'"hasData": ["0"],' +
-		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
-		'},' +
-		'{' +
-		'"text": "mRFP1_4m",' +
-		'"hasData": ["1"],' +
-		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
-		'},' +
-		'{' +
-		'"text": "pBM3R1",' +
-		'"hasData": ["0"],' +
-		'"sbol": "https://synbiohub.programmingbiology.org/public/Cello_Parts/B1_BM3R1/1/sbol"' +
-		'}' +
-	']';
+$(function() {
 
 	var $searchableTree = $('#treeview-searchable').treeview({
 		data: json,
@@ -76,7 +76,7 @@ $(function() {
 		var pattern = $('#input-search').val();
 		var options = {
 		// ignoreCase: $('#chk-ignore-case').is(':checked'),
-		exactMatch: $('#chk-exact-match').is(':checked'),
+		// exactMatch: $('#chk-exact-match').is(':checked'),
 		// revealResults: $('#chk-reveal-results').is(':checked')
 		};
 		var results = $searchableTree.treeview('search', [ pattern, options ]);
@@ -174,7 +174,7 @@ $(function() {
 
 	_default.searchOptions = {
 		// ignoreCase: true,
-		exactMatch: false,
+		// exactMatch: false,
 		// revealResults: true
 	};
 
@@ -1167,9 +1167,9 @@ $(function() {
 		var results = [];
 		if (pattern && pattern.length > 0) {
 
-			if (options.exactMatch) {
-				pattern = '^' + pattern + '$';
-			}
+			// if (options.exactMatch) {
+			// 	pattern = '^' + pattern + '$';
+			// }
 
 			var modifier = 'gi';
 			// if (options.ignoreCase) {

@@ -227,6 +227,7 @@ tbody tr.row {
 tbody td {
     float:left;
     height: 30px;
+    overflow: hidden;
 }
 
 thead > tr > th {

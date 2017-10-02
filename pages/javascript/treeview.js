@@ -66,7 +66,7 @@ var json = (window.localStorage.json);
 // ']';
 
 $(function() {
-
+	console.log(json);
 	var $searchableTree = $('#treeview-searchable').treeview({
 		data: json,
 		showTags: true, // showTags refers to showing the "hasData" badge 

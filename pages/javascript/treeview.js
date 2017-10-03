@@ -69,7 +69,7 @@ $(function() {
 
 	var $searchableTree = $('#treeview-searchable').treeview({
 		data: json,
-		showTags: true, // showTags refers to showing the "hasData" badge 
+		showTags: false, // showTags refers to showing the "hasData" badge 
 	});
 
 	var search = function(e) {

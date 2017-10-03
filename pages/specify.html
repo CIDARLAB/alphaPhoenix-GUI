@@ -177,6 +177,11 @@
                                 </div>
                             </div> 
                             <div class="tab-content tab-grid" id="tab-grid">
+                                <div class="tab">
+                                    <button class="tab-btn-sm active" id="tab-in0-btn" onclick="changeGridTab(event, 'tab-in0-btn')">In0</button>
+                                    <button class="tab-btn-sm" id="tab-out0-btn" onclick="changeGridTab(event, 'tab-out0-btn')">Out0</button>
+                                    <button class="tab-btn-sm new" id="tab-grid-new" onclick="changeGridTab(event, 'tab-new')">+</button>                                    
+                                </div>
                                 <div class="row grid">
                                     <div class="col-12" id="divCanvas">
                                         <canvas id="gridCanvas" resize="true"></canvas>

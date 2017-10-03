@@ -41,8 +41,8 @@ function loadXML(sbolString) {
     editor.setValue(newxml);
 }
 
-function overrideSBOL() {          
-    var file = $("#sbol-override")[0].files; // get file from input
+function overrideSBML() {          
+    var file = $("#SBML-override")[0].files; // get file from input
     var formData = new FormData(); // new FormData object
 
     // Check the file type.
@@ -54,7 +54,7 @@ function overrideSBOL() {
     var xhr = new XMLHttpRequest();
 
     // Open the connection.
-    xhr.open('POST', 'uploadSbolOverride', true);
+    xhr.open('POST', 'uploadSBMLOverride', true);
     
     // Set up a handler for when the request finishes.
     xhr.onload = function () {
@@ -68,12 +68,6 @@ function overrideSBOL() {
 
     // Send the Data.
     xhr.send(formData);
-    
-    // get data back and:
-    // sbolString = loadXML(returnedSBOL);
+
 }
 
-    // var sbolFile = $("#sbol-override").file; // get selected file form input form
-    // // var sbolString = (new XMLSerializer()).serializeToString(sbolFile);
-    // console.log(sbolFile);
-    // loadXML(sbolString)

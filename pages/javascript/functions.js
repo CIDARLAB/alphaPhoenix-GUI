@@ -43,18 +43,6 @@ $(function(){
                         '</div>' +
                     '</div>' +
                 '</div>' +
-                '<div class="col-2">' +
-                    '<button class="btn btn-primary dropdown-toggle" type="button" onClick="openUserSettings()">' +
-                        username +
-                    '</button>' +
-                    '<div id="user-settings" class="user-settings">' +
-                        '<a href="javascript:void(0)" class="closebtn" onClick="closeUserSettings()">x</a>' +
-                        '<ul>' +
-                            '<li>Setting Option 1</li>' +
-                            '<li>Setting Option 2</li>' +
-                        '</ul>' +
-                    '</div>' +
-                '</div>' +
             '</div>' +
         '</div>'
     );
@@ -164,12 +152,12 @@ function loadVisBOL(sbolURI) {
     svgLayer.activate(); // activate correct Layer
 
     // if (isLink == true) {
-    //     sbol = getSBOL(sbolURI);            
+        sbol = getSBOL(sbolURI);            
     // } else {
     //     sbol = sbolURI;
     // }
 
-    visdata = getVisBOL(sbolURI);
+    visdata = getVisBOL(sbol);
 
     if (svgLayer._children.length > 0) {
         // var numChildren = project._children[0]._children.length;

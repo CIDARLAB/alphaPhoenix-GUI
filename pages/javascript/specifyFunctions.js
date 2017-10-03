@@ -531,6 +531,45 @@ function changeTab(evt, tabName) {
     }
 }
 
+var specGridTabs = {}
+
+function changeGridTab(evt, tabName) {
+    if (evt.target) {
+        evt = evt.target; // allows this to work even when simulating clicks with jquery .click()
+    }
+
+    if ($(evt).hasClass("active")) {
+        return; // if already active, do nothing
+    }
+
+    var oldTabName = $(".tab-btn-sm.active").attr("id")
+    console.log(oldTabName)
+    specGridTabs[oldTabName] = gC.projects[0].layers[2]; // stores existing paths
+
+    gC.projects[0].layers[2].removeChildren()
+
+    $('.tab-btn-sm').removeClass("active"); // remove all active classes
+    $(evt).addClass("active"); // add an "active" class to the button that opened the tab
+
+    var zidx = 3;    
+    for (var i = 0; i < 3; i++) {
+        if ($(evt)[0] != $(".tab-btn-sm:eq(" + i + ")")[0]) {
+            $(".tab-btn-sm:eq(" + i + ")").css("z-index",zidx);
+            zidx += -2;
+        } else {
+            $(".tab-btn-sm:eq(" + i + ")").css("z-index",5);
+        }
+    }
+
+    if (specGridTabs[tabName] != null) {
+        gC.projects[0].layers[2] = specGridTabs[tabName];
+    }
+
+}
+
+function addGridTab() {
+
+}
 
 function checkEditors() {
     if ($(".stl").is(":visible")) {

@@ -1,64 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Phoenix | Results</title>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-    <!-- load paper.js -->
+	<!-- load paper.js -->
     <script type="text/javascript" src="./javascript/paper-full.js"></script>
+    <!-- load jquery -->
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
     <!-- load general functions -->
     <script type="text/javascript" src="./javascript/functions.js"></script>
-    <!-- load design functions -->
-    <script type="text/javascript" src="./javascript/designFunctions.js"></script>
-    <!-- load visbol canvas -->
-    <script type="text/javascript" src="./javascript/designCanvas.js"></script>
-    <!-- load bootstrap css -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- load grid canvas -->
+    <script type="text/javascript" src="./javascript/resultsGridCanvas.js"></script>
+    <!-- load script that controls results functions -->
+	<script type="text/javascript" src="./javascript/resultsFunctions.js"></script>
+    <!-- load script that controls grid functions -->
+    <script type="text/javascript" src="./javascript/resultsGridCanvasFunctions.js"></script>
+	<!-- load bootstrap css -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
     <!-- load font awesome (glyphicons) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- load custom stylesheet -->
-
-    <!--<link rel="stylesheet" href="./styles/style.css"></link>-->
+	<!-- load custom stylesheet -->
+    <link rel="stylesheet" href="./styles/style.css"></link>
     <link rel="stylesheet" href="./styles/results.css"></link>
 </head>
 <body>
-    <!-- NavBar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">
-            <img src="./images/logo/phoenix_banner_white.png" height="60" class="d-inline-block align-top" alt="">
-        </a>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav navbar-nav ml-auto">
-                <li class="nav-item d-sm-block d-md-none">
-                    <a class="nav-link" href="#">Specify</a>
-                </li>
-                <li class="nav-item d-sm-block d-md-none">
-                    <a class="nav-link" href="#">Design</a>
-                </li>
-                <li class="nav-item d-sm-block d-md-none">
-                    <a class="nav-link active" href="#">Results</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Signup</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <!-- End Navbar -->
-
     <nav class="navbar navbar-toggleable-xs navbar-light bg-faded main-nav" id="rst-navbar">
     </nav>
 	<div class="container grid-border">

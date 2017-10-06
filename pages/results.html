@@ -83,12 +83,16 @@
             <div class="card" style="padding: 20px; height: 1000px; min-width: 100%; /* TODO: need to calculate max height of window */; word-break: none;">
                 <div class="row">
                     <div class="col-8">
-                        <h3>Results</h3>
+                        <h5>Results</h5>
                         <hr />
                     </div>
                 </div>
+
+                <!-- Top Row -->
                 <div class="row">
-                    <div class="col-3 result-id" id="neo">
+
+                    <!-- Result ID / Solution Selection -->
+                    <div class="col col-3 result-id borderline" id="neo">
                         <div class="neo-overlay">
                             <select class="form-control" id="results-select-solution">
                                 <option>Solution 1 (Best Fit)</option>
@@ -100,21 +104,29 @@
                             <p id="results-robustness">Robustness: </p><span id="robustness-value"></span>
                         </div>
                     </div>
-                    <div class="col-9 result-graph" id="graphZone">
+                    <!-- End Result ID / Solution Selection -->
+
+                    <!-- Canvas -->
+                    <div class="col col-5 result-graph borderline" id="graphZone">
                         <canvas id="gridCanvas" resize="true"></canvas>
                     </div>
+                    <!-- End Canvas -->
                 </div>
+                <!-- End Top Row -->
+
+                <!-- Bottom Row -->
                 <div class="row">
-                    <div class="col-3 result-btns">
+                    <div class="col col-3 result-btns borderline">
                         <button class="btn btn-primary">Download SBOL</button>
                         <button class="btn btn-primary">Download Results</button>
                     </div>
-                    <div class="col-9 result-svg">
+                    <div class="col col-5 result-svg borderline">
                         <canvas id="sbolCanvas" resize="true"></canvas>
                         <div id="design">
                         </div>
                     </div>
                 </div>
+                <!-- End Bottom Row -->
             </div>
         </div>
         <!-- End Main Panel -->

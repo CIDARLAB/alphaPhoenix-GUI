@@ -49,6 +49,16 @@
     color: #0275d8;
     font-size: 14px;
     width: 100%;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -ms-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.btn:hover {
+    background-color: #0275d8;
+    color: white;
 }
 
 .result-svg {

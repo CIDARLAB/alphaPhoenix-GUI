@@ -92,7 +92,7 @@
                 <div class="row">
 
                     <!-- Result ID / Solution Selection -->
-                    <div class="col col-3 result-id borderline" id="neo">
+                    <div class="col-3 result-id borderline" id="neo">
                         <div class="neo-overlay">
                             <select class="form-control" id="results-select-solution">
                                 <option>Solution 1 (Best Fit)</option>
@@ -107,7 +107,7 @@
                     <!-- End Result ID / Solution Selection -->
 
                     <!-- Canvas -->
-                    <div class="col col-5 result-graph borderline" id="graphZone">
+                    <div class="col-9 result-graph" id="graphZone">
                         <canvas id="gridCanvas" resize="true"></canvas>
                     </div>
                     <!-- End Canvas -->
@@ -116,15 +116,20 @@
 
                 <!-- Bottom Row -->
                 <div class="row">
-                    <div class="col col-3 result-btns borderline">
+                    <!-- Download Options -->
+                    <div class="col-3 result-btns borderline">
                         <button class="btn btn-primary">Download SBOL</button>
                         <button class="btn btn-primary">Download Results</button>
                     </div>
-                    <div class="col col-5 result-svg borderline">
+                    <!-- End Download Options -->
+
+                    <!-- Result SVG -->
+                    <div class="col-4 result-svg">
                         <canvas id="sbolCanvas" resize="true"></canvas>
                         <div id="design">
                         </div>
                     </div>
+                    <!-- End Result SVG -->
                 </div>
                 <!-- End Bottom Row -->
             </div>

@@ -43,10 +43,13 @@
 }
 
 .btn.btn-primary {
+    cursor: default;
     border-color: #0275d8;
     background-color: white;
     border-width: 3px;
     color: #0275d8;
+    /* TODO: I imagine we probably want to standardize fonts across the entire project */
+    font-family: 'Calibri', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     font-size: 14px;
     width: 100%;
     -webkit-transition-duration: 0.3s;

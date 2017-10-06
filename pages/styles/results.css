@@ -35,6 +35,19 @@
     font-family: 'Calibri', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
 }
 
+.result-table ul {
+    -webkit-padding-start: 0;
+    list-style-type: none;
+}
+
+.result-table li {
+    tab-size: 0pt;
+}
+
+.result-table p {
+    font-weight: bold;
+}
+
 .result-btns {
     padding-top: 61.7px;
     height: 240px;

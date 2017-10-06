@@ -30,6 +30,11 @@
     height: 80%;
 }
 
+.result-table {
+    padding: 10px;
+    font-family: 'Calibri', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
 .result-btns {
     padding-top: 61.7px;
     height: 240px;

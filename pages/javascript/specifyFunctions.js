@@ -437,9 +437,9 @@ $(window).ready(function() {
 var gridScaleVal = 0.76;
 
 $(window).on('load', function() {    
-    // define the menu canvas according to the size of the sidebar
-    sL.view.bounds.width = $("#sidebar-container").width();
-    sL.view.bounds.height = $("#sidebar-container").height();
+    // define the menu canvas according to the size of the main card
+    sL.view.bounds.width = $("#main-card").width();
+    sL.view.bounds.height = $("#main-card").height();
 
     if ($("#tab-grid").hasClass("active")) {   
         // adjust grid size if active:

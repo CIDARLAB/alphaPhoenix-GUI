@@ -49,8 +49,7 @@ var textItem;
 window.onload = function() {
 
     sL = new paper.PaperScope(); // define grid PaperScope
-    sL.setup('sidebarLeft'); // setup using canvas id
-    sidebarLeft.style.background = 'transparent'; 
+    sL.setup('gridCanvas'); // setup using canvas id
 
     // check mark for checkboxes
     check = new sL.Raster('checkmark');

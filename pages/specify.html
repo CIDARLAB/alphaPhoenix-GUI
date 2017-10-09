@@ -102,14 +102,14 @@
 
         <!-- Main Panel -->
         <div class="col-sm-9 ml-sm-auto col-md-10 pt-3 bg-light">
-            <div class="card" style="padding: 20px; height: 1000px; min-width: 100%; /* TODO: need to calculate max height of window */; word-break: none;">
+            <div class="card" style="padding: 20px; height: 1000px; min-width: 100%; /* TODO: need to calculate max height of window */; word-break: none;" id="main-card">
                 <div class="col-8">
                     <div class="row">
                         <div class="col-8">
                             <div class="tab stl">
                                 <button class="tab-btn active" id="tab-editor-btn" onclick="changeTab(event, 'tab-editor')">STL Editor</button>
                                 <button class="tab-btn" id="tab-grid-btn" onclick="changeTab(event, 'tab-grid')">GridTLI</button>
-                                <button class="tab-btn" id="tab-timerails-btn" onclick="changeTab(event, 'tab-timerails')">TimeRails</button>
+                                <!-- <button class="tab-btn" id="tab-timerails-btn" onclick="changeTab(event, 'tab-timerails')">TimeRails</button> -->
                             </div>
                             <p class="text-muted struct">Powered By
                                 <img src="./images/logo/logo-Eugene-Color.png" class="img-logo-small">
@@ -242,12 +242,14 @@
                                                         <span class="fa fa-upload"></span>
                                                     </button>
                                                 </div>
-                                                <!-- <button type="button" class="btn btn-secondary" onClick="saveProject()" title="Save Project">
-                                                    <span class="fa fa-save"></span>
-                                                </button>
-                                                <button type="button" class="btn btn-secondary" onClick="exportData()" title="Export Data">
-                                                    <span class="fa fa-download"></span>
-                                                </button> -->
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-secondary" onClick="saveProject()" title="Save Project">
+                                                        <span class="fa fa-save"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary" onClick="exportData()" title="Export Data">
+                                                        <span class="fa fa-download"></span>
+                                                    </button>
+                                                </div>
                                             </div>
                                             <div class="col-4" id="axis-vals">
                                                 <div class="row grid">
@@ -342,12 +344,12 @@
                                 </div>
                             </div>
                             <!-- End GridTLI -->
-                            <!-- Begin TimeRails -->
+                            <!-- Begin TimeRails
                             <div class="tab-content tab-timerails" id="tab-timerails">
                                 <div class="col-12">
                                 </div>
                             </div>
-                            <!-- End TimeRails -->
+                            End TimeRails -->
                         </div>
                     </div>
                     <!-- TODO: row class for these buttons...? -->

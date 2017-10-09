@@ -7,56 +7,6 @@
 
 /*** GENERAL SPECIFY PAGES ***/
 
-.wrap .btn-sm {
-    /* border-radius: 20px;  */
-    width: 80%;
-    font-size: 12px;
-}
-
-.btn.btn-primary {
-    cursor: default;
-    border-color: #0275d8;
-    background-color: white;
-    border-width: 3px;
-    color: #0275d8;
-    /* TODO: I imagine we probably want to standardize fonts across the entire project */
-    font-family: 'Calibri', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
-    font-size: 14px;
-    width: 100%;
-    -webkit-transition-duration: 0.3s;
-    -moz-transition-duration: 0.3s;
-    -ms-transition-duration: 0.3s;
-    -o-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-}
-
-.btn:hover {
-    background-color: #0275d8;
-    color: white;
-}
-
- .wrap .btn.btn-primary {
-    cursor: default;
-    border-color: #0275d8;
-    background-color: white;
-    border-width: 3px;
-    color: #0275d8;
-    /* TODO: I imagine we probably want to standardize fonts across the entire project */
-    font-family: 'Calibri', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
-    font-size: 14px;
-    width: 100%;
-    -webkit-transition-duration: 0.3s;
-    -moz-transition-duration: 0.3s;
-    -ms-transition-duration: 0.3s;
-    -o-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-}
-
-.wrap .btn.btn-primary:hover {
-    background-color: #0275d8;
-    color: white;
-}
-
 .grid-border {
      height: calc(100% - 90px); 
 }
@@ -72,7 +22,7 @@
 .editor {
     height: 99%;
     width: 100%;
-    font-size: 14px;
+    font-size: 20px;
     margin: 5px 0px;
     border: 2px solid #c3c3c3;
     border-radius: 12px;
@@ -84,8 +34,8 @@ div.tab {
     overflow: hidden;
     padding-left: 24px;
     padding-top: 4px;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
+    padding-bottom: -8px;
+    margin-bottom: -4px;
 }
 
 .tab-btn {
@@ -98,9 +48,8 @@ div.tab {
     width: 100px;
     height: 40px;
     position: relative;
-    z-index: 1;
-    font-size: 10pt;
-    margin-right: 40px;
+    z-index: 1; 
+    margin-right: 20px;
     border-bottom: none;
 }
 
@@ -126,7 +75,7 @@ div.tab {
     position: absolute;
     content: "";
     top: -2px;
-    z-index: -1;
+    z-index: -1;    
 }
 
 .tab-btn:before {
@@ -176,6 +125,103 @@ div.tab {
     height: 100%;
 }
 
+.tab-grid div.tab {
+    overflow: hidden;
+    padding-left: 14px;
+    padding-top: 4px;
+    padding-bottom: -8px;
+    margin-bottom: -2px;
+}
+
+.tab-btn-sm {
+    border-radius: 8px 8px 0px 0px;
+    background-color: #e7e7e7;
+    border: 2px solid #c7c7c7; 
+    outline: none; 
+    cursor: pointer;
+    padding: 6px 14px;
+    width: 60px;
+    height: 32px;
+    position: relative;
+    z-index: 1; 
+    margin-right: 10px;
+    border-bottom: none;
+}
+
+.tab-btn-sm.new {
+    border-radius: 8px 8px 0px 0px;
+    background-color: #e7e7e7;
+    border: 2px solid #c7c7c7; 
+    outline: none; 
+    cursor: pointer;
+    padding: 6px 14px;
+    width: 36px;
+    height: 32px;
+    position: relative;
+    z-index: 1; 
+    margin-right: 10px;
+    border-bottom: none;
+}
+
+.tab-btn-sm:nth-child(2) {
+    z-index: 3;
+}
+
+.tab-btn-sm:focus {
+    outline: none;
+}
+
+.tab-btn-sm:hover,
+.tab-btn-sm.active {
+    background-color: white;
+    z-index: 5;
+}
+
+.tab-btn-sm:before,
+.tab-btn-sm:after {
+    height: 32px;
+    width: 16px;
+    background-color: #e7e7e7;
+    position: absolute;
+    content: "";
+    top: -2px;
+    z-index: -1;    
+}
+
+.tab-btn-sm:before {
+    left: -8px;
+    border-radius: 8px 0px 0px 0px;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+    border-top: 2px solid #c7c7c7;
+    border-left: 2px solid #c7c7c7;
+}
+
+.tab-btn-sm:after {
+    left: 50px;
+    border-radius: 0px 8px 0px 0px;
+    -webkit-transform: skewX(25deg);
+    transform: skewX(25deg);
+    border-right: 2px solid #c7c7c7;
+    border-top: 2px solid #c7c7c7;
+}
+
+.tab-btn-sm.new:before {
+    left: -5px;
+}
+.tab-btn-sm.new:after {
+    left: 24px;
+}
+
+.tab-btn-sm.active:before,
+.tab-btn-sm:hover::before,
+.tab-btn-sm.active:after,
+.tab-btn-sm:hover::after {
+    background-color: white;
+    border-color:#c7c7c7;
+}
+
+
 /*** STRUCTURAL ***/
 
 .struct {
@@ -196,6 +242,7 @@ div.tab {
 .form-control.struct {
     width: 54px;
     height: 39px;
+    font-size: 12px;
 }
 
 .form-control.struct option {
@@ -277,6 +324,7 @@ tbody tr.row {
 tbody td {
     float:left;
     height: 30px;
+    overflow: hidden;
 }
 
 thead > tr > th {

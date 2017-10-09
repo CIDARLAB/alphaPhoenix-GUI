@@ -78,6 +78,14 @@
     border-radius: 12px;
 }
 
+/* GridTLI toolbar */
+.tli-toolbar {
+    background-color: #ffffff;
+    width: calc(100% - 100px);
+    padding: 12px;
+    border-radius: 12px
+}
+
 /*** STL TABS ***/
 
 div.tab {

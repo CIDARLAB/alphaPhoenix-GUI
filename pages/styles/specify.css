@@ -58,7 +58,7 @@
 }
 
 .grid-border {
-     height: calc(100% - 90px); 
+     height: calc(100% - 90px);
 }
 
 .container {
@@ -110,6 +110,7 @@ div.tab {
     font-size: 10pt;
     margin-right: 40px;
     border-bottom: none;
+    transition-duration: 0.3s; /* TODO: browser cross-compatibility for transitions */
 }
 
 .tab-btn:nth-child(2) {
@@ -144,6 +145,7 @@ div.tab {
     transform: skewX(-25deg);
     border-top: 2px solid #c7c7c7;
     border-left: 2px solid #c7c7c7;
+    transition-duration: 0.3s; /* TODO: browser cross-compatibility for transitions */
 }
 
 .tab-btn:after {
@@ -153,6 +155,7 @@ div.tab {
     transform: skewX(25deg);
     border-right: 2px solid #c7c7c7;
     border-top: 2px solid #c7c7c7;
+    transition-duration: 0.3s; /* TODO: browser cross-compatibility for transitions */
 }
 
 .tab-btn.active:before,

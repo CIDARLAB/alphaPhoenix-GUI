@@ -47,7 +47,7 @@
     <!-- load custom stylesheet -->
     <link rel="stylesheet" href="./styles/gridtli.css"></link>
 
-    <!--<link rel="stylesheet" href="./styles/style.css"></link>-->
+    <link rel="stylesheet" href="./styles/style.css"></link>
     <link rel="stylesheet" href="./styles/specify.css"></link>
 </head>
 <body>
@@ -87,13 +87,31 @@
 <div class="container-fluid">
     <div class="row">
         <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-secondary sidebar">
+            <!-- TODO: factor our nav column -->
             <ul class="nav nav-pills flex-column">
+                <h6 class="nav-cat">
+                    Specification
+                </h6>
                 <li class="nav-item">
-                    <a class="nav-link text-light active" href="./specify.html">Specify</a>
+                    <a class="nav-link text-light active" href="./specify.html#">Performance</a>
                 </li>
+                <li>
+                    <a class="nav-link text-light" href="./specify.html#">Structural</a>
+                </li>
+                <li>
+                    <a class="nav-link text-light" href="./specify.html#">Library</a>
+                </li>
+            </ul>
+            <ul class="nav nav-pills flex-column">
+                <h6 class="nav-cat">
+                    Design
+                </h6>
                 <li class="nav-item">
                     <a class="nav-link text-light" href="./design.html">Design</a>
                 </li>
+                <h6 class="nav-cat">
+                    Results
+                </h6>
                 <li class="nav-item">
                     <a class="nav-link text-light" href="./results.html">Results</a>
                 </li>
@@ -103,6 +121,12 @@
         <!-- Main Panel -->
         <div class="col-sm-9 ml-sm-auto col-md-10 pt-3 bg-light">
             <div class="card" style="padding: 20px; height: 1000px; min-width: 100%; /* TODO: need to calculate max height of window */; word-break: none;" id="main-card">
+                <div class="row">
+                    <div class="col">
+                        <h5>Performance specification</h5>
+                        <hr />
+                    </div>
+                </div>
                 <div class="col">
                     <div class="row">
                         <div class="col-8">
@@ -355,19 +379,13 @@
                     <!-- TODO: row class for these buttons...? -->
                     <div class="row" style="padding-top: 15px">
                         <div class="col-2">
-                            <button id="btn-help" class="btn btn-primary">HELP</button>
+                            <button id="btn-help" class="btn btn-primary" onclick="alert('No.');">HELP</button>
                         </div>
                         <div class="col-2 offset-2">
                             <button id="btn-save" class="btn btn-primary">SAVE</button>
                         </div>
                         <div class="col-2">
                             <button id="btn-upload" class="btn btn-primary">UPLOAD</button>
-                        </div>
-                        <div class="col-2">
-                            <button id="btn-prevPage" class="btn btn-primary disabled">PREVIOUS</button>
-                        </div>
-                        <div class="col-2">
-                            <button id="btn-nextPage" class="btn btn-primary" onClick="activateStructPage()">NEXT</button>
                         </div>
                     </div>
                 </div>

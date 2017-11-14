@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link href="../public/css/font-awesome.css" rel="stylesheet">
     
+    <script src="../public/js/jquery.js"></script>
     <script src="../public/ace/ace.js"></script>
 </head>
 <body>
@@ -62,13 +63,15 @@
             <div class="card spacer">
                 <div class="tabs">
                     <ul>
-                        <li class="is-active"><a>STL Editor</a></li>
-                        <li><a>Grid TLI</a></li>
+                        <li id="stlTab" onclick="setTab(0)"><a>STL Editor</a></li>
+                        <li id="gridTab" onclick="setTab(1)"><a>Grid TLI</a></li>
                     </ul>
                 </div>
-                <div>
+                <div id="stl">
                     <button class="is-pulled-right right-spacer bottom-spacer button is-info is-outlined">Sample</button>
                     <div id="editor"></div>    </div>
+                <div id="grid">
+                </div>
                 <script src="../public/js/specify.js"></script>
             </div>        </div>
     </div>

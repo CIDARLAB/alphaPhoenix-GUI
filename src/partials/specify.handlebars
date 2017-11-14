@@ -1,12 +1,15 @@
 <div class="card spacer">
     <div class="tabs">
         <ul>
-            <li class="is-active"><a>STL Editor</a></li>
-            <li><a>Grid TLI</a></li>
+            <li id="stlTab" onclick="setTab(0)"><a>STL Editor</a></li>
+            <li id="gridTab" onclick="setTab(1)"><a>Grid TLI</a></li>
         </ul>
     </div>
-    <div>
+    <div id="stl">
         {{> stlEditor}}
+    </div>
+    <div id="grid">
+        {{> gridTLI}}
     </div>
     <script src="../public/js/specify.js"></script>
 </div>

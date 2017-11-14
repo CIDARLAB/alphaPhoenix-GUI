@@ -16,6 +16,14 @@ html, body {
     margin-top: 25px;
 }
 
+.right-spacer{
+    margin-right: 25px;
+}
+
+.bottom-spacer{
+    margin-bottom: 25px;
+}
+
 .navbar-item img {
     max-height: 40px;
 }
@@ -50,4 +58,10 @@ html, body {
 .card-header-title {
     color: #8F99A3;
     font-weight: 400;
+}
+
+#editor {
+    height: 100%;
+    width: 100%;
+    font-size: 12px;
 }

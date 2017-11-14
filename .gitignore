@@ -13,3 +13,4 @@ buildNumber.properties
 .idea
 node_modules
 public/css
+ace.js

@@ -23,6 +23,12 @@ gulp.task('ace', function () {
     ]).pipe(gulp.dest('public/ace/'))
 });
 
+gulp.task('js', function () {
+    gulp.src([
+        'node_modules/jquery/dist/jquery.js',
+    ]).pipe(gulp.dest('public/js'))
+});
+
 gulp.task('templates', function () {
     return gulp
         .src('./src/templates/**/*.html')
@@ -39,4 +45,4 @@ gulp.task('watch',['templates'], function () {
     gulp.watch(['./src/partials/**/*.handlebars','./src/templates/**/*.html'] , ['templates']);
 });
 
-gulp.task('default', [ 'css','fonts','ace','templates','watch']);
+gulp.task('default', [ 'css','fonts','ace','js','templates','watch']);

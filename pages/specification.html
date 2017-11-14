@@ -7,6 +7,7 @@
     <link href="../public/css/font-awesome.css" rel="stylesheet">
     
     <script src="../public/js/jquery.js"></script>
+    <script src="../public/js/menu.js"></script>
     <script src="../public/ace/ace.js"></script>
 </head>
 <body>
@@ -41,9 +42,9 @@
                     Specification
                 </p>
                 <ul class="menu-list">
-                    <li><a href="#performance">Performance<span class="icon has-text-success"><i class="fa fa-check-square"></i></span></a></li>
-                    <li><a href="#structural">Structural<span class="icon has-text-warning"> <i class="fa fa-warning"></i></span></a></li>
-                    <li><a href="#library">Library<span class="icon has-text-danger"><i class="fa fa-ban"></i></span></a></li>
+                    <li><a onclick="setMenuIndex(0)" id="performanceTab">Performance</a></li>
+                    <li><a onclick="setMenuIndex(1)" id="structuralTab">Structural</a></li>
+                    <li><a onclick="setMenuIndex(2)" id="libraryTab">Library</a></li>
                 </ul>
                 <p class="menu-label">
                     Design
@@ -60,20 +61,28 @@
                 </ul>
             </aside>        </div>
         <div class="column is-9" style="height: 70%">
-            <div class="card spacer">
-                <div class="tabs">
-                    <ul>
-                        <li id="stlTab" onclick="setTab(0)"><a>STL Editor</a></li>
-                        <li id="gridTab" onclick="setTab(1)"><a>Grid TLI</a></li>
-                    </ul>
-                </div>
-                <div id="stl">
-                    <button class="is-pulled-right right-spacer bottom-spacer button is-info is-outlined">Sample</button>
-                    <div id="editor"></div>    </div>
-                <div id="grid">
-                </div>
-                <script src="../public/js/specify.js"></script>
-            </div>        </div>
+            <div id="performance">
+                <div class="card spacer">
+                    <div class="tabs">
+                        <ul>
+                            <li id="stlTab" onclick="setTab(0)"><a>STL Editor</a></li>
+                            <li id="gridTab" onclick="setTab(1)"><a>Grid TLI</a></li>
+                        </ul>
+                    </div>
+                    <div id="stl">
+                        <button class="is-pulled-right right-spacer bottom-spacer button is-info is-outlined">Sample</button>
+                        <div id="editor"></div>    </div>
+                    <div id="grid">
+                    </div>
+                    <script src="../public/js/specify.js"></script>
+                </div>            </div>
+            <div id="structural">
+                structural
+            </div>
+            <div id="library">
+                library
+            </div>
+        </div>
     </div>
 </div>
 </body>

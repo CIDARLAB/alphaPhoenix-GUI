@@ -2,11 +2,13 @@
   "name": "alphaPhoenix",
   "version": "0.0.1",
   "dependencies": {
-    "bulma": "^0.6.1"
+    "bulma": "^0.6.1",
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-hb": "^6.0.2",
+    "gulp-watch": "^4.3.11",
     "handlebars-layouts": "^3.1.4"
   }
 }

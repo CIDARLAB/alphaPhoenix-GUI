@@ -20,13 +20,13 @@ gulp.task('templates', function () {
     return gulp
         .src('./src/templates/**/*.html')
         .pipe(hb({
-            partials: ['./src/partials/*.handlebars'],
+            partials: ['./src/partials/**/*.handlebars'],
         }))
         .pipe(gulp.dest('./'));
 });
 
 gulp.task('watch',['templates'], function () {
-    gulp.watch('./src/partials/*.handlebars' , ['templates']);
+    gulp.watch(['./src/partials/**/*.handlebars','./src/templates/**/*.html'] , ['templates']);
 });
 
 gulp.task('default', [ 'css','fonts','templates','watch']);

@@ -1,5 +1,6 @@
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/chrome");
+var stlScript = "((G[0,100] in0 <= 4) && (G[0,100] in0 >= 0)) &&\n (((G[0,50] out0 >= 0)&&(G[0,50] out0 <= 25))&&((G[50,100] out0 >= 25)&&(G[50,100] out0 <= 36)))";
 
 function setTab(index) {
     switch(index) {
@@ -18,4 +19,9 @@ function setTab(index) {
     }
     return true;
 }
+
+function loadSTLSample() {
+    editor.setValue(stlScript);
+}
+
 setTab(0);

@@ -19,9 +19,17 @@ function setTab(index) {
     }
     return true;
 }
+setTab(0);
 
 function loadSTLSample() {
     editor.setValue(stlScript);
 }
 
-setTab(0);
+function openRegistryList() {
+    document.getElementById("registryList").style.width = "35%";
+}
+
+function closeRegistryList() {
+    document.getElementById("registryList").style.width = "0";
+}
+

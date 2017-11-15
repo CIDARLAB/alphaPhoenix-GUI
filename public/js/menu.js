@@ -15,6 +15,7 @@ function setMenuIndex(index) {
             $('#structural').show();
             $('#libraryTab').removeClass('is-active');
             $('#library').hide();
+            $(editor2).resize();
             break;
         case 2:
             $('#performanceTab').removeClass('is-active');

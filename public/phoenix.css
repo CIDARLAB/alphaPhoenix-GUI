@@ -68,7 +68,7 @@ html, body {
     font-weight: 400;
 }
 
-#editor {
+.editor {
     height: 100%;
     width: 100%;
     font-size: 12px;

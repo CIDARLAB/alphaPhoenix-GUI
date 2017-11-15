@@ -1,6 +1,12 @@
 var gulp = require('gulp');
 var hb = require('gulp-hb');
 var watch = require('gulp-watch');
+var htmltidy = require('gulp-htmltidy');
+const lintOptions = {
+    doctype: 'html5',
+    hideComments: true,
+    indent: true
+}
 
 gulp.task('css', function() {
     gulp.src([
@@ -35,8 +41,10 @@ gulp.task('templates', function () {
         .pipe(hb({
             partials: ['./src/partials/**/*.handlebars'],
         }))
+        .pipe(htmltidy(lintOptions))
         .pipe(gulp.dest('./'));
 });
+
 
 
 

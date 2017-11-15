@@ -9,6 +9,7 @@
     "ace-builds": "^1.2.9",
     "gulp": "^3.9.1",
     "gulp-hb": "^6.0.2",
+    "gulp-htmltidy": "^0.2.3",
     "gulp-watch": "^4.3.11",
     "handlebars-layouts": "^3.1.4",
     "jquery": "^3.2.1"

@@ -97,3 +97,7 @@ html, body {
     font-size: 36px;
     margin-left: 50px;
 }
+
+.spacer-bottom {
+    margin-bottom: 25px;
+}

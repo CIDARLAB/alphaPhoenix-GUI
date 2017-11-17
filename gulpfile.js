@@ -4,6 +4,7 @@ var watch = require('gulp-watch');
 
 gulp.task('css', function() {
     gulp.src([
+        'src/css/**/*.css',
         'node_modules/bulma/css/bulma.css',
         'node_modules/font-awesome/css/font-awesome.css',
     ]).pipe(gulp.dest('./build/public/css/'))
@@ -25,8 +26,15 @@ gulp.task('ace', function () {
 
 gulp.task('js', function () {
     gulp.src([
+        'src/js/**/*.js',
         'node_modules/jquery/dist/jquery.js',
     ]).pipe(gulp.dest('./build/public/js'))
+});
+
+gulp.task('images', function () {
+    gulp.src([
+        'src/images/**/*'
+    ]).pipe(gulp.dest('./build/public/images'))
 });
 
 gulp.task('templates', function () {
@@ -42,4 +50,4 @@ gulp.task('watch',['templates'], function () {
     gulp.watch(['./src/partials/**/*.handlebars','./src/templates/**/*.html'] , ['templates']);
 });
 
-gulp.task('default', [ 'css','fonts','ace','js','templates','watch']);
+gulp.task('default', [ 'css','fonts','ace','js','images','templates','watch']);

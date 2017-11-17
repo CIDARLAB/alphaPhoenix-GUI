@@ -6,27 +6,27 @@ gulp.task('css', function() {
     gulp.src([
         'node_modules/bulma/css/bulma.css',
         'node_modules/font-awesome/css/font-awesome.css',
-    ]).pipe(gulp.dest('public/css/'))
+    ]).pipe(gulp.dest('./build/public/css/'))
 });
 
 gulp.task('fonts', function() {
     gulp.src([
         'node_modules/font-awesome/fonts/fontawesome-webfont.eot',
         'node_modules/font-awesome/fonts/fontawesome-webfont.woff2',
-    ]).pipe(gulp.dest('public/fonts/'))
+    ]).pipe(gulp.dest('./build/public/fonts/'))
 });
 
 gulp.task('ace', function () {
     gulp.src([
         'node_modules/ace-builds/src-noconflict/ace.js',
         'node_modules/ace-builds/src-noconflict/theme-chrome.js'
-    ]).pipe(gulp.dest('public/ace/'))
+    ]).pipe(gulp.dest('./build/public/ace/'))
 });
 
 gulp.task('js', function () {
     gulp.src([
         'node_modules/jquery/dist/jquery.js',
-    ]).pipe(gulp.dest('public/js'))
+    ]).pipe(gulp.dest('./build/public/js'))
 });
 
 gulp.task('templates', function () {
@@ -35,7 +35,7 @@ gulp.task('templates', function () {
         .pipe(hb({
             partials: ['./src/partials/**/*.handlebars'],
         }))
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest('./build'));
 });
 
 gulp.task('watch',['templates'], function () {

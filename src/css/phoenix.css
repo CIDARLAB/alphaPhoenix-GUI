@@ -104,3 +104,8 @@ html, body {
 .spacer-bottom {
     margin-bottom: 25px;
 }
+
+.panel-icon {
+    width: 100%;
+    text-align: right;
+}

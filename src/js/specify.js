@@ -19,7 +19,6 @@ function setTab(index) {
     }
     return true;
 }
-setTab(0);
 
 function loadSTLSample(overRight) {
     var value = editorSTL.getValue().trim();
@@ -43,4 +42,32 @@ function openRegistryList() {
 function closeRegistryList() {
     document.getElementById("registryList").style.width = "0";
 }
+
+function guidGenerator() {
+    var S4 = function() {
+        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
+$().ready(function() {
+
+    setTab(0);
+
+    $('#addRegistry').click(function () {
+        var id = guidGenerator();
+        var newRegistry = $('#registryBox').val();
+        if(newRegistry != '' && newRegistry) {
+            var newOption = '<a class="panel-block" id="'+ id +'">' +
+                newRegistry +
+                '<span class="panel-icon has-text-danger">' +
+                '<i class="fa fa-times"></i>' +
+                '</span>' +
+                '</a>';
+            $('#registryListOptions').append(newOption);
+        }
+    });
+
+});
+
 

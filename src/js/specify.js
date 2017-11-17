@@ -50,6 +50,10 @@ function guidGenerator() {
     return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 }
 
+function remove(id) {
+    $( "#" + id ).remove();
+}
+
 $().ready(function() {
 
     setTab(0);
@@ -60,7 +64,7 @@ $().ready(function() {
         if(newRegistry != '' && newRegistry) {
             var newOption = '<a class="panel-block" id="'+ id +'">' +
                 newRegistry +
-                '<span class="panel-icon has-text-danger">' +
+                '<span class="panel-icon has-text-danger" onclick="remove(\''+ id +'\')">' +
                 '<i class="fa fa-times"></i>' +
                 '</span>' +
                 '</a>';

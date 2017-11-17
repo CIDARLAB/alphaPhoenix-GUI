@@ -52,6 +52,7 @@ function guidGenerator() {
 
 function remove(id) {
     $( "#" + id ).remove();
+    $( "#select" + id ).remove();
 }
 
 $().ready(function() {
@@ -69,6 +70,8 @@ $().ready(function() {
                 '</span>' +
                 '</a>';
             $('#registryListOptions').append(newOption);
+            var selectOption = ' <option value="' + newRegistry + '" id="select'+ id +'">' + newRegistry + '</option>'
+            $('#registrySelect').append(selectOption);
         }
     });
 

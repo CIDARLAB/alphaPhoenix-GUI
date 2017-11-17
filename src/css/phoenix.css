@@ -72,6 +72,9 @@ html, body {
     height: 100%;
     width: 100%;
     font-size: 12px;
+    border-top: solid;
+    border-color: #d5d5d5;
+    border-width: 1px;
 }
 
 .sidenav {

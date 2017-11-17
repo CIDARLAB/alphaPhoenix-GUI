@@ -47,7 +47,9 @@ gulp.task('templates', function () {
 });
 
 gulp.task('watch',['templates'], function () {
-    gulp.watch(['./src/partials/**/*.handlebars','./src/templates/**/*.html'] , ['templates']);
+    gulp.watch([
+        './src/**/*',
+    ], ['default']);
 });
 
 gulp.task('default', [ 'css','fonts','ace','js','images','templates','watch']);

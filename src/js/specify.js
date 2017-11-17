@@ -1,7 +1,6 @@
 var editorSTL = ace.edit("editorSTL");
 editorSTL.setTheme("ace/theme/chrome");
-
-var stlScript = "((G[0,100] in0 <= 4) && (G[0,100] in0 >= 0)) &&\n (((G[0,50] out0 >= 0)&&(G[0,50] out0 <= 25))&&((G[50,100] out0 >= 25)&&(G[50,100] out0 <= 36)))";
+editorSTL.setShowPrintMargin(false);
 
 function setTab(index) {
     switch(index) {
@@ -22,8 +21,19 @@ function setTab(index) {
 }
 setTab(0);
 
-function loadSTLSample() {
-    editor.setValue(stlScript);
+function loadSTLSample(overRight) {
+    var value = editorSTL.getValue().trim();
+    if(value === '' || overRight) {
+        var stlScript = "((G[0,100] in0 <= 4) && (G[0,100] in0 >= 0)) &&\n(((G[0,50] out0 >= 0)&&(G[0,50] out0 <= 25)) && ((G[50,100] out0 >= 25)&&(G[50,100] out0 <= 36)))";
+        editorSTL.setValue(stlScript);
+        $('#replaceSTL').removeClass('is-active');
+    } else {
+        $('#replaceSTL').addClass('is-active');
+    }
+}
+
+function closeSTLReplace() {
+    $('#replaceSTL').removeClass('is-active');
 }
 
 function openRegistryList() {

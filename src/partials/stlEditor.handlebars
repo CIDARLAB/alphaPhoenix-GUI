@@ -1,2 +1,19 @@
 <button class="is-pulled-right right-spacer bottom-spacer button is-info is-outlined" onclick="loadSTLSample()">Sample</button>
 <div class="editor" id="editorSTL"></div>
+<div class="modal" id="replaceSTL">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <article class="message is-danger">
+            <div class="message-header">
+                <button class="delete" aria-label="delete" onclick="closeSTLReplace()"></button>
+            </div>
+            <div class="message-body">
+                <p>
+                    This action will lose your current script. Do you still want to replace with a sample?
+                    <button class="is-pulled-right button is-danger is-outlined" onclick="loadSTLSample(true)">Replace</button>
+                </p>
+            </div>
+        </article>
+    </div>
+</div>
+

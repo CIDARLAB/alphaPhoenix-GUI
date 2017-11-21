@@ -44,13 +44,15 @@ div.tab {
     border: 2px solid #c7c7c7; 
     outline: none; 
     cursor: pointer;
-    padding: 6px 14px;
+    padding: 6px 0px;
     width: 100px;
     height: 40px;
     position: relative;
     z-index: 1; 
     margin-right: 20px;
     border-bottom: none;
+    /* was 14px on padding */
+    font-size: 18px;
 }
 
 .tab-btn:nth-child(2) {
@@ -139,9 +141,9 @@ div.tab {
     border: 2px solid #c7c7c7; 
     outline: none; 
     cursor: pointer;
-    padding: 6px 14px;
+    padding: 0px 14px;
     width: 60px;
-    height: 32px;
+    height: 24px;
     position: relative;
     z-index: 1; 
     margin-right: 10px;
@@ -149,18 +151,7 @@ div.tab {
 }
 
 .tab-btn-sm.new {
-    border-radius: 8px 8px 0px 0px;
-    background-color: #e7e7e7;
-    border: 2px solid #c7c7c7; 
-    outline: none; 
-    cursor: pointer;
-    padding: 6px 14px;
     width: 36px;
-    height: 32px;
-    position: relative;
-    z-index: 1; 
-    margin-right: 10px;
-    border-bottom: none;
 }
 
 .tab-btn-sm:nth-child(2) {
@@ -179,7 +170,7 @@ div.tab {
 
 .tab-btn-sm:before,
 .tab-btn-sm:after {
-    height: 32px;
+    height: 24px;
     width: 16px;
     background-color: #e7e7e7;
     position: absolute;
@@ -189,7 +180,7 @@ div.tab {
 }
 
 .tab-btn-sm:before {
-    left: -8px;
+    left: -10px;
     border-radius: 8px 0px 0px 0px;
     -webkit-transform: skewX(-25deg);
     transform: skewX(-25deg);
@@ -221,12 +212,28 @@ div.tab {
     border-color:#c7c7c7;
 }
 
+h6 {
+    margin: 0px;
+}
+
+.row.grid.align-items-center {
+    margin-top: -6px;
+    font-size: 16px;
+}
+
+input {
+    font-size: 16px;
+}
 
 /*** STRUCTURAL ***/
 
 .struct {
     display: none;
 } 
+
+p.struct {
+    font-size: 18px;
+}
 
 .text-muted.struct {
     margin-bottom: 0px;
@@ -325,6 +332,10 @@ tbody td {
     float:left;
     height: 30px;
     overflow: hidden;
+    font-size: 14px;
+    /* margin-bottom: 0px; */
+    padding-left: 2px;
+    /* padding-bottom: 4px; */
 }
 
 thead > tr > th {

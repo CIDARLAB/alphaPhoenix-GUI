@@ -36,11 +36,11 @@ nav .container {
     padding: 0px;
     display: block;
     width: 120px;
-    margin-top: 18px;
+    margin-top: 14px; /* was 18px*/
     text-decoration: none; 
     text-align: center;
     border: none;
-    font-size: 18px;
+    font-size: 22px; /* was 18px */
     letter-spacing: .5px;
 } 
 
@@ -119,8 +119,10 @@ nav .container {
     background-color: white;
     border-width: 3px;
     color: #0275d8;
-    font-size: 14px;
+    font-size: 18px; /*14px*/
     width: 100%;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .btn.btn-primary:hover {
@@ -130,7 +132,7 @@ nav .container {
 
 .btn-sm {
     width: 80%;
-    font-size: 12px;
+    font-size: 16px; /* was 12*/
 }
 
 .title {

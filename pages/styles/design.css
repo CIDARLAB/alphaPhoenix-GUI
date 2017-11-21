@@ -28,13 +28,20 @@ input {
 
 #editor {
     width: 100%;
-    height: calc(100% - 40px);
+    height: calc(100% - 58px);
     resize: none;
     border: 1px solid lightgray;
 }
 
 #search-box {
-    font-size: 14px;
+    font-size: 16px;
+}
+/* 14px */
+
+#search-window {
+    height: 280px;
+    overflow-y: scroll;
+    font-size: 16px;
 }
 
 .title-bar {
@@ -42,14 +49,17 @@ input {
 }
 /*** TREEVIEW ***/
 .treeview .list-group-item {
-    font-size: 12px;
+    font-size: 16px;
     height: 26px;
 }
 
+/* 12px */
+
 .form-inline.treeview .form-control {
-    font-size: 12px;
+    font-size: 16px;
     height: 26px;
 }
+/* 12px*/
 
 .form-inline.treeview .checkbox {
     font-size: 12px;

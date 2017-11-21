@@ -97,8 +97,7 @@ $(function(){
                 '</a>' +
                 '.' +
             '</p>' +
-        '</div>' +
-        '<p class="text-muted">Phoenix Web App was created by Kat, Oompa Loompa Extraordinaire</p>'
+        '</div>'
     );
 });
 

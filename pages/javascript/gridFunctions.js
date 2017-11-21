@@ -114,13 +114,13 @@ function drawGrid(nWide, nTall, xAxisVals, yAxisVals, cnvsSize) {
     grid.activate() // Define active layer:
 
     var xlabel = new gC.PointText({
-        point: new gC.Point(((cnvsSize.right - 60) / 2), cnvsSize.bottom - 13),
+        point: new gC.Point(((cnvsSize.right - 70) / 2), cnvsSize.bottom - 13),
         content: "Time",
         fillColor: 'black',
-        fontSize: '14px',
+        fontSize: '18px',
     });
-
-    var width_per_rect = (cnvsSize.width - 60) / nWide;
+// 14px
+    var width_per_rect = (cnvsSize.width - 70) / nWide;
     var height_per_rect = (cnvsSize.height - 60) / nTall;
 
     // draw x-axis tick marks
@@ -150,7 +150,7 @@ function drawGrid(nWide, nTall, xAxisVals, yAxisVals, cnvsSize) {
     // draw x and y axis lines
     var bottomLeftPoint = new gC.Point(50, cnvsSize.bottom - 50);
     var topLeftPoint = new gC.Point(50, 10);
-    var bottomRightPoint = new gC.Point(cnvsSize.right - 10, cnvsSize.bottom - 50);
+    var bottomRightPoint = new gC.Point(cnvsSize.right - 20, cnvsSize.bottom - 50);
     var aLine = new gC.Path.Line(bottomLeftPoint, bottomRightPoint)
     aLine.strokeColor = '#000';
     var aLine = new gC.Path.Line(bottomLeftPoint, topLeftPoint)

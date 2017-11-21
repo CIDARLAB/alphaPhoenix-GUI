@@ -4,7 +4,7 @@ function updateSearchPanel(selectedItem,searchString) {
         return;
     }
     $("#search-window ul li").remove(); // remove all list items to begin
-    var subItems = searchString.substring(2,searchString.length-2).split(", ") // removes brackets and spaces 
+    var subItems = searchString.substring(2,searchString.length-2).split(";") // removes brackets and spaces 
     for (var i = 0; i < subItems.length; i++) {
         if (subItems[i] == "ul") { // if "combos" node isn't defined, it will be skipped
             return;
@@ -31,12 +31,12 @@ function searchOptions() {
 }
 
 function loadXML(sbolString) {
-    var xml;
-    if (sbolString == "") {
-        xml = '<?xml version="1.0" encoding="UTF-8" ?><employees><employee><id>1</id><firstName>Leonardo</firstName><lastName>DiCaprio</lastName><photo>http://1.bp.blogspot.com/-zvS_6Q1IzR8/T5l6qvnRmcI/AAAAAAAABcc/HXO7HDEJKo0/s200/Leonardo+Dicaprio7.jpg</photo></employee><employee><id>2</id><firstName>Johnny</firstName><lastName>Depp</lastName><photo>http://4.bp.blogspot.com/_xR71w9-qx9E/SrAz--pu0MI/AAAAAAAAC38/2ZP28rVEFKc/s200/johnny-depp-pirates.jpg</photo></employee><employee><id>3</id><firstName>Hritik</firstName><lastName>Roshan</lastName><photo>http://thewallmachine.com/files/1411921557.jpg</photo></employee></employees>'        
-    } else {
-        xml = sbolString;
-    }
+    // var xml;
+    // if (sbolString == "") {
+    //     xml = window.localStorage.json;
+    // } else {
+    var xml = getSBOL(sbolString);
+    // }
     var newxml = vkbeautify.xml(xml);
     editor.setValue(newxml);
 }

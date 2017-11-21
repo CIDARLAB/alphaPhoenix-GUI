@@ -26,8 +26,8 @@
 }
 
 .tab-grid input.form-control {
-    font-size: 12px;
-    padding: 4px 2px;
+    /* font-size: 12px; */
+    padding: 1px 2px;
     width: 90%;
     margin: 0px auto;
 }

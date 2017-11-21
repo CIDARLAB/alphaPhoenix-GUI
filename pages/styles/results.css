@@ -19,7 +19,12 @@
 .result-id {
     border: 2px solid lightgray;
     border-top-left-radius: 24px;
+    padding-top: 4px;
 }
+
+/* #results-select-solution {
+    width: 98%;
+} */
 
 .result-graph {
     height: 320px;

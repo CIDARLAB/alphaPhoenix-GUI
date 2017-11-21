@@ -24,19 +24,19 @@ var inactiveCircleComplete = {
     strokeColor: null,
 }
 
-var activeText = {
+var activeNumber = {
     fontSize: '30px',
     fillColor: 'white',
     fontWeight: 'bold',
 };
 
-var inactiveText = {
+var inactiveNumber = {
     fontSize: '15px',
     fillColor: '#0275d8',
     fontWeight: 'bold',
 };
 
-var inactiveTextComplete = {
+var inactiveNumberComplete = {
     fontSize: '15px',
     fillColor: 'white',
     fontWeight: 'bold',
@@ -44,14 +44,14 @@ var inactiveTextComplete = {
 
 var activeCaption = {
     fillColor: '#0275d8',
-    fontSize: '20px',
+    fontSize: '24px',
 }
-
+// 20 px
 var inactiveCaption = {
     fillColor: '#9b9b9b',
-    fontSize: '14px',
+    fontSize: '18px',
 }
-
+// 14px
 var incompleteCheck = {
     fillColor: null,
     strokeColor: null,
@@ -65,7 +65,7 @@ var completeCheck = {
 function activateSTLPage() {
     circleOne.style = activeCircle;
     circleOne.radius = radiusLarge;
-    textOne.style = activeText;
+    textOne.style = activeNumber;
     textOne.point = new Point(yAxis-7.5, xOne + 10),
     captionOne.style = activeCaption;
     subCaptOne.visible = true;
@@ -76,9 +76,9 @@ function activateSTLPage() {
     circleThree.style = inactiveCircle; 
     circleThree.radius = radiusSmall;
 
-    textTwo.style = inactiveText;
+    textTwo.style = inactiveNumber;
     textTwo.point = new Point(yAxis - 5, xTwo + 5);
-    textThree.style = inactiveText;
+    textThree.style = inactiveNumber;
     textThree.point = new Point(yAxis - 5, xThree + 5);
     
     captionTwo.style = inactiveCaption;
@@ -121,7 +121,7 @@ function activateSTLPage() {
 function activateStructPage() {
     circleTwo.style = activeCircle;
     circleTwo.radius = radiusLarge;
-    textTwo.style = activeText;
+    textTwo.style = activeNumber;
     textTwo.point = new Point(yAxis-7.5, xTwo + 10),
     captionTwo.style = activeCaption;
     subCaptTwo.visible = true;
@@ -132,9 +132,9 @@ function activateStructPage() {
     circleThree.style = inactiveCircle; 
     circleThree.radius = radiusSmall;
 
-    textOne.style = inactiveTextComplete;
+    textOne.style = inactiveNumberComplete;
     textOne.point = new Point(yAxis - 5, xOne + 5);
-    textThree.style = inactiveText;
+    textThree.style = inactiveNumber;
     textThree.point = new Point(yAxis - 5, xThree + 5);
     
     captionOne.style = inactiveCaption;
@@ -183,7 +183,7 @@ function activateStructPage() {
 function activateLibraryPage() {
     circleThree.style = activeCircle;
     circleThree.radius = radiusLarge;
-    textThree.style = activeText;
+    textThree.style = activeNumber;
     textThree.point = new Point(yAxis-7.5, xThree + 10),
     captionThree.style = activeCaption;
     subCaptThree.visible = true;
@@ -194,9 +194,9 @@ function activateLibraryPage() {
     circleTwo.style = inactiveCircleComplete; 
     circleTwo.radius = radiusSmall;
 
-    textOne.style = inactiveTextComplete;
+    textOne.style = inactiveNumberComplete;
     textOne.point = new Point(yAxis - 5, xOne + 5);
-    textTwo.style = inactiveTextComplete;
+    textTwo.style = inactiveNumberComplete;
     textTwo.point = new Point(yAxis - 5, xTwo + 5);
     
     captionOne.style = inactiveCaption;
@@ -366,7 +366,7 @@ $(document).on('change','#registrySelect', function() {
     }
     var settings = {
         "async": true,
-        "crossDomain": true,
+        // "crossDomain": true,
         "url": registryURI,
         "method": "GET",
         "headers": {
@@ -403,7 +403,7 @@ $(document).on('change','#collectionsSelect', function() {
 
     var settings = {
         "async": true,
-        "crossDomain": true,
+        // "crossDomain": true,
         "url": URI,
         "method": "GET",
         "headers": {
@@ -435,10 +435,6 @@ $(document).on('change','#collectionsSelect', function() {
     }
 
 })
-
-function runEugene() {
-    alert('Running Eugene (except not really b/c nothing works)!');
-}
 
 // window load
 $(window).ready(function() {
@@ -595,30 +591,32 @@ function checkEditors() {
 }
 
 function sendSpecifications() {
-    var eugSolSize = $("#eugSolSize").val();
-    var eugNumSize = $("#eugNumSol").val();
-    $.ajax({
-        url: "/specifications",
-        type: "POST",
-        data: {
-            jobid: window.localStorage.job,
-            registry: registryURI,
-            collection: collectionURI,
-            eug: structScript,
-            solSize: eugSolSize,
-            numSol: eugNumSize,
-            stl:stlScript
-        },
-        success: function (response) {
-            window.localStorage.setItem("json",response);
-            window.location.href = "./design.html";
+    // var eugSolSize = $("#eugSolSize").val();
+    // var eugNumSize = $("#eugNumSol").val();
+    // $.ajax({
+    //     url: "/specifications",
+    //     type: "POST",
+    //     data: {
+    //         jobid: window.localStorage.job,
+    //         registry: registryURI,
+    //         collection: collectionURI,
+    //         eug: structScript,
+    //         solSize: eugSolSize,
+    //         numSol: eugNumSize,
+    //         stl:stlScript
+    //     },
+    //     success: function (response) {
+    //         window.localStorage.setItem("json",response);
+    //         window.location.href = "./design.html";
             
  
-        },
-        error: function () {
-            console.log("ERROR!!");
-        }
-    });
+    //     },
+    //     error: function () {
+    //         console.log("ERROR!!");
+    //     }
+    // });
+    window.localStorage.setItem("json", des);
+    window.location.href = "./design.html";
 
     
 }
@@ -640,3 +638,5 @@ function sendSpecify() {
         alert(msg)
     }
 }
+
+var des = '[{"isLink":"true","nodes":[{"isLink":"true","nodes":[{"isLink":"true","hasData":["1"],"sbol":"https://synbiohub.cidarlab.org/public/AlphaPhoenix/testCDS/1/sbol","combos":"promR2;rbs2;testCDS;testTer;testCDS;testRBS;testProm;ter2;promR2;rbs2;testCDS;testTer;testCDS;testRBS;testProm;ter1;promR2;rbs1;testCDS;testTer;testCDS;testRBS;testProm;ter2;promR2;rbs1;testCDS;testTer;testCDS;testRBS;testProm;ter1;promR1;rbs2;testCDS;testTer;testCDS;testRBS;testProm;ter2;promR1;rbs2;testCDS;testTer;testCDS;testRBS;testProm;ter1;promR1;rbs1;testCDS;testTer;testCDS;testRBS;testProm;ter2;promR1;rbs1;testCDS;testTer;testCDS;testRBS;testProm;ter1;","text":"PROMOTER"},{"isLink":"true","hasData":["1"],"sbol":"https://synbiohub.cidarlab.org/public/AlphaPhoenix/testCDS/1/sbol","combos":"gfp;bfp;rfp;","text":"CDS"}],"hasData":["1"],"sbol":"https://synbiohub.cidarlab.org/public/AlphaPhoenix/testCDS/1/sbol","combos":"promR2;rbs2;gfp;testTer;testCDS;testRBS;testProm;ter2;promR2;rbs2;bfp;testTer;testCDS;testRBS;testProm;ter2;promR2;rbs2;rfp;testTer;testCDS;testRBS;testProm;ter2;promR2;rbs2;gfp;testTer;testCDS;testRBS;testProm;ter1;promR2;rbs2;bfp;testTer;testCDS;testRBS;testProm;ter1;promR2;rbs2;rfp;testTer;testCDS;testRBS;testProm;ter1;promR2;rbs1;gfp;testTer;testCDS;testRBS;testProm;ter2;promR2;rbs1;bfp;testTer;testCDS;testRBS;testProm;ter2;promR2;rbs1;rfp;testTer;testCDS;testRBS;testProm;ter2;promR2;rbs1;gfp;testTer;testCDS;testRBS;testProm;ter1;promR2;rbs1;bfp;testTer;testCDS;testRBS;testProm;ter1;promR2;rbs1;rfp;testTer;testCDS;testRBS;testProm;ter1;promR1;rbs2;gfp;testTer;testCDS;testRBS;testProm;ter2;promR1;rbs2;bfp;testTer;testCDS;testRBS;testProm;ter2;promR1;rbs2;rfp;testTer;testCDS;testRBS;testProm;ter2;promR1;rbs2;gfp;testTer;testCDS;testRBS;testProm;ter1;promR1;rbs2;bfp;testTer;testCDS;testRBS;testProm;ter1;promR1;rbs2;rfp;testTer;testCDS;testRBS;testProm;ter1;promR1;rbs1;gfp;testTer;testCDS;testRBS;testProm;ter2;promR1;rbs1;bfp;testTer;testCDS;testRBS;testProm;ter2;promR1;rbs1;rfp;testTer;testCDS;testRBS;testProm;ter2;promR1;rbs1;gfp;testTer;testCDS;testRBS;testProm;ter1;promR1;rbs1;bfp;testTer;testCDS;testRBS;testProm;ter1;promR1;rbs1;rfp;testTer;testCDS;testRBS;testProm;ter1;","text":"TU FORWARD"},{"isLink":"true","nodes":[{"isLink":"true","hasData":["1"],"sbol":"https://synbiohub.cidarlab.org/public/AlphaPhoenix/testCDS/1/sbol","combos":"ip3;rbs2;testCDS;ter2;,ip3;rbs2;testCDS;ter1;,ip3;rbs1;testCDS;ter2;,ip3;rbs1;testCDS;ter1;,ip1;rbs2;testCDS;ter2;,ip1;rbs2;testCDS;ter1;,ip1;rbs1;testCDS;ter2;,ip1;rbs1;testCDS;ter1;,ip2;rbs2;testCDS;ter2;,ip2;rbs2;testCDS;ter1;,ip2;rbs1;testCDS;ter2;,ip2;rbs1;testCDS;ter1;","text":"PROMOTER"},{"isLink":"true","hasData":["1"],"sbol":"https://synbiohub.cidarlab.org/public/AlphaPhoenix/testCDS/1/sbol","combos":"cdsR2;,cdsR1;","text":"CDS"}],"hasData":["1"],"sbol":"https://synbiohub.cidarlab.org/public/AlphaPhoenix/testCDS/1/sbol","combos":"ip3;rbs2;cdsR2;ter2;,ip3;rbs2;cdsR1;ter2;,ip3;rbs2;cdsR2;ter1;,ip3;rbs2;cdsR1;ter1;,ip3;rbs1;cdsR2;ter2;,ip3;rbs1;cdsR1;ter2;,ip3;rbs1;cdsR2;ter1;,ip3;rbs1;cdsR1;ter1;,ip1;rbs2;cdsR2;ter2;,ip1;rbs2;cdsR1;ter2;,ip1;rbs2;cdsR2;ter1;,ip1;rbs2;cdsR1;ter1;,ip1;rbs1;cdsR2;ter2;,ip1;rbs1;cdsR1;ter2;,ip1;rbs1;cdsR2;ter1;,ip1;rbs1;cdsR1;ter1;,ip2;rbs2;cdsR2;ter2;,ip2;rbs2;cdsR1;ter2;,ip2;rbs2;cdsR2;ter1;,ip2;rbs2;cdsR1;ter1;,ip2;rbs1;cdsR2;ter2;,ip2;rbs1;cdsR1;ter2;,ip2;rbs1;cdsR2;ter1;,ip2;rbs1;cdsR1;ter1;","text":"TU REVERSE"}],"hasData":["1"],"sbol":"https://synbiohub.cidarlab.org/public/AlphaPhoenix/cdsR1/1/sbol","combos":"promR2;rbs2;gfp;ter2;cdsR2;rbs1;ip3;ter1;promR2;rbs2;gfp;ter2;cdsR2;rbs1;ip1;ter1;promR2;rbs2;gfp;ter2;cdsR2;rbs1;ip2;ter1;promR2;rbs2;gfp;ter1;cdsR2;rbs1;ip3;ter2;promR2;rbs2;gfp;ter1;cdsR2;rbs1;ip1;ter2;promR2;rbs2;gfp;ter1;cdsR2;rbs1;ip2;ter2;promR2;rbs2;bfp;ter2;cdsR2;rbs1;ip3;ter1;promR2;rbs2;bfp;ter2;cdsR2;rbs1;ip1;ter1;promR2;rbs2;bfp;ter2;cdsR2;rbs1;ip2;ter1;promR2;rbs2;bfp;ter1;cdsR2;rbs1;ip3;ter2;promR2;rbs2;bfp;ter1;cdsR2;rbs1;ip1;ter2;promR2;rbs2;bfp;ter1;cdsR2;rbs1;ip2;ter2;promR2;rbs2;rfp;ter2;cdsR2;rbs1;ip3;ter1;promR2;rbs2;rfp;ter2;cdsR2;rbs1;ip1;ter1;promR2;rbs2;rfp;ter2;cdsR2;rbs1;ip2;ter1;promR2;rbs2;rfp;ter1;cdsR2;rbs1;ip3;ter2;promR2;rbs2;rfp;ter1;cdsR2;rbs1;ip1;ter2;promR2;rbs2;rfp;ter1;cdsR2;rbs1;ip2;ter2;promR2;rbs1;gfp;ter2;cdsR2;rbs2;ip3;ter1;promR2;rbs1;gfp;ter2;cdsR2;rbs2;ip1;ter1;promR2;rbs1;gfp;ter2;cdsR2;rbs2;ip2;ter1;promR2;rbs1;gfp;ter1;cdsR2;rbs2;ip3;ter2;promR2;rbs1;gfp;ter1;cdsR2;rbs2;ip1;ter2;promR2;rbs1;gfp;ter1;cdsR2;rbs2;ip2;ter2;promR2;rbs1;bfp;ter2;cdsR2;rbs2;ip3;ter1;promR2;rbs1;bfp;ter2;cdsR2;rbs2;ip1;ter1;promR2;rbs1;bfp;ter2;cdsR2;rbs2;ip2;ter1;promR2;rbs1;bfp;ter1;cdsR2;rbs2;ip3;ter2;promR2;rbs1;bfp;ter1;cdsR2;rbs2;ip1;ter2;promR2;rbs1;bfp;ter1;cdsR2;rbs2;ip2;ter2;promR2;rbs1;rfp;ter2;cdsR2;rbs2;ip3;ter1;promR2;rbs1;rfp;ter2;cdsR2;rbs2;ip1;ter1;promR2;rbs1;rfp;ter2;cdsR2;rbs2;ip2;ter1;promR2;rbs1;rfp;ter1;cdsR2;rbs2;ip3;ter2;promR2;rbs1;rfp;ter1;cdsR2;rbs2;ip1;ter2;promR2;rbs1;rfp;ter1;cdsR2;rbs2;ip2;ter2;promR1;rbs2;gfp;ter2;cdsR1;rbs1;ip3;ter1;promR1;rbs2;gfp;ter2;cdsR1;rbs1;ip1;ter1;promR1;rbs2;gfp;ter2;cdsR1;rbs1;ip2;ter1;promR1;rbs2;gfp;ter1;cdsR1;rbs1;ip3;ter2;promR1;rbs2;gfp;ter1;cdsR1;rbs1;ip1;ter2;promR1;rbs2;gfp;ter1;cdsR1;rbs1;ip2;ter2;promR1;rbs2;bfp;ter2;cdsR1;rbs1;ip3;ter1;promR1;rbs2;bfp;ter2;cdsR1;rbs1;ip1;ter1;promR1;rbs2;bfp;ter2;cdsR1;rbs1;ip2;ter1;promR1;rbs2;bfp;ter1;cdsR1;rbs1;ip3;ter2;promR1;rbs2;bfp;ter1;cdsR1;rbs1;ip1;ter2;promR1;rbs2;bfp;ter1;cdsR1;rbs1;ip2;ter2;promR1;rbs2;rfp;ter2;cdsR1;rbs1;ip3;ter1;promR1;rbs2;rfp;ter2;cdsR1;rbs1;ip1;ter1;promR1;rbs2;rfp;ter2;cdsR1;rbs1;ip2;ter1;promR1;rbs2;rfp;ter1;cdsR1;rbs1;ip3;ter2;promR1;rbs2;rfp;ter1;cdsR1;rbs1;ip1;ter2;promR1;rbs2;rfp;ter1;cdsR1;rbs1;ip2;ter2;promR1;rbs1;gfp;ter2;cdsR1;rbs2;ip3;ter1;promR1;rbs1;gfp;ter2;cdsR1;rbs2;ip1;ter1;promR1;rbs1;gfp;ter2;cdsR1;rbs2;ip2;ter1;promR1;rbs1;gfp;ter1;cdsR1;rbs2;ip3;ter2;promR1;rbs1;gfp;ter1;cdsR1;rbs2;ip1;ter2;promR1;rbs1;gfp;ter1;cdsR1;rbs2;ip2;ter2;promR1;rbs1;bfp;ter2;cdsR1;rbs2;ip3;ter1;promR1;rbs1;bfp;ter2;cdsR1;rbs2;ip1;ter1;promR1;rbs1;bfp;ter2;cdsR1;rbs2;ip2;ter1;promR1;rbs1;bfp;ter1;cdsR1;rbs2;ip3;ter2;promR1;rbs1;bfp;ter1;cdsR1;rbs2;ip1;ter2;promR1;rbs1;bfp;ter1;cdsR1;rbs2;ip2;ter2;promR1;rbs1;rfp;ter2;cdsR1;rbs2;ip3;ter1;promR1;rbs1;rfp;ter2;cdsR1;rbs2;ip1;ter1;promR1;rbs1;rfp;ter2;cdsR1;rbs2;ip2;ter1;promR1;rbs1;rfp;ter1;cdsR1;rbs2;ip3;ter2;promR1;rbs1;rfp;ter1;cdsR1;rbs2;ip1;ter2;promR1;rbs1;rfp;ter1;cdsR1;rbs2;ip2;ter2;","text":"Root 0"}]'

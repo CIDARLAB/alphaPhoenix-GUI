@@ -26,17 +26,17 @@ var yLabel, check, checkmark;
 var ckOne, ckTwo, ckThree;
 
 // Initialize Graph values
-var timeValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-var spatialValues = [-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6];
+var nSpatialDivs = 20;
+var nTimeDivs = 20;
+var spatialMin = 0;
+var spatialMax = 50;
+var spatialThresh = 5;
+var timeMax = 100;
+var timeThresh = 10; 
+var clusterThresh = 5;
+var timeValues = Array.apply(null, Array(timeMax)).map(function (_, i) {return i;});
+var spatialValues = Array.apply(null, Array(spatialMax)).map(function (_, i) {return i;});
 spatialValues.reverse() // graph writes top to bottom therefore reversed
-var nSpatialDivs = 12;
-var nTimeDivs = 16;
-var spatialMin = -6;
-var spatialMax = 6;
-var spatialThresh = 1;
-var timeMax = 16;
-var timeThresh = 1; 
-var clusterThresh = 1;
 
 // Initialize Save/Output Variables
 var allPathsList = [];
@@ -81,16 +81,18 @@ window.onload = function() {
         point: new Point(yAxis + radiusLarge + 10, xOne + 8),
         fillColor: '#0275d8',
         content: 'STL Formula',
-        fontSize: '20px',
+        fontSize: '24px',
         fontWeight: 'bold',
     });
+    // 20px
 
     subCaptOne = new PointText({
         point: new Point(yAxis + radiusLarge + 10, xOne + 24),
         fillColor: '#7f7f7f',
         content: 'Specify time behavior of your design',
-        fontSize: '12px',
+        fontSize: '16px',
     });
+    // 12px
 
     checkOne = new Shape.Circle(new Point(circleOne.position.x + radiusLarge/Math.sqrt(2), xOne - radiusLarge/Math.sqrt(2)), radiusSmall - 10);
     checkOne.style = incompleteCheck;
@@ -113,19 +115,22 @@ window.onload = function() {
         fontSize: '15px',
     });
 
+
+
     captionTwo = new PointText({
         point: new Point(yAxis + radiusLarge + 10, xTwo + 4),
-        fillColor: '#7f7f7f',
+        // fillColor: '#7f7f7f',
         content: 'Structural Constraints',
-        fontSize: '14px',
-        fontWeight: 'bold',
+        // fontSize: '14px',
+        // fontWeight: 'bold',
     });
+    captionTwo.style = inactiveCaption;
 
     subCaptTwo = new PointText({
         point: new Point(yAxis + radiusLarge + 10, xTwo + 24),
         fillColor: '#7f7f7f',
         content: 'Specify parts, devices, and their constraints',
-        fontSize: '12px',
+        fontSize: '16px', // 12
     });
     subCaptTwo.visible = false;
 
@@ -153,17 +158,18 @@ window.onload = function() {
 
     captionThree = new PointText({
         point: new Point(yAxis + radiusLarge + 10, xThree + 4),
-        fillColor: '#7f7f7f',
+        // fillColor: '#7f7f7f',
         content: 'Parts Library',
-        fontSize: '14px',
-        fontWeight: 'bold',
+        // fontSize: '14px',
+        // fontWeight: 'bold',
     });
+    captionThree.style = inactiveCaption;
 
     subCaptThree = new PointText({
         point: new Point(yAxis + radiusLarge + 10, xThree + 24),
         fillColor: '#7f7f7f',
         content: 'Select parts you want to use',
-        fontSize: '12px',
+        fontSize: '16px', // 12
     });
     subCaptThree.visible = false;
 
@@ -237,7 +243,7 @@ window.onload = function() {
     selectLine.onMouseDown = function(event) {
         cnvs.activate(); // Define active layer:
         // limits use to within graph bounds: 
-        if ((50 <= event.point.x) && (event.point.x <= gC.view.bounds.width - 10) &&
+        if ((50 <= event.point.x) && (event.point.x <= gC.view.bounds.width - 20) &&
         (10 <= event.point.y) && (event.point.y <= gC.view.bounds.height - 50)) {
             var children = cnvs.children; // get all paths
             for (i = 0; i < children.length; i++) {
@@ -283,7 +289,7 @@ window.onload = function() {
     drawLine.onMouseDown = function(event) {
         cnvs.activate(); // Define active layer:
         // limits use to within graph bounds
-        if ((50 <= event.point.x) && (event.point.x <= gC.view.bounds.width - 10) &&
+        if ((50 <= event.point.x) && (event.point.x <= gC.view.bounds.width - 20) &&
         (10 <= event.point.y) && (event.point.y <= gC.view.bounds.height - 50)) {
             var children = cnvs.children;
             for (i = 0; i < children.length; i++) {
@@ -303,7 +309,7 @@ window.onload = function() {
     // at the position of the cursor:
     drawLine.onMouseDrag = function(event) {
         // limits use to within graph bounds
-        if ((50 <= event.point.x) && (event.point.x <= gC.view.bounds.width - 10) &&
+        if ((50 <= event.point.x) && (event.point.x <= gC.view.bounds.width - 20) &&
         (10 <= event.point.y) && (event.point.y <= gC.view.bounds.height - 50)) {
             numSegments = path.segments.length;
             if (event.point.x > path.segments[numSegments-1].point.x) {
@@ -337,7 +343,7 @@ window.onload = function() {
 
         cnvs.activate(); // Define active layer:
         // limits use to within graph bounds
-        if ((50 <= event.point.x) && (event.point.x <= gC.view.bounds.width - 10) &&
+        if ((50 <= event.point.x) && (event.point.x <= gC.view.bounds.width - 20) &&
         (10 <= event.point.y) && (event.point.y <= gC.view.bounds.height - 50)) {
             var hitResult = gC.project.hitTest(event.point, hitOptionsGrid);
             // allows you to delete a segment when holding down "shift"

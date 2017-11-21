@@ -429,7 +429,7 @@ $(function() {
 		}
 
 		loadVisBOL(node.sbol)
-		loadXML("");
+		loadXML(node.sbol);
 
 		var selectedItem = [];
 		var jsonData = [];

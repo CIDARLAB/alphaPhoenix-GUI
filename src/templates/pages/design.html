@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    {{>header}}
+
+</head>
+<body>
+{{>nav}}
+<div class="container">
+    <div class="columns">
+        <div class="column is-2">
+            {{> menu}}
+        </div>
+        <div class="column is-9" style="height: 70%">
+            <div id="assignment" style="display:none">
+                {{> assignment}}
+            </div>
+        </div>
+        <div class="column is-9" style="height: 70%">
+            <div id="options" style="display:none">
+                {{> options}}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

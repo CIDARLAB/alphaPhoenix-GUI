@@ -1,6 +1,58 @@
-var editorSTL = ace.edit("editorSTL");
-editorSTL.setTheme("ace/theme/chrome");
-editorSTL.setShowPrintMargin(false);
+const editor = ace.edit("editor");
+editor.setTheme("ace/theme/chrome");
+editor.setShowPrintMargin(false);
+
+const localStorage = window.localStorage;
+
+$().ready(function(){
+    var menuIndex = Number(localStorage.getItem('menuIndex'));
+    if (!menuIndex) {
+        menuIndex = 0;
+    }
+    setMenuIndex(menuIndex);
+});
+
+
+function setMenuIndex(index) {
+    if(Number(localStorage.getItem('menuIndex')) !== index) {
+        switch (index) {
+            case 0:
+                $('#performanceTab').addClass('is-active');
+                $('#performance').show();
+                $('#structuralTab').removeClass('is-active');
+                $('#structural').hide();
+                $('#libraryTab').removeClass('is-active');
+                $('#library').hide();
+                localStorage.setItem('menuIndex', 0);
+                localStorage.setItem('editorEugene', editor.getValue());
+                editor.setValue(localStorage.getItem('editorSTL'));
+                $("#editor").appendTo("#editorSTL");
+                break;
+            case 1:
+                $('#performanceTab').removeClass('is-active');
+                $('#performance').hide();
+                $('#structuralTab').addClass('is-active');
+                $('#structural').show();
+                $('#libraryTab').removeClass('is-active');
+                $('#library').hide();
+                localStorage.setItem('menuIndex', 1);
+                localStorage.setItem('editorSTL', editor.getValue());
+                editor.setValue(localStorage.getItem('editorEugene'));
+                $("#editor").appendTo("#editorEugene");
+                break;
+            case 2:
+                $('#performanceTab').removeClass('is-active');
+                $('#performance').hide();
+                $('#structuralTab').removeClass('is-active');
+                $('#structural').hide();
+                $('#libraryTab').addClass('is-active');
+                $('#library').show();
+                localStorage.setItem('menuIndex', 2);
+                break;
+        }
+    }
+    return true;
+}
 
 function setTab(index) {
     switch(index) {
@@ -21,10 +73,10 @@ function setTab(index) {
 }
 
 function loadSTLSample(overRight) {
-    var value = editorSTL.getValue().trim();
+    var value = editor.getValue().trim();
     if(value === '' || overRight) {
         var stlScript = "((G[0,100] in0 <= 4) && (G[0,100] in0 >= 0)) &&\n(((G[0,50] out0 >= 0)&&(G[0,50] out0 <= 25)) && ((G[50,100] out0 >= 25)&&(G[50,100] out0 <= 36)))";
-        editorSTL.setValue(stlScript);
+        editor.setValue(stlScript);
         $('#replaceSTL').removeClass('is-active');
     } else {
         $('#replaceSTL').addClass('is-active');

@@ -1,6 +1,42 @@
 <div class="card spacer">
-    <button class="is-pulled-right right-spacer spacer bottom-spacer button is-info is-outlined" onclick="loadEugeneSample()">Sample</button>
-    <div class="editor" id="editorEugene"></div>
+    <div class="tabs">
+        <ul>
+            <li class="is-active"><a>Eugene Editor</a></li>
+        </ul>
+    </div>
+    <div class="level" style="margin-bottom: 0">
+        <div class="columns" style="height: auto">
+            <div class="column is-2">
+                <div class="level-item">
+                    <img src="../public/images/logo/logo-Eugene-Color.png">
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="level-item">
+                    <div class="select is-fullwidth">
+                        <select id="eugSolSize">
+                            <option>Solution Size</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="level-item">
+                    <div class="select">
+                        <select id="eugNumSol">
+                            <option>Number of Solutions</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-2">
+                <div class="level-item">
+                    <button class="is-pulled-right bottom-spacer button is-info is-outlined" onclick="loadEugeneSample()">Sample</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="editorEugene"></div>
     <div class="modal" id="replaceEugene">
         <div class="modal-background"></div>
         <div class="modal-content">

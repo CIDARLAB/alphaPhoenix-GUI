@@ -20,7 +20,10 @@ gulp.task('fonts', function() {
 gulp.task('ace', function () {
     gulp.src([
         'node_modules/ace-builds/src-noconflict/ace.js',
-        'node_modules/ace-builds/src-noconflict/theme-chrome.js'
+        'node_modules/ace-builds/src-noconflict/theme-chrome.js',
+        //'node_modules/ace-builds/src-noconflict/mode-html.js',
+        'node_modules/ace-builds/src-noconflict/mode-xml.js',
+        'node_modules/ace-builds/src-noconflict/worker-xml.js',
     ]).pipe(gulp.dest('./build/public/ace/'))
 });
 

@@ -109,3 +109,7 @@ html, body {
     width: 100%;
     text-align: right;
 }
+
+.card.is-active {
+    background-color: #F5F5F5;
+}

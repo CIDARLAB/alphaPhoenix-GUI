@@ -2,10 +2,8 @@ const editor = ace.edit("editor");
 editor.setTheme("ace/theme/chrome");
 editor.setShowPrintMargin(false);
 
-const localStorage = window.localStorage;
-
 $().ready(function(){
-    var menuIndex = Number(localStorage.getItem('menuIndex'));
+    var menuIndex = Number(window.localStorage.getItem('menuIndex'));
     if (!menuIndex) {
         menuIndex = 0;
     }
@@ -14,7 +12,7 @@ $().ready(function(){
 
 
 function setMenuIndex(index) {
-    if(Number(localStorage.getItem('menuIndex')) !== index) {
+    if(Number(window.localStorage.getItem('menuIndex')) !== index) {
         switch (index) {
             case 0:
                 $('#performanceTab').addClass('is-active');
@@ -23,9 +21,9 @@ function setMenuIndex(index) {
                 $('#structural').hide();
                 $('#libraryTab').removeClass('is-active');
                 $('#library').hide();
-                localStorage.setItem('menuIndex', 0);
-                localStorage.setItem('editorEugene', editor.getValue());
-                editor.setValue(localStorage.getItem('editorSTL'));
+                window.localStorage.setItem('menuIndex', 0);
+                window.localStorage.setItem('editorEugene', editor.getValue());
+                editor.setValue(window.localStorage.getItem('editorSTL'));
                 $("#editor").appendTo("#editorSTL");
                 break;
             case 1:
@@ -35,9 +33,9 @@ function setMenuIndex(index) {
                 $('#structural').show();
                 $('#libraryTab').removeClass('is-active');
                 $('#library').hide();
-                localStorage.setItem('menuIndex', 1);
-                localStorage.setItem('editorSTL', editor.getValue());
-                editor.setValue(localStorage.getItem('editorEugene'));
+                window.localStorage.setItem('menuIndex', 1);
+                window.localStorage.setItem('editorSTL', editor.getValue());
+                editor.setValue(window.localStorage.getItem('editorEugene'));
                 $("#editor").appendTo("#editorEugene");
                 break;
             case 2:
@@ -47,7 +45,11 @@ function setMenuIndex(index) {
                 $('#structural').hide();
                 $('#libraryTab').addClass('is-active');
                 $('#library').show();
-                localStorage.setItem('menuIndex', 2);
+                window.localStorage.setItem('menuIndex', 2);
+                break;
+            case 3:
+                window.localStorage.setItem('menuIndex', 3);
+                window.location.href = '/alphaPhoenix-GUI/build/pages/design.html';
                 break;
         }
     }

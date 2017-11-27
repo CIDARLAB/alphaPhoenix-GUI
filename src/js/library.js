@@ -35,8 +35,11 @@ $().ready(function () {
         $.ajax({
             url: url,
             success: function(response) {
-                console.log(response)
+                console.log(response);
             },
+            error: function (response) {
+                $('#libraryIcon').empty().addClass('icon').removeClass('has-text-success').addClass('has-text-danger').append('<i class="fa fa-warning"></i>');
+            }
         });
     }
 });

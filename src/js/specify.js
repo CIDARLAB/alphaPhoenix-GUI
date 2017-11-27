@@ -1,8 +1,9 @@
-const editor = ace.edit("editor");
-editor.setTheme("ace/theme/chrome");
-editor.setShowPrintMargin(false);
+var editor;
 
 $().ready(function(){
+    editor = ace.edit("editor");
+    editor.setTheme("ace/theme/chrome");
+    editor.setShowPrintMargin(false);
     var menuIndex = Number(window.localStorage.getItem('menuIndex'));
     if (!menuIndex) {
         menuIndex = 0;

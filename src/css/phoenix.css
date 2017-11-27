@@ -114,6 +114,13 @@ html, body {
     background-color: #F5F5F5;
 }
 
-.no-tab-margin {
+.no-margin-bottom {
     margin-bottom: 0 !important;
+}
+
+.border {
+    border-width: 1px !important;
+    border-color: #d5d5d5 !important;
+    border-bottom: solid;
+    border;
 }

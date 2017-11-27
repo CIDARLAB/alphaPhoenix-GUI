@@ -83,6 +83,22 @@ function loadSTLSample(overRight) {
     }
 }
 
+
+function loadEugeneSample(overRight) {
+    var value = editor.getValue().trim();
+    if(value === '' || overRight) {
+        var eugeneScript = "((G[0,100] in0 <= 4) && (G[0,100] in0 >= 0)) &&\n(((G[0,50] out0 >= 0)&&(G[0,50] out0 <= 25)) && ((G[50,100] out0 >= 25)&&(G[50,100] out0 <= 36)))";
+        editor.setValue(eugeneScript);
+        $('#replaceEugene').removeClass('is-active');
+    } else {
+        $('#replaceEugene').addClass('is-active');
+    }
+}
+
+function closeEugeneReplace() {
+    $('#replaceEugene').removeClass('is-active');
+}
+
 function closeSTLReplace() {
     $('#replaceSTL').removeClass('is-active');
 }

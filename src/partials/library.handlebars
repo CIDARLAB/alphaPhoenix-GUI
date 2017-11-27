@@ -5,14 +5,15 @@
             <div class="control is-expanded">
                 <div class="select is-fullwidth">
                     <select id="registrySelect">
+                        <option selected disabled>Select A Registry</option>
                         <option value="synbiohub.org">synbiohub.org</option>
                         <option value="synbiohub.cidarlab.org">synbiohub.cidarlab.org</option>
                         <option value="synbiohub.programmingbiology.org">synbiohub.programmingbiology.org</option>
                     </select>
                 </div>
             </div>
-            <div class="control">
-                <a href="javascript:void(0)" class="button is-info"><i class="fa fa-cog" onclick="openRegistryList()"></i></a>
+            <div class="control" onclick="openRegistryList()">
+                <a href="javascript:void(0)" class="button is-info"><i class="fa fa-cog"></i></a>
             </div>
         </div>
         <label class="label">Collections</label>
@@ -36,16 +37,9 @@
                 <th>Description</th>
             </tr>
             </thead>
-            <tr>
-                <th>Example</th>
-                <th>Example</th>
-                <th>Example</th>
-            </tr>
-            <tr>
-                <th>Example</th>
-                <th>Example</th>
-                <th>Example with a longer description</th>
-            </tr>
+            <div id="libraryTable">
+
+            </div>
         </table>
     </div>
 </div>

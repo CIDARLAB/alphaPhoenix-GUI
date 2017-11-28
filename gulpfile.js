@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var hb = require('gulp-hb');
 var watch = require('gulp-watch');
+const ifWatch =  process.argv.slice(2)[0]=='--watch';
 
 gulp.task('css', function() {
     gulp.src([
@@ -55,4 +56,9 @@ gulp.task('watch',['templates'], function () {
     ], ['default']);
 });
 
-gulp.task('default', [ 'css','fonts','ace','js','images','templates','watch']);
+const tasks = [ 'css','fonts','ace','js','images','templates'];
+if(ifWatch) {
+    tasks.push('watch');
+}
+
+gulp.task('default', tasks);

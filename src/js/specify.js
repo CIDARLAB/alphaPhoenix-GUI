@@ -90,7 +90,57 @@ function loadSTLSample(overRight) {
 function loadEugeneSample(overRight) {
     var value = editor.getValue().trim();
     if (value === '' || overRight) {
-        var eugeneScript = "((G[0,100] in0 <= 4) && (G[0,100] in0 >= 0)) &&\n(((G[0,50] out0 >= 0)&&(G[0,50] out0 <= 25)) && ((G[50,100] out0 >= 25)&&(G[50,100] out0 <= 36)))";
+        var eugeneScript = "\
+// Size = 8\n\
+// 24 Solutions\n\
+\n\
+// COUNTING\n\
+ip1 exactly 1\n\
+rp1 exactly 1\n\
+g1 exactly 1\n\
+unk2 exactly 1\n\
+r1 exactly 1\n\
+r2 exactly 1\n\
+t1 exactly 1\n\
+t2 exactly 1\n\
+\n\
+// INTERACTIONS\n\
+g1 represses rp1\n\
+ip1 drives g1\n\
+not ip1 drives unk2\n\
+rp1 drives unk2\n\
+not rp1 drives g1\n\
+\n\
+//POSITIONING\n\
+r1 nextto g1\n\
+r1 SAME_ORIENTATION g1\n\
+r1 before g1 or r1 after g1\n\
+r1 before g1 or reverse r1\n\
+forward r1 or r1 after g1\n\
+forward r1 or reverse r1\n\
+\n\
+r2 nextto unk2\n\
+r2 SAME_ORIENTATION unk2\n\
+r2 before unk2 or r2 after unk2\n\
+r2 before unk2 or reverse r2\n\
+forward r2 or r2 after unk2\n\
+forward r2 or reverse r2\n\
+\n\
+t2 after unk2 or t2 before unk2\n\
+t2 after unk2 or reverse unk2\n\
+forward unk2 or t2 before unk2\n\
+forward unk2 or reverse unk2\n\
+\n\
+t1 after g1 or t1 before g1\n\
+t1 after g1 or reverse g1\n\
+forward g1 or t1 before g1\n\
+forward g1 or reverse g1\n\
+\n\
+//ORIENTATION\n\
+ip1 SAME_ORIENTATION r1\n\
+ip1 SAME_ORIENTATION t1\n\
+rp1 SAME_ORIENTATION r2\n\
+rp1 SAME_ORIENTATION t2";
         editor.setValue(eugeneScript);
         $('#replaceEugene').removeClass('is-active');
     } else {

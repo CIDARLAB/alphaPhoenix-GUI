@@ -6,6 +6,7 @@ $().ready(function () {
     editor.setTheme('ace/theme/chrome');
     editor.getSession().setMode('ace/mode/xml');
     editor.setShowPrintMargin(false);
+    editor.setReadOnly(true);
     var menuIndex = Number(window.localStorage.getItem('menuIndex'));
     if (!menuIndex) {
         menuIndex = 0;

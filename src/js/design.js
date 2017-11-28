@@ -22,11 +22,11 @@ function setMenuIndex(index) {
             window.location.href = '/alphaPhoenix-GUI/build/pages/specification.html';
             break;
         case 1:
-            window.localStorage.setItem('menuIndex', 0);
+            window.localStorage.setItem('menuIndex', 1);
             window.location.href = '/alphaPhoenix-GUI/build/pages/specification.html';
             break;
         case 2:
-            window.localStorage.setItem('menuIndex', 0);
+            window.localStorage.setItem('menuIndex', 2);
             window.location.href = '/alphaPhoenix-GUI/build/pages/specification.html';
             break;
         case 3:

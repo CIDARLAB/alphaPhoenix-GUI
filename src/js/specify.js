@@ -25,7 +25,9 @@ function setMenuIndex(index) {
             $('#libraryTab').removeClass('is-active');
             $('#library').hide();
             window.localStorage.setItem('menuIndex', 0);
-            window.localStorage.setItem('editorEugene', editor.getValue());
+            if(editor.getValue() != '') {
+                window.localStorage.setItem('editorEugene', editor.getValue());
+            }
             editor.setValue(window.localStorage.getItem('editorSTL'));
             $("#editor").appendTo("#editorSTL");
             validateEugene(window.localStorage.getItem('editorEugene'));
@@ -38,7 +40,9 @@ function setMenuIndex(index) {
             $('#libraryTab').removeClass('is-active');
             $('#library').hide();
             window.localStorage.setItem('menuIndex', 1);
-            window.localStorage.setItem('editorSTL', editor.getValue());
+            if(editor.getValue() != '') {
+                window.localStorage.setItem('editorSTL', editor.getValue());
+            }
             editor.setValue(window.localStorage.getItem('editorEugene'));
             $("#editor").appendTo("#editorEugene");
             validateSTL(window.localStorage.getItem('editorSTL'));

@@ -5,6 +5,9 @@ $().ready(function () {
     editor = ace.edit("editor");
     editor.setTheme("ace/theme/chrome");
     editor.setShowPrintMargin(false);
+    editor.getSession().on('change', function() {
+        editorChanged();
+    });
     var menuIndex = Number(window.localStorage.getItem('menuIndex'));
     if (!menuIndex) {
         menuIndex = 0;
@@ -12,11 +15,9 @@ $().ready(function () {
     setMenuIndex(menuIndex);
 });
 
-
 function setMenuIndex(index) {
     switch (index) {
         case 0:
-
             $('#performanceTab').addClass('is-active');
             $('#performance').show();
             $('#structuralTab').removeClass('is-active');
@@ -27,6 +28,7 @@ function setMenuIndex(index) {
             window.localStorage.setItem('editorEugene', editor.getValue());
             editor.setValue(window.localStorage.getItem('editorSTL'));
             $("#editor").appendTo("#editorSTL");
+            validateEugene(window.localStorage.getItem('editorEugene'));
             break;
         case 1:
             $('#performanceTab').removeClass('is-active');
@@ -39,6 +41,7 @@ function setMenuIndex(index) {
             window.localStorage.setItem('editorSTL', editor.getValue());
             editor.setValue(window.localStorage.getItem('editorEugene'));
             $("#editor").appendTo("#editorEugene");
+            validateSTL(window.localStorage.getItem('editorSTL'));
             break;
         case 2:
             $('#performanceTab').removeClass('is-active');
@@ -73,6 +76,30 @@ function setTab(index) {
             break;
     }
     return true;
+}
+
+function editorChanged() {
+    var menuIndex = Number(window.localStorage.getItem('menuIndex'));
+    switch (menuIndex) {
+        case 0:
+            var value = editor.getValue();
+            window.localStorage.setItem('editorSTL', value);
+            validateSTL(value);
+            break;
+        case 1:
+            var value = editor.getValue();
+            window.localStorage.setItem('editorEugene', value);
+            validateEugene(value);
+            break;
+    }
+}
+
+function validateSTL(value) {
+    $('#performanceIcon').empty().addClass('icon').removeClass('has-text-danger').addClass('has-text-success').append('<i class="fa fa-check-square"></i>');
+}
+
+function validateEugene(value) {
+    $('#structuralIcon').empty().addClass('icon').removeClass('has-text-danger').addClass('has-text-success').append('<i class="fa fa-check-square"></i>');
 }
 
 function loadSTLSample(overRight) {

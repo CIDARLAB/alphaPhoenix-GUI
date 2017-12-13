@@ -107,13 +107,13 @@ $().ready(function() {
 
     for(let i = 0; i < abstract.circuit.length; i++) {
         let menuItem = '<ul class="menu-list">';
-        menuItem += "<li onclick=\"toggleCircuitVisibility('Circuit"+i+"')\"><a>Circuit " + (i + 1) + "</a>";
+        menuItem += "<li><a onclick=\"toggleCircuitVisibility('Circuit"+i+"')\">Circuit " + (i + 1) + "</a>";
         for(let items of abstract.circuit[i]) {
 
             menuItem += '<ul class="Circuit'+i+'">'
             for (let unit in items) {
-                menuItem += '<li><a>' + unit + '</a>';
-                menuItem += '<ul>'
+                menuItem += '<li><a onclick=\"toggleUnitVisibility(\'Circuit'+i+'Unit'+ unit.replace(/ /g,'') +'\')">' + unit + '</a>';
+                menuItem += '<ul class="Circuit'+i+'Unit'+unit.replace(/ /g,'')+'">';
                 for (let part of items[unit]) {
                     menuItem += '<li><a>' + part + '</a>';
                 }
@@ -129,6 +129,15 @@ $().ready(function() {
 });
 
 function toggleCircuitVisibility(id) {
+    var item = $('.' + id);
+    if(item.is(':visible')) {
+        item.hide()
+    } else {
+        item.show()
+    }
+}
+
+function toggleUnitVisibility(id) {
     var item = $('.' + id);
     if(item.is(':visible')) {
         item.hide()

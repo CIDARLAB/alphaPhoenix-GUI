@@ -3,20 +3,20 @@
   "version": "0.0.1",
   "scripts": {
     "build": "gulp",
-    "start": "gulp -watch",
-    "watch": "gulp -watch"
+    "start": "gulp --watch",
+    "watch": "gulp --watch"
   },
   "dependencies": {
     "bulma": "^0.6.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
-    "ace-builds": "^1.2.9",
+    "ace-builds": "^1.2.9"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-hb": "^6.0.2",
     "gulp-htmltidy": "^0.2.3",
     "gulp-watch": "^4.3.11",
-    "handlebars-layouts": "^3.1.4",
+    "handlebars-layouts": "^3.1.4"
   }
 }

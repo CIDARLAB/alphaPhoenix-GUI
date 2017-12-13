@@ -110,10 +110,10 @@ $().ready(function() {
         menuItem += "<li><a onclick=\"toggleCircuitVisibility('Circuit"+i+"')\">Circuit " + (i + 1) + "</a>";
         for(let items of abstract.circuit[i]) {
 
-            menuItem += '<ul class="Circuit'+i+'">'
+            menuItem += '<ul class="Circuit'+i+'" style="display: none">'
             for (let unit in items) {
                 menuItem += '<li><a onclick=\"toggleUnitVisibility(\'Circuit'+i+'Unit'+ unit.replace(/ /g,'') +'\')">' + unit + '</a>';
-                menuItem += '<ul class="Circuit'+i+'Unit'+unit.replace(/ /g,'')+'">';
+                menuItem += '<ul class="Circuit'+i+'Unit'+unit.replace(/ /g,'')+'" style="display: none">';
                 for (let part of items[unit]) {
                     menuItem += '<li><a>' + part + '</a>';
                 }

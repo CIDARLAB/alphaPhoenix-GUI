@@ -8,6 +8,7 @@ gulp.task('css', function() {
         'src/css/**/*.css',
         'node_modules/bulma/css/bulma.css',
         'node_modules/font-awesome/css/font-awesome.css',
+        'node_modules/select2/dist/css/select2.css'
     ]).pipe(gulp.dest('./build/public/css/'))
 });
 
@@ -32,6 +33,7 @@ gulp.task('js', function () {
     gulp.src([
         'src/js/**/*.js',
         'node_modules/jquery/dist/jquery.js',
+        'node_modules/select2/dist/js/select2.js'
     ]).pipe(gulp.dest('./build/public/js'))
 });
 

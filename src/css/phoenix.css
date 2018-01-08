@@ -127,3 +127,12 @@ html, body {
 .select2 {
     width: 100%;
 }
+
+.text-center {
+    text-align: center;
+}
+
+.center {
+    margin: 0 auto;
+    display: block;
+}

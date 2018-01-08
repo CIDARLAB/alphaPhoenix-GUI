@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    {{>header}}
+    <script src="../public/js/design.js"></script>
+</head>
+<body>
+
+<section class="hero is-fullheight">
+    <div class="hero-head">
+        {{>nav}}
+    </div>
+    <div class="hero-body">
+        <div class="box center">
+            <img class="center" src="../public/images/logo/phoenix_banner_black.png" style="width: 50%;">
+            <br>
+            <form>
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="email" placeholder="Your Email" autofocus="">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="password" placeholder="Your Password">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+                </div>
+                <a class="button is-block is-info is-large">Login</a>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

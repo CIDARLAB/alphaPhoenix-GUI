@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the LibraryPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { LibraryProvider } from "../../providers/library";
 
 @IonicPage()
 @Component({
@@ -15,11 +9,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LibraryPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LibraryPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public library:LibraryProvider) {
   }
 
 }

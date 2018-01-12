@@ -23,6 +23,8 @@ export class MenuProvider {
     }]
   }];
 
+  public activePage = 'PerformancePage';
+
   constructor() {
   }
 

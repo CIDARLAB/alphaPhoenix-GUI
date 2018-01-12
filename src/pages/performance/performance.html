@@ -7,5 +7,20 @@
   </ion-navbar>
 </ion-header>
 <ion-content class="bg-color" padding>
-
+  <ion-card>
+    <ion-segment [(ngModel)]="mode" color="primary">
+      <ion-segment-button value="STL">
+        STL Editor
+      </ion-segment-button>
+      <ion-segment-button value="GridTLI">
+        Grid TLI
+      </ion-segment-button>
+    </ion-segment>
+    <br>
+    <div *ngIf="mode == 'STL'">
+      <div padding>
+        <button ion-button rounded outline>Sample</button>
+      </div>
+    </div>
+  </ion-card>
 </ion-content>

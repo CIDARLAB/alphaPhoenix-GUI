@@ -21,6 +21,27 @@ export class MenuProvider {
       status: 'None',
       message: ''
     }]
+  },{
+    title: 'Design',
+    pages: [{
+      name: 'Assignment',
+      page: 'AssignmentPage',
+      status: 'None',
+      message: ''
+    },{
+      name: 'Options',
+      page: 'OptionsPage',
+      status: 'None',
+      message: ''
+    }]
+  },{
+    title: 'Results',
+    pages: [{
+      name: 'Results',
+      page: 'ResultsPage',
+      status: 'None',
+      message: ''
+    }]
   }];
 
   public activePage = 'PerformancePage';

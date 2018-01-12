@@ -5,10 +5,11 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content class="bg-color">
-      <ion-list>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}}
+    <ion-content class="bg-color" padding>
+      <ion-list *ngFor="let section of menu.menu" no-lines>
+        <ion-item-divider color="light">{{section.title}}</ion-item-divider>
+        <button ion-item color="light" *ngFor="let item of section.pages" (click)="openPage(item.page)">
+          {{item.name}}
         </button>
       </ion-list>
     </ion-content>

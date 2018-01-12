@@ -7,5 +7,32 @@
   </ion-navbar>
 </ion-header>
 <ion-content class="bg-color" padding>
-
+  <ion-card>
+    <ion-segment color="primary" [(ngModel)]="mode">
+      <ion-segment-button value="eugene">
+        Eugene Editor
+      </ion-segment-button>
+    </ion-segment>
+    <br>
+    <ion-row>
+      <ion-col col-2>
+        <img src="assets/images/eugene.png">
+      </ion-col>
+      <ion-col col-4>
+        <ion-label>Solution Size</ion-label>
+        <ion-select [(ngModel)]="size" interface="popover">
+          <ion-option *ngFor="let n of options" value="{{n}}">{{n}}</ion-option>
+        </ion-select>
+      </ion-col>
+      <ion-col col-4>
+        <ion-label>Number of Solutions</ion-label>
+        <ion-select [(ngModel)]="number" interface="popover">
+          <ion-option *ngFor="let n of options" value="{{n}}">{{n}}</ion-option>
+        </ion-select>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button rounded outline>Sample</button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>

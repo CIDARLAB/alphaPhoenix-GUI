@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { LibraryProvider } from "../../providers/library";
+import { MenuProvider } from "../../providers/menu";
 
 @IonicPage()
 @Component({
@@ -9,7 +10,9 @@ import { LibraryProvider } from "../../providers/library";
 })
 export class LibraryPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public library:LibraryProvider) {
+  constructor(public navCtrl: NavController, public menu: MenuProvider, public lib:LibraryProvider) {
+
+    this.menu.getMenuItem('LibraryPage').status= 'Error';
   }
 
 }

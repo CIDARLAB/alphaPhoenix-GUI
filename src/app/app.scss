@@ -27,6 +27,14 @@ ion-menu .fa-check-square{
   color: map-get($colors, secondary) !important;
 }
 
+ion-menu .fa-exclamation-triangle{
+  color: map-get($colors, warning) !important;
+}
+
+ion-menu .fa-times-circle{
+  color: map-get($colors, danger) !important;
+}
+
 ion-toolbar {
   min-height: 60px !important;
 }
@@ -61,6 +69,10 @@ ion-menu button {
 .active {
   color: map-get($colors, primary) !important;
   font-weight: bold !important;
+}
+
+.disable {
+  color: map-get($colors, disabled) !important;
 }
 
 ion-select {

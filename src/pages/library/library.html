@@ -11,8 +11,8 @@
     <ion-label>Registry</ion-label>
     <ion-row>
       <ion-col col-6>
-        <ion-select [(ngModel)]="library.registry" interface="popover">
-          <ion-option *ngFor="let option of library.registryOptions" value="{{option}}">{{option}}</ion-option>
+        <ion-select [(ngModel)]="lib.registry" interface="popover">
+          <ion-option *ngFor="let option of lib.registryOptions" value="{{option}}">{{option}}</ion-option>
         </ion-select>
       </ion-col>
       <ion-col>
@@ -21,9 +21,10 @@
         </button>
       </ion-col>
     </ion-row>
+    <!--
     <ion-label>Collection</ion-label>
-    <ion-select [(ngModel)]="library.collection" interface="popover">
-      <ion-option *ngFor="let option of library.collectionOptions" value="{{option}}">{{option}}</ion-option>
-    </ion-select>
+    <ion-select [(ngModel)]="lib.collection" interface="popover">
+      <ion-option *ngFor="let option of lib.collectionOptions" value="{{option}}">{{option}}</ion-option>
+    </ion-select>-->
   </ion-card>
 </ion-content>

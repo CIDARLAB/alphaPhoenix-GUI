@@ -5,6 +5,7 @@ export class MenuProvider {
 
   public menu = [{
     title: 'Specification',
+    active: true,
     pages: [{
       name: 'Performance',
       page: 'PerformancePage',
@@ -23,6 +24,7 @@ export class MenuProvider {
     }]
   },{
     title: 'Design',
+    active: false,
     pages: [{
       name: 'Assignment',
       page: 'AssignmentPage',
@@ -36,6 +38,7 @@ export class MenuProvider {
     }]
   },{
     title: 'Results',
+    active: false,
     pages: [{
       name: 'Results',
       page: 'ResultsPage',

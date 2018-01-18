@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {MenuProvider} from "../../providers/menu";
 
 @IonicPage()
 @Component({
@@ -13,14 +14,11 @@ export class StructuralPage {
   public number = 1;
   public mode = 'eugene';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public menu: MenuProvider) {
     for(let i = 1; i <= 100; i ++) {
       this.options.push(i);
     }
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad StructuralPage');
+    this.menu.getMenuItem('StructuralPage').status= 'Warning';
   }
 
 }

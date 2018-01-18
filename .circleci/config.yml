@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "./clinet/package.json" }}
+          key: dependency-cache-{{ checksum "./package.json" }}
       - run:
           name: install ionic
           command: npm install -g ionic cordova
@@ -20,13 +20,13 @@ jobs:
           name: ionic build browser
           command: npm run ionic:build --
       - save_cache:
-          key: dependency-cache-{{ checksum "./clinet/package.json" }}
+          key: dependency-cache-{{ checksum "./package.json" }}
           paths:
             - ./client/node_modules
       - deploy:
           name: Deploy
           command: |
-              if [ "${CIRCLE_BRANCH}" == "ionic" ]; then
+              if [ "${CIRCLE_BRANCH}" == "circleci" ]; then
                 git config --global user.email "${GH_EMAIL}"
                 git config --global user.name "${GH_NAME}"
                 sh deploy-gh.sh

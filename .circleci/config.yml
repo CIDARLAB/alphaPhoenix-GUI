@@ -15,10 +15,10 @@ jobs:
           command: npm install -g ionic cordova
       - run:
           name: npm install
-          command: cd client && npm install
+          command: npm install
       - run:
           name: ionic build browser
-          command: cd client && npm run ionic:build --
+          command: npm run ionic:build --
       - save_cache:
           key: dependency-cache-{{ checksum "./clinet/package.json" }}
           paths:

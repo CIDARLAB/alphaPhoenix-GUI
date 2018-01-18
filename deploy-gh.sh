@@ -3,14 +3,12 @@ git checkout master
 git branch -D gh-pages
 git push origin --delete gh-pages
 git checkout -b gh-pages
-cd client
 npm install
 npm run ionic:build -- --prod --device
-cd ..
-mkdir www
-mv client/www/* www
-rm -rf client
 rm README.md
+rm -rf src
+rm node_modules
+mv www .
 git add .
 git reset circle.yml
 git reset deploy-gh.sh

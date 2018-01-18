@@ -10,6 +10,7 @@
         <ion-item-divider color="light">{{section.title}}</ion-item-divider>
         <button ion-item color="light" *ngFor="let item of section.pages" (click)="openPage(item.page)" [ngClass]="item.page == menu.activePage?'active':''">
           {{item.name}}
+          <i class="fas fa-check-square" *ngIf="item.status == 'Complete'"></i>
         </button>
       </ion-list>
     </ion-content>

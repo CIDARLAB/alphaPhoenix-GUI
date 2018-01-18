@@ -49,4 +49,14 @@ export class MenuProvider {
   constructor() {
   }
 
+  getMenuItem(page) {
+    for(let i = 0; i < this.menu.length; i++){
+      for(let j = 0; j < this.menu[i].pages.length; j++) {
+        if(this.menu[i].pages[j].page == page) {
+          return this.menu[i].pages[j]
+        }
+      }
+    }
+  }
+
 }

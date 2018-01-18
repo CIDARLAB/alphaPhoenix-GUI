@@ -15,11 +15,16 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 .bg-color {
-  background-color: #F5F5F5;
+  background-color: map-get($colors, bgColor);
 }
 
 ion-menu {
   border-right: none !important;
+  max-width: 200px!important;
+}
+
+ion-menu .fa-check-square{
+  color: map-get($colors, secondary) !important;
 }
 
 ion-toolbar {
@@ -54,6 +59,19 @@ ion-menu button {
 }
 
 .active {
-  color: hsl(217, 71%, 53%) !important;
+  color: map-get($colors, primary) !important;
   font-weight: bold !important;
 }
+
+ion-select {
+  border: solid;
+  border-radius: 5px;
+  max-width: 75%;
+  border-color: #c8c7cc;
+  border-width: 1px;
+}
+
+.select-icon {
+  margin-right: 5px !important;
+}
+

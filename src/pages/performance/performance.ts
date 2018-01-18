@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
+import { MenuProvider } from "../../providers/menu";
 
 @IonicPage()
 @Component({
@@ -9,10 +10,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class PerformancePage {
 
   public mode = 'STL';
+  public menuItem;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, private menu: MenuProvider) {
+    this.menuItem = this.menu.getMenuItem('PerformancePage');
+    this.menuItem.status = 'Complete'
   }
 
-
+  sample() {
+    console.log(this.menu.menu)
+  }
 
 }

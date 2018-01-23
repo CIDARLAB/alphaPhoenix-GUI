@@ -8,6 +8,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MenuProvider } from '../providers/menu';
 import { LibraryProvider } from '../providers/library';
+import { HttpProvider } from '../providers/http';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -15,6 +17,7 @@ import { LibraryProvider } from '../providers/library';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -26,7 +29,8 @@ import { LibraryProvider } from '../providers/library';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MenuProvider,
-    LibraryProvider
+    LibraryProvider,
+    HttpProvider
   ]
 })
 export class AppModule {}

@@ -13,22 +13,49 @@
 <ion-content class="bg-color" padding>
   <ion-card padding>
     <ion-label>Registry</ion-label>
-    <ion-row>
-      <ion-col col-6>
-        <ion-select [(ngModel)]="lib.registry" interface="popover">
-          <ion-option *ngFor="let option of lib.registryOptions" value="{{option}}">{{option}}</ion-option>
-        </ion-select>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-only>
-          <ion-icon name="settings"></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
-    <!--
+    <ion-select [(ngModel)]="lib.registry" (ionChange)="lib.getCollection()" interface="popover">
+      <ion-option *ngFor="let option1 of lib.registryOptions" value="{{option1}}">{{option1}}</ion-option>
+    </ion-select>
     <ion-label>Collection</ion-label>
-    <ion-select [(ngModel)]="lib.collection" interface="popover">
-      <ion-option *ngFor="let option of lib.collectionOptions" value="{{option}}">{{option}}</ion-option>
-    </ion-select>-->
+    <ion-select [(ngModel)]="lib.collection" (ionChange)="lib.getParts(registry,collection)" interface="popover">
+      <ion-option *ngFor="let option2 of lib.collectionOptions" value="{{option2.uri}}">{{option2.name}}</ion-option>
+    </ion-select>
+  </ion-card>
+  <ion-card *ngIf="lib.collection">
+    <ion-list>
+      <ion-item class="table-header">
+        <ion-row>
+          <ion-col>
+            <b>Display ID</b>
+          </ion-col>
+          <ion-col>
+            <b>Name</b>
+          </ion-col>
+          <ion-col>
+            <b>Description</b>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item *ngFor="let part of lib.parts">
+        <ion-row>
+          <ion-col text-wrap>
+            {{part.displayId}}
+          </ion-col>
+          <ion-col text-wrap>
+            {{part.name}}
+          </ion-col>
+          <ion-col text-wrap>
+            {{part.description}}
+          </ion-col>
+        </ion-row>
+        <hr>
+      </ion-item>
+      <ion-item *ngIf="lib.parts.length == 0 && lib.collection">
+        No Parts in this Collection
+      </ion-item>
+    </ion-list>
+
+      <hr/>
+
   </ion-card>
 </ion-content>

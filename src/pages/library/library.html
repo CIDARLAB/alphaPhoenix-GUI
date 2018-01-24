@@ -13,13 +13,17 @@
 <ion-content class="bg-color" padding>
   <ion-card padding>
     <ion-label>Registry</ion-label>
-    <ion-select [(ngModel)]="lib.registry" (ionChange)="lib.getCollection()" interface="popover">
-      <ion-option *ngFor="let option1 of lib.registryOptions" value="{{option1}}">{{option1}}</ion-option>
-    </ion-select>
+    <ion-item>
+      <ion-select [(ngModel)]="lib.registry" (ionChange)="lib.getCollection()" interface="popover">
+        <ion-option *ngFor="let option1 of lib.registryOptions" value="{{option1}}">{{option1}}</ion-option>
+      </ion-select>
+    </ion-item>
     <ion-label>Collection</ion-label>
-    <ion-select [(ngModel)]="lib.collection" (ionChange)="lib.getParts(registry,collection)" interface="popover">
-      <ion-option *ngFor="let option2 of lib.collectionOptions" value="{{option2.uri}}">{{option2.name}}</ion-option>
-    </ion-select>
+    <ion-item>
+      <ion-select [(ngModel)]="lib.collection" (ionChange)="lib.getParts(registry,collection)" interface="popover">
+        <ion-option *ngFor="let option2 of lib.collectionOptions" value="{{option2.uri}}">{{option2.name}}</ion-option>
+      </ion-select>
+    </ion-item>
   </ion-card>
   <ion-card *ngIf="lib.collection">
     <ion-list>

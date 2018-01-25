@@ -1,6 +1,7 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { MenuProvider } from "../../providers/menu";
+import { PerformanceProvider } from "../../providers/performance";
 
 @IonicPage()
 @Component({
@@ -15,15 +16,28 @@ export class PerformancePage {
   public ace = window['ace'];
   public editor;
 
-  constructor(public navCtrl: NavController, private menu: MenuProvider) {
+  constructor(public navCtrl: NavController, private menu: MenuProvider, private per:PerformanceProvider) {
     this.menuItem = this.menu.getMenuItem('PerformancePage');
-    this.menuItem.status = 'Complete'
   }
 
   ionViewDidLoad() {
     this.editor = this.ace.edit(this.editorEle.nativeElement);
     this.editor.setTheme("ace/theme/chrome");
     this.editor.setShowPrintMargin(false);
+    let self = this;
+    this.editor.getSession().on('change', function() {
+      self.per.stlText = self.editor.getValue();
+      if(self.per.stlText.length > 0) {
+        self.menuItem.status= 'Complete';
+      } else {
+        self.menuItem.status= 'Error';
+        self.menuItem.message= 'STL code is blank';
+      }
+    });
+  }
+
+  ionViewDidEnter() {
+    this.editor.setValue(this.per.stlText);
   }
 
   sample() {

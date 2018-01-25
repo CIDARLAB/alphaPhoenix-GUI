@@ -12,6 +12,8 @@ import { HttpProvider } from '../providers/http';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TooltipsModule } from 'ionic-tooltips';
+import { PerformanceProvider } from '../providers/performance';
+import { StructuralProvider } from '../providers/structural';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { TooltipsModule } from 'ionic-tooltips';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MenuProvider,
     LibraryProvider,
-    HttpProvider
+    HttpProvider,
+    PerformanceProvider,
+    StructuralProvider
   ]
 })
 export class AppModule {}

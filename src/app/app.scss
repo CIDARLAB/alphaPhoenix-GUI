@@ -18,6 +18,15 @@
   background-color: map-get($colors, bgColor);
 }
 
+.inline {
+  display: inline-block;
+  width:50%;
+}
+
+.inlineIcon {
+  display: inline-block;
+}
+
 ion-menu {
   border-right: none !important;
   max-width: 200px!important;

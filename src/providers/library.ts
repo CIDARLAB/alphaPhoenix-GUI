@@ -36,7 +36,8 @@ export class LibraryProvider {
       this.collection = data[0].uri;
       this.getParts();
     }).catch(err => {
-      this.menuItem.status = 'Error'
+      this.menuItem.status = 'Error';
+      this.menuItem.message = 'Error with collection search';
     });
   }
 
@@ -51,8 +52,8 @@ export class LibraryProvider {
         this.menuItem.message = 'No Part in collection';
       }
     }).catch(err => {
-      this.menuItem.status = 'Error',
-        this.menuItem.message = 'Error with collection search';
+      this.menuItem.status = 'Error';
+      this.menuItem.message = 'Error with parts search';
     });
   }
 
@@ -79,6 +80,7 @@ export class LibraryProvider {
               this.registryOptions.pop();
             }
             this.registryOptions.push(data.registry);
+            this.registry = data.registry;
           }
         }
       ]

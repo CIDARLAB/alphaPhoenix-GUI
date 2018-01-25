@@ -15,36 +15,16 @@ export class MenuProvider {
       name: 'Structural',
       page: 'StructuralPage',
       status: 'None',
-      message: ''
-    },{
-      name: 'Library',
-      page: 'LibraryPage',
-      status: 'None',
-      message: ''
+      message: '',
     }]
   },{
     title: 'Design',
     active: false,
-    pages: [{
-      name: 'Assignment',
-      page: 'AssignmentPage',
-      status: 'None',
-      message: ''
-    },{
-      name: 'Options',
-      page: 'OptionsPage',
-      status: 'None',
-      message: ''
-    }]
+    pages:[]
   },{
     title: 'Results',
     active: false,
-    pages: [{
-      name: 'Results',
-      page: 'ResultsPage',
-      status: 'None',
-      message: ''
-    }]
+    pages:[]
   }];
 
   constructor() {

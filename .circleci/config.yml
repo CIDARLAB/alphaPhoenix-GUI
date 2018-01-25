@@ -1,0 +1,33 @@
+version: 2
+jobs:
+  build:
+    branches:
+      ignore: gh-pages
+    working_directory: ~/repo
+    docker:
+      - image: node:8
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "./package.json" }}
+      - run:
+          name: install ionic
+          command: npm install -g ionic cordova
+      - run:
+          name: npm install
+          command: npm install
+      - run:
+          name: ionic build browser
+          command: npm run ionic:build --
+      - save_cache:
+          key: dependency-cache-{{ checksum "./package.json" }}
+          paths:
+            - ./client/node_modules
+      - deploy:
+          name: Deploy
+          command: |
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                git config --global user.email "${GH_EMAIL}"
+                git config --global user.name "${GH_NAME}"
+                sh deploy-gh.sh
+              fi

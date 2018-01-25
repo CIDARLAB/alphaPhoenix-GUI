@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="white">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img src="assets/images/logo.png"> Phoenix</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="navCtrl.setRoot('LoginPage')">Login</button>
+      <button ion-button (click)="navCtrl.setRoot('SignupPage')" class="active">Signup</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="bg-color" padding>
+  <ion-card>
+    <ion-segment color="primary" [(ngModel)]="mode">
+      <ion-segment-button value="eugene">
+        Eugene Editor
+      </ion-segment-button>
+    </ion-segment>
+    <br>
+    <ion-row>
+      <ion-col col-2>
+        <img src="assets/images/eugene.png">
+      </ion-col>
+      <ion-col col-4>
+        <ion-label>Solution Size</ion-label>
+        <ion-select [(ngModel)]="size" interface="popover">
+          <ion-option *ngFor="let n of options" value="{{n}}">{{n}}</ion-option>
+        </ion-select>
+      </ion-col>
+      <ion-col col-4>
+        <ion-label>Number of Solutions</ion-label>
+        <ion-select [(ngModel)]="number" interface="popover">
+          <ion-option *ngFor="let n of options" value="{{n}}">{{n}}</ion-option>
+        </ion-select>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button rounded outline (click)="sample()">Sample</button>
+      </ion-col>
+    </ion-row>
+    <div #editor class="editor"></div>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,11 @@
+page-library {
+
+  ion-select {
+    max-width: 100%;
+  }
+
+  .table-header {
+    border-bottom: solid;
+    border-color: map_get($colors,dark);
+  }
+}

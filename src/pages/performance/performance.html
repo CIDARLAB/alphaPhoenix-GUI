@@ -12,20 +12,34 @@
 </ion-header>
 <ion-content class="bg-color" padding>
   <ion-card>
-    <ion-segment [(ngModel)]="mode" color="primary">
-      <ion-segment-button value="STL">
-        STL Editor
-      </ion-segment-button>
-      <ion-segment-button value="GridTLI">
-        Grid TLI
-      </ion-segment-button>
-    </ion-segment>
-    <br>
-    <div *ngIf="mode == 'STL'">
-      <div padding>
-        <button ion-button rounded outline (click)="sample()">Sample</button>
-      </div>
-      <div #editor class="editor"></div>
-    </div>
+    <ion-card-header>
+      <ion-item>
+        <ion-label>STL Editor</ion-label>
+        <ion-select>
+          <ion-option value="Sample1">Sample1</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-header>
+    <div #editor class="editor"></div>
   </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-1>
+        <button ion-button block>
+          Upload
+        </button>
+      </ion-col>
+      <ion-col col-1>
+        <button ion-button block>
+          Grid TIL
+        </button>
+      </ion-col>
+      <ion-col col-1 offset-9>
+        <button ion-button block float-right>
+          Design
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title><img src="assets/images/logo.png"> Phoenix</ion-title>
+    <ion-title>{{ops.projectName}}</ion-title>
     <ion-buttons end>
       <button ion-button (click)="navCtrl.setRoot('LoginPage')">Login</button>
       <button ion-button (click)="navCtrl.setRoot('SignupPage')">Signup</button>
@@ -15,8 +15,8 @@
     <ion-card-header>
       <ion-item>
         <ion-label>Eugune Editor</ion-label>
-        <ion-select>
-          <ion-option value="Sample1">Sample1</ion-option>
+        <ion-select [(ngModel)]="ops.sample" interface="popover">
+          <ion-option *ngFor="let sample of ops.samples" value="{{sample}}">{{sample}}</ion-option>
         </ion-select>
       </ion-item>
     </ion-card-header>
@@ -34,7 +34,13 @@
           Constellation
         </button>
       </ion-col>
-      <ion-col col-1 offset-9>
+      <ion-col col-3 offset-6>
+        <ion-item color='bgColor'>
+          <ion-label fixed>Project Name</ion-label>
+          <ion-input [(ngModel)]="ops.projectName"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-1>
         <button ion-button block float-right>
           Design
         </button>

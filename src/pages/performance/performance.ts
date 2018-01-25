@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { MenuProvider } from "../../providers/menu";
 import { PerformanceProvider } from "../../providers/performance";
+import {OptionsProvider} from "../../providers/options";
 
 @IonicPage()
 @Component({
@@ -16,7 +17,7 @@ export class PerformancePage {
   public ace = window['ace'];
   public editor;
 
-  constructor(public navCtrl: NavController, private menu: MenuProvider, private per:PerformanceProvider) {
+  constructor(public navCtrl: NavController, private menu: MenuProvider, private per:PerformanceProvider, public ops:OptionsProvider) {
     this.menuItem = this.menu.getMenuItem('PerformancePage');
   }
 

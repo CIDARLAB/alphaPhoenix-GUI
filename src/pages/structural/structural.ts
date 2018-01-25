@@ -2,6 +2,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {IonicPage, NavController} from 'ionic-angular';
 import {MenuProvider} from "../../providers/menu";
 import {StructuralProvider} from "../../providers/structural";
+import {OptionsProvider} from "../../providers/options";
 
 @IonicPage()
 @Component({
@@ -19,7 +20,7 @@ export class StructuralPage {
   public editor;
   public menuItem;
 
-  constructor(public navCtrl: NavController, public menu: MenuProvider, public str: StructuralProvider) {
+  constructor(public navCtrl: NavController, public menu: MenuProvider, public str: StructuralProvider, public ops:OptionsProvider) {
     for (let i = 1; i <= 100; i++) {
       this.options.push(i);
     }

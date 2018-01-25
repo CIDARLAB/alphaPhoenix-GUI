@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TooltipsModule } from 'ionic-tooltips';
 import { PerformanceProvider } from '../providers/performance';
 import { StructuralProvider } from '../providers/structural';
+import { OptionsProvider } from '../providers/options';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { StructuralProvider } from '../providers/structural';
     LibraryProvider,
     HttpProvider,
     PerformanceProvider,
-    StructuralProvider
+    StructuralProvider,
+    OptionsProvider
   ]
 })
 export class AppModule {}

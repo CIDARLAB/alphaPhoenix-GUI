@@ -14,7 +14,7 @@
   <ion-card>
     <ion-card-header>
       <ion-item>
-        <ion-label>Eugune Editor</ion-label>
+        <ion-label>Eugune Editor<img src="assets/images/eugene.png"></ion-label>
         <ion-select [(ngModel)]="ops.sample" interface="popover">
           <ion-option *ngFor="let sample of ops.samples" value="{{sample}}">{{sample}}</ion-option>
         </ion-select>
@@ -24,23 +24,23 @@
   </ion-card>
   <ion-grid>
     <ion-row>
-      <ion-col col-1>
+      <ion-col col-2>
         <button ion-button block>
           Upload
         </button>
       </ion-col>
-      <ion-col col-1>
+      <ion-col col-2>
         <button ion-button block>
           Constellation
         </button>
       </ion-col>
-      <ion-col col-3 offset-6>
+      <ion-col col-6>
         <ion-item color='bgColor'>
           <ion-label fixed>Project Name</ion-label>
           <ion-input [(ngModel)]="ops.projectName"></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col col-1>
+      <ion-col col-2>
         <button ion-button block float-right>
           Design
         </button>

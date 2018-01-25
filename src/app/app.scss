@@ -84,6 +84,19 @@ ion-menu button {
   color: map-get($colors, disabled) !important;
 }
 
+ion-card-header ion-label {
+  color: map-get($colors, primary) !important;
+  font-size: 1.8rem;
+  display: inline-block;
+  margin: 0 !important;
+}
+
+ion-card-header img {
+  height: 30px;
+  width: auto;
+  display: inline-block;
+}
+
 ion-select {
   border: solid;
   border-radius: 5px;

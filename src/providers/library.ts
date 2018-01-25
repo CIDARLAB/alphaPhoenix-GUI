@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpProvider } from "./http";
 import {MenuProvider} from "./menu";
+import {AlertController} from "ionic-angular";
 
 @Injectable()
 export class LibraryProvider {
@@ -20,7 +21,7 @@ export class LibraryProvider {
 
 
 
-  constructor(private http:HttpProvider, private menu:MenuProvider) {
+  constructor(private http:HttpProvider, private menu:MenuProvider, private alertCtrl:AlertController) {
     this.getCollection();
     this.menuItem = this.menu.getMenuItem('LibraryPage');
   }
@@ -43,13 +44,46 @@ export class LibraryProvider {
     this.http.getUrl(['http://', this.registry,'/remoteSearch/collection%3D%3C',encodeURIComponent(this.collection),'%3E&?offset=0&limit=1000'].join('')).then(data => {
       this.parts = <any>data;
       if(this.parts.length > 1) {
-        this.menuItem.status = 'Complete'
+        this.menuItem.status = 'Complete';
+        this.menuItem.message = '';
       } else {
-        this.menuItem.status = 'Warning'
+        this.menuItem.status = 'Warning';
+        this.menuItem.message = 'No Part in collection';
       }
     }).catch(err => {
-      this.menuItem.status = 'Error'
+      this.menuItem.status = 'Error',
+        this.menuItem.message = 'Error with collection search';
     });
+  }
+
+  presentAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Custom Registry',
+      message: 'Please enter registry domain without http or www.',
+      inputs: [
+        {
+          name: 'registry',
+          placeholder: 'Registry'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'Set',
+          handler: data => {
+            console.log(data);
+            if(this.registryOptions.length > 3) {
+              this.registryOptions.pop();
+            }
+            this.registryOptions.push(data.registry);
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }

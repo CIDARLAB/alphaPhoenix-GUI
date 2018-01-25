@@ -52,6 +52,10 @@ ion-navbar {
   min-height: 60px !important;
 }
 
+ion-card-header {
+  border-bottom: solid #e5e5e5 1px;
+}
+
 .toolbar-title {
   font-size: 3rem !important;
   font-family: 'Open Sans';
@@ -112,7 +116,5 @@ ion-select {
 }
 
 .editor {
-  height: 500px;
-  border-top: solid #e5e5e5 1px;
 }
 

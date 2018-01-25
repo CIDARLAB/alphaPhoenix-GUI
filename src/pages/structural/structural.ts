@@ -1,5 +1,5 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {IonicPage, NavController} from 'ionic-angular';
+import {IonicPage, NavController, Platform} from 'ionic-angular';
 import {MenuProvider} from "../../providers/menu";
 import {StructuralProvider} from "../../providers/structural";
 import {OptionsProvider} from "../../providers/options";
@@ -19,12 +19,15 @@ export class StructuralPage {
   public ace = window['ace'];
   public editor;
   public menuItem;
+  public height;
 
-  constructor(public navCtrl: NavController, public menu: MenuProvider, public str: StructuralProvider, public ops:OptionsProvider) {
+  constructor(public navCtrl: NavController, public menu: MenuProvider, public str: StructuralProvider,
+              public ops:OptionsProvider, public platform:Platform) {
     for (let i = 1; i <= 100; i++) {
       this.options.push(i);
     }
     this.menuItem = this.menu.getMenuItem('StructuralPage');
+    this.height = this.platform.height()- 275;
   }
 
   ionViewDidLoad() {

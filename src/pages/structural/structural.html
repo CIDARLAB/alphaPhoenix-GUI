@@ -53,7 +53,8 @@
         </ion-item>
       </ion-col>
       <ion-col col-2>
-        <button ion-button block float-right [color]="menu.design()?'secondary':'disabled'" [tooltip]="ops.designTooltip" positionV="top" arrow event="hover">
+        <button ion-button block float-right [color]="menu.design()?'secondary':'disabled'"
+                [tooltip]="ops.designTooltip" positionV="top" arrow event="hover" (click)="menu.design()?navCtrl.push('DesignPage'):''">
           Design
         </button>
       </ion-col>

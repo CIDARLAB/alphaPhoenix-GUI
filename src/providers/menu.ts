@@ -45,14 +45,17 @@ export class MenuProvider {
     if(!this.ops.projectName && this.ops.projectName == '' ) {
       this.ops.designTooltip = 'Missing Project Name';
       return false;
-    } else if(this.menu[0].pages[0].status === 'Complete') {
+    } else if(this.menu[0].pages[0].status !== 'Complete') {
       this.ops.designTooltip = 'Complete Performance Page';
       return false;
-    } else if(this.menu[0].pages[1].status === 'Complete') {
+    } else if(this.menu[0].pages[1].status !== 'Complete') {
       this.ops.designTooltip = 'Complete Structural Page';
       return false;
+    } else {
+      this.ops.designTooltip = '';
+      return true;
     }
-    return true;
+
   }
 
 }

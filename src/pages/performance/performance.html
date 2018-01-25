@@ -34,12 +34,12 @@
   <ion-grid>
     <ion-row>
       <ion-col col-2>
-        <button ion-button block>
+        <button ion-button outline block>
           Upload
         </button>
       </ion-col>
       <ion-col col-2>
-        <button ion-button block>
+        <button ion-button outline block>
           Grid TIL
         </button>
       </ion-col>
@@ -50,7 +50,7 @@
         </ion-item>
       </ion-col>
       <ion-col col-2>
-        <button ion-button block float-right>
+        <button ion-button block float-right [color]="menu.design()?'secondary':'disabled'" [tooltip]="ops.designTooltip" positionV="top" arrow event="hover">
           Design
         </button>
       </ion-col>

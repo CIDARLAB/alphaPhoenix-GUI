@@ -96,10 +96,13 @@ ion-card-header img {
   display: inline-block;
 }
 
+ion-card-header ion-select {
+  min-width: 100% !important;
+}
+
 ion-select {
   border: solid;
   border-radius: 5px;
-  max-width: 75%;
   border-color: #c8c7cc;
   border-width: 1px;
 }

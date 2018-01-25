@@ -3,10 +3,12 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title><img src="assets/images/logo.png"> Phoenix</ion-title>
+    <ion-title>{{ops.projectName}}</ion-title>
     <ion-buttons end>
       <button ion-button (click)="navCtrl.setRoot('LoginPage')">Login</button>
-      <button ion-button (click)="navCtrl.setRoot('SignupPage')">Signup</button>
+      <button ion-button icon-only (click)="navCtrl.setRoot('OptionsPage')">
+        <ion-icon name="settings"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>

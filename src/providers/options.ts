@@ -5,7 +5,7 @@ export class OptionsProvider {
 
   public projectName = '';
   public sample;
-  public samples = ['Sample 1','Sample 2','Sample 3'];
+  public samples = ['Full Demo','Not Gate','CIDAR','MIT'];
 
   constructor() {
 

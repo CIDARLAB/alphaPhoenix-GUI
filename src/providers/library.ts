@@ -18,6 +18,9 @@ export class LibraryProvider {
   public parts = [];
   public menuItem;
 
+  public loadingRegisrtry = false;
+  public loadingCollection = false;
+
 
 
 
@@ -28,20 +31,24 @@ export class LibraryProvider {
 
 
   getCollection() {
+    this.loadingRegisrtry = true;
     this.http.getUrl(['http://', this.registry,'/rootCollections'].join('')).then(data => {
       this.collectionOptions = [];
       for(let col of <any>data) {
         this.collectionOptions.push(col);
       }
       this.collection = data[0].uri;
+      this.loadingRegisrtry = false;
       this.getParts();
     }).catch(err => {
       this.menuItem.status = 'Error';
       this.menuItem.message = 'Error with collection search';
+      this.loadingRegisrtry = false;
     });
   }
 
   getParts() {
+    this.loadingCollection = true;
     this.http.getUrl(['http://', this.registry,'/remoteSearch/collection%3D%3C',encodeURIComponent(this.collection),'%3E&?offset=0&limit=1000'].join('')).then(data => {
       this.parts = <any>data;
       if(this.parts.length > 1) {
@@ -51,9 +58,11 @@ export class LibraryProvider {
         this.menuItem.status = 'Warning';
         this.menuItem.message = 'No Part in collection';
       }
+      this.loadingCollection = false;
     }).catch(err => {
       this.menuItem.status = 'Error';
       this.menuItem.message = 'Error with parts search';
+      this.loadingCollection = false;
     });
   }
 

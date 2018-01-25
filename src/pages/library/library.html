@@ -14,7 +14,8 @@
   <ion-card padding>
     <ion-row>
       <ion-col>
-        <ion-label>Registry</ion-label>
+        <ion-label class="level">Registry</ion-label>
+        <ion-spinner class="level" *ngIf="lib.loadingRegistry"></ion-spinner>
       </ion-col>
       <ion-col>
         <button ion-button icon-only float-right (click)="lib.presentAlert()">
@@ -27,7 +28,8 @@
         <ion-option *ngFor="let option1 of lib.registryOptions" value="{{option1}}">{{option1}}</ion-option>
       </ion-select>
     </ion-item>
-    <ion-label>Collection</ion-label>
+    <ion-label class="level">Collection</ion-label>
+    <ion-spinner class="level" *ngIf="lib.loadingCollection"></ion-spinner>
     <ion-item>
       <ion-select [(ngModel)]="lib.collection" (ionChange)="lib.getParts(registry,collection)" interface="popover">
         <ion-option *ngFor="let option2 of lib.collectionOptions" value="{{option2.uri}}">{{option2.name}}</ion-option>
@@ -49,20 +51,22 @@
           </ion-col>
         </ion-row>
       </ion-item>
-      <ion-item *ngFor="let part of lib.parts">
-        <ion-row>
-          <ion-col text-wrap>
-            {{part.displayId}}
-          </ion-col>
-          <ion-col text-wrap>
-            {{part.name}}
-          </ion-col>
-          <ion-col text-wrap>
-            {{part.description}}
-          </ion-col>
-        </ion-row>
-        <hr>
-      </ion-item>
+      <div *ngIf="!lib.loadingCollection">
+        <ion-item *ngFor="let part of lib.parts">
+          <ion-row>
+            <ion-col text-wrap>
+              {{part.displayId}}
+            </ion-col>
+            <ion-col text-wrap>
+              {{part.name}}
+            </ion-col>
+            <ion-col text-wrap>
+              {{part.description}}
+            </ion-col>
+          </ion-row>
+          <hr>
+        </ion-item>
+      </div>
       <ion-item *ngIf="lib.parts.length == 0 && lib.collection">
         No Parts in this Collection
       </ion-item>

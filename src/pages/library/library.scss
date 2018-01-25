@@ -8,4 +8,8 @@ page-library {
     border-bottom: solid;
     border-color: map_get($colors,dark);
   }
+
+  .level {
+    display: inline-block;
+  }
 }

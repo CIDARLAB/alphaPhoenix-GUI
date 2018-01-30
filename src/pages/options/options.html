@@ -29,7 +29,50 @@
         </ion-col>
       </ion-row>
     </ion-card-header>
-    <div [ngStyle]="{'height': height + 'px'}"></div>
+    <div [ngStyle]="{'height': height + 'px'}">
+      <ion-segment [(ngModel)]="ops.options.function">
+        <ion-segment-button value="deterministic">
+          Deterministic
+        </ion-segment-button>
+        <ion-segment-button value="stochastic">
+          Stochastic
+        </ion-segment-button>
+      </ion-segment>
+      <ion-row *ngIf="ops.options.function === 'deterministic'">
+        <ion-col col-3>
+          <ion-item>
+            <ion-label floating>Top %</ion-label>
+            <ion-input type="number" min="0" max="100" [(ngModel)]="ops.options.topP"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="ops.options.function === 'stochastic'">
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Top %</ion-label>
+            <ion-input type="number" min="0" max="100" [(ngModel)]="ops.options.topP"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Confidence</ion-label>
+            <ion-input type="number" min="0" max="100"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Threshold</ion-label>
+            <ion-input type="number" min="0" max="100"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Run Count</ion-label>
+            <ion-input type="number" min="0" max="100"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
   </ion-card>
   <ion-grid>
     <ion-row>

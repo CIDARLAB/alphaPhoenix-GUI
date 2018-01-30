@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ModalController } from "ionic-angular";
 
 @Injectable()
 export class OptionsProvider {
@@ -10,10 +11,14 @@ export class OptionsProvider {
   public options = {
     function: 'deterministic',
     topP: 75,
+  };
+
+  constructor(public modalCtrl: ModalController) {
+
   }
 
-  constructor() {
-
+  openFile(variable) {
+    this.modalCtrl.create('FileUploadPage').present();
   }
 
 }

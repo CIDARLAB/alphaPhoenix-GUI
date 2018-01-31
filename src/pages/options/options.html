@@ -72,6 +72,44 @@
           </ion-item>
         </ion-col>
       </ion-row>
+      <ion-segment [ngModel]="'library'">
+        <ion-segment-button value="library">
+          Library
+        </ion-segment-button>
+      </ion-segment>
+      <ion-grid no-padding>
+        <ion-row padding class="no-padding-top">
+          <ion-col col-4>
+            <ion-label>Registry</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label>Collection</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row padding class="no-padding-top">
+          <ion-col col-4>
+            <ion-select interface="popover">
+              <ion-option value="1">1</ion-option>
+            </ion-select>
+          </ion-col>
+          <ion-col col-4>
+            <ion-select interface="popover">
+              <ion-option value="1">1</ion-option>
+            </ion-select>
+          </ion-col>
+          <ion-col col-2>
+            <button ion-button icon-only color="danger">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row padding class="no-padding-top">
+          <button ion-button icon-only color="primary">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </ion-row>
+      </ion-grid>
+
     </div>
   </ion-card>
   <ion-grid>

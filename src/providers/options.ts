@@ -21,4 +21,8 @@ export class OptionsProvider {
     this.modalCtrl.create('FileUploadPage').present();
   }
 
+  openGridTLI() {
+    this.modalCtrl.create('GridTliPage').present();
+  }
+
 }

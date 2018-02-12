@@ -15,6 +15,7 @@ import { TooltipsModule } from 'ionic-tooltips';
 import { PerformanceProvider } from '../providers/performance';
 import { StructuralProvider } from '../providers/structural';
 import { OptionsProvider } from '../providers/options';
+import { DesignProvider } from '../providers/design';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { OptionsProvider } from '../providers/options';
     HttpProvider,
     PerformanceProvider,
     StructuralProvider,
-    OptionsProvider
+    OptionsProvider,
+    DesignProvider
   ]
 })
 export class AppModule {}

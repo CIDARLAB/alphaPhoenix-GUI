@@ -13,5 +13,52 @@
   </ion-navbar>
 </ion-header>
 <ion-content class="bg-color" padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-scroll style="height: 200px">
+            <ion-list no-padding>
+              <ion-item *ngFor="let circuit of design.circuits">
+                <ion-label>Circuit {{circuit.index}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-scroll>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-scroll style="height: 200px" no-padding>
+            <ion-list no-padding>
+              <div *ngFor="let tus of design.getTU()">
+                <ion-item>
+                  <ion-label>TU {{tus.index}}</ion-label>
+                  <ion-icon name="ios-arrow-up" item-right *ngIf="!tus.active"></ion-icon>
+                  <ion-icon name="ios-arrow-down" item-right *ngIf="tus.active"></ion-icon>
+                </ion-item>
+                <ion-list padding>
+                  <button ion-item *ngFor="let tu of tus.tus" (click)="design.activeTU = tu">
+                    <ion-label>{{tu.key}}</ion-label>
+                  </button>
+                </ion-list>
+              </div>
+            </ion-list>
+          </ion-scroll>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+          <ion-card>
+            <ion-scroll style="height: 200px" no-padding>
+            <ion-list>
+              <ion-item *ngFor="let can of design.activeTU.candidates">
+                <ion-label>{{can.candidate}}</ion-label>
+                <ion-toggle [(ngModel)]="can.active" color="secondary"></ion-toggle>
+              </ion-item>
+            </ion-list>
+          </ion-scroll>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

@@ -20,7 +20,7 @@
           <ion-label>Circuits</ion-label>
         </ion-item>
         <ion-card>
-          <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding>
+          <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding scrollY="true">
             <ion-list no-padding>
               <ion-item *ngFor="let circuit of design.circuits" (click)="design.activeCircuit = circuit">
                 <ion-label [ngClass]="design.activeCircuit == circuit?'active':''">Circuit {{circuit.index}}</ion-label>
@@ -34,7 +34,7 @@
           <ion-label>Transcription Units</ion-label>
         </ion-item>
         <ion-card>
-          <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding>
+          <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding scrollY="true">
             <ion-list no-padding>
               <div *ngFor="let tus of design.getTU()">
                 <button ion-item (click)="tus.active = !tus.active">
@@ -57,7 +57,7 @@
             <ion-label>Parts</ion-label>
           </ion-item>
           <ion-card>
-            <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding>
+            <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding scrollY="true">
             <ion-list>
               <ion-item *ngFor="let can of design.activeTU.candidates">
                 <ion-label>{{can.candidate}}</ion-label>

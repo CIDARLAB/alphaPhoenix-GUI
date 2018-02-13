@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, Platform } from 'ionic-angular';
 import { OptionsProvider } from "../../providers/options";
 import { DesignProvider } from "../../providers/design";
 
@@ -10,8 +10,12 @@ import { DesignProvider } from "../../providers/design";
 })
 export class DesignPage {
 
-  constructor(public navCtrl: NavController, public ops: OptionsProvider,public design:DesignProvider) {
+  public height;
+  public tabs = 'SBOL';
+
+  constructor(public navCtrl: NavController, public ops: OptionsProvider,public design:DesignProvider, public platform:Platform) {
     console.log(design)
+    this.height = this.platform.height()- 275;
   }
 
 }

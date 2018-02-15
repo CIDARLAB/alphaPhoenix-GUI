@@ -15,7 +15,7 @@ export class DesignPage {
 
   constructor(public navCtrl: NavController, public ops: OptionsProvider,public design:DesignProvider, public platform:Platform) {
     console.log(design)
-    this.height = this.platform.height()- 275;
+    this.height = this.platform.height() - 245;
   }
 
 }

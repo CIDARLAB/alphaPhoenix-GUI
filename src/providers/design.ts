@@ -6,8 +6,12 @@ import {HttpProvider} from "./http";
 export class DesignProvider {
 
   public circuits = [];
-  public activeCircuit = { tus: []};
-  public activeTU = { candidates: []};
+  public TUS = {};
+  public activeCircuit = 1;
+  public activeTUS = 1;
+  public activePart = '';
+  public done = false;
+
 
   constructor(public http: HttpProvider) {
     this.http.getDesign().then(circuits => {
@@ -15,32 +19,20 @@ export class DesignProvider {
       for(let i = 0; i < this.circuits.length; i++) {
         this.circuits[i].index = i + 1;
       }
-      this.activeCircuit = this.circuits[0]
-    });
-  }
-
-  getTU() {
-    let tus = [];
-    for(let i = 0; i < this.activeCircuit['tus'].length; i++) {
-      let tu = {
-        index: i + 1,
-        active: false,
-        tus: [],
-      };
-      for(let key in this.activeCircuit['tus'][i]) {
-        if(key != 'candidates') {
-          tu.tus.push({
-            key,
-            candidates: this.activeCircuit['tus'][i][key].candidates
-          });
+      for(let circuit of this.circuits) {
+        let tus = [];
+        for(let i = 0; i < circuit.tus.length; i++) {
+          let tu = circuit.tus[i];
+          tu.parts = Object.keys(tu);
+          tu.parts.splice(tu.parts.indexOf('candidates'), 1);
+          tu.index = i + 1;
+          tus.push(tu);
         }
+        this.TUS[circuit.index] = tus;
       }
-      tus.push(tu);
-    }
-    if(tus[0]) {
-      tus[0].active = true;
-    }
-    return tus;
+      this.activePart = this.TUS[this.activeCircuit][0].parts[0];
+      this.done = true;
+    });
   }
 
 }

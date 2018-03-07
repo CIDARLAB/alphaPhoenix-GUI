@@ -9,7 +9,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "./package.json" }}
+          keys:
+            - dependency-cache-{{ checksum "./package.json" }}
+            - dependency-cache-global
       - run:
           name: install ionic
           command: npm install -g ionic cordova

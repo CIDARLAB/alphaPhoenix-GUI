@@ -23,6 +23,10 @@ jobs:
           key: dependency-cache-{{ checksum "./package.json" }}
           paths:
             - ./client/node_modules
+      - save_cache:
+          key: dependency-cache-global
+          paths:
+            - /usr/local/lib/node_modules
       - deploy:
           name: Deploy
           command: |

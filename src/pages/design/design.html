@@ -14,7 +14,7 @@
 </ion-header>
 <ion-content class="bg-color" padding>
   <ion-grid no-padding>
-    <ion-row>
+    <ion-row *ngIf="design.done">
       <ion-col no-padding>
         <ion-item color="bgColor">
           <ion-label>Circuits</ion-label>
@@ -22,9 +22,10 @@
         <ion-card>
           <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding scrollY="true">
             <ion-list no-padding>
-              <ion-item *ngFor="let circuit of design.circuits" (click)="design.activeCircuit = circuit.index">
+              <button ion-item *ngFor="let circuit of design.circuits" (click)="design.activeCircuit = circuit.index">
                 <ion-label [ngClass]="design.activeCircuit == circuit.index?'active':''">Circuit {{circuit.index}}</ion-label>
-              </ion-item>
+                <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+              </button>
             </ion-list>
           </ion-scroll>
         </ion-card>
@@ -36,15 +37,16 @@
         <ion-card>
           <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding scrollY="true">
             <ion-list no-padding>
-              <div *ngFor="let tu of design.TUS[design.activeCircuit]">
-                <button ion-item (click)="design.activeTUS = design.activeTUS == tu.index?0:tu.index">
-                  <ion-label>TU {{tu.index}}</ion-label>
-                  <ion-icon name="ios-arrow-up" item-right *ngIf="design.activeTUS != tu.index"></ion-icon>
-                  <ion-icon name="ios-arrow-down" item-right *ngIf="design.activeTUS == tu.index"></ion-icon>
+              <div *ngFor="let tu of design.circuits[design.activeCircuit-1]['tus']">
+                <button ion-item (click)="tu.active = !tu.active">
+                  <ion-label [ngClass]="design.activePart[design.activeCircuit-1]['activeTU'] == tu.index?'active':''">TU {{tu.index}}</ion-label>
+                  <ion-icon name="ios-arrow-up" item-right *ngIf="!tu.active"></ion-icon>
+                  <ion-icon name="ios-arrow-down" item-right *ngIf="tu.active"></ion-icon>
                 </button>
-                <ion-list padding *ngIf="design.activeTUS == tu.index">
-                  <button ion-item *ngFor="let part of tu.parts" [ngClass]="design.activePart == part?'active':''" (click)="design.activePart = part">
-                    {{ part }}
+                <ion-list padding *ngIf="tu.active">
+                  <button ion-item *ngFor="let part of tu.parts" (click)="design.activeTU = tu.index; design.activePart[design.activeCircuit-1] = { activeTU: tu.index, activePart: part}">
+                    <ion-label [ngClass]="(design.activePart[design.activeCircuit-1]['activePart'] == part)&&(design.activePart[design.activeCircuit-1]['activeTU'] == tu.index)?'active':''">{{part}}</ion-label>
+                    <ion-icon name="ios-arrow-forward" item-right></ion-icon>
                   </button>
                 </ion-list>
               </div>
@@ -58,8 +60,8 @@
           </ion-item>
           <ion-card>
             <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding scrollY="true">
-            <ion-list *ngIf="design.done">
-              <ion-item *ngFor="let can of design.TUS[design.activeCircuit][design.activeTUS-1][design.activePart].candidates">
+            <ion-list>
+              <ion-item *ngFor="let can of design.circuits[design.activeCircuit-1]['tus'][design.activePart[design.activeCircuit-1]['activeTU']-1][design.activePart[design.activeCircuit-1]['activePart']].candidates">
                 <ion-label>{{can.candidate}}</ion-label>
                 <ion-toggle [(ngModel)]="can.active" color="secondary"></ion-toggle>
               </ion-item>

@@ -3,4 +3,10 @@ page-design {
   .item-inner {
     border-bottom: none !important;
   }
+
+  ion-list .item {
+    border-bottom: 1px solid #c8c7cc;
+  }
+
+  .katex { font-size: 1.75em; }
 }

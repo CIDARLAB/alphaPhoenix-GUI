@@ -43,8 +43,11 @@
                   <ion-icon name="ios-arrow-up" item-right *ngIf="!tu.active"></ion-icon>
                   <ion-icon name="ios-arrow-down" item-right *ngIf="tu.active"></ion-icon>
                 </button>
-                <ion-list padding *ngIf="tu.active">
+                <ion-list *ngIf="tu.active">
                   <button ion-item *ngFor="let part of tu.parts" (click)="design.activeTU = tu.index; design.activePart[design.activeCircuit-1] = { activeTU: tu.index, activePart: part}">
+                    <ion-avatar item-start>
+                      <img src="assets/parts/{{part}}.png">
+                    </ion-avatar>
                     <ion-label [ngClass]="(design.activePart[design.activeCircuit-1]['activePart'] == part)&&(design.activePart[design.activeCircuit-1]['activeTU'] == tu.index)?'active':''">{{part}}</ion-label>
                     <ion-icon name="ios-arrow-forward" item-right></ion-icon>
                   </button>
@@ -77,12 +80,20 @@
         SBOL
       </ion-segment-button>
       <ion-segment-button value="SBML">
-        SBML
+        Praremeters
       </ion-segment-button>
       <ion-segment-button value="Details">
         Details
       </ion-segment-button>
     </ion-segment>
+    <ion-row *ngIf="tabs == 'SBOL'" style="height: 100%">
+      <img src="assets/images/testFigure.png">
+    </ion-row>
+    <ion-row *ngIf="tabs == 'SBML'" style="height: 100%" padding>
+      <p><ng-katex [equation]="equation"></ng-katex></p>
+      <p><ng-katex [equation]="equation2"></ng-katex></p>
+      <p><ng-katex [equation]="equation3"></ng-katex></p>
+    </ion-row>
   </ion-card>
   <ion-grid>
     <ion-row>

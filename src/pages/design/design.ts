@@ -12,9 +12,12 @@ export class DesignPage {
 
   public height;
   public tabs = 'SBOL';
+  public equation: string = 'x = \\frac{-b \\pm\\sqrt{b^2 - 4ac}}{2a}';
+  public equation2: string = '\\frac{dy}{dx} = \\lim\\limits_{x\\to0} \\frac{f(x + h) - f(x)}{h}';
+  public equation3: string = '\\int a {dx} = ax + C';
+
 
   constructor(public navCtrl: NavController, public ops: OptionsProvider,public design:DesignProvider, public platform:Platform) {
-    console.log(design)
     this.height = this.platform.height() - 245;
   }
 

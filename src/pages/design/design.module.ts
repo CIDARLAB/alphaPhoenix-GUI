@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { DesignPage } from './design';
+import { KatexModule } from 'ng-katex';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { DesignPage } from './design';
   ],
   imports: [
     IonicPageModule.forChild(DesignPage),
+    KatexModule
   ],
 })
 export class DesignPageModule {}

@@ -9,4 +9,10 @@ page-design {
   }
 
   .katex { font-size: 1.75em; }
+
+  .sbol {
+    object-fit: cover;
+    width: auto;
+    height: 100%;
+  }
 }

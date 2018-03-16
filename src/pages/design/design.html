@@ -86,8 +86,8 @@
         Details
       </ion-segment-button>
     </ion-segment>
-    <ion-row *ngIf="tabs == 'SBOL'" style="height: 100%">
-      <img src="assets/images/testFigure.png">
+    <ion-row *ngIf="tabs == 'SBOL'" style="height: 100%" padding>
+      <img src="assets/images/testFigure.png" class="sbol">
     </ion-row>
     <ion-row *ngIf="tabs == 'SBML'" style="height: 100%" padding>
       <p><ng-katex [equation]="equation"></ng-katex></p>

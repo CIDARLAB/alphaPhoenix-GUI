@@ -19,24 +19,26 @@
       <ion-card-title>Login</ion-card-title>
       <ion-list>
         <ion-item>
-          <ion-label floating>Email</ion-label>
-          <ion-input type="email"></ion-input>
+          <ion-label floating>Username</ion-label>
+          <ion-input type="text" [(ngModel)]="username"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>Password</ion-label>
-          <ion-input type="password"></ion-input>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
         </ion-item>
+        <!--
         <ion-item>
           <ion-label>Remember Me</ion-label>
           <ion-checkbox></ion-checkbox>
-        </ion-item>
+        </ion-item>-->
       </ion-list>
     </ion-card-content>
   </ion-card>
   </div>
   <div padding>
-    <button ion-button outline>Forgot Password</button>
-    <button ion-button>Login</button>
+    <!--<button ion-button outline>Forgot Password</button>-->
+    <button ion-button (click)="login()">Login</button>
+    <button ion-button clear (click)="navCtrl.setRoot('SignupPage')"> Sign up here</button>
   </div>
 </ion-content>
 

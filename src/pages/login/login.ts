@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {HttpProvider} from "../../providers/http";
 
 @IonicPage()
 @Component({
@@ -8,11 +9,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public username;
+  public password;
+
+  constructor(public navCtrl: NavController, public http: HttpProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  login() {
+
+    this.http.login({
+      username: this.username,
+      password: this.password
+    }).subscribe((result)=> {
+      console.log(result);
+    });
   }
 
 }

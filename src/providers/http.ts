@@ -10,6 +10,10 @@ export class HttpProvider {
 
   }
 
+  login(body: any) {
+    return this.http.post('/login', body);
+  }
+
   getDesign() {
     return new Promise((resolve, reject) => {
       this.http.get(this.assetUrl + 'json/design.json').subscribe(res => {

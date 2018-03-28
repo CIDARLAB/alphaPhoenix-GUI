@@ -11,7 +11,13 @@ export class HttpProvider {
   }
 
   login(body: any) {
-    return this.http.post('/login', body);
+    return this.http.post('/login', body, {
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    });
+  }
+
+  signup(body: any) {
+    return this.http.post('/signup', body);
   }
 
   getDesign() {

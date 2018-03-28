@@ -18,8 +18,8 @@ export class LoginPage {
   login() {
 
     this.http.login({
-      username: this.username,
-      password: this.password
+      "username": this.username,
+      "password": this.password
     }).subscribe((result)=> {
       console.log(result);
     });

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="white">
+    <ion-buttons end>
+      <button ion-button (click)="navCtrl.setRoot('LoginPage')">Login</button>
+      <button ion-button (click)="navCtrl.setRoot('Signup')">Signup</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="bg-color">
+  <ion-grid padding-top>
+    <ion-row padding-top>
+      <ion-col col-4 offset-4 text-center>
+        <img src="assets/images/phoenixBanner.png" height="70%">
+        <button ion-button round (click)="navCtrl.setRoot('LoginPage')">Login</button>
+        <button ion-button round (click)="navCtrl.setRoot('SignupPage')">Signup</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

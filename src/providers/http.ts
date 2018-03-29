@@ -5,13 +5,14 @@ import { Injectable } from '@angular/core';
 export class HttpProvider {
 
   private assetUrl = 'assets/';
+  private token;
 
   constructor(public http: HttpClient) {
 
   }
 
   login(body: any) {
-    return this.http.post('/login', JSON.stringify(body));
+    return this.http.post('/login', body);
   }
 
   signup(body: any) {

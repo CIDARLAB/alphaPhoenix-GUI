@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, MenuController, NavController, NavParams, Platform} from 'ionic-angular';
 import {OptionsProvider} from "../../providers/options";
 
 
@@ -10,8 +10,12 @@ import {OptionsProvider} from "../../providers/options";
 })
 export class ResultsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController, private ops:OptionsProvider) {
+  private height;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController,
+              private ops:OptionsProvider, public platform:Platform) {
     this.menuCtrl.enable(true);
+    this.height = this.platform.height() - 180;
   }
 
 }

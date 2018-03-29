@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 
-/**
- * Generated class for the ResultsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +9,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ResultsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ResultsPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController) {
+    this.menuCtrl.enable(true);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, Platform } from 'ionic-angular';
+import {IonicPage, MenuController, NavController, Platform} from 'ionic-angular';
 import { OptionsProvider } from "../../providers/options";
 import { DesignProvider } from "../../providers/design";
 
@@ -17,8 +17,9 @@ export class DesignPage {
   public equation3: string = '\\int a {dx} = ax + C';
 
 
-  constructor(public navCtrl: NavController, public ops: OptionsProvider,public design:DesignProvider, public platform:Platform) {
+  constructor(public navCtrl: NavController, public ops: OptionsProvider,public design:DesignProvider, public platform:Platform, private menuCtrl: MenuController) {
     this.height = this.platform.height() - 245;
+    this.menuCtrl.enable(true);
   }
 
 }

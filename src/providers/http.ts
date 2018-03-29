@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class HttpProvider {
 
   private assetUrl = 'assets/';
-  public token;
+  public token = '0000';
 
   constructor(public http: HttpClient) {
 

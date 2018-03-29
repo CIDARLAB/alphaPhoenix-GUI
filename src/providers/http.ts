@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class HttpProvider {
 
   private assetUrl = 'assets/';
-  private token;
+  public token;
 
   constructor(public http: HttpClient) {
 
@@ -17,6 +17,10 @@ export class HttpProvider {
 
   signup(body: any) {
     return this.http.post('/signup', JSON.stringify(body));
+  }
+
+  specification(body: any) {
+    return this.http.post('/specification', JSON.stringify(body));
   }
 
   getDesign() {

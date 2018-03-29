@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ModalController, NavController} from "ionic-angular";
+import {App, ModalController, NavController, ToastController} from "ionic-angular";
 import {PerformanceProvider} from "./performance";
 import {StructuralProvider} from "./structural";
 import {HttpProvider} from "./http";
@@ -21,8 +21,8 @@ export class OptionsProvider {
   public registry = this.registries[0];
   public collection = this.collections[0];
 
-  constructor(public modalCtrl: ModalController, private http:HttpProvider, private navCtrl:NavController,
-              private pref:PerformanceProvider, private strc: StructuralProvider) {
+  constructor(public modalCtrl: ModalController, private http:HttpProvider, private toast:ToastController,
+              private pref:PerformanceProvider, private strc: StructuralProvider, private app:App) {
   }
 
   submitSpec() {
@@ -35,9 +35,14 @@ export class OptionsProvider {
       repository: this.collection
     };
     this.http.specification(body).toPromise().then(result=>{
-      this.navCtrl.setRoot('DesignPage');
+      this.app.getRootNav().setRoot('DesignPage');
     }).catch(error=>{
-      console.log(error);
+      this.toast.create({
+        message: error.message,
+        position: 'bottom',
+        showCloseButton: true,
+        dismissOnPageChange: true
+      }).present();
     });
   }
 

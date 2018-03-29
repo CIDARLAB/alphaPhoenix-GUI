@@ -17,13 +17,17 @@
             <ion-card-title>Sign Up</ion-card-title>
             <ion-list>
               <ion-item>
-                <ion-label floating>Email</ion-label>
-                <ion-input type="email"></ion-input>
+                <ion-label floating>Username</ion-label>
+                <ion-input type="text" [(ngModel)]="username"></ion-input>
               </ion-item>
               <ion-item>
+                <ion-label floating>Email</ion-label>
+                <ion-input type="email" [(ngModel)]="email"></ion-input>
+              </ion-item>
+              <!--<ion-item>
                 <ion-label floating>Full Name</ion-label>
                 <ion-input type="text"></ion-input>
-              </ion-item>
+              </ion-item>-->
               <!--
               <ion-item>
                 <ion-label floating>Institution</ion-label>
@@ -33,17 +37,22 @@
               </ion-item>-->
               <ion-item>
                 <ion-label floating>Password</ion-label>
-                <ion-input type="password"></ion-input>
+                <ion-input type="password" [(ngModel)]="password"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label floating>Confirm Password</ion-label>
-                <ion-input type="password"></ion-input>
+                <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
               </ion-item>
             </ion-list>
           </ion-card-content>
         </ion-card>
+        <ion-card *ngIf="error" color="danger">
+          <div padding>
+            {{error}}
+          </div>
+        </ion-card>
         <div padding>
-          <button ion-button>Sign up</button>
+          <button ion-button (click)="signup()">Sign up</button>
           <button ion-button clear (click)="navCtrl.setRoot('LoginPage')">Have a Account?</button>
         </div>
       </ion-col>

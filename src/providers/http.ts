@@ -12,11 +12,11 @@ export class HttpProvider {
   }
 
   login(body: any) {
-    return this.http.post('/login', body);
+    return this.http.post('/login', JSON.stringify(body));
   }
 
   signup(body: any) {
-    return this.http.post('/signup', body);
+    return this.http.post('/signup', JSON.stringify(body));
   }
 
   getDesign() {

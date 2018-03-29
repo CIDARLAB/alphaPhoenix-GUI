@@ -21,11 +21,11 @@ export class OptionsProvider {
   public registry = this.registries[0];
   public collection = this.collections[0];
 
-  constructor(public modalCtrl: ModalController, private http:HttpProvider, private navCtrl:NavController
+  constructor(public modalCtrl: ModalController, private http:HttpProvider, private navCtrl:NavController,
               private pref:PerformanceProvider, private strc: StructuralProvider) {
   }
 
-  submitSpec(){
+  submitSpec() {
     let body = {
       token: this.http.token,
       project: this.projectName,

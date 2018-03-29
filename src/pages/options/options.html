@@ -106,12 +106,19 @@
           </ion-col>
         </ion-row>
         <ion-row padding class="no-padding-top">
-          <button ion-button icon-only color="primary">
-            <ion-icon name="add"></ion-icon>
-          </button>
+          <ion-col margin-top col-1>
+            <button ion-button icon-only color="primary" (click)="add?addRegistry():add=true;">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-8 *ngIf="add">
+            <ion-item>
+              <ion-label floating>Add Registry</ion-label>
+              <ion-input [(ngModel)]="newRegistry"></ion-input>
+            </ion-item>
+          </ion-col>
         </ion-row>
       </ion-grid>
-
     </div>
   </ion-card>
   <ion-grid>

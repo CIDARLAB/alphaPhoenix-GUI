@@ -10,10 +10,20 @@ import { OptionsProvider } from "../../providers/options";
 export class OptionsPage {
 
   public height;
+  private add;
+  private newRegistry;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public ops:OptionsProvider, public platform:Platform, private menuCtrl:MenuController) {
     this.height = this.platform.height() - 275;
     this.menuCtrl.enable(true);
   }
+
+  addRegistry() {
+    this.ops.registries.push(this.newRegistry);
+    this.newRegistry = '';
+    this.add = false;
+  }
+
+
 
 }

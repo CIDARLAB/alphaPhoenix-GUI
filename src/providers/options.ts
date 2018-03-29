@@ -57,7 +57,8 @@ export class OptionsProvider {
         message: error.message,
         position: 'bottom',
         showCloseButton: true,
-        dismissOnPageChange: true
+        dismissOnPageChange: true,
+        duration: 5000,
       }).present();
       return;
     });

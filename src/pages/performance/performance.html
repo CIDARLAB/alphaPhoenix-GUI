@@ -21,10 +21,10 @@
         <ion-col col-2>
           <ion-label class="level">STL Editor</ion-label>
         </ion-col>
-        <ion-col col-1 offset-7>
+        <ion-col col-1 offset-6>
           <ion-label float-right>Sample:</ion-label>
         </ion-col>
-        <ion-col col-2>
+        <ion-col col-3>
           <ion-select [(ngModel)]="ops.sample" interface="popover" (ionChange)="ops.applySample();sample();">
             <ion-option *ngFor="let sample of ops.samples" value="{{sample}}">{{sample}}</ion-option>
           </ion-select>

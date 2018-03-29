@@ -32,7 +32,7 @@ export class OptionsProvider {
       eugene: this.strc.eugeneText,
       stl: this.pref.stlText,
       registry: this.registry,
-      repository: this.collection
+      collection: this.collection
     };
     this.http.specification(body).toPromise().then(result=>{
       this.app.getRootNav().setRoot('DesignPage');

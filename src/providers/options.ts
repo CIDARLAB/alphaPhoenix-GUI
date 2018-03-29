@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {App, ModalController, NavController, ToastController} from "ionic-angular";
+import {App, ModalController, ToastController} from "ionic-angular";
 import {PerformanceProvider} from "./performance";
 import {StructuralProvider} from "./structural";
 import {HttpProvider} from "./http";
@@ -47,13 +47,19 @@ export class OptionsProvider {
     };
     this.http.specification(body).toPromise().then(result=>{
       this.app.getRootNav().setRoot('DesignPage');
+      return;
     }).catch(error=>{
+      if(error.status == 200) {
+        this.app.getRootNav().setRoot('DesignPage');
+        return;
+      }
       this.toast.create({
         message: error.message,
         position: 'bottom',
         showCloseButton: true,
         dismissOnPageChange: true
       }).present();
+      return;
     });
   }
 

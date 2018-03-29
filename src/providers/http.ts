@@ -11,9 +11,7 @@ export class HttpProvider {
   }
 
   login(body: any) {
-    return this.http.post('/login', JSON.stringify(body), {
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-    });
+    return this.http.post('/login', JSON.stringify(body));
   }
 
   signup(body: any) {

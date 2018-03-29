@@ -16,13 +16,19 @@ export class OptionsProvider {
     topP: 75,
   };
   public registries = ['https://synbiohub.programmingbiology.org/'];
-  public collections = ['AlphaPhoenix'];
+  public collections = [{uri:'https://synbiohub.programmingbiology.org/public/AlphaPhoenix/AlphaPhoenix_collection/1',name:'AlphaPhoenix'}];
 
   public registry = this.registries[0];
-  public collection = this.collections[0];
+  public collection = 'https://synbiohub.programmingbiology.org/public/AlphaPhoenix/AlphaPhoenix_collection/1';
+
+  public loadingCollection;
 
   constructor(public modalCtrl: ModalController, private http:HttpProvider, private toast:ToastController,
               private pref:PerformanceProvider, private strc: StructuralProvider, private app:App) {
+    this.getCollection().then(() => {
+      this.collection = 'https://synbiohub.programmingbiology.org/public/AlphaPhoenix/AlphaPhoenix_collection/1';
+    });
+    console.log('test')
   }
 
   submitSpec() {
@@ -52,6 +58,31 @@ export class OptionsProvider {
 
   openGridTLI() {
     this.modalCtrl.create('GridTliPage').present();
+  }
+
+  getCollection() {
+    return new Promise((resolve, reject) => {
+      this.loadingCollection = true;
+      let url = ['http://', this.registry,'/rootCollections'];
+      if(this.registry.includes('http')) {
+        url.shift();
+      }
+      if(this.registry[this.registry.length-1] == '/') {
+        url[1] = 'rootCollections'
+      }
+      this.http.getUrl(url.join('')).then(data => {
+        this.collections = [];
+        for(let col of <any>data) {
+          this.collections.push(col);
+        }
+        this.collection = data[0].uri;
+        this.loadingCollection = false;
+        resolve();
+      }).catch(err => {
+        console.log(err);
+        reject();
+      });
+    });
   }
 
 }

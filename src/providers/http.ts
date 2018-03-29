@@ -43,4 +43,14 @@ export class HttpProvider {
     });
   }
 
+  getExample() {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.assetUrl + 'json/examples.json').subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+
 }

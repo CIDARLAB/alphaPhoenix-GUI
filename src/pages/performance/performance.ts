@@ -46,7 +46,7 @@ export class PerformancePage {
   }
 
   sample() {
-    this.editor.setValue("((G[0,100] in0 <= 4) && (G[0,100] in0 >= 0)) &&\n(((G[0,50] out0 >= 0)&&(G[0,50] out0 <= 25)) && ((G[50,100] out0 >= 25)&&(G[50,100] out0 <= 36)))")
+    this.editor.setValue(this.ops.examples[this.ops.sample]['stl']);
   }
 
 }

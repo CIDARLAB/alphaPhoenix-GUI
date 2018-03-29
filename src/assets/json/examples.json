@@ -1,0 +1,14 @@
+{
+  "Constitutive Expression": {
+    "eugene": "//Size=4\n// COUNTING\ncp1 exactly 1\nfl1 exactly 1\nr1 exactly 1\nt1 exactly 1\n// INTERACTIONS\ncp1 drives fl1\n//POSITIONING\nt1 after fl1\nfl1 after r1\nr1 after cp1\n//ORIENTATION\ncp1 SAME_ORIENTATION r1\ncp1 SAME_ORIENTATION t1\ncp1 SAME_ORIENTATION fl1\nALL_FORWARD\n",
+    "stl": "G[1000.0,1500.0](out0 <= 100.0) && G[1000.0,1500.0](out0 > 80.0)"
+  },
+  "Induction": {
+    "eugene": "",
+    "stl": ""
+  },
+  "Latch": {
+    "eugene": "",
+    "stl": ""
+  }
+}

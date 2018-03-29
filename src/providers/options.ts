@@ -10,7 +10,7 @@ export class OptionsProvider {
   public projectName = '';
   public designTooltip = '';
   public sample;
-  public samples = ['Full Demo','Not Gate','CIDAR','MIT'];
+  public samples = [];
   public options = {
     function: 'deterministic',
     topP: 75,
@@ -23,12 +23,17 @@ export class OptionsProvider {
 
   public loadingCollection;
 
+  public examples;
+
   constructor(public modalCtrl: ModalController, private http:HttpProvider, private toast:ToastController,
               private pref:PerformanceProvider, private strc: StructuralProvider, private app:App) {
     this.getCollection().then(() => {
       this.collection = 'https://synbiohub.programmingbiology.org/public/AlphaPhoenix/AlphaPhoenix_collection/1';
     });
-    console.log('test')
+    this.http.getExample().then(examples => {
+      this.examples = examples;
+      this.samples = Object.keys(this.examples);
+    });
   }
 
   submitSpec() {
@@ -58,6 +63,11 @@ export class OptionsProvider {
 
   openGridTLI() {
     this.modalCtrl.create('GridTliPage').present();
+  }
+
+  applySample() {
+    this.strc.eugeneText = this.examples[this.sample]['eugene'];
+    this.pref.stlText = this.examples[this.sample]['stl'];
   }
 
   getCollection() {

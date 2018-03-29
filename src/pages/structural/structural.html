@@ -28,7 +28,7 @@
           <ion-label float-right>Sample:</ion-label>
         </ion-col>
         <ion-col col-2>
-          <ion-select [(ngModel)]="ops.sample" interface="popover">
+          <ion-select [(ngModel)]="ops.sample" interface="popover" (ionChange)="ops.applySample();sample();">
             <ion-option *ngFor="let sample of ops.samples" value="{{sample}}">{{sample}}</ion-option>
           </ion-select>
         </ion-col>

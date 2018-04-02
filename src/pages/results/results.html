@@ -15,7 +15,51 @@
   </ion-navbar>
 </ion-header>
 <ion-content class="bg-color" padding>
-  <ion-card [ngStyle]="{height: height + 'px'}">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4 style="padding-right: 0px !important;">
+        <ion-card>
+          <ion-scroll [ngStyle]="{height: height + 'px'}" scrollY="true">
+            <ion-list>
+              <button ion-item>
+                Result 1
+              </button>
+              <button ion-item>
+                Result 2
+              </button>
+              <button ion-item>
+                Result 3
+              </button>
+              <button ion-item>
+                Result 4
+              </button>
+            </ion-list>
+          </ion-scroll>
+        </ion-card>
+      </ion-col>
+      <ion-col col-8 style="padding-left: 0px !important;">
+        <ion-card>
+          <ion-segment [(ngModel)]="tabs">
+            <ion-segment-button value="SBOL">
+              SBOL
+            </ion-segment-button>
+            <ion-segment-button value="Score">
+              Score
+            </ion-segment-button>
+            <ion-segment-button value="Placeholder">
+              Placeholder
+            </ion-segment-button>
+          </ion-segment>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row [ngStyle]="{height: height + 'px'}">
+      <ion-col>
+        <ion-card>
 
-  </ion-card>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

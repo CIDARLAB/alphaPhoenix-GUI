@@ -11,11 +11,12 @@ import {OptionsProvider} from "../../providers/options";
 export class ResultsPage {
 
   private height;
+  private tabs = 'SBOL';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController,
               private ops:OptionsProvider, public platform:Platform) {
     this.menuCtrl.enable(true);
-    this.height = this.platform.height() - 180;
+    this.height = ((this.platform.height() - 140) / 2);
   }
 
 }

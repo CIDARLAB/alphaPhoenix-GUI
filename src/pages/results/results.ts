@@ -15,9 +15,15 @@ export class ResultsPage {
   private tabs = 'SBOL';
 
   private data = [{
-    x: [0,1,2,3,4,5],
-    y: [0,1,2,3,4,5],
-    type: 'scatter',
+      x: [0, 1, 2, 3, 4, 5],
+      y: [0, 1, 2, 3, 4, 5],
+      type: 'scatter',
+      name: 'trace 1'
+    },{
+      x: [1,2,3,4,5,6],
+      y: [0,1,2,3,4,5],
+      type: 'scatter',
+    name: 'trace 2'
   }];
 
   private layout = {
@@ -28,7 +34,7 @@ export class ResultsPage {
       l: 40,
       r: 0,
       b: 40,
-      t: 0,
+      t: 20,
     },
     xaxis: {
       title: 'x-axis title'

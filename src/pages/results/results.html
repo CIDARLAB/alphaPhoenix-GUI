@@ -19,7 +19,7 @@
     <ion-row>
       <ion-col col-4 style="padding-right: 0px !important;">
         <ion-card>
-          <ion-scroll [ngStyle]="{height: height + 'px'}" scrollY="true">
+          <ion-scroll [ngStyle]="{height: (height * topHeight) + 'px'}" scrollY="true">
             <ion-list>
               <button ion-item>
                 Result 1
@@ -53,10 +53,10 @@
         </ion-card>
       </ion-col>
     </ion-row>
-    <ion-row [ngStyle]="{height: height + 'px'}">
+    <ion-row [ngStyle]="{height: (height * (1-topHeight)) + 'px'}">
       <ion-col>
         <ion-card>
-
+          <plotly [data]="data" [layout]="layout" [ngStyle]="{height: (height * (1-topHeight) - 10) + 'px !important'}"></plotly>
         </ion-card>
       </ion-col>
     </ion-row>

@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="white">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Projects</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="navCtrl.setRoot('WelcomePage')">
+        Logout
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="bg-color" padding>
+  <ion-card>
+    <ngx-datatable
+      class='material'
+      [rows]="data"
+      [columns]="columns"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="'auto'"
+    >
+    </ngx-datatable>
+  </ion-card>
+</ion-content>

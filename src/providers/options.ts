@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {App, ModalController, ToastController} from "ionic-angular";
+import {App, LoadingController, ModalController, ToastController} from "ionic-angular";
 import {PerformanceProvider} from "./performance";
 import {StructuralProvider} from "./structural";
 import {HttpProvider} from "./http";
@@ -26,7 +26,8 @@ export class OptionsProvider {
   public examples;
 
   constructor(public modalCtrl: ModalController, private http:HttpProvider, private toast:ToastController,
-              private pref:PerformanceProvider, private strc: StructuralProvider, private app:App) {
+              private pref:PerformanceProvider, private strc: StructuralProvider, private app:App,
+              private loadingCtrl: LoadingController) {
     this.getCollection().then(() => {
       this.collection = 'https://synbiohub.programmingbiology.org/public/AlphaPhoenix/AlphaPhoenix_collection/1';
     });
@@ -45,6 +46,11 @@ export class OptionsProvider {
       registry: this.registry,
       collection: this.collection
     };
+    let loading = this.loadingCtrl.create({
+      content: 'Building Design.',
+      dismissOnPageChange: true
+    });
+    loading.present();
     this.http.specification(body).toPromise().then(result=>{
       this.app.getRootNav().setRoot('DesignPage');
       return;
@@ -53,6 +59,8 @@ export class OptionsProvider {
         this.app.getRootNav().setRoot('DesignPage');
         return;
       }
+      loading.dismiss();
+      console.error(error);
       this.toast.create({
         message: error.message,
         position: 'bottom',

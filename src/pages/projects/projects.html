@@ -109,6 +109,17 @@
           {{value}}
         </ng-template>
       </ngx-datatable-column>
+      <ngx-datatable-column name="id">
+        <ng-template let-column="column" ngx-datatable-header-template>
+          Delete
+        </ng-template>
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <button ion-button icon-only clear>
+            <ion-icon name="trash" color="danger"></ion-icon>
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
     </ngx-datatable>
+
   </ion-card>
 </ion-content>

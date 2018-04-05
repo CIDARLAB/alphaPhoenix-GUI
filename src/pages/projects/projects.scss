@@ -9,8 +9,13 @@ page-projects {
   .datatable-header-cell {
     font-size: 1.2em;
     font-weight: bold;
+    text-align: center !important;
   }
-  
+
+  svg {
+    display: block;
+    margin: 0 auto;
+  }
 
   .datatable-row-even {
     background: rgba(240, 240, 240, 1);

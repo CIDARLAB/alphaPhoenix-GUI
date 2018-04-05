@@ -20,6 +20,7 @@ export class DesignProvider {
         for(let j = 0; j < this.circuits[i]['tus'].length; j++) {
           this.circuits[i]['tus'][j].parts = Object.keys(this.circuits[i]['tus'][j]);
           this.circuits[i]['tus'][j].parts.splice(this.circuits[i]['tus'][j].parts.indexOf('candidates'), 1);
+          this.circuits[i]['tus'][j].parts.splice(this.circuits[i]['tus'][j].parts.indexOf('img'), 1);
           this.circuits[i]['tus'][j].index = j + 1;
           this.circuits[i]['tus'][j].active = j==0?true:false;
           if(j == 0) {

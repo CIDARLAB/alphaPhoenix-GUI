@@ -12,11 +12,16 @@
   </ion-navbar>
 </ion-header>
 <ion-content class="bg-color" padding>
+  <button ion-button icon-left (click)="navCtrl.setRoot('PerformancePage')">
+    <ion-icon name="add"></ion-icon>
+    Create Project
+  </button>
   <ion-card>
     <ngx-datatable
       class='material'
       [rows]="data"
       [columns]="columns"
+      [sorts]="[{prop: 'projectName', dir: 'asc'},{prop:'createdOn', dir:'asc'}]"
       [columnMode]="'force'"
       [headerHeight]="50"
       [footerHeight]="50"

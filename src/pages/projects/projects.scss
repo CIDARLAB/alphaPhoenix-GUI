@@ -1,8 +1,45 @@
 page-projects {
 
-  @import '/node_modules/@swimlane/ngx-datatable/release/index.css';
-  @import '/node_modules/@swimlane/ngx-datatable/release/themes/material.css';
-  @import '/node_modules/@swimlane/ngx-datatable/release/assets/icons.css';
+  .datatable-header {
+    padding: 1em;
+    font-weight: bold;
+    border-bottom: solid grey 1px;
+  }
 
+  .datatable-header-cell {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+
+  .datatable-row-even {
+    background: rgba(240, 240, 240, 1);
+  }
+
+  .datatable-row-odd {
+    background: rgba(255, 255, 255,1);
+  }
+
+  .datatable-body-cell {
+    font-size: 1.2em;
+    padding: 0.75em;
+  }
+
+  // Style footer appearance
+  .datatable-footer {
+    border-top: solid grey 1px;
+    padding: 0 1em 0 1em;
+
+    .pager {
+      li {
+        padding: 0 1em !important;
+
+        a {
+          color: rgba(68, 68, 68, 1);
+          text-decoration: none;
+        }
+      }
+    }
+  }
 
 }

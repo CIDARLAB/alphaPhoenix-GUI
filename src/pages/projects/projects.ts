@@ -15,6 +15,13 @@ export class ProjectsPage {
     design: 'complete',
     results: 'complete',
     createdOn: new Date()
+  },{
+    id: '0001',
+    projectName: 'Project 2',
+    specification: 'complete',
+    design: 'warning',
+    results: '',
+    createdOn: new Date()
   }];
 
   public columns : any = [{

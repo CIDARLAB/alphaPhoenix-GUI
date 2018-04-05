@@ -9,8 +9,9 @@ import {HttpProvider} from "../../providers/http";
 })
 export class SignupPage {
 
-  institutions = ['Boston University','Massachusetts Institute Of Technology'];
-  public username;
+  public institutions = ['Boston University','Massachusetts Institute Of Technology'];
+  public name;
+  public institution;
   public email;
   public password;
   public confirmPassword;
@@ -22,7 +23,7 @@ export class SignupPage {
 
   signup() {
     this.error = null;
-    if(!this.username || !this.password || !this.email || !this.confirmPassword) {
+    if(!this.name || !this.institution || !this.password || !this.email || !this.confirmPassword) {
       this.error = 'Please fill out all required information';
       return;
     }
@@ -31,7 +32,8 @@ export class SignupPage {
       return;
     }
     this.http.signup({
-      "username": this.username,
+      "name": this.name,
+      "institution": this.name,
       "password": this.password,
       "email": this.email
     }).toPromise().then(result=> {

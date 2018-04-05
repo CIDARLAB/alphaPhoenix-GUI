@@ -11,6 +11,7 @@ export class DesignProvider {
   public activeTU = 1;
   public activePart = [];
   public done = false;
+  public rootImage;
 
   constructor(public http: HttpProvider, public ops:OptionsProvider) {
     this.http.getDesign(ops.projectName).then(circuits => {
@@ -31,6 +32,7 @@ export class DesignProvider {
           }
         }
       }
+      this.rootImage = this.circuits[0].img;
       this.done = true;
     });
   }

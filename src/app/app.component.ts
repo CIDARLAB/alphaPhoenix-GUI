@@ -10,7 +10,7 @@ import {MenuProvider} from "../providers/menu";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = 'PerformancePage';
+  rootPage: any = 'WelcomePage';
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuProvider) {
     this.initializeApp();

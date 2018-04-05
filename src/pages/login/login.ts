@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 })
 export class LoginPage {
 
-  public username;
+  public email;
   public password;
   public error;
 
@@ -20,12 +20,12 @@ export class LoginPage {
 
   login() {
     this.error = null;
-    if(!this.username || !this.password) {
+    if(!this.email || !this.password) {
       this.error = 'Please fill out all required information';
       return;
     }
     this.http.login({
-      "username": this.username,
+      "username": this.email,
       "password": this.password
     }).toPromise().then(result=> {
       this.navCtrl.push('PerformancePage');

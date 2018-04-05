@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpProvider} from "./http";
+import {OptionsProvider} from "./options";
 
 
 @Injectable()
@@ -11,8 +12,8 @@ export class DesignProvider {
   public activePart = [];
   public done = false;
 
-  constructor(public http: HttpProvider) {
-    this.http.getDesign().then(circuits => {
+  constructor(public http: HttpProvider, public ops:OptionsProvider) {
+    this.http.getDesign(ops.projectName).then(circuits => {
       this.circuits = <any>circuits;
       for(let i = 0; i < this.circuits.length; i++) {
         this.circuits[i].index = i + 1;

@@ -23,9 +23,13 @@ export class HttpProvider {
     return this.http.post('/specification', JSON.stringify(body));
   }
 
-  getDesign() {
+  getDesign(projectId: any) {
+    let body = {
+      project: projectId,
+      token: this.token
+    };
     return new Promise((resolve, reject) => {
-      this.http.get(this.assetUrl + 'json/design.json').subscribe(res => {
+      this.http.post('/design',JSON.stringify(body)).subscribe(res => {
         resolve(res);
       }, (err) => {
         reject(err);

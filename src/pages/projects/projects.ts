@@ -13,13 +13,13 @@ export class ProjectsPage {
     projectName: 'Project 1',
     specification: 'complete',
     design: 'complete',
-    results: 'complete',
+    results: 'error',
     createdOn: new Date()
   },{
     id: '0001',
     projectName: 'Project 2',
     specification: 'complete',
-    design: 'warning',
+    design: 'working',
     results: '',
     createdOn: new Date()
   }];

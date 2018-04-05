@@ -30,7 +30,6 @@ export class DesignProvider {
           }
         }
       }
-      console.log(this.circuits);
       this.done = true;
     });
   }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
+import {OptionsProvider} from "../../providers/options";
 
 @IonicPage()
 @Component({
@@ -37,7 +38,8 @@ export class ProjectsPage {
     name: 'Created On'
   }];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController,
+    public ops:OptionsProvider) {
     this.menuCtrl.enable(false);
   }
 

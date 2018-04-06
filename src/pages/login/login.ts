@@ -28,7 +28,7 @@ export class LoginPage {
       "username": this.email,
       "password": this.password
     }).toPromise().then(result=> {
-      this.navCtrl.push('PerformancePage');
+      this.navCtrl.push('ProjectsPage');
     }).catch(error => {
       this.error = 'Incorrect username or password';
     });

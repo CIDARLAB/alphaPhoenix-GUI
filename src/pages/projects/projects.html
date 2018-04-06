@@ -5,8 +5,9 @@
     </button>
     <ion-title>My Projects</ion-title>
     <ion-buttons end>
-      <button ion-button (click)="navCtrl.setRoot('WelcomePage')">
-        Logout
+      <button ion-button icon-left (click)="ops.openMenu($event)">
+        <ion-icon name="person"></ion-icon>
+        User
       </button>
     </ion-buttons>
   </ion-navbar>

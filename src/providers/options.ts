@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {App, LoadingController, ModalController, ToastController} from "ionic-angular";
+import {App, LoadingController, ModalController, PopoverController, ToastController} from "ionic-angular";
 import {PerformanceProvider} from "./performance";
 import {StructuralProvider} from "./structural";
 import {HttpProvider} from "./http";
@@ -27,7 +27,7 @@ export class OptionsProvider {
 
   constructor(public modalCtrl: ModalController, private http:HttpProvider, private toast:ToastController,
               private pref:PerformanceProvider, private strc: StructuralProvider, private app:App,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController, private popoverCtrl:PopoverController) {
     this.getCollection().then(() => {
       this.collection = 'https://synbiohub.programmingbiology.org/public/AlphaPhoenix/AlphaPhoenix_collection/1';
     });
@@ -107,6 +107,13 @@ export class OptionsProvider {
         console.log(err);
         reject();
       });
+    });
+  }
+
+  openMenu(myEvent) {
+    let popover = this.popoverCtrl.create('PopoverMenuPage');
+    popover.present({
+      ev: myEvent
     });
   }
 

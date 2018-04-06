@@ -37,7 +37,7 @@ export class SignupPage {
       "password": this.password,
       "email": this.email
     }).toPromise().then(result=> {
-      this.navCtrl.push('PerformancePage');
+      this.navCtrl.push('ProjectsPage');
     }).catch(error => {
       this.error = 'Error';
     });

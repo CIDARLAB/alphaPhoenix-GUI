@@ -5,8 +5,9 @@
     </button>
     <ion-title>{{ops.projectName}}</ion-title>
     <ion-buttons end>
-      <button ion-button (click)="navCtrl.setRoot('WelcomePage')">
-        Logout
+      <button ion-button icon-left (click)="ops.openMenu($event)">
+        <ion-icon name="person"></ion-icon>
+        User
       </button>
       <button ion-button icon-only (click)="navCtrl.setRoot('OptionsPage')" class="active">
         <ion-icon name="settings"></ion-icon>

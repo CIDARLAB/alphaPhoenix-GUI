@@ -34,6 +34,8 @@ export class DesignProvider {
       }
       this.rootImage = this.circuits[0].img;
       this.done = true;
+    }).catch((err) =>{
+      console.error(err)
     });
   }
 

@@ -42,11 +42,13 @@ export class PerformancePage {
   }
 
   ionViewDidEnter() {
-    this.editor.setValue(this.per.stlText);
+    this.editor.setValue(this.per.stlText,1);
   }
 
   sample() {
-    this.editor.setValue(this.ops.examples[this.ops.sample]['stl']);
+    this.editor.setValue(this.ops.examples[this.ops.sample]['stl'],1);
+    let structural = this.menu.getMenuItem('StructuralPage');
+    structural.status = 'Complete';
   }
 
 }

@@ -42,10 +42,12 @@ export class StructuralPage {
   }
 
   ionViewDidEnter() {
-    this.editor.setValue(this.str.eugeneText);
+    this.editor.setValue(this.str.eugeneText,1);
   }
 
   sample() {
-    this.editor.setValue(this.ops.examples[this.ops.sample]['eugene']);
+    this.editor.setValue(this.ops.examples[this.ops.sample]['eugene'],1);
+    let performace = this.menu.getMenuItem('PerformancePage');
+    performace.status = 'Complete';
   }
 }

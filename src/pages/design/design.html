@@ -24,7 +24,7 @@
         <ion-card>
           <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding scrollY="true">
             <ion-list no-padding>
-              <button ion-item *ngFor="let circuit of design.circuits" (click)="design.activeCircuit = circuit.index">
+              <button ion-item *ngFor="let circuit of design.circuits" (click)="design.activeCircuit = circuit.index;design.rootImage = circuit.img">
                 <ion-label [ngClass]="design.activeCircuit == circuit.index?'active':''">Circuit {{circuit.index}}</ion-label>
                 <ion-icon name="ios-arrow-forward" item-right></ion-icon>
               </button>
@@ -40,13 +40,13 @@
           <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding scrollY="true">
             <ion-list no-padding>
               <div *ngFor="let tu of design.circuits[design.activeCircuit-1]['tus']">
-                <button ion-item (click)="tu.active = !tu.active">
+                <button ion-item (click)="tu.active = !tu.active;design.rootImage = tu.img">
                   <ion-label [ngClass]="design.activePart[design.activeCircuit-1]['activeTU'] == tu.index?'active':''">TU {{tu.index}}</ion-label>
                   <ion-icon name="ios-arrow-up" item-right *ngIf="!tu.active"></ion-icon>
                   <ion-icon name="ios-arrow-down" item-right *ngIf="tu.active"></ion-icon>
                 </button>
                 <ion-list *ngIf="tu.active">
-                  <button ion-item *ngFor="let part of tu.parts" (click)="design.activeTU = tu.index; design.activePart[design.activeCircuit-1] = { activeTU: tu.index, activePart: part}">
+                  <button ion-item *ngFor="let part of tu.parts" (click)="design.activeTU = tu.index; design.activePart[design.activeCircuit-1] = { activeTU: tu.index, activePart: part};design.rootImage = tu[part]['img']">
                     <ion-avatar item-start>
                       <img src="assets/parts/{{part}}.png">
                     </ion-avatar>
@@ -89,7 +89,7 @@
       </ion-segment-button>
     </ion-segment>
     <ion-row *ngIf="tabs == 'SBOL'" style="height: 100%" padding>
-      <img src="design.rootImage" class="sbol">
+      <img src="{{design.rootImage}}" class="sbol">
     </ion-row>
     <ion-row *ngIf="tabs == 'SBML'" style="height: 100%" padding>
       <p><ng-katex [equation]="equation"></ng-katex></p>

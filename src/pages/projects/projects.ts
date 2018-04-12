@@ -10,25 +10,10 @@ import {HttpProvider} from "../../providers/http";
 })
 export class ProjectsPage {
 
-  public data = [{
-    id: '0000',
-    projectName: 'Project 1',
-    specification: 'complete',
-    design: 'complete',
-    results: 'error',
-    createdOn: new Date()
-  },{
-    id: '0001',
-    projectName: 'Project 2',
-    specification: 'complete',
-    design: 'working',
-    results: '',
-    createdOn: new Date()
-  }];
+  public data = [];
 
   public columns : any = [{
     prop: 'projectName'
-
   },{
     name: 'Specification'
   },{
@@ -45,7 +30,31 @@ export class ProjectsPage {
     let self = this;
     this.http.projects().toPromise().then(projects => {
       self.data = <any>projects;
+      for(let project of this.data) {
+        this.formatProject(project);
+        project['createdOn'] = new Date(project['createdOn']).toLocaleDateString();
+      }
     });
+  }
+
+  formatProject(project) {
+    switch(project.step) {
+      case "SPECIFY":
+        project['specification'] = project.state;
+        project['design'] = "not complete";
+        project['results'] = "not complete";
+        break;
+      case "DESIGN":
+        project['specification'] = 'COMPLETED';
+        project['design'] = project.state;
+        project['results'] = "not complete";
+        break;
+      case "RESULTS":
+        project['specification'] = 'COMPLETED';
+        project['design'] = 'COMPLETED';
+        project['results'] = project.state;
+        break;
+    }
   }
 
 }

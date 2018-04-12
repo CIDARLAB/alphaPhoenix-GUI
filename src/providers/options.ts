@@ -40,6 +40,7 @@ export class OptionsProvider {
   submitSpec() {
     let body = {
       token: this.http.token,
+      id: this.http.id,
       project: this.projectName,
       eugene: this.strc.eugeneText,
       stl: this.pref.stlText,

@@ -10,8 +10,22 @@ export class HttpProvider {
   public user;
   public session;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private storage: Storage) {
+    this.token = this.storage.getItem('token');
+    this.id = this.storage.getItem('id');
+    this.user = this.storage.getItem('user');
+    this.session = this.storage.getItem('session');
+  }
 
+  setUserInfo(token,id,user,session) {
+    this.token = token;
+    this.id = id;
+    this.user = user;
+    this.session = session;
+    this.storage.setItem('token',token);
+    this.storage.setItem('id',id);
+    this.storage.setItem('user',user);
+    this.storage.setItem('session',session);
   }
 
   login(body: any) {

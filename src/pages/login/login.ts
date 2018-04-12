@@ -31,7 +31,7 @@ export class LoginPage {
       this.http.token = result['token'];
       this.http.user = result['user'];
       this.http.session = result['session'];
-      this.navCtrl.push('ProjectsPage');
+      this.navCtrl.setRoot('ProjectsPage');
     }).catch(error => {
       this.error = 'Incorrect username or password';
     });

@@ -22,6 +22,14 @@ export class HttpProvider {
     return this.http.post('/signup', JSON.stringify(body));
   }
 
+  projects() {
+    let body = {
+      id: this.id,
+      token: this.token
+    };
+    return this.http.post('/projects',JSON.stringify(body));
+  }
+
   specification(body: any) {
     return this.http.post('/specification', JSON.stringify(body));
   }

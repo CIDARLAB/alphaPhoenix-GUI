@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {OptionsProvider} from "../../providers/options";
+import {HttpProvider} from "../../providers/http";
 
 @IonicPage()
 @Component({
@@ -39,9 +40,12 @@ export class ProjectsPage {
   }];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController,
-    public ops:OptionsProvider) {
+    public ops:OptionsProvider, private http:HttpProvider) {
     this.menuCtrl.enable(false);
+    let self = this;
+    this.http.projects().toPromise().then(projects => {
+      self.data = <any>projects;
+    });
   }
-
 
 }

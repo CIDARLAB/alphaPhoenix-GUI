@@ -33,7 +33,7 @@ export class SignupPage {
     }
     this.http.signup({
       "name": this.name,
-      "institution": this.name,
+      "institution": this.institution,
       "password": this.password,
       "email": this.email
     }).toPromise().then(result=> {

@@ -38,6 +38,7 @@ export class SignupPage {
       "email": this.email
     }).toPromise().then(result=> {
       this.http.token = result['token'];
+      this.http.id = result['id'];
       this.http.user = result['user'];
       this.http.session = result['session'];
       this.navCtrl.setRoot('ProjectsPage');

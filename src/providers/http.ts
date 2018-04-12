@@ -6,6 +6,7 @@ export class HttpProvider {
 
   private assetUrl = 'assets/';
   public token;
+  public id;
   public user;
   public session;
 

@@ -18,7 +18,7 @@ import { OptionsProvider } from '../providers/options';
 import { DesignProvider } from '../providers/design';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { IonicStorageModule } from "@ionic/storage";
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -26,12 +26,12 @@ import { IonicStorageModule } from "@ionic/storage";
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    HttpClientModule,
     BrowserAnimationsModule,
     TooltipsModule,
     NgxDatatableModule,
-    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

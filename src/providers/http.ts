@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class HttpProvider {
@@ -11,10 +12,18 @@ export class HttpProvider {
   public session;
 
   constructor(public http: HttpClient, private storage: Storage) {
-    this.token = this.storage.getItem('token');
-    this.id = this.storage.getItem('id');
-    this.user = this.storage.getItem('user');
-    this.session = this.storage.getItem('session');
+    this.storage.get('token').then((token) =>{
+      this.token = token;
+    });
+    this.storage.get('id').then((id) =>{
+      this.id = id;
+    });
+    this.storage.get('user').then((user) =>{
+      this.user = user;
+    });
+    this.storage.get('session').then((session) =>{
+      this.session = session;
+    });
   }
 
   setUserInfo(token,id,user,session) {
@@ -22,10 +31,10 @@ export class HttpProvider {
     this.id = id;
     this.user = user;
     this.session = session;
-    this.storage.setItem('token',token);
-    this.storage.setItem('id',id);
-    this.storage.setItem('user',user);
-    this.storage.setItem('session',session);
+    this.storage.set('token',token);
+    this.storage.set('id',id);
+    this.storage.set('user',user);
+    this.storage.set('session',session);
   }
 
   login(body: any) {

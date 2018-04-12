@@ -25,9 +25,12 @@ export class LoginPage {
       return;
     }
     this.http.login({
-      "username": this.email,
+      "email": this.email,
       "password": this.password
     }).toPromise().then(result=> {
+      this.http.token = result['token'];
+      this.http.user = result['user'];
+      this.http.session = result['session'];
       this.navCtrl.push('ProjectsPage');
     }).catch(error => {
       this.error = 'Incorrect username or password';

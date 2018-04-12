@@ -37,7 +37,10 @@ export class SignupPage {
       "password": this.password,
       "email": this.email
     }).toPromise().then(result=> {
-      this.navCtrl.push('ProjectsPage');
+      this.http.token = result['token'];
+      this.http.user = result['user'];
+      this.http.session = result['session'];
+      this.navCtrl.setRoot('ProjectsPage');
     }).catch(error => {
       this.error = 'Error';
     });

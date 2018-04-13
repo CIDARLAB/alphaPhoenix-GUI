@@ -45,7 +45,11 @@ export class SignupPage {
       );
       this.navCtrl.setRoot('ProjectsPage');
     }).catch(error => {
-      this.error = 'Error';
+      if(error.status == 409) {
+        this.error = 'Email already in user';
+      } else {
+        this.error = 'Server Error'
+      }
     });
   }
 

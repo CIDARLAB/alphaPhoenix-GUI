@@ -28,12 +28,18 @@ export class ProjectsPage {
     public ops:OptionsProvider, private http:HttpProvider) {
     this.menuCtrl.enable(false);
     let self = this;
-    this.http.projects().toPromise().then(projects => {
-      self.data = <any>projects;
-      for(let project of this.data) {
-        this.formatProject(project);
-        project['createdOn'] = new Date(project['createdOn']).toLocaleDateString();
-      }
+    this.http.getLoginInfo().then((info) => {
+      this.http.token = info[0];
+      this.http.id = info[1];
+      this.http.user = info[2];
+      this.http.session = info[3];
+      this.http.projects().toPromise().then(projects => {
+        self.data = <any>projects;
+        for (let project of this.data) {
+          this.formatProject(project);
+          project['createdOn'] = new Date(project['createdOn']).toLocaleDateString();
+        }
+      });
     });
   }
 

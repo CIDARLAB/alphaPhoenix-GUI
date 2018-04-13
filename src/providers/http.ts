@@ -6,23 +6,20 @@ import { Storage } from '@ionic/storage';
 export class HttpProvider {
 
   private assetUrl = 'assets/';
+  private baseUrl = '/';
+  //private baseUrl = 'http://localhost:9090/';
   public token;
   public id;
   public user;
   public session;
 
   constructor(public http: HttpClient, private storage: Storage) {
-    this.storage.get('token').then((token) =>{
-      this.token = token;
-    });
-    this.storage.get('id').then((id) =>{
-      this.id = id;
-    });
-    this.storage.get('user').then((user) =>{
-      this.user = user;
-    });
-    this.storage.get('session').then((session) =>{
-      this.session = session;
+    this.getLoginInfo().then(info => {
+      console.log(info);
+      this.token = info[0];
+      this.id = info[1];
+      this.user = info[2];
+      this.session = info[3];
     });
   }
 
@@ -38,11 +35,11 @@ export class HttpProvider {
   }
 
   login(body: any) {
-    return this.http.post('/login', JSON.stringify(body));
+    return this.http.post(this.baseUrl + 'login', JSON.stringify(body));
   }
 
   signup(body: any) {
-    return this.http.post('/signup', JSON.stringify(body));
+    return this.http.post(this.baseUrl + 'signup', JSON.stringify(body));
   }
 
   projects() {
@@ -50,11 +47,11 @@ export class HttpProvider {
       id: this.id,
       token: this.token
     };
-    return this.http.post('/projects',JSON.stringify(body));
+    return this.http.post(this.baseUrl + 'projects',JSON.stringify(body));
   }
 
   specification(body: any) {
-    return this.http.post('/specification', JSON.stringify(body));
+    return this.http.post(this.baseUrl + 'specification', JSON.stringify(body));
   }
 
   getDesign(projectId: any) {
@@ -69,10 +66,11 @@ export class HttpProvider {
     */
     let body = {
       project: projectId,
-      token: this.token
+      token: this.token,
+      id: this.id
     };
     return new Promise((resolve, reject) => {
-      this.http.post('/design',JSON.stringify(body)).subscribe(res => {
+      this.http.post(this.baseUrl + 'design',JSON.stringify(body)).subscribe(res => {
         resolve(res);
       }, (err) => {
         reject(err);
@@ -98,6 +96,16 @@ export class HttpProvider {
         reject(err);
       });
     });
+  }
+
+  getLoginInfo() {
+    let promises = [
+      this.storage.get('token'),
+      this.storage.get('id'),
+      this.storage.get('user'),
+      this.storage.get('session')
+    ];
+    return Promise.all(promises);
   }
 
 }

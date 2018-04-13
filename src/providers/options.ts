@@ -118,4 +118,8 @@ export class OptionsProvider {
     });
   }
 
+  getUsername() {
+    return this.http.user.name;
+  }
+
 }

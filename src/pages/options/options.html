@@ -7,7 +7,7 @@
     <ion-buttons end>
       <button ion-button icon-left (click)="ops.openMenu($event)">
         <ion-icon name="person"></ion-icon>
-        User
+        {{ops.getUsername()}}
       </button>
       <button ion-button icon-only (click)="navCtrl.setRoot('OptionsPage')" class="active">
         <ion-icon name="settings"></ion-icon>

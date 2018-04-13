@@ -13,114 +13,117 @@
   </ion-navbar>
 </ion-header>
 <ion-content class="bg-color" padding>
-  <button ion-button icon-left (click)="navCtrl.setRoot('PerformancePage')">
-    <ion-icon name="add"></ion-icon>
-    Create Project
-  </button>
-  <ion-card>
-    <ngx-datatable
-      class='material'
-      [rows]="data"
-      [columns]="columns"
-      [sorts]="[{prop: 'projectName', dir: 'asc'},{prop:'createdOn', dir:'asc'}]"
-      [columnMode]="'force'"
-      [headerHeight]="50"
-      [footerHeight]="50"
-      [rowHeight]="'auto'">
-      <ngx-datatable-column name="projectName">
-        <ng-template let-column="column" ngx-datatable-header-template>
-         Project Name
-        </ng-template>
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          {{value}}
-        </ng-template>
-      </ngx-datatable-column>
+  <ion-row padding>
+    <button ion-button icon-left (click)="navCtrl.setRoot('PerformancePage')" style="margin: 0px">
+      <ion-icon name="add"></ion-icon>
+      Create Project
+    </button>
+  </ion-row>
+  <ion-row padding-left>
+    <ion-card>
+      <ngx-datatable
+        class='material'
+        [rows]="data"
+        [columns]="columns"
+        [sorts]="[{prop: 'projectName', dir: 'asc'},{prop:'createdOn', dir:'asc'}]"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'">
+        <ngx-datatable-column name="projectName">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            Project Name
+          </ng-template>
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>
 
-      <ngx-datatable-column name="specification">
-        <ng-template let-column="column" ngx-datatable-header-template>
-          Specification
-        </ng-template>
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          <div *ngIf="value == 'COMPLETED'">
-            <svg height="14" width="14">
-              <circle cx="7" cy="7" r="7" fill="limegreen" />
-            </svg>
-          </div>
-          <div *ngIf="value == 'INPROGRESS'">
-            <svg height="14" width="14">
-              <circle cx="7" cy="7" r="7" fill="gold" />
-            </svg>
-          </div>
-          <div *ngIf="value == 'ERROR'">
-            <svg height="14" width="14">
-              <circle cx="7" cy="7" r="7" fill="red" />
-            </svg>
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="design">
-        <ng-template let-column="column" ngx-datatable-header-template>
-          Design
-        </ng-template>
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          <div *ngIf="value == 'COMPLETED'">
-            <svg height="14" width="14">
-              <circle cx="7" cy="7" r="7" fill="limegreen" />
-            </svg>
-          </div>
-          <div *ngIf="value == 'INPROGRESS'">
-            <svg height="14" width="14">
-              <circle cx="7" cy="7" r="7" fill="gold" />
-            </svg>
-          </div>
-          <div *ngIf="value == 'ERROR'">
-            <svg height="14" width="14">
-              <circle cx="7" cy="7" r="7" fill="red" />
-            </svg>
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="results">
-        <ng-template let-column="column" ngx-datatable-header-template>
-          Results
-        </ng-template>
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          <div *ngIf="value == 'COMPLETED'">
-            <svg height="14" width="14">
-              <circle cx="7" cy="7" r="7" fill="limegreen" />
-            </svg>
-          </div>
-          <div *ngIf="value == 'INPROGRESS'">
-            <svg height="14" width="14">
-              <circle cx="7" cy="7" r="7" fill="gold" />
-            </svg>
-          </div>
-          <div *ngIf="value == 'ERROR'">
-            <svg height="14" width="14">
-              <circle cx="7" cy="7" r="7" fill="red" />
-            </svg>
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="createdOn">
-        <ng-template let-column="column" ngx-datatable-header-template>
-          Created On
-        </ng-template>
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          {{value}}
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="id">
-        <ng-template let-column="column" ngx-datatable-header-template>
-          Delete
-        </ng-template>
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          <button ion-button icon-only clear>
-            <ion-icon name="trash" color="danger"></ion-icon>
-          </button>
-        </ng-template>
-      </ngx-datatable-column>
-    </ngx-datatable>
-
-  </ion-card>
+        <ngx-datatable-column name="specification">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            Specification
+          </ng-template>
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            <div *ngIf="value == 'COMPLETED'">
+              <svg height="14" width="14">
+                <circle cx="7" cy="7" r="7" fill="limegreen" />
+              </svg>
+            </div>
+            <div *ngIf="value == 'INPROGRESS'">
+              <svg height="14" width="14">
+                <circle cx="7" cy="7" r="7" fill="gold" />
+              </svg>
+            </div>
+            <div *ngIf="value == 'ERROR'">
+              <svg height="14" width="14">
+                <circle cx="7" cy="7" r="7" fill="red" />
+              </svg>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="design">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            Design
+          </ng-template>
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            <div *ngIf="value == 'COMPLETED'">
+              <svg height="14" width="14">
+                <circle cx="7" cy="7" r="7" fill="limegreen" />
+              </svg>
+            </div>
+            <div *ngIf="value == 'INPROGRESS'">
+              <svg height="14" width="14">
+                <circle cx="7" cy="7" r="7" fill="gold" />
+              </svg>
+            </div>
+            <div *ngIf="value == 'ERROR'">
+              <svg height="14" width="14">
+                <circle cx="7" cy="7" r="7" fill="red" />
+              </svg>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="results">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            Results
+          </ng-template>
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            <div *ngIf="value == 'COMPLETED'">
+              <svg height="14" width="14">
+                <circle cx="7" cy="7" r="7" fill="limegreen" />
+              </svg>
+            </div>
+            <div *ngIf="value == 'INPROGRESS'">
+              <svg height="14" width="14">
+                <circle cx="7" cy="7" r="7" fill="gold" />
+              </svg>
+            </div>
+            <div *ngIf="value == 'ERROR'">
+              <svg height="14" width="14">
+                <circle cx="7" cy="7" r="7" fill="red" />
+              </svg>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="createdOn">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            Created On
+          </ng-template>
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="id">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            Delete
+          </ng-template>
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            <button ion-button icon-only clear>
+              <ion-icon name="trash" color="danger"></ion-icon>
+            </button>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </ion-card>
+  </ion-row>
 </ion-content>

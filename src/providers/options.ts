@@ -119,7 +119,11 @@ export class OptionsProvider {
   }
 
   getUsername() {
-    return this.http.user.name;
+    if(this.http.user) {
+      return this.http.user.name;
+    } else {
+      return "Loading"
+    }
   }
 
 }

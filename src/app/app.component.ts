@@ -22,15 +22,15 @@ export class MyApp {
   initializeApp() {
     this.platform.ready().then(() => {
       this.initializeStorage().then(()=> {
-        this.storage.get('token').then((token) => {
-          if(token) {
+        this.http.getLoginInfo().then(() => {
+          if(this.http.token) {
             this.rootPage = 'ProjectsPage';
           } else {
             this.rootPage = 'WelcomePage';
           }
+          this.statusBar.styleDefault();
+          this.splashScreen.hide();
         });
-        this.statusBar.styleDefault();
-        this.splashScreen.hide();
       });
     });
   }

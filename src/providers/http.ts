@@ -15,11 +15,22 @@ export class HttpProvider {
 
   constructor(public http: HttpClient, private storage: Storage) {
     this.getLoginInfo().then(info => {
-      console.log(info);
       this.token = info[0];
       this.id = info[1];
       this.user = info[2];
       this.session = info[3];
+    });
+  }
+
+  loadLogin() {
+    return new Promise((resolve, reject) => {
+      this.getLoginInfo().then(info => {
+        this.token = info[0];
+        this.id = info[1];
+        this.user = info[2];
+        this.session = info[3];
+        resolve();
+      });
     });
   }
 

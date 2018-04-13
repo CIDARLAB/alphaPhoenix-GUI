@@ -18,6 +18,11 @@ export class MenuProvider {
       page: 'StructuralPage',
       status: 'None',
       message: '',
+    },{
+      name: 'Library',
+      page: 'LibraryPage',
+      status: 'None',
+      message: '',
     }]
   },{
     title: 'Design',

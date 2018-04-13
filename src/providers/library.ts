@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpProvider } from "./http";
 import {MenuProvider} from "./menu";
 import {AlertController} from "ionic-angular";
+import {OptionsProvider} from "./options";
 
 @Injectable()
 export class LibraryProvider {
@@ -24,7 +25,8 @@ export class LibraryProvider {
 
 
 
-  constructor(private http:HttpProvider, private menu:MenuProvider, private alertCtrl:AlertController) {
+  constructor(private http:HttpProvider, private menu:MenuProvider,
+              private alertCtrl:AlertController) {
     this.getCollection();
     this.menuItem = this.menu.getMenuItem('LibraryPage');
   }

@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar color="white">
     <ion-buttons end>
-      <button ion-button (click)="navCtrl.setRoot('LoginPage')" class="active">Login</button>
-      <button ion-button (click)="navCtrl.setRoot('SignupPage')">Sign Up</button>
+      <button ion-button (click)="navCtrl.setRoot('LoginPage')">Login</button>
+      <button ion-button (click)="navCtrl.setRoot('SignupPage')">Signup</button>
     </ion-buttons>
     <ion-title><img src="assets/images/logo.png"> Phoenix</ion-title>
   </ion-navbar>
@@ -11,10 +11,9 @@
   <ion-grid>
     <ion-row>
       <ion-col col-sm-10 offset-sm-1 col-md-6 offset-md-3 text-center>
-        <img src="assets/images/logo.png"/>
-        <ion-card>
+        <ion-card *ngIf="key && !complete">
           <ion-card-content>
-            <ion-card-title>Login</ion-card-title>
+            <ion-card-title>Reset Password</ion-card-title>
             <ion-list>
               <ion-item>
                 <ion-label floating>Email</ion-label>
@@ -24,31 +23,29 @@
                 <ion-label floating>Password</ion-label>
                 <ion-input type="password" [(ngModel)]="password"></ion-input>
               </ion-item>
-              <!--
               <ion-item>
-                <ion-label>Remember Me</ion-label>
-                <ion-checkbox></ion-checkbox>
-              </ion-item>-->
+                <ion-label floating>Confirm Password</ion-label>
+                <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
+              </ion-item>
             </ion-list>
           </ion-card-content>
         </ion-card>
-        <div padding>
-          <button ion-button (click)="login()">Login</button><br>
-          <button ion-button clear (click)="navCtrl.setRoot('SignupPage')"> Sign up here</button>
-          <button ion-button clear (click)="navCtrl.setRoot('ForgotPage')">Forgot Password</button>
-        </div>
         <ion-card *ngIf="error" color="danger">
           <div padding>
             {{error}}
           </div>
         </ion-card>
+        <div padding *ngIf="key && !complete">
+          <button ion-button (click)="reset()">Reset</button>
+        </div>
+        <div *ngIf="complete">
+          <ion-card padding>
+            Password Reset
+          </ion-card>
+          <button ion-button (click)="navCtrl.setRoot('LoginPage')">Login</button>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <div text-center>
-
-
-  </div>
 
 </ion-content>
-

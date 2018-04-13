@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="white">
     <ion-buttons end>
-      <button ion-button (click)="navCtrl.setRoot('LoginPage')" class="active">Login</button>
+      <button ion-button (click)="navCtrl.setRoot('LoginPage')">Login</button>
       <button ion-button (click)="navCtrl.setRoot('SignupPage')">Sign Up</button>
     </ion-buttons>
     <ion-title><img src="assets/images/logo.png"> Phoenix</ion-title>
@@ -11,35 +11,30 @@
   <ion-grid>
     <ion-row>
       <ion-col col-sm-10 offset-sm-1 col-md-6 offset-md-3 text-center>
-        <img src="assets/images/logo.png"/>
-        <ion-card>
+        <ion-card *ngIf="!complete">
           <ion-card-content>
-            <ion-card-title>Login</ion-card-title>
+            <ion-card-title>Enter email address to reset your password</ion-card-title>
             <ion-list>
               <ion-item>
                 <ion-label floating>Email</ion-label>
                 <ion-input type="email" [(ngModel)]="email"></ion-input>
               </ion-item>
-              <ion-item>
-                <ion-label floating>Password</ion-label>
-                <ion-input type="password" [(ngModel)]="password"></ion-input>
-              </ion-item>
-              <!--
-              <ion-item>
-                <ion-label>Remember Me</ion-label>
-                <ion-checkbox></ion-checkbox>
-              </ion-item>-->
             </ion-list>
           </ion-card-content>
         </ion-card>
-        <div padding>
-          <button ion-button (click)="login()">Login</button><br>
-          <button ion-button clear (click)="navCtrl.setRoot('SignupPage')"> Sign up here</button>
-          <button ion-button clear (click)="navCtrl.setRoot('ForgotPage')">Forgot Password</button>
+        <div padding *ngIf="!complete">
+          <button ion-button (click)="forgot()">Reset</button><br>
+          <button ion-button clear (click)="navCtrl.setRoot('LoginPage')"> Login</button>
+          <button ion-button clear (click)="navCtrl.setRoot('SignupPage')">Signup</button>
         </div>
         <ion-card *ngIf="error" color="danger">
           <div padding>
             {{error}}
+          </div>
+        </ion-card>
+        <ion-card *ngIf="complete">
+          <div padding>
+            Check you email to reset your password
           </div>
         </ion-card>
       </ion-col>

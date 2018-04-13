@@ -39,6 +39,9 @@ export class ProjectsPage {
           this.formatProject(project);
           project['createdOn'] = new Date(project['createdOn']).toLocaleDateString();
         }
+      }).catch(error => {
+        this.http.clearAuth();
+        this.navCtrl.setRoot('WelcomePage');
       });
     });
   }

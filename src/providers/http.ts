@@ -53,6 +53,17 @@ export class HttpProvider {
     return this.http.post(this.baseUrl + 'signup', JSON.stringify(body));
   }
 
+  forgot(email) {
+    let body = {
+      email,
+    };
+    return this.http.post(this.baseUrl + 'forgot',JSON.stringify(body));
+  }
+
+  reset(body) {
+    return this.http.post(this.baseUrl + 'reset',JSON.stringify(body));
+  }
+
   projects() {
     let body = {
       id: this.id,
@@ -117,6 +128,17 @@ export class HttpProvider {
       this.storage.get('session')
     ];
     return Promise.all(promises);
+  }
+
+  clearAuth() {
+    this.id = null;
+    this.token = null;
+    this.user = null;
+    this.session = null;
+    this.storage.set('token', null);
+    this.storage.set('id', null);
+    this.storage.set('user', null);
+    this.storage.set('session', null);
   }
 
 }

@@ -32,7 +32,9 @@
         </ion-col>
       </ion-row>
     </ion-card-header>
-    <div #editor class="editor" [ngStyle]="{'height': height + 'px'}"></div>
+    <div class="editor" #editor [ngStyle]="{'height': height + 'px'}">
+      <iframe src="assets/editors/stl.html"></iframe>
+    </div>
   </ion-card>
   <ion-grid>
     <ion-row>

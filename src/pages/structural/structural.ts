@@ -25,6 +25,7 @@ export class StructuralPage {
     this.menuCtrl.enable(true);
   }
 
+  /*
   ionViewDidLoad() {
     this.editor = this.ace.edit(this.editorEle.nativeElement);
     this.editor.setTheme("ace/theme/chrome");
@@ -39,11 +40,13 @@ export class StructuralPage {
         self.menuItem.message = 'Eugene code is blank';
       }
     });
+
   }
 
   ionViewDidEnter() {
     this.editor.setValue(this.str.eugeneText,1);
   }
+  */
 
   sample() {
     this.editor.setValue(this.ops.examples[this.ops.sample]['eugene'],1);

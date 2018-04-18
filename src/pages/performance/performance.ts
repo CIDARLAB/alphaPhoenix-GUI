@@ -23,8 +23,27 @@ export class PerformancePage {
     this.menuItem = this.menu.getMenuItem('PerformancePage');
     this.height = this.platform.height()- 275;
     this.menuCtrl.enable(true);
+    this.bindEvent(window, 'message', function (e) {
+      console.log('parnet',e.data)
+    });
   }
 
+  // addEventListener support for IE8
+  bindEvent(element, eventName, eventHandler) {
+    if (element.addEventListener){
+      element.addEventListener(eventName, eventHandler, false);
+    } else if (element.attachEvent) {
+      element.attachEvent('on' + eventName, eventHandler);
+    }
+  }
+
+
+
+  ionViewDidEnter() {
+    this.editor = this.editorEle.nativeElement.contentWindow;
+    //this.editor.postMessage('Hello','*')
+  }
+  /*
   ionViewDidLoad() {
     this.editor = this.ace.edit(this.editorEle.nativeElement);
     this.editor.setTheme("ace/theme/chrome");
@@ -42,8 +61,8 @@ export class PerformancePage {
   }
 
   ionViewDidEnter() {
-    this.editor.setValue(this.per.stlText,1);
-  }
+    //this.editor.setValue(this.per.stlText,1);
+  }*/
 
   sample() {
     this.editor.setValue(this.ops.examples[this.ops.sample]['stl'],1);

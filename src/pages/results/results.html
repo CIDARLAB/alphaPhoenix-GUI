@@ -5,6 +5,8 @@
     </button>
     <ion-title>{{ops.projectName}}</ion-title>
     <ion-buttons end>
+      <button ion-button (click)="navCtrl.setRoot('AboutPage')">About</button>
+      <button ion-button (click)="navCtrl.setRoot('TeamPage')">Team</button>
       <button ion-button icon-left (click)="ops.openMenu($event)">
         <ion-icon name="person"></ion-icon>
         {{ops.getUsername()}}

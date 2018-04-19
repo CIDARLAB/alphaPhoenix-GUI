@@ -14,7 +14,7 @@ export class OptionsPage {
   private newRegistry;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public ops:OptionsProvider, public platform:Platform, private menuCtrl:MenuController) {
-    this.height = this.platform.height() - 275;
+    //this.height = this.platform.height() - 275;
     this.menuCtrl.enable(true);
   }
 

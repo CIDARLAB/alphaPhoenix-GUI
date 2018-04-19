@@ -32,7 +32,7 @@
         </ion-col>
       </ion-row>
     </ion-card-header>
-    <div [ngStyle]="{'height': height + 'px'}">
+    <div>
       <ion-row>
         <ion-col>
           <ion-item tooltip="Only show the top x% of all results" positionV="bottom" arrow event="hover">
@@ -60,34 +60,52 @@
         </ion-col>
       </ion-row>
       <ion-row>
+        <ion-list radio-group [(ngModel)]="ops.emailOption">
+          <ion-list-header>
+            <b>Email & User Options</b>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Send me notifications</ion-label>
+            <ion-radio value="SendNotifications"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Send me email notifications if an action takes more than 30 seconds
+            </ion-label>
+            <ion-radio value="SendNotifications>30s"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Do not send me email notifications</ion-label>
+            <ion-radio value="NoNotifications"></ion-radio>
+          </ion-item>
+        </ion-list>
+      </ion-row>
+      <ion-row>
         <ion-item>
           <ion-label>Advanced User</ion-label>
           <ion-checkbox [(ngModel)]="ops.advUser"></ion-checkbox>
         </ion-item>
       </ion-row>
-      <ion-row>
-        <ion-col col-10>
-          <ion-item>
-            <ion-label floating>Add Registry</ion-label>
-            <ion-input [(ngModel)]="newRegistry"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col margin-top col-2>
-          <button ion-button icon-only color="primary" (click)="add?addRegistry():add=true;">
-            <ion-icon name="add"></ion-icon>
-          </button>
-        </ion-col>
-      </ion-row>
-      <ion-scroll scrollY="true" style="height: 100%;">
         <ion-grid>
           <ion-list>
-            <ion-list-header>Registries</ion-list-header>
+            <ion-list-header><b>Registries</b></ion-list-header>
             <ion-item *ngFor="let r of ops.registries">
               {{r}}
             </ion-item>
           </ion-list>
+          <ion-row>
+            <ion-col col-10>
+              <ion-item>
+                <ion-label floating>Add Registry</ion-label>
+                <ion-input [(ngModel)]="newRegistry"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col margin-top col-2>
+              <button ion-button icon-only color="primary" (click)="add?addRegistry():add=true;">
+                <ion-icon name="add"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
         </ion-grid>
-      </ion-scroll>
     </div>
   </ion-card>
   <ion-grid>

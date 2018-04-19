@@ -21,6 +21,7 @@ export class OptionsProvider {
 
   public advUser = false;
 
+  public emailOption = 'SendNotifications';
 
   public registries = [
     'https://synbiohub.org/',

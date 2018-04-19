@@ -25,31 +25,21 @@ export class StructuralPage {
     this.menuCtrl.enable(true);
   }
 
-  /*
-  ionViewDidLoad() {
-    this.editor = this.ace.edit(this.editorEle.nativeElement);
-    this.editor.setTheme("ace/theme/chrome");
-    this.editor.setShowPrintMargin(false);
+  init() {
     let self = this;
-    this.editor.getSession().on('change', function () {
-      self.str.eugeneText = self.editor.getValue();
-      if (self.str.eugeneText.length > 0) {
-        self.menuItem.status = 'Complete';
-      } else {
-        self.menuItem.status = 'Error';
-        self.menuItem.message = 'Eugene code is blank';
-      }
+    window['editor'].setValue(this.str.eugeneText,1);
+    window['editor'].getSession().on('change', function() {
+      self.str.eugeneText = window['editor'].getValue();
+      self.setStatus('Error');
     });
-
   }
 
-  ionViewDidEnter() {
-    this.editor.setValue(this.str.eugeneText,1);
+  setStatus(status) {
+    this.menuItem.status = status;
   }
-  */
 
   sample() {
-    this.editor.setValue(this.ops.examples[this.ops.sample]['eugene'],1);
+    window['editor'].setValue(this.ops.examples[this.ops.sample]['eugene'],1);
     let performace = this.menu.getMenuItem('PerformancePage');
     performace.status = 'Complete';
   }

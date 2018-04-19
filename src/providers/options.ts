@@ -7,17 +7,24 @@ import {HttpProvider} from "./http";
 @Injectable()
 export class OptionsProvider {
 
+  //Project Name
   public projectName = '';
+
   public designTooltip = '';
   public sample;
   public samples = [];
 
-  public options = {
-    function: 'deterministic',
-    topP: 75,
-  };
+  public topP = 10;
+  public confidence = 0.95;
+  public threshold = 0.9;
+  public runCount = 100;
 
-  public registries = ['https://synbiohub.programmingbiology.org/'];
+
+  public registries = [
+    'https://synbiohub.org/',
+    'https://synbiohub.cidarlab.org/',
+    'https://synbiohub.programmingbiology.org/'
+  ];
   public collections = [];
 
   public registry = this.registries[0];

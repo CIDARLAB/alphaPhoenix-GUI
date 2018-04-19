@@ -23,6 +23,7 @@ export class LibraryPage {
   }
 
   selectCollection() {
+    this.ops.getCollection().then(() => {});
     if(this.ops.collection) {
       this.menuItem.status = 'Complete';
     } else {

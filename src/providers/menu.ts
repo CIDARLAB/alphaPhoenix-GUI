@@ -4,7 +4,7 @@ import {OptionsProvider} from "./options";
 @Injectable()
 export class MenuProvider {
 
-  public menu = [{
+  private menu = [{
     title: 'Specification',
     page: 'SpecificationPage',
     active: true,
@@ -67,6 +67,14 @@ export class MenuProvider {
       return true;
     }
 
+  }
+
+  getMenu() {
+    let temp = this.menu.slice(0);
+    if(!this.ops.advUser) {
+      temp.splice(1,1)
+    }
+    return temp;
   }
 
 }

@@ -19,6 +19,8 @@ export class OptionsProvider {
   public threshold = 0.9;
   public runCount = 100;
 
+  public advUser = false;
+
 
   public registries = [
     'https://synbiohub.org/',
@@ -60,11 +62,19 @@ export class OptionsProvider {
     });
     loading.present();
     this.http.specification(body).toPromise().then(result=>{
-      this.app.getRootNav().setRoot('DesignPage');
+      if(this.advUser) {
+        this.app.getRootNav().setRoot('DesignPage');
+      } else {
+        this.app.getRootNav().setRoot('ResultPage');
+      }
       return;
     }).catch(error=>{
       if(error.status == 200) {
-        this.app.getRootNav().setRoot('DesignPage');
+        if(this.advUser) {
+          this.app.getRootNav().setRoot('DesignPage');
+        } else {
+          this.app.getRootNav().setRoot('ResultPage');
+        }
         return;
       }
       loading.dismiss();

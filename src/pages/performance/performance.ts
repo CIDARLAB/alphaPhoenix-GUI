@@ -1,8 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import {IonicPage, MenuController, NavController, Platform} from 'ionic-angular';
+import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
 import { MenuProvider } from "../../providers/menu";
 import { PerformanceProvider } from "../../providers/performance";
-import {OptionsProvider} from "../../providers/options";
+import { OptionsProvider } from "../../providers/options";
 
 @IonicPage()
 @Component({
@@ -23,13 +23,30 @@ export class PerformancePage {
     this.menuItem = this.menu.getMenuItem('PerformancePage');
     this.height = this.platform.height()- 275;
     this.menuCtrl.enable(true);
+    if(this.per.stlText.length == 0) {
+      this.menuItem.status = 'Warning';
+      this.menuItem.message = 'STL Text is blank';
+    }
   }
 
   init() {
     window['editor'].setValue(this.per.stlText,1);
     let self = this;
     window['editor'].getSession().on('change', function() {
-      self.per.stlText = window['editor'].getValue();
+      setTimeout(() => {
+        self.per.stlText = window['editor'].getValue();
+        if(self.per.stlText.length == 0) {
+          self.menuItem.status = 'Warning';
+          self.menuItem.message = 'STL Text is blank';
+        } else if(window['editor'].getSession().getAnnotations().length == 0) {
+          self.menuItem.status = 'Complete';
+          self.menuItem.message = '';
+        } else {
+          self.menuItem.status = 'Error';
+          self.menuItem.message = '';
+        }
+        window.dispatchEvent(new Event('resize'));
+      },1000);
     });
   }
 
@@ -37,6 +54,8 @@ export class PerformancePage {
     window['editor'].setValue(this.ops.examples[this.ops.sample]['stl'],1);
     let structural = this.menu.getMenuItem('StructuralPage');
     structural.status = 'Complete';
+    this.menuItem.status = 'Complete';
+    this.menuItem.message = '';
   }
 
 }

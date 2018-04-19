@@ -1,8 +1,8 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
-import {IonicPage, MenuController, NavController, Platform} from 'ionic-angular';
-import {MenuProvider} from "../../providers/menu";
-import {StructuralProvider} from "../../providers/structural";
-import {OptionsProvider} from "../../providers/options";
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
+import { MenuProvider } from "../../providers/menu";
+import { StructuralProvider } from "../../providers/structural";
+import { OptionsProvider } from "../../providers/options";
 
 @IonicPage()
 @Component({
@@ -23,14 +23,30 @@ export class StructuralPage {
     this.menuItem = this.menu.getMenuItem('StructuralPage');
     this.height = this.platform.height()- 275;
     this.menuCtrl.enable(true);
+    if(this.str.eugeneText.length == 0) {
+      this.menuItem.status = 'Warning';
+      this.menuItem.message = 'Eugene Text is blank';
+    }
   }
 
   init() {
     let self = this;
     window['editor'].setValue(this.str.eugeneText,1);
     window['editor'].getSession().on('change', function() {
-      self.str.eugeneText = window['editor'].getValue();
-      self.setStatus('Error');
+      setTimeout(() => {
+        self.str.eugeneText = window['editor'].getValue();
+        if(self.str.eugeneText.length == 0) {
+          self.menuItem.status = 'Warning';
+          self.menuItem.message = 'Eugene Text is blank';
+        } else if(window['editor'].getSession().getAnnotations().length == 0) {
+          self.menuItem.status = 'Complete';
+          self.menuItem.message = '';
+        } else {
+          self.menuItem.status = 'Error';
+          self.menuItem.message = '';
+        }
+        window.dispatchEvent(new Event('resize'));
+      },1000);
     });
   }
 

@@ -18,9 +18,6 @@ jobs:
       - run:
           name: npm install
           command: npm install
-      - run:
-          name: ionic build browser
-          command: npm run ionic:build --
       - save_cache:
           key: dependency-cache-{{ checksum "./package.json" }}
           paths:

@@ -16,8 +16,10 @@ rm package.json
 rm package-lock.json
 rm tsconfig.json
 rm tslint.json
-rm node_modules
-rm .sourcemaps
+rm -rf node_modules
+rm -rf .sourcemaps
+rm -rf resources
+rm config.xml
 git add .
 git reset deploy-gh.sh
 git commit -m "Publishing to gh-pages"

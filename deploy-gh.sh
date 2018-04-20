@@ -4,7 +4,7 @@ git branch -D gh-pages
 git push origin --delete gh-pages
 git checkout -b gh-pages
 npm install
-ionic build browser --prod
+ionic cordova build browser --prod
 rm README.md
 rm -rf src
 rm node_modules
@@ -17,6 +17,8 @@ rm package.json
 rm package-lock.json
 rm tsconfig.json
 rm tslint.json
+rm node_modules
+rm .sourcemaps
 git add .
 git reset deploy-gh.sh
 git commit -m "Publishing to gh-pages"

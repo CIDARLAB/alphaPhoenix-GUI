@@ -11,7 +11,6 @@ rm node_modules
 cp -r www/* .
 rm -rf www
 rm .editorconfig
-rm .gitignore
 rm ionic.config.json
 rm package.json
 rm package-lock.json

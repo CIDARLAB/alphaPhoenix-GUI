@@ -17,7 +17,6 @@ export class LibraryProvider {
   public collectionOptions = [];
 
   public parts = [];
-  public menuItem;
 
   public loadingRegisrtry = false;
   public loadingCollection = false;
@@ -28,7 +27,6 @@ export class LibraryProvider {
   constructor(private http:HttpProvider, private menu:MenuProvider,
               private alertCtrl:AlertController) {
     this.getCollection();
-    this.menuItem = this.menu.getMenuItem('LibraryPage');
   }
 
 
@@ -41,62 +39,9 @@ export class LibraryProvider {
       }
       this.collection = data[0].uri;
       this.loadingRegisrtry = false;
-      this.getParts();
     }).catch(err => {
-      this.menuItem.status = 'Error';
-      this.menuItem.message = 'Error with collection search';
       this.loadingRegisrtry = false;
     });
-  }
-
-  getParts() {
-    this.loadingCollection = true;
-    this.http.getUrl(['http://', this.registry,'/remoteSearch/collection%3D%3C',encodeURIComponent(this.collection),'%3E&?offset=0&limit=1000'].join('')).then(data => {
-      this.parts = <any>data;
-      if(this.parts.length > 1) {
-        this.menuItem.status = 'Complete';
-        this.menuItem.message = '';
-      } else {
-        this.menuItem.status = 'Warning';
-        this.menuItem.message = 'No Part in collection';
-      }
-      this.loadingCollection = false;
-    }).catch(err => {
-      this.menuItem.status = 'Error';
-      this.menuItem.message = 'Error with parts search';
-      this.loadingCollection = false;
-    });
-  }
-
-  presentAlert() {
-    let alert = this.alertCtrl.create({
-      title: 'Custom Registry',
-      message: 'Please enter registry domain without http or www.',
-      inputs: [
-        {
-          name: 'registry',
-          placeholder: 'Registry'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-        },
-        {
-          text: 'Set',
-          handler: data => {
-            console.log(data);
-            if(this.registryOptions.length > 3) {
-              this.registryOptions.pop();
-            }
-            this.registryOptions.push(data.registry);
-            this.registry = data.registry;
-          }
-        }
-      ]
-    });
-    alert.present();
   }
 
 }

@@ -48,7 +48,6 @@ export class OptionsProvider {
   }
 
   updateOptions() {
-    console.log(this.http.user);
     if(this.http.user.advancedUser) {
       this.advUser = this.http.user.advancedUser;
     }

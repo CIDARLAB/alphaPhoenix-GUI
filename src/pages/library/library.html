@@ -31,12 +31,12 @@
         </ion-row>
         <ion-row padding class="no-padding-top">
           <ion-col col-8 style="padding: 2px">
-            <ion-select interface="popover" [(ngModel)]="ops.registry">
+            <ion-select interface="popover" [(ngModel)]="ops.registry" (ionChange)="updateRegistry()">
               <ion-option value="{{r}}" *ngFor="let r of ops.registries">{{r}}</ion-option>
             </ion-select>
           </ion-col>
           <ion-col col-4 style="padding: 2px">
-            <ion-select interface="popover" [(ngModel)]="ops.collection" (ionChange)="selectCollection()">
+            <ion-select interface="popover" [(ngModel)]="ops.collection" (ionChange)="updateCollection()">
               <ion-option value="{{c.uri}}" *ngFor="let c of ops.collections">{{c.name}}</ion-option>
             </ion-select>
           </ion-col>

@@ -19,11 +19,21 @@ export class LibraryPage {
     this.menuCtrl.enable(true);
     this.height = this.platform.height() - 171;
     this.menuItem = this.menu.getMenuItem('LibraryPage');
-    this.selectCollection();
+    this.updateRegistry();
   }
 
-  selectCollection() {
-    this.ops.getCollection().then(() => {});
+
+
+  updateRegistry() {
+    this.ops.getCollection().then(() => {
+      this.ops.collection = null;
+      this.updateCollection();
+    }).catch(err => {
+      this.ops.collections = []
+    });
+  }
+
+  updateCollection() {
     if(this.ops.collection) {
       this.menuItem.status = 'Complete';
     } else {

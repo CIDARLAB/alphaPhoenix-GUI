@@ -43,6 +43,14 @@ export class TeamPage {
     }]
   }];
 
+  public logos = [
+    'cidar.png',
+    'BDC.png',
+    'sbc.png',
+    'nsf.png',
+    'sail.png'
+  ];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

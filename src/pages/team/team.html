@@ -16,7 +16,7 @@
         <ion-title>{{row.title}}</ion-title>
       </ion-row>
       <ion-row>
-        <ion-col col-3 col-sm-6 col-md-4 col-lg-3 col-xl-3 *ngFor="let person of row.members">
+        <ion-col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 *ngFor="let person of row.members">
           <ion-card>
             <img src="{{person.img}}"/>
             <ion-card-content>
@@ -26,5 +26,10 @@
         </ion-col>
       </ion-row>
     </div>
+    <ion-row justify-content-center align-items-center>
+        <ion-col *ngFor="let logo of logos" padding>
+          <img src="assets/logos/{{logo}}" class="logos">
+        </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>

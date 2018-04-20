@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MenuProvider } from "../providers/menu";
 import { HttpProvider } from "../providers/http";
 import { Storage } from '@ionic/storage';
+import {OptionsProvider} from "../providers/options";
 
 @Component({
   templateUrl: 'app.html'
@@ -15,7 +16,7 @@ export class MyApp {
   rootPage: any;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuProvider,
-              public http:HttpProvider, private storage:Storage) {
+              public http:HttpProvider, private storage:Storage,private ops:OptionsProvider) {
     this.initializeApp();
   }
 
@@ -25,6 +26,7 @@ export class MyApp {
         this.http.getLoginInfo().then(() => {
           if(this.http.token) {
             this.rootPage = 'ProjectsPage';
+            this.ops.updateOptions();
           } else {
             this.rootPage = 'WelcomePage';
           }

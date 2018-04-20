@@ -45,6 +45,10 @@ export class HttpProvider {
     this.storage.set('session',session);
   }
 
+  updateUser() {
+    this.storage.set('user',this.user);
+  }
+
   login(body: any) {
     return this.http.post(this.baseUrl + 'login', JSON.stringify(body));
   }
@@ -62,6 +66,12 @@ export class HttpProvider {
 
   reset(body) {
     return this.http.post(this.baseUrl + 'reset',JSON.stringify(body));
+  }
+
+  updateUsers(body: any) {
+    body.token = this.token;
+    body.id = this.id;
+    return this.http.post(this.baseUrl + 'user', JSON.stringify(body));
   }
 
   projects() {

@@ -47,6 +47,19 @@ export class OptionsProvider {
     });
   }
 
+  updateOptions() {
+    console.log(this.http.user);
+    if(this.http.user.advancedUser) {
+      this.advUser = this.http.user.advancedUser;
+    }
+    if(this.http.user.emailOption){
+      this.emailOption = this.http.user.emailOption;
+    }
+    if(this.http.user.registries){
+      this.registries = JSON.parse(this.http.user.registries);
+    }
+  }
+
   submitSpec() {
     let body = {
       token: this.http.token,
@@ -142,6 +155,38 @@ export class OptionsProvider {
     } else {
       return "Loading"
     }
+  }
+
+  saveUserOptions() {
+    this.http.updateUsers({
+      advUser: this.advUser,
+      emailOption: this.emailOption,
+      registries: this.registries
+    }).toPromise().then(() => {
+
+    }).catch(res => {
+      if(res.status == 200) {
+        this.http.user.advancedUser = this.advUser;
+        this.http.user.emailOption = this.emailOption;
+        this.http.user.registries = JSON.stringify(this.registries);
+        this.http.updateUser();
+        this.toast.create({
+          message: 'Saved',
+          position: 'bottom',
+          showCloseButton: true,
+          dismissOnPageChange: true,
+          duration: 2000,
+        }).present();
+      } else {
+        this.toast.create({
+          message: res.message,
+          position: 'bottom',
+          showCloseButton: true,
+          dismissOnPageChange: true,
+          duration: 5000,
+        }).present();
+      }
+    });
   }
 
 }

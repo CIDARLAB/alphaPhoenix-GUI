@@ -75,23 +75,25 @@ export class OptionsProvider {
     });
     loading.present();
     this.http.specification(body).toPromise().then(result=>{
+      let projectId = result['projectID'][0];
       if(this.advUser) {
-        this.app.getRootNav().setRoot('DesignPage');
+        this.app.getRootNav().setRoot('DesignPage',{id: projectId});
       } else {
-        this.app.getRootNav().setRoot('ResultPage');
+        this.app.getRootNav().setRoot('ResultsPage',{id: projectId});
       }
       return;
     }).catch(error=>{
       if(error.status == 200) {
+        let projectId = error['projectID'][0];
         if(this.advUser) {
-          this.app.getRootNav().setRoot('DesignPage');
+          this.app.getRootNav().setRoot('DesignPage',{id: projectId});
         } else {
-          this.app.getRootNav().setRoot('ResultPage');
+          this.app.getRootNav().setRoot('ResultsPage',{id: projectId});
         }
         return;
       }
       loading.dismiss();
-      console.error(error);
+      //console.error(error);
       this.toast.create({
         message: error.message,
         position: 'bottom',

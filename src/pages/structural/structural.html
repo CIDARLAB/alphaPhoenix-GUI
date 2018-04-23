@@ -11,7 +11,7 @@
         <ion-icon name="person"></ion-icon>
         {{ops.getUsername()}}
       </button>
-      <button ion-button icon-only (click)="navCtrl.setRoot('OptionsPage')">
+      <button ion-button icon-only (click)="navCtrl.push('OptionsPage')">
         <ion-icon name="settings"></ion-icon>
       </button>
     </ion-buttons>
@@ -61,7 +61,7 @@
       <ion-col col-2>
         <button ion-button block float-right [color]="menu.design()?'secondary':'disabled'"
                 [tooltip]="ops.designTooltip" positionV="top" arrow event="hover" (click)="menu.design()?ops.submitSpec():''">
-          Design
+          {{ops.advUser?'Design':'Results'}}
         </button>
       </ion-col>
     </ion-row>

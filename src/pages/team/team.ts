@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
+import {HttpProvider} from "../../providers/http";
+import {OptionsProvider} from "../../providers/options";
 
 @IonicPage()
 @Component({
@@ -51,7 +53,12 @@ export class TeamPage {
     'sail.png'
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl:MenuController,
+              public http:HttpProvider, public ops:OptionsProvider) {
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 
 }

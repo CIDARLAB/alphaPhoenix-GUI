@@ -21,6 +21,9 @@ export class ResetPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http:HttpProvider, private menuCtrl:MenuController) {
     this.key = this.navParams.data['key'];
+  }
+
+  ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
 

@@ -11,7 +11,7 @@
         <ion-icon name="person"></ion-icon>
         {{ops.getUsername()}}
       </button>
-      <button ion-button icon-only (click)="navCtrl.setRoot('OptionsPage')">
+      <button ion-button icon-only (click)="navCtrl.push('OptionsPage')">
         <ion-icon name="settings"></ion-icon>
       </button>
     </ion-buttons>
@@ -108,7 +108,7 @@
         </button>
       </ion-col>
       <ion-col col-2>
-        <button ion-button block float-right [color]="'secondary'">
+        <button ion-button block float-right [color]="'secondary'" (click)="navCtrl.setRoot('ResultsPage',{id: id})">
           Results
         </button>
       </ion-col>

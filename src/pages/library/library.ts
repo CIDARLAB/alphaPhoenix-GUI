@@ -16,10 +16,13 @@ export class LibraryPage {
 
   constructor(public navCtrl: NavController, public lib:LibraryProvider, private menu: MenuProvider,
               private ops:OptionsProvider, private menuCtrl:MenuController, private platform:Platform) {
-    this.menuCtrl.enable(true);
     this.height = this.platform.height() - 171;
     this.menuItem = this.menu.getMenuItem('LibraryPage');
     this.updateRegistry();
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true);
   }
 
 

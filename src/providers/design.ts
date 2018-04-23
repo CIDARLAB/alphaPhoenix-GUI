@@ -14,7 +14,11 @@ export class DesignProvider {
   public rootImage;
 
   constructor(public http: HttpProvider, public ops:OptionsProvider) {
-    this.http.getDesign(ops.projectName).then(circuits => {
+
+  }
+
+  getDesign() {
+    this.http.getDesign(this.ops.projectId).then(circuits => {
       this.circuits = <any>circuits;
       for(let i = 0; i < this.circuits.length; i++) {
         this.circuits[i].index = i + 1;

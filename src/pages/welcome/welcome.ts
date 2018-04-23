@@ -8,9 +8,11 @@ import {IonicPage, MenuController, NavController} from 'ionic-angular';
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController, private menuCrtl: MenuController) {
-    this.menuCrtl.enable(false);
+  constructor(public navCtrl: NavController, private menuCtrl: MenuController) {
   }
 
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
 
 }

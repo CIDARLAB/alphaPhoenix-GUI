@@ -11,7 +11,7 @@
         <ion-icon name="person"></ion-icon>
         {{ops.getUsername()}}
       </button>
-      <button ion-button icon-only (click)="navCtrl.setRoot('OptionsPage')" class="active">
+      <button ion-button icon-only (click)="navCtrl.pop()" class="active">
         <ion-icon name="settings"></ion-icon>
       </button>
     </ion-buttons>

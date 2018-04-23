@@ -15,6 +15,9 @@ export class ForgotPage {
   private error;
 
   constructor(public navCtrl: NavController, public http: HttpProvider, private menuCtrl:MenuController) {
+  }
+
+  ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
 

@@ -22,11 +22,14 @@ export class StructuralPage {
               public ops:OptionsProvider, public platform:Platform, private menuCtrl:MenuController) {
     this.menuItem = this.menu.getMenuItem('StructuralPage');
     this.height = this.platform.height()- 275;
-    this.menuCtrl.enable(true);
     if(this.str.eugeneText.length == 0) {
       this.menuItem.status = 'Warning';
       this.menuItem.message = 'Eugene Text is blank';
     }
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true);
   }
 
   init() {

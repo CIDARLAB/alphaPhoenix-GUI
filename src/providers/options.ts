@@ -9,6 +9,7 @@ export class OptionsProvider {
 
   //Project Name
   public projectName = '';
+  public projectId = '';
 
   public designTooltip = '';
   public sample;
@@ -70,7 +71,7 @@ export class OptionsProvider {
       collection: this.collection
     };
     let loading = this.loadingCtrl.create({
-      content: 'Building Design.',
+      content: 'Building...',
       dismissOnPageChange: true
     });
     loading.present();

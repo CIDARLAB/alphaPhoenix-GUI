@@ -16,6 +16,9 @@ export class LoginPage {
   public error;
 
   constructor(public navCtrl: NavController, public http: HttpProvider, private menuCtrl:MenuController, private ops:OptionsProvider) {
+  }
+
+  ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
 

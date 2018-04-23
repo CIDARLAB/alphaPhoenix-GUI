@@ -3,7 +3,9 @@ import {IonicPage, MenuController, NavController, NavParams, Platform} from 'ion
 import {OptionsProvider} from "../../providers/options";
 
 
-@IonicPage()
+@IonicPage({
+  segment: 'results/:id',
+})
 @Component({
   selector: 'page-results',
   templateUrl: 'results.html',
@@ -46,8 +48,11 @@ export class ResultsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController,
               private ops:OptionsProvider, public platform:Platform) {
-    this.menuCtrl.enable(true);
     this.height = ((this.platform.height() - 140));
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true);
   }
 
 }

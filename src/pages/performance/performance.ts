@@ -22,11 +22,14 @@ export class PerformancePage {
               public ops:OptionsProvider, public platform:Platform, private menuCtrl:MenuController) {
     this.menuItem = this.menu.getMenuItem('PerformancePage');
     this.height = this.platform.height()- 275;
-    this.menuCtrl.enable(true);
     if(this.per.stlText.length == 0) {
       this.menuItem.status = 'Warning';
       this.menuItem.message = 'STL Text is blank';
     }
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true);
   }
 
   init() {

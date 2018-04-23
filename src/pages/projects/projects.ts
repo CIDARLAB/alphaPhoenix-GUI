@@ -26,7 +26,6 @@ export class ProjectsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController,
     public ops:OptionsProvider, private http:HttpProvider) {
-    this.menuCtrl.enable(false);
     let self = this;
     this.http.getLoginInfo().then((info) => {
       this.http.token = info[0];
@@ -44,6 +43,10 @@ export class ProjectsPage {
         this.navCtrl.setRoot('WelcomePage');
       });
     });
+  }
+
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
   }
 
   formatProject(project) {

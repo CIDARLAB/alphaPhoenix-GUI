@@ -11,7 +11,7 @@
         <ion-icon name="person"></ion-icon>
         {{ops.getUsername()}}
       </button>
-      <button ion-button icon-only (click)="navCtrl.setRoot('OptionsPage')">
+      <button ion-button icon-only (click)="navCtrl.push('OptionsPage')">
         <ion-icon name="settings"></ion-icon>
       </button>
     </ion-buttons>
@@ -25,7 +25,7 @@
     </button>
   </ion-row>
   <ion-row padding-left>
-    <ion-card>
+    <ion-card no-margin>
       <ngx-datatable
         class='material'
         [rows]="data"
@@ -48,43 +48,47 @@
           <ng-template let-column="column" ngx-datatable-header-template>
             Specification
           </ng-template>
-          <ng-template let-value="value" ngx-datatable-cell-template>
-            <div *ngIf="value == 'COMPLETED'">
-              <svg height="14" width="14">
-                <circle cx="7" cy="7" r="7" fill="limegreen" />
-              </svg>
-            </div>
-            <div *ngIf="value == 'INPROGRESS'">
-              <svg height="14" width="14">
-                <circle cx="7" cy="7" r="7" fill="gold" />
-              </svg>
-            </div>
-            <div *ngIf="value == 'ERROR'">
-              <svg height="14" width="14">
-                <circle cx="7" cy="7" r="7" fill="red" />
-              </svg>
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <div>
+              <div *ngIf="value == 'COMPLETED'">
+                <svg height="14" width="14">
+                  <circle cx="7" cy="7" r="7" fill="limegreen" />
+                </svg>
+              </div>
+              <div *ngIf="value == 'INPROGRESS'">
+                <svg height="14" width="14">
+                  <circle cx="7" cy="7" r="7" fill="gold" />
+                </svg>
+              </div>
+              <div *ngIf="value == 'ERROR'">
+                <svg height="14" width="14">
+                  <circle cx="7" cy="7" r="7" fill="red" />
+                </svg>
+              </div>
             </div>
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="design">
+        <ngx-datatable-column name="design" *ngIf="ops.advUser">
           <ng-template let-column="column" ngx-datatable-header-template>
             Design
           </ng-template>
-          <ng-template let-value="value" ngx-datatable-cell-template>
-            <div *ngIf="value == 'COMPLETED'">
-              <svg height="14" width="14">
-                <circle cx="7" cy="7" r="7" fill="limegreen" />
-              </svg>
-            </div>
-            <div *ngIf="value == 'INPROGRESS'">
-              <svg height="14" width="14">
-                <circle cx="7" cy="7" r="7" fill="gold" />
-              </svg>
-            </div>
-            <div *ngIf="value == 'ERROR'">
-              <svg height="14" width="14">
-                <circle cx="7" cy="7" r="7" fill="red" />
-              </svg>
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <div (click)="navCtrl.setRoot('DesignPage',{id: row.id})">
+              <div *ngIf="value == 'COMPLETED'">
+                <svg height="14" width="14">
+                  <circle cx="7" cy="7" r="7" fill="limegreen" />
+                </svg>
+              </div>
+              <div *ngIf="value == 'INPROGRESS'">
+                <svg height="14" width="14">
+                  <circle cx="7" cy="7" r="7" fill="gold" />
+                </svg>
+              </div>
+              <div *ngIf="value == 'ERROR'">
+                <svg height="14" width="14">
+                  <circle cx="7" cy="7" r="7" fill="red" />
+                </svg>
+              </div>
             </div>
           </ng-template>
         </ngx-datatable-column>
@@ -92,21 +96,23 @@
           <ng-template let-column="column" ngx-datatable-header-template>
             Results
           </ng-template>
-          <ng-template let-value="value" ngx-datatable-cell-template>
-            <div *ngIf="value == 'COMPLETED'">
-              <svg height="14" width="14">
-                <circle cx="7" cy="7" r="7" fill="limegreen" />
-              </svg>
-            </div>
-            <div *ngIf="value == 'INPROGRESS'">
-              <svg height="14" width="14">
-                <circle cx="7" cy="7" r="7" fill="gold" />
-              </svg>
-            </div>
-            <div *ngIf="value == 'ERROR'">
-              <svg height="14" width="14">
-                <circle cx="7" cy="7" r="7" fill="red" />
-              </svg>
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <div (click)="navCtrl.setRoot('DesignPage',{id: row.id})">
+              <div *ngIf="value == 'COMPLETED'">
+                <svg height="14" width="14">
+                  <circle cx="7" cy="7" r="7" fill="limegreen" />
+                </svg>
+              </div>
+              <div *ngIf="value == 'INPROGRESS'">
+                <svg height="14" width="14">
+                  <circle cx="7" cy="7" r="7" fill="gold" />
+                </svg>
+              </div>
+              <div *ngIf="value == 'ERROR'">
+                <svg height="14" width="14">
+                  <circle cx="7" cy="7" r="7" fill="red" />
+                </svg>
+              </div>
             </div>
           </ng-template>
         </ngx-datatable-column>

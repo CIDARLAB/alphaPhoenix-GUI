@@ -18,6 +18,9 @@ export class SignupPage {
   public error;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController, private http:HttpProvider) {
+  }
+
+  ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
 

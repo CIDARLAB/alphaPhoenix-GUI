@@ -50,17 +50,17 @@ export class MenuProvider {
   }
 
   design() {
-    if(!this.ops.projectName && this.ops.projectName == '' ) {
-      this.ops.designTooltip = 'Missing Project Name';
-      return false;
-    } else if(this.menu[0].pages[0].status == 'Error') {
+    if(this.menu[0].pages[0].status == 'Error' || this.menu[0].pages[0].status == 'None') {
       this.ops.designTooltip = 'Complete Performance Page';
       return false;
-    } else if(this.menu[0].pages[1].status == 'Error') {
+    } else if(this.menu[0].pages[1].status == 'Error' || this.menu[0].pages[1].status == 'None') {
       this.ops.designTooltip = 'Complete Structural Page';
       return false;
-    } else if(this.menu[0].pages[2].status == 'Error') {
+    } else if(this.menu[0].pages[2].status == 'Error' || this.menu[0].pages[2].status == 'None') {
       this.ops.designTooltip = 'Complete Library Page';
+      return false;
+    } else if(!this.ops.projectName || this.ops.projectName == '' ) {
+      this.ops.designTooltip = 'Missing Project Name';
       return false;
     } else {
       this.ops.designTooltip = '';

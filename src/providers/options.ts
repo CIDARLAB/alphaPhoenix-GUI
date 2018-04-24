@@ -68,7 +68,11 @@ export class OptionsProvider {
       eugene: this.strc.eugeneText,
       stl: this.pref.stlText,
       registry: this.registry,
-      collection: this.collection
+      collection: this.collection,
+      top: this.topP,
+      confidence: this.confidence,
+      threshold: this.threshold,
+      runCount: this.runCount,
     };
     let loading = this.loadingCtrl.create({
       content: 'Building...',

@@ -157,7 +157,7 @@ export class HttpProvider {
       id: this.id,
       projectId: projectId
     };
-    return this.http.get(this.assetUrl + 'json/results.json');//, JSON.stringify(body));
+    return this.http.post(this.baseUrl + 'results', JSON.stringify(body));
   }
 
 }

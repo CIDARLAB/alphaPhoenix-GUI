@@ -151,4 +151,13 @@ export class HttpProvider {
     this.storage.set('session', null);
   }
 
+  getResults(projectId) {
+    let body = {
+      token: this.token,
+      id: this.id,
+      projectId: projectId
+    };
+    return this.http.get(this.assetUrl + 'json/results.json');//, JSON.stringify(body));
+  }
+
 }

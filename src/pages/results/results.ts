@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, Platform} from 'ionic-angular';
 import {OptionsProvider} from "../../providers/options";
+import {HttpProvider} from "../../providers/http";
 
 
 @IonicPage({
@@ -15,18 +16,10 @@ export class ResultsPage {
   private height;
   private topHeight = 0.4;
   private tabs = 'SBOL';
+  private projectId;
 
-  private data = [{
-      x: [0, 1, 2, 3, 4, 5],
-      y: [0, 1, 2, 3, 4, 5],
-      type: 'scatter',
-      name: 'trace 1'
-    },{
-      x: [1,2,3,4,5,6],
-      y: [0,1,2,3,4,5],
-      type: 'scatter',
-    name: 'trace 2'
-  }];
+  private data;
+  private activeData;
 
   private layout = {
     autosize: true,
@@ -38,17 +31,24 @@ export class ResultsPage {
       b: 40,
       t: 20,
     },
+    /*
     xaxis: {
       title: 'x-axis title'
     },
     yaxis: {
       title: 'y-axis title'
-    }
+    }*/
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController,
-              private ops:OptionsProvider, public platform:Platform) {
+              private ops:OptionsProvider, public platform:Platform, public http:HttpProvider) {
     this.height = ((this.platform.height() - 140));
+    this.projectId = this.navParams.get("id");
+    this.http.getResults(this.projectId).toPromise().then(data => {
+      this.data = data;
+      console.log(this.data);
+      this.activeData = this.data[0];
+    })
   }
 
   ionViewWillEnter() {

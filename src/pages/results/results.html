@@ -24,17 +24,8 @@
         <ion-card>
           <ion-scroll [ngStyle]="{height: (height * topHeight) + 'px'}" scrollY="true">
             <ion-list>
-              <button ion-item>
-                Result 1
-              </button>
-              <button ion-item>
-                Result 2
-              </button>
-              <button ion-item>
-                Result 3
-              </button>
-              <button ion-item>
-                Result 4
+              <button ion-item *ngFor="let result of data" (click)="activeData = result">
+                {{ result.name }}
               </button>
             </ion-list>
           </ion-scroll>
@@ -53,13 +44,23 @@
               Placeholder
             </ion-segment-button>
           </ion-segment>
+          <div padding>
+            <div *ngIf="activeData">
+              <div *ngIf="tabs == 'SBOL'">
+                <img src="{{ activeData.img }}">
+              </div>
+              <div *ngIf="tabs == 'Score'">
+                {{ activeData.score }}
+              </div>
+            </div>
+          </div>
         </ion-card>
       </ion-col>
     </ion-row>
     <ion-row [ngStyle]="{height: (height * (1-topHeight)) + 'px'}">
       <ion-col>
         <ion-card>
-          <plotly [data]="data" [layout]="layout" [ngStyle]="{height: (height * (1-topHeight) - 10) + 'px !important'}"></plotly>
+          <plotly *ngIf="activeData" [data]="activeData.traces" [layout]="layout" [ngStyle]="{height: (height * (1-topHeight) - 10) + 'px !important'}"></plotly>
         </ion-card>
       </ion-col>
     </ion-row>

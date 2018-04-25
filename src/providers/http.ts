@@ -151,11 +151,11 @@ export class HttpProvider {
     this.storage.set('session', null);
   }
 
-  getResults(projectId) {
+  getResults(project) {
     let body = {
       token: this.token,
       id: this.id,
-      projectId: projectId
+      project: project
     };
     return this.http.post(this.baseUrl + 'results', JSON.stringify(body));
   }

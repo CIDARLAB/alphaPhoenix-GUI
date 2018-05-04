@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController, NavParams, Platform } from 'ionic-angular';
 import { OptionsProvider } from "../../providers/options";
 import { DesignProvider } from "../../providers/design";
+import {HttpProvider} from "../../providers/http";
 
 @IonicPage({
   segment: 'design/:id',
@@ -20,7 +21,8 @@ export class DesignPage {
   public equation3: string = '\\int a {dx} = ax + C';
 
 
-  constructor(public navCtrl: NavController, public navParams:NavParams, public ops: OptionsProvider,public design:DesignProvider, public platform:Platform, private menuCtrl: MenuController) {
+  constructor(public navCtrl: NavController, public navParams:NavParams, public ops: OptionsProvider,
+              public design:DesignProvider, public platform:Platform, private menuCtrl: MenuController, public http:HttpProvider) {
     this.id = this.navParams.get("id");
     this.ops.projectId = this.id;
     this.design.getDesign();

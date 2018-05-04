@@ -7,9 +7,13 @@
     <ion-buttons end>
       <button ion-button (click)="navCtrl.setRoot('AboutPage')">About</button>
       <button ion-button (click)="navCtrl.setRoot('TeamPage')">Team</button>
-      <button ion-button icon-left (click)="ops.openMenu($event)">
-        <ion-icon name="person"></ion-icon>
-        {{ops.getUsername()}}
+      <button ion-button icon-left (click)="navCtrl.setRoot('ProjectsPage')" *ngIf="http.user">
+        <ion-icon name="ios-photos-outline"></ion-icon>
+        Projects
+      </button>
+      <button ion-button icon-left (click)="http.logout();navCtrl.setRoot('WelcomePage');" *ngIf="http.user">
+        <ion-icon name="ios-exit-outline"></ion-icon>
+        Logout
       </button>
       <button ion-button icon-only (click)="navCtrl.push('OptionsPage')">
         <ion-icon name="settings"></ion-icon>
@@ -24,7 +28,7 @@
         <ion-card>
           <ion-scroll [ngStyle]="{height: (height * topHeight) + 'px'}" scrollY="true">
             <ion-list>
-              <button ion-item *ngFor="let result of data" (click)="activeData = result">
+              <button ion-item *ngFor="let result of data" (click)="setView(result)">
                 {{ result.name }}
               </button>
             </ion-list>
@@ -60,7 +64,9 @@
     <ion-row [ngStyle]="{height: (height * (1-topHeight)) + 'px'}">
       <ion-col>
         <ion-card>
-          <plotly *ngIf="activeData" [data]="activeData.traces" [layout]="layout" [ngStyle]="{height: (height * (1-topHeight) - 10) + 'px !important'}"></plotly>
+          <div *ngFor="let result of data">
+            <plotly *ngIf="result == activeData" [data]="result.traces" [layout]="layout" [ngStyle]="{height: (height * (1-topHeight) - 10) + 'px !important'}"></plotly>
+          </div>
         </ion-card>
       </ion-col>
     </ion-row>

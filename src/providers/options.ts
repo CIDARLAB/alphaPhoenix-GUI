@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {App, LoadingController, ModalController, PopoverController, ToastController} from "ionic-angular";
+import {App, LoadingController, ModalController, ToastController} from "ionic-angular";
 import {PerformanceProvider} from "./performance";
 import {StructuralProvider} from "./structural";
 import {HttpProvider} from "./http";
@@ -40,7 +40,7 @@ export class OptionsProvider {
 
   constructor(public modalCtrl: ModalController, private http:HttpProvider, private toast:ToastController,
               private pref:PerformanceProvider, private strc: StructuralProvider, private app:App,
-              private loadingCtrl: LoadingController, private popoverCtrl:PopoverController) {
+              private loadingCtrl: LoadingController) {
     this.getCollection().then(() => {});
     this.http.getExample().then(examples => {
       this.examples = examples;
@@ -96,16 +96,24 @@ export class OptionsProvider {
           this.app.getRootNav().setRoot('ResultsPage',{id: projectId});
         }
         return;
+      } else if(error.status == 409) {
+        this.toast.create({
+          message: 'Project name already exists',
+          position: 'bottom',
+          showCloseButton: true,
+          dismissOnPageChange: true,
+          duration: 5000,
+        }).present();
+      } else {
+        this.toast.create({
+          message: error.message,
+          position: 'bottom',
+          showCloseButton: true,
+          dismissOnPageChange: true,
+          duration: 5000,
+        }).present();
       }
       loading.dismiss();
-      //console.error(error);
-      this.toast.create({
-        message: error.message,
-        position: 'bottom',
-        showCloseButton: true,
-        dismissOnPageChange: true,
-        duration: 5000,
-      }).present();
       return;
     });
   }
@@ -145,13 +153,6 @@ export class OptionsProvider {
         console.log(err);
         reject();
       });
-    });
-  }
-
-  openMenu(myEvent) {
-    let popover = this.popoverCtrl.create('PopoverMenuPage');
-    popover.present({
-      ev: myEvent
     });
   }
 

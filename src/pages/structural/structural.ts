@@ -3,6 +3,7 @@ import { IonicPage, MenuController, NavController, Platform } from 'ionic-angula
 import { MenuProvider } from "../../providers/menu";
 import { StructuralProvider } from "../../providers/structural";
 import { OptionsProvider } from "../../providers/options";
+import {HttpProvider} from "../../providers/http";
 
 @IonicPage()
 @Component({
@@ -19,7 +20,7 @@ export class StructuralPage {
   public height;
 
   constructor(public navCtrl: NavController, public menu: MenuProvider, public str: StructuralProvider,
-              public ops:OptionsProvider, public platform:Platform, private menuCtrl:MenuController) {
+              public ops:OptionsProvider, public platform:Platform, private menuCtrl:MenuController, public http:HttpProvider) {
     this.menuItem = this.menu.getMenuItem('StructuralPage');
     this.height = this.platform.height()- 275;
     if(this.str.eugeneText.length == 0) {

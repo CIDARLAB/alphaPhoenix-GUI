@@ -3,6 +3,7 @@ import { IonicPage, MenuController, NavController, Platform } from 'ionic-angula
 import { LibraryProvider } from "../../providers/library";
 import { OptionsProvider } from "../../providers/options";
 import { MenuProvider } from "../../providers/menu";
+import {HttpProvider} from "../../providers/http";
 
 @IonicPage()
 @Component({
@@ -15,7 +16,7 @@ export class LibraryPage {
   private menuItem;
 
   constructor(public navCtrl: NavController, public lib:LibraryProvider, private menu: MenuProvider,
-              private ops:OptionsProvider, private menuCtrl:MenuController, private platform:Platform) {
+              private ops:OptionsProvider, private menuCtrl:MenuController, private platform:Platform, public http:HttpProvider) {
     this.height = this.platform.height() - 171;
     this.menuItem = this.menu.getMenuItem('LibraryPage');
     this.updateRegistry();

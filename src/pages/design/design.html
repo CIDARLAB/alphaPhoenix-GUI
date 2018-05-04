@@ -7,9 +7,13 @@
     <ion-buttons end>
       <button ion-button (click)="navCtrl.setRoot('AboutPage')">About</button>
       <button ion-button (click)="navCtrl.setRoot('TeamPage')">Team</button>
-      <button ion-button icon-left (click)="ops.openMenu($event)">
-        <ion-icon name="person"></ion-icon>
-        {{ops.getUsername()}}
+      <button ion-button icon-left (click)="navCtrl.setRoot('ProjectsPage')" *ngIf="http.user">
+        <ion-icon name="ios-photos-outline"></ion-icon>
+        Projects
+      </button>
+      <button ion-button icon-left (click)="http.logout();navCtrl.setRoot('WelcomePage');" *ngIf="http.user">
+        <ion-icon name="ios-exit-outline"></ion-icon>
+        Logout
       </button>
       <button ion-button icon-only (click)="navCtrl.push('OptionsPage')">
         <ion-icon name="settings"></ion-icon>

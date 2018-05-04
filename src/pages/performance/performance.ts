@@ -3,6 +3,7 @@ import { IonicPage, MenuController, NavController, Platform } from 'ionic-angula
 import { MenuProvider } from "../../providers/menu";
 import { PerformanceProvider } from "../../providers/performance";
 import { OptionsProvider } from "../../providers/options";
+import {HttpProvider} from "../../providers/http";
 
 @IonicPage()
 @Component({
@@ -19,7 +20,7 @@ export class PerformancePage {
   public height;
 
   constructor(public navCtrl: NavController, private menu: MenuProvider, private per:PerformanceProvider,
-              public ops:OptionsProvider, public platform:Platform, private menuCtrl:MenuController) {
+              public ops:OptionsProvider, public platform:Platform, private menuCtrl:MenuController, public http:HttpProvider) {
     this.menuItem = this.menu.getMenuItem('PerformancePage');
     this.height = this.platform.height()- 275;
     if(this.per.stlText.length == 0) {

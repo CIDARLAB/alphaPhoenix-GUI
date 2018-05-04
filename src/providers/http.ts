@@ -68,6 +68,10 @@ export class HttpProvider {
     return this.http.post(this.baseUrl + 'reset',JSON.stringify(body));
   }
 
+  logout() {
+    this.setUserInfo(null,null,null,null);
+  }
+
   updateUsers(body: any) {
     body.token = this.token;
     body.id = this.id;

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {IonicPage, MenuController, NavController } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {HttpProvider} from "../../providers/http";
 import 'rxjs/add/operator/map';
 import {OptionsProvider} from "../../providers/options";
@@ -15,7 +15,7 @@ export class LoginPage {
   public password;
   public error;
 
-  constructor(public navCtrl: NavController, public http: HttpProvider, private menuCtrl:MenuController, private ops:OptionsProvider) {
+  constructor(public navCtrl: NavController, public http: HttpProvider, private menuCtrl: MenuController, private ops: OptionsProvider) {
   }
 
   ionViewWillEnter() {
@@ -24,14 +24,14 @@ export class LoginPage {
 
   login() {
     this.error = null;
-    if(!this.email || !this.password) {
+    if (!this.email || !this.password) {
       this.error = 'Please fill out all required information';
       return;
     }
     this.http.login({
       "email": this.email,
       "password": this.password
-    }).toPromise().then(result=> {
+    }).toPromise().then(result => {
       this.http.setUserInfo(
         result['token'],
         result['id'],

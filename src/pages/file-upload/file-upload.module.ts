@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { FileUploadPage } from './file-upload';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {FileUploadPage} from './file-upload';
 
 @NgModule({
   declarations: [
@@ -10,4 +10,5 @@ import { FileUploadPage } from './file-upload';
     IonicPageModule.forChild(FileUploadPage),
   ],
 })
-export class FileUploadPageModule {}
+export class FileUploadPageModule {
+}

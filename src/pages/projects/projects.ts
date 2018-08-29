@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {OptionsProvider} from "../../providers/options";
 import {HttpProvider} from "../../providers/http";
@@ -12,20 +12,20 @@ export class ProjectsPage {
 
   public data = [];
 
-  public columns : any = [{
+  public columns: any = [{
     prop: 'projectName'
-  },{
+  }, {
     name: 'Specification'
-  },{
+  }, {
     name: 'Design'
-  },{
+  }, {
     name: 'Results'
-  },{
+  }, {
     name: 'Created On'
   }];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController,
-    public ops:OptionsProvider, private http:HttpProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl: MenuController,
+              public ops: OptionsProvider, private http: HttpProvider) {
     let self = this;
     this.http.getLoginInfo().then((info) => {
       this.http.token = info[0];
@@ -50,7 +50,7 @@ export class ProjectsPage {
   }
 
   formatProject(project) {
-    switch(project.step) {
+    switch (project.step) {
       case "SPECIFY":
         project['specification'] = project.state;
         project['design'] = "not complete";

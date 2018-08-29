@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, Platform} from 'ionic-angular';
 import {OptionsProvider} from "../../providers/options";
 import {HttpProvider} from "../../providers/http";
@@ -41,8 +41,8 @@ export class ResultsPage {
     }*/
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController,
-              public ops:OptionsProvider, public platform:Platform, public http:HttpProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl: MenuController,
+              public ops: OptionsProvider, public platform: Platform, public http: HttpProvider) {
     this.height = ((this.platform.height() - 140));
     this.projectId = this.navParams.get("id");
     this.http.getResults(this.projectId).toPromise().then(data => {

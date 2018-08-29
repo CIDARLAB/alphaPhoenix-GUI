@@ -11,50 +11,50 @@
 </ion-header>
 <ion-content class="bg-color" padding>
   <form ngNoForm (ngSubmit)="signup()">
-  <ion-grid>
-    <ion-row>
-      <ion-col col-sm-10 offset-sm-1 col-md-6 offset-md-3 text-center>
-        <img src="assets/images/logo.png"/>
-        <ion-card>
-          <ion-card-content>
-            <ion-card-title>Sign Up</ion-card-title>
-            <ion-list>
-              <ion-item>
-                <ion-label floating>Full Name</ion-label>
-                <ion-input type="text" [(ngModel)]="name"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label floating>Institution</ion-label>
-                <ion-select interface="popover" [(ngModel)]="institution">
-                  <ion-option *ngFor="let option of institutions" value="{{option}}">{{option}}</ion-option>
-                </ion-select>
-              </ion-item>
-              <ion-item>
-                <ion-label floating>Email</ion-label>
-                <ion-input type="email" [(ngModel)]="email"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label floating>Password</ion-label>
-                <ion-input type="password" [(ngModel)]="password"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label floating>Confirm Password</ion-label>
-                <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
-              </ion-item>
-            </ion-list>
-          </ion-card-content>
-        </ion-card>
-        <ion-card *ngIf="error" color="danger">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-sm-10 offset-sm-1 col-md-6 offset-md-3 text-center>
+          <img src="assets/images/logo.png"/>
+          <ion-card>
+            <ion-card-content>
+              <ion-card-title>Sign Up</ion-card-title>
+              <ion-list>
+                <ion-item>
+                  <ion-label floating>Full Name</ion-label>
+                  <ion-input type="text" [(ngModel)]="name"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Institution</ion-label>
+                  <ion-select interface="popover" [(ngModel)]="institution">
+                    <ion-option *ngFor="let option of institutions" value="{{option}}">{{option}}</ion-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Email</ion-label>
+                  <ion-input type="email" [(ngModel)]="email"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Password</ion-label>
+                  <ion-input type="password" [(ngModel)]="password"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Confirm Password</ion-label>
+                  <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+          <ion-card *ngIf="error" color="danger">
+            <div padding>
+              {{error}}
+            </div>
+          </ion-card>
           <div padding>
-            {{error}}
+            <button ion-button (click)="signup()">Sign up</button>
+            <button ion-button clear (click)="navCtrl.setRoot('LoginPage')">Have a Account?</button>
           </div>
-        </ion-card>
-        <div padding>
-          <button ion-button (click)="signup()">Sign up</button>
-          <button ion-button clear (click)="navCtrl.setRoot('LoginPage')">Have a Account?</button>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
 </ion-content>

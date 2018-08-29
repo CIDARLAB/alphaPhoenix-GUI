@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from "@angular/core";
+import {Component, Input, OnInit, ViewChild} from "@angular/core";
 import * as Plotly from "plotly.js/dist/plotly-basic.js";
-import { Config, Data, Layout } from "plotly.js/dist/plotly-basic.js";
+import {Config, Data, Layout} from "plotly.js/dist/plotly-basic.js";
 
 
 @Component({
@@ -14,7 +14,8 @@ export class PlotlyComponent {
   @Input() options: any;
   @ViewChild("plotly") plotly;
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
     Plotly.newPlot(

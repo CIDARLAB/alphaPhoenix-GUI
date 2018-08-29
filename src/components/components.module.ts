@@ -1,12 +1,13 @@
-import { IonicModule } from 'ionic-angular';
-import { NgModule } from '@angular/core';
-import { PlotlyComponent } from './plotly/plotly';
+import {IonicModule} from 'ionic-angular';
+import {NgModule} from '@angular/core';
+import {PlotlyComponent} from './plotly/plotly';
 
 @NgModule({
-	declarations: [PlotlyComponent],
+  declarations: [PlotlyComponent],
   imports: [
     IonicModule
   ],
-	exports: [PlotlyComponent]
+  exports: [PlotlyComponent]
 })
-export class ComponentsModule {}
+export class ComponentsModule {
+}

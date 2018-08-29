@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { PerformancePage } from './performance';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {PerformancePage} from './performance';
 import {TooltipsModule} from "ionic-tooltips";
 
 @NgModule({
@@ -12,4 +12,5 @@ import {TooltipsModule} from "ionic-tooltips";
     TooltipsModule
   ],
 })
-export class PerformancePageModule {}
+export class PerformancePageModule {
+}

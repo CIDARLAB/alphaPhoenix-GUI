@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {HttpProvider} from "../../providers/http";
 
@@ -9,7 +9,7 @@ import {HttpProvider} from "../../providers/http";
 })
 export class SignupPage {
 
-  public institutions = ['Boston University','Massachusetts Institute Of Technology'];
+  public institutions = ['Boston University', 'Massachusetts Institute Of Technology'];
   public name;
   public institution;
   public email;
@@ -17,7 +17,7 @@ export class SignupPage {
   public confirmPassword;
   public error;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl:MenuController, private http:HttpProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl: MenuController, private http: HttpProvider) {
   }
 
   ionViewWillEnter() {
@@ -26,11 +26,11 @@ export class SignupPage {
 
   signup() {
     this.error = null;
-    if(!this.name || !this.institution || !this.password || !this.email || !this.confirmPassword) {
+    if (!this.name || !this.institution || !this.password || !this.email || !this.confirmPassword) {
       this.error = 'Please fill out all required information';
       return;
     }
-    if(this.confirmPassword != this.password) {
+    if (this.confirmPassword != this.password) {
       this.error = 'Password do not match';
       return;
     }
@@ -39,7 +39,7 @@ export class SignupPage {
       "institution": this.institution,
       "password": this.password,
       "email": this.email
-    }).toPromise().then(result=> {
+    }).toPromise().then(result => {
       this.http.setUserInfo(
         result['token'],
         result['id'],
@@ -48,7 +48,7 @@ export class SignupPage {
       );
       this.navCtrl.setRoot('ProjectsPage');
     }).catch(error => {
-      if(error.status == 409) {
+      if (error.status == 409) {
         this.error = 'Email already in user';
       } else {
         this.error = 'Server Error'

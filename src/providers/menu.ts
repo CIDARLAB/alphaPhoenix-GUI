@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {OptionsProvider} from "./options";
 
 @Injectable()
@@ -13,36 +13,36 @@ export class MenuProvider {
       page: 'PerformancePage',
       status: 'None',
       message: ''
-    },{
+    }, {
       name: 'Structural',
       page: 'StructuralPage',
       status: 'None',
       message: '',
-    },{
+    }, {
       name: 'Library',
       page: 'LibraryPage',
       status: 'None',
       message: '',
     }]
-  },{
+  }, {
     title: 'Design',
     page: 'DesignPage',
     active: false,
-    pages:[]
-  },{
+    pages: []
+  }, {
     title: 'Results',
     page: 'ResultsPage',
     active: false,
-    pages:[]
+    pages: []
   }];
 
-  constructor(private ops:OptionsProvider) {
+  constructor(private ops: OptionsProvider) {
   }
 
   getMenuItem(page) {
-    for(let i = 0; i < this.menu.length; i++){
-      for(let j = 0; j < this.menu[i].pages.length; j++) {
-        if(this.menu[i].pages[j].page == page) {
+    for (let i = 0; i < this.menu.length; i++) {
+      for (let j = 0; j < this.menu[i].pages.length; j++) {
+        if (this.menu[i].pages[j].page == page) {
           return this.menu[i].pages[j]
         }
       }
@@ -50,16 +50,16 @@ export class MenuProvider {
   }
 
   design() {
-    if(this.menu[0].pages[0].status == 'Error' || this.menu[0].pages[0].status == 'None') {
+    if (this.menu[0].pages[0].status == 'Error' || this.menu[0].pages[0].status == 'None') {
       this.ops.designTooltip = 'Complete Performance Page';
       return false;
-    } else if(this.menu[0].pages[1].status == 'Error' || this.menu[0].pages[1].status == 'None') {
+    } else if (this.menu[0].pages[1].status == 'Error' || this.menu[0].pages[1].status == 'None') {
       this.ops.designTooltip = 'Complete Structural Page';
       return false;
-    } else if(this.menu[0].pages[2].status == 'Error' || this.menu[0].pages[2].status == 'None') {
+    } else if (this.menu[0].pages[2].status == 'Error' || this.menu[0].pages[2].status == 'None') {
       this.ops.designTooltip = 'Complete Library Page';
       return false;
-    } else if(!this.ops.projectName || this.ops.projectName == '' ) {
+    } else if (!this.ops.projectName || this.ops.projectName == '') {
       this.ops.designTooltip = 'Missing Project Name';
       return false;
     } else {
@@ -71,8 +71,8 @@ export class MenuProvider {
 
   getMenu() {
     let temp = this.menu.slice(0);
-    if(!this.ops.advUser) {
-      temp.splice(1,1)
+    if (!this.ops.advUser) {
+      temp.splice(1, 1)
     }
     return temp;
   }

@@ -65,7 +65,8 @@
       <ion-col>
         <ion-card>
           <div *ngFor="let result of data">
-            <plotly *ngIf="result == activeData" [data]="result.traces" [layout]="layout" [ngStyle]="{height: (height * (1-topHeight) - 10) + 'px !important'}"></plotly>
+            <plotly *ngIf="result == activeData" [data]="result.traces" [layout]="layout"
+                    [ngStyle]="{height: (height * (1-topHeight) - 10) + 'px !important'}"></plotly>
           </div>
         </ion-card>
       </ion-col>

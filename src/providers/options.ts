@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {App, LoadingController, ModalController, ToastController} from "ionic-angular";
 import {PerformanceProvider} from "./performance";
 import {StructuralProvider} from "./structural";
@@ -38,10 +38,11 @@ export class OptionsProvider {
 
   public examples;
 
-  constructor(public modalCtrl: ModalController, private http:HttpProvider, private toast:ToastController,
-              private pref:PerformanceProvider, private strc: StructuralProvider, private app:App,
+  constructor(public modalCtrl: ModalController, private http: HttpProvider, private toast: ToastController,
+              private pref: PerformanceProvider, private strc: StructuralProvider, private app: App,
               private loadingCtrl: LoadingController) {
-    this.getCollection().then(() => {});
+    this.getCollection().then(() => {
+    });
     this.http.getExample().then(examples => {
       this.examples = examples;
       this.samples = Object.keys(this.examples);
@@ -49,13 +50,13 @@ export class OptionsProvider {
   }
 
   updateOptions() {
-    if(this.http.user.advancedUser) {
+    if (this.http.user.advancedUser) {
       this.advUser = this.http.user.advancedUser;
     }
-    if(this.http.user.emailOption){
+    if (this.http.user.emailOption) {
       this.emailOption = this.http.user.emailOption;
     }
-    if(this.http.user.registries){
+    if (this.http.user.registries) {
       this.registries = JSON.parse(this.http.user.registries);
     }
   }
@@ -79,24 +80,24 @@ export class OptionsProvider {
       dismissOnPageChange: true
     });
     loading.present();
-    this.http.specification(body).toPromise().then(result=>{
+    this.http.specification(body).toPromise().then(result => {
       let projectId = result['projectID'][0];
-      if(this.advUser) {
-        this.app.getRootNav().setRoot('DesignPage',{id: projectId});
+      if (this.advUser) {
+        this.app.getRootNav().setRoot('DesignPage', {id: projectId});
       } else {
-        this.app.getRootNav().setRoot('ResultsPage',{id: projectId});
+        this.app.getRootNav().setRoot('ResultsPage', {id: projectId});
       }
       return;
-    }).catch(error=>{
-      if(error.status == 200) {
+    }).catch(error => {
+      if (error.status == 200) {
         let projectId = error['projectID'][0];
-        if(this.advUser) {
-          this.app.getRootNav().setRoot('DesignPage',{id: projectId});
+        if (this.advUser) {
+          this.app.getRootNav().setRoot('DesignPage', {id: projectId});
         } else {
-          this.app.getRootNav().setRoot('ResultsPage',{id: projectId});
+          this.app.getRootNav().setRoot('ResultsPage', {id: projectId});
         }
         return;
-      } else if(error.status == 409) {
+      } else if (error.status == 409) {
         this.toast.create({
           message: 'Project name already exists',
           position: 'bottom',
@@ -134,16 +135,16 @@ export class OptionsProvider {
   getCollection() {
     return new Promise((resolve, reject) => {
       this.loadingCollection = true;
-      let url = ['http://', this.registry,'/rootCollections'];
-      if(this.registry.includes('http')) {
+      let url = ['http://', this.registry, '/rootCollections'];
+      if (this.registry.includes('http')) {
         url.shift();
       }
-      if(this.registry[this.registry.length-1] == '/') {
+      if (this.registry[this.registry.length - 1] == '/') {
         url[1] = 'rootCollections'
       }
       this.http.getUrl(url.join('')).then(data => {
         this.collections = [];
-        for(let col of <any>data) {
+        for (let col of <any>data) {
           this.collections.push(col);
         }
         //this.collection = data[0].uri;
@@ -157,7 +158,7 @@ export class OptionsProvider {
   }
 
   getUsername() {
-    if(this.http.user) {
+    if (this.http.user) {
       return this.http.user.name;
     } else {
       return "Loading"
@@ -172,7 +173,7 @@ export class OptionsProvider {
     }).toPromise().then(() => {
 
     }).catch(res => {
-      if(res.status == 200) {
+      if (res.status == 200) {
         this.http.user.advancedUser = this.advUser;
         this.http.user.emailOption = this.emailOption;
         this.http.user.registries = JSON.stringify(this.registries);

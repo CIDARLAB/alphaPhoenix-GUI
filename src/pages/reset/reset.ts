@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {HttpProvider} from "../../providers/http";
 
@@ -19,7 +19,7 @@ export class ResetPage {
   private error;
   private complete = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http:HttpProvider, private menuCtrl:MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpProvider, private menuCtrl: MenuController) {
     this.key = this.navParams.data['key'];
   }
 
@@ -29,11 +29,11 @@ export class ResetPage {
 
   reset() {
     this.error = null;
-    if(!this.email || !this.password || !this.confirmPassword) {
+    if (!this.email || !this.password || !this.confirmPassword) {
       this.error = 'PLease fill in all the required fields';
       return;
     }
-    if(this.password !== this.confirmPassword) {
+    if (this.password !== this.confirmPassword) {
       this.error = 'Passwords do not match';
       return;
     }
@@ -42,14 +42,15 @@ export class ResetPage {
       email: this.email,
       password: this.password
     };
-    this.http.reset(body).toPromise().then(res=> {
+    this.http.reset(body).toPromise().then(res => {
     }).catch(error => {
-      if(error.status == 200) {
+      if (error.status == 200) {
         this.complete = true;
       } else {
         this.error = error.error;
       }
-    });;
+    });
+    ;
   }
 
 }

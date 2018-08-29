@@ -8,8 +8,12 @@
 
     <ion-content class="bg-color" padding>
       <ion-list *ngFor="let section of menu.getMenu()" no-lines>
-        <ion-item-divider color="light" [ngClass]="section.page == getActivePage()?'active':section.active?'':'disable'">{{section.title}}</ion-item-divider>
-        <ion-item color="light" *ngFor="let item of section.pages" [ngClass]="item.page == getActivePage()?'active':section.active?'':'disable'">
+        <ion-item-divider color="light"
+                          [ngClass]="section.page == getActivePage()?'active':section.active?'':'disable'">
+          {{section.title}}
+        </ion-item-divider>
+        <ion-item color="light" *ngFor="let item of section.pages"
+                  [ngClass]="item.page == getActivePage()?'active':section.active?'':'disable'">
           <div class="inline" (click)="openPage(item.page)">{{item.name}}</div>
           <div class="inlineIcon" [tooltip]="item.message" positionH="right" arrow event="hover">
             <i class="fas fa-check-square" *ngIf="item.status == 'Complete'"></i>

@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { DesignPage } from './design';
-import { KatexModule } from 'ng-katex';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {DesignPage} from './design';
+import {KatexModule} from 'ng-katex';
 
 @NgModule({
   declarations: [
@@ -12,4 +12,5 @@ import { KatexModule } from 'ng-katex';
     KatexModule
   ],
 })
-export class DesignPageModule {}
+export class DesignPageModule {
+}

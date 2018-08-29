@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, MenuController, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {HttpProvider} from "../../providers/http";
 import {OptionsProvider} from "../../providers/options";
 
@@ -11,7 +11,7 @@ import {OptionsProvider} from "../../providers/options";
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController, private menuCtrl:MenuController, private http:HttpProvider, private ops:OptionsProvider) {
+  constructor(public navCtrl: NavController, private menuCtrl: MenuController, private http: HttpProvider, private ops: OptionsProvider) {
   }
 
   ionViewWillEnter() {

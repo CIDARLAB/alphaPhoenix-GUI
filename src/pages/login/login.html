@@ -11,43 +11,44 @@
 </ion-header>
 <ion-content class="bg-color" padding>
   <form ngNoForm (ngSubmit)="login()">
-  <ion-grid>
-    <ion-row>
-      <ion-col col-sm-10 offset-sm-1 col-md-6 offset-md-3 text-center>
-        <img src="assets/images/logo.png"/>
-        <ion-card>
-          <ion-card-content>
-            <ion-card-title>Login</ion-card-title>
-            <ion-list>
-              <ion-item>
-                <ion-label floating>Email</ion-label>
-                <ion-input type="email" [(ngModel)]="email"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label floating>Password</ion-label>
-                <ion-input type="password" [(ngModel)]="password"></ion-input>
-              </ion-item>
-              <!--
-              <ion-item>
-                <ion-label>Remember Me</ion-label>
-                <ion-checkbox></ion-checkbox>
-              </ion-item>-->
-            </ion-list>
-          </ion-card-content>
-        </ion-card>
-        <div padding>
-          <button ion-button (click)="login()">Login</button><br>
-          <button ion-button clear (click)="navCtrl.setRoot('SignupPage')"> Sign up here</button>
-          <button ion-button clear (click)="navCtrl.setRoot('ForgotPage')">Forgot Password</button>
-        </div>
-        <ion-card *ngIf="error" color="danger">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-sm-10 offset-sm-1 col-md-6 offset-md-3 text-center>
+          <img src="assets/images/logo.png"/>
+          <ion-card>
+            <ion-card-content>
+              <ion-card-title>Login</ion-card-title>
+              <ion-list>
+                <ion-item>
+                  <ion-label floating>Email</ion-label>
+                  <ion-input type="email" [(ngModel)]="email"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Password</ion-label>
+                  <ion-input type="password" [(ngModel)]="password"></ion-input>
+                </ion-item>
+                <!--
+                <ion-item>
+                  <ion-label>Remember Me</ion-label>
+                  <ion-checkbox></ion-checkbox>
+                </ion-item>-->
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
           <div padding>
-            {{error}}
+            <button ion-button (click)="login()">Login</button>
+            <br>
+            <button ion-button clear (click)="navCtrl.setRoot('SignupPage')"> Sign up here</button>
+            <button ion-button clear (click)="navCtrl.setRoot('ForgotPage')">Forgot Password</button>
           </div>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+          <ion-card *ngIf="error" color="danger">
+            <div padding>
+              {{error}}
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
   <div text-center>
 

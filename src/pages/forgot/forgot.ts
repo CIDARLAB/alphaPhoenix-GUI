@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {HttpProvider} from "../../providers/http";
 
@@ -14,7 +14,7 @@ export class ForgotPage {
   private complete = false;
   private error;
 
-  constructor(public navCtrl: NavController, public http: HttpProvider, private menuCtrl:MenuController) {
+  constructor(public navCtrl: NavController, public http: HttpProvider, private menuCtrl: MenuController) {
   }
 
   ionViewWillEnter() {
@@ -23,10 +23,10 @@ export class ForgotPage {
 
   forgot() {
     this.error = null;
-    if(this.email) {
-      this.http.forgot(this.email).toPromise().then(res=> {
+    if (this.email) {
+      this.http.forgot(this.email).toPromise().then(res => {
       }).catch(error => {
-        if(error.status == 200) {
+        if (error.status == 200) {
           this.complete = true;
         } else {
           this.error = error.error;

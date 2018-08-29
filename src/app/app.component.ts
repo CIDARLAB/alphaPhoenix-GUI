@@ -1,10 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { MenuProvider } from "../providers/menu";
-import { HttpProvider } from "../providers/http";
-import { Storage } from '@ionic/storage';
+import {Component, ViewChild} from '@angular/core';
+import {Nav, Platform} from 'ionic-angular';
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {MenuProvider} from "../providers/menu";
+import {HttpProvider} from "../providers/http";
+import {Storage} from '@ionic/storage';
 import {OptionsProvider} from "../providers/options";
 
 @Component({
@@ -16,15 +16,15 @@ export class MyApp {
   rootPage: any;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuProvider,
-              public http:HttpProvider, private storage:Storage,private ops:OptionsProvider) {
+              public http: HttpProvider, private storage: Storage, private ops: OptionsProvider) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.initializeStorage().then(()=> {
+      this.initializeStorage().then(() => {
         this.http.getLoginInfo().then(() => {
-          if(this.http.token) {
+          if (this.http.token) {
             this.rootPage = 'ProjectsPage';
             this.ops.updateOptions();
           } else {
@@ -42,7 +42,7 @@ export class MyApp {
   }
 
   getActivePage() {
-    if(this.nav.getActive()) {
+    if (this.nav.getActive()) {
       return this.nav.getActive().name
     } else {
       return ''

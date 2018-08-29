@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Storage} from '@ionic/storage';
 
 @Injectable()
 export class HttpProvider {
@@ -34,19 +34,19 @@ export class HttpProvider {
     });
   }
 
-  setUserInfo(token,id,user,session) {
+  setUserInfo(token, id, user, session) {
     this.token = token;
     this.id = id;
     this.user = user;
     this.session = session;
-    this.storage.set('token',token);
-    this.storage.set('id',id);
-    this.storage.set('user',user);
-    this.storage.set('session',session);
+    this.storage.set('token', token);
+    this.storage.set('id', id);
+    this.storage.set('user', user);
+    this.storage.set('session', session);
   }
 
   updateUser() {
-    this.storage.set('user',this.user);
+    this.storage.set('user', this.user);
   }
 
   login(body: any) {
@@ -61,15 +61,15 @@ export class HttpProvider {
     let body = {
       email,
     };
-    return this.http.post(this.baseUrl + 'forgot',JSON.stringify(body));
+    return this.http.post(this.baseUrl + 'forgot', JSON.stringify(body));
   }
 
   reset(body) {
-    return this.http.post(this.baseUrl + 'reset',JSON.stringify(body));
+    return this.http.post(this.baseUrl + 'reset', JSON.stringify(body));
   }
 
   logout() {
-    this.setUserInfo(null,null,null,null);
+    this.setUserInfo(null, null, null, null);
   }
 
   updateUsers(body: any) {
@@ -83,7 +83,7 @@ export class HttpProvider {
       id: this.id,
       token: this.token
     };
-    return this.http.post(this.baseUrl + 'projects',JSON.stringify(body));
+    return this.http.post(this.baseUrl + 'projects', JSON.stringify(body));
   }
 
   specification(body: any) {
@@ -106,7 +106,7 @@ export class HttpProvider {
       id: this.id
     };
     return new Promise((resolve, reject) => {
-      this.http.post(this.baseUrl + 'design',JSON.stringify(body)).subscribe(res => {
+      this.http.post(this.baseUrl + 'design', JSON.stringify(body)).subscribe(res => {
         resolve(res);
       }, (err) => {
         reject(err);

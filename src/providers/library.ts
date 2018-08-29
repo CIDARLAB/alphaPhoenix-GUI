@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpProvider } from "./http";
+import {Injectable} from '@angular/core';
+import {HttpProvider} from "./http";
 import {MenuProvider} from "./menu";
 import {AlertController} from "ionic-angular";
 import {OptionsProvider} from "./options";
@@ -22,19 +22,17 @@ export class LibraryProvider {
   public loadingCollection = false;
 
 
-
-
-  constructor(private http:HttpProvider, private menu:MenuProvider,
-              private alertCtrl:AlertController) {
+  constructor(private http: HttpProvider, private menu: MenuProvider,
+              private alertCtrl: AlertController) {
     this.getCollection();
   }
 
 
   getCollection() {
     this.loadingRegisrtry = true;
-    this.http.getUrl(['http://', this.registry,'/rootCollections'].join('')).then(data => {
+    this.http.getUrl(['http://', this.registry, '/rootCollections'].join('')).then(data => {
       this.collectionOptions = [];
-      for(let col of <any>data) {
+      for (let col of <any>data) {
         this.collectionOptions.push(col);
       }
       this.collection = data[0].uri;

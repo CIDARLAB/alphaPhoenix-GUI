@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -20,7 +19,7 @@
 
 .inline {
   display: inline-block;
-  width:50%;
+  width: 50%;
 }
 
 .inlineIcon {
@@ -29,18 +28,18 @@
 
 ion-menu {
   border-right: none !important;
-  max-width: 200px!important;
+  max-width: 200px !important;
 }
 
-ion-menu .fa-check-square{
+ion-menu .fa-check-square {
   color: map-get($colors, secondary) !important;
 }
 
-ion-menu .fa-exclamation-triangle{
+ion-menu .fa-exclamation-triangle {
   color: map-get($colors, warning) !important;
 }
 
-ion-menu .fa-times-circle{
+ion-menu .fa-times-circle {
   color: map-get($colors, danger) !important;
 }
 

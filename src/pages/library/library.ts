@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
-import { LibraryProvider } from "../../providers/library";
-import { OptionsProvider } from "../../providers/options";
-import { MenuProvider } from "../../providers/menu";
+import {Component} from '@angular/core';
+import {IonicPage, MenuController, NavController, Platform} from 'ionic-angular';
+import {LibraryProvider} from "../../providers/library";
+import {OptionsProvider} from "../../providers/options";
+import {MenuProvider} from "../../providers/menu";
 import {HttpProvider} from "../../providers/http";
 
 @IonicPage()
@@ -15,8 +15,8 @@ export class LibraryPage {
   private height;
   private menuItem;
 
-  constructor(public navCtrl: NavController, public lib:LibraryProvider, private menu: MenuProvider,
-              private ops:OptionsProvider, private menuCtrl:MenuController, private platform:Platform, public http:HttpProvider) {
+  constructor(public navCtrl: NavController, public lib: LibraryProvider, public menu: MenuProvider,
+              private ops: OptionsProvider, private menuCtrl: MenuController, private platform: Platform, public http: HttpProvider) {
     this.height = this.platform.height() - 171;
     this.menuItem = this.menu.getMenuItem('LibraryPage');
     this.updateRegistry();
@@ -25,7 +25,6 @@ export class LibraryPage {
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
   }
-
 
 
   updateRegistry() {
@@ -38,7 +37,7 @@ export class LibraryPage {
   }
 
   updateCollection() {
-    if(this.ops.collection) {
+    if (this.ops.collection) {
       this.menuItem.status = 'Complete';
     } else {
       this.menuItem.status = 'Error';

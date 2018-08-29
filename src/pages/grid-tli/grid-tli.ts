@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 
 @IonicPage()
@@ -13,7 +13,7 @@ export class GridTliPage {
   }
 
   open() {
-    window.open('https://github.com/CIDARLAB/GridTLI-GUI','_self')
+    window.open('https://github.com/CIDARLAB/GridTLI-GUI', '_self')
   }
 
 }

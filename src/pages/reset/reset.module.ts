@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { ResetPage } from './reset';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {ResetPage} from './reset';
 
 @NgModule({
   declarations: [
@@ -10,4 +10,5 @@ import { ResetPage } from './reset';
     IonicPageModule.forChild(ResetPage),
   ],
 })
-export class ResetPageModule {}
+export class ResetPageModule {
+}

@@ -31,8 +31,10 @@
         <ion-card>
           <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding scrollY="true">
             <ion-list no-padding>
-              <button ion-item *ngFor="let circuit of design.circuits" (click)="design.activeCircuit = circuit.index;design.rootImage = circuit.img">
-                <ion-label [ngClass]="design.activeCircuit == circuit.index?'active':''">Circuit {{circuit.index}}</ion-label>
+              <button ion-item *ngFor="let circuit of design.circuits"
+                      (click)="design.activeCircuit = circuit.index;design.rootImage = circuit.img">
+                <ion-label [ngClass]="design.activeCircuit == circuit.index?'active':''">Circuit {{circuit.index}}
+                </ion-label>
                 <ion-icon name="ios-arrow-forward" item-right></ion-icon>
               </button>
             </ion-list>
@@ -48,16 +50,22 @@
             <ion-list no-padding>
               <div *ngFor="let tu of design.circuits[design.activeCircuit-1]['tus']">
                 <button ion-item (click)="tu.active = !tu.active;design.rootImage = tu.img">
-                  <ion-label [ngClass]="design.activePart[design.activeCircuit-1]['activeTU'] == tu.index?'active':''">TU {{tu.index}}</ion-label>
+                  <ion-label [ngClass]="design.activePart[design.activeCircuit-1]['activeTU'] == tu.index?'active':''">
+                    TU {{tu.index}}
+                  </ion-label>
                   <ion-icon name="ios-arrow-up" item-right *ngIf="!tu.active"></ion-icon>
                   <ion-icon name="ios-arrow-down" item-right *ngIf="tu.active"></ion-icon>
                 </button>
                 <ion-list *ngIf="tu.active">
-                  <button ion-item *ngFor="let part of tu.parts" (click)="design.activeTU = tu.index; design.activePart[design.activeCircuit-1] = { activeTU: tu.index, activePart: part};design.rootImage = tu[part]['img']">
+                  <button ion-item *ngFor="let part of tu.parts"
+                          (click)="design.activeTU = tu.index; design.activePart[design.activeCircuit-1] = { activeTU: tu.index, activePart: part};design.rootImage = tu[part]['img']">
                     <ion-avatar item-start>
                       <img src="assets/parts/{{part}}.png">
                     </ion-avatar>
-                    <ion-label [ngClass]="(design.activePart[design.activeCircuit-1]['activePart'] == part)&&(design.activePart[design.activeCircuit-1]['activeTU'] == tu.index)?'active':''">{{part}}</ion-label>
+                    <ion-label
+                      [ngClass]="(design.activePart[design.activeCircuit-1]['activePart'] == part)&&(design.activePart[design.activeCircuit-1]['activeTU'] == tu.index)?'active':''">
+                      {{part}}
+                    </ion-label>
                     <ion-icon name="ios-arrow-forward" item-right></ion-icon>
                   </button>
                 </ion-list>
@@ -67,13 +75,14 @@
         </ion-card>
       </ion-col>
       <ion-col no-padding>
-          <ion-item color="bgColor">
-            <ion-label>Parts</ion-label>
-          </ion-item>
-          <ion-card>
-            <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding scrollY="true">
+        <ion-item color="bgColor">
+          <ion-label>Parts</ion-label>
+        </ion-item>
+        <ion-card>
+          <ion-scroll [ngStyle]="{height: height/2 + 'px'}" no-padding scrollY="true">
             <ion-list>
-              <ion-item *ngFor="let can of design.circuits[design.activeCircuit-1]['tus'][design.activePart[design.activeCircuit-1]['activeTU']-1][design.activePart[design.activeCircuit-1]['activePart']].candidates">
+              <ion-item
+                *ngFor="let can of design.circuits[design.activeCircuit-1]['tus'][design.activePart[design.activeCircuit-1]['activeTU']-1][design.activePart[design.activeCircuit-1]['activePart']].candidates">
                 <ion-label>{{can.candidate}}</ion-label>
                 <ion-toggle [(ngModel)]="can.active" color="secondary"></ion-toggle>
               </ion-item>
@@ -99,9 +108,15 @@
       <img src="{{design.rootImage}}" class="sbol">
     </ion-row>
     <ion-row *ngIf="tabs == 'SBML'" style="height: 100%" padding>
-      <p><ng-katex [equation]="equation"></ng-katex></p>
-      <p><ng-katex [equation]="equation2"></ng-katex></p>
-      <p><ng-katex [equation]="equation3"></ng-katex></p>
+      <p>
+        <ng-katex [equation]="equation"></ng-katex>
+      </p>
+      <p>
+        <ng-katex [equation]="equation2"></ng-katex>
+      </p>
+      <p>
+        <ng-katex [equation]="equation3"></ng-katex>
+      </p>
     </ion-row>
   </ion-card>
   <ion-grid>

@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { GridTliPage } from './grid-tli';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {GridTliPage} from './grid-tli';
 
 @NgModule({
   declarations: [
@@ -10,4 +10,5 @@ import { GridTliPage } from './grid-tli';
     IonicPageModule.forChild(GridTliPage),
   ],
 })
-export class GridTliPageModule {}
+export class GridTliPageModule {
+}

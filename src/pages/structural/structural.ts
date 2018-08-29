@@ -1,8 +1,8 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
-import { MenuProvider } from "../../providers/menu";
-import { StructuralProvider } from "../../providers/structural";
-import { OptionsProvider } from "../../providers/options";
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import {IonicPage, MenuController, NavController, Platform} from 'ionic-angular';
+import {MenuProvider} from "../../providers/menu";
+import {StructuralProvider} from "../../providers/structural";
+import {OptionsProvider} from "../../providers/options";
 import {HttpProvider} from "../../providers/http";
 
 @IonicPage()
@@ -20,10 +20,10 @@ export class StructuralPage {
   public height;
 
   constructor(public navCtrl: NavController, public menu: MenuProvider, public str: StructuralProvider,
-              public ops:OptionsProvider, public platform:Platform, private menuCtrl:MenuController, public http:HttpProvider) {
+              public ops: OptionsProvider, public platform: Platform, private menuCtrl: MenuController, public http: HttpProvider) {
     this.menuItem = this.menu.getMenuItem('StructuralPage');
-    this.height = this.platform.height()- 275;
-    if(this.str.eugeneText.length == 0) {
+    this.height = this.platform.height() - 275;
+    if (this.str.eugeneText.length == 0) {
       this.menuItem.status = 'Warning';
       this.menuItem.message = 'Eugene Text is blank';
     }
@@ -35,14 +35,14 @@ export class StructuralPage {
 
   init() {
     let self = this;
-    window['editor'].setValue(this.str.eugeneText,1);
-    window['editor'].getSession().on('change', function() {
+    window['editor'].setValue(this.str.eugeneText, 1);
+    window['editor'].getSession().on('change', function () {
       setTimeout(() => {
         self.str.eugeneText = window['editor'].getValue();
-        if(self.str.eugeneText.length == 0) {
+        if (self.str.eugeneText.length == 0) {
           self.menuItem.status = 'Warning';
           self.menuItem.message = 'Eugene Text is blank';
-        } else if(window['editor'].getSession().getAnnotations().length == 0) {
+        } else if (window['editor'].getSession().getAnnotations().length == 0) {
           self.menuItem.status = 'Complete';
           self.menuItem.message = '';
         } else {
@@ -50,7 +50,7 @@ export class StructuralPage {
           self.menuItem.message = '';
         }
         window.dispatchEvent(new Event('resize'));
-      },1000);
+      }, 1000);
     });
   }
 
@@ -59,7 +59,7 @@ export class StructuralPage {
   }
 
   sample() {
-    window['editor'].setValue(this.ops.examples[this.ops.sample]['eugene'],1);
+    window['editor'].setValue(this.ops.examples[this.ops.sample]['eugene'], 1);
     let performace = this.menu.getMenuItem('PerformancePage');
     performace.status = 'Complete';
   }

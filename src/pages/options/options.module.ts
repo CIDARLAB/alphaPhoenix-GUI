@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { OptionsPage } from './options';
-import { TooltipsModule } from "ionic-tooltips";
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {OptionsPage} from './options';
+import {TooltipsModule} from "ionic-tooltips";
 
 @NgModule({
   declarations: [
@@ -12,4 +12,5 @@ import { TooltipsModule } from "ionic-tooltips";
     TooltipsModule
   ],
 })
-export class OptionsPageModule {}
+export class OptionsPageModule {
+}

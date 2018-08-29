@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
 import {GridTliPage} from './grid-tli';
+import {ComponentsModule} from "../../components/components.module";
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import {GridTliPage} from './grid-tli';
   ],
   imports: [
     IonicPageModule.forChild(GridTliPage),
+    ComponentsModule
   ],
 })
 export class GridTliPageModule {

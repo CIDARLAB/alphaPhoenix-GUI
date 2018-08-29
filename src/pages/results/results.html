@@ -1,25 +1,5 @@
 <ion-header>
-  <ion-navbar color="white">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>{{ops.projectName}}</ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="navCtrl.setRoot('AboutPage')">About</button>
-      <button ion-button (click)="navCtrl.setRoot('TeamPage')">Team</button>
-      <button ion-button icon-left (click)="navCtrl.setRoot('ProjectsPage')" *ngIf="http.user">
-        <ion-icon name="ios-photos-outline"></ion-icon>
-        Projects
-      </button>
-      <button ion-button icon-left (click)="http.logout();navCtrl.setRoot('WelcomePage');" *ngIf="http.user">
-        <ion-icon name="ios-exit-outline"></ion-icon>
-        Logout
-      </button>
-      <button ion-button icon-only (click)="navCtrl.push('OptionsPage')">
-        <ion-icon name="settings"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
+  <navbar page="results"></navbar>
 </ion-header>
 <ion-content class="bg-color" padding>
   <ion-grid>

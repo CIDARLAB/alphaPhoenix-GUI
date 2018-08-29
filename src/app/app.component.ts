@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Nav, Platform} from 'ionic-angular';
+import {MenuController, Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {MenuProvider} from "../providers/menu";
@@ -16,12 +16,13 @@ export class MyApp {
   rootPage: any;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuProvider,
-              public http: HttpProvider, private storage: Storage, private ops: OptionsProvider) {
+              public http: HttpProvider, private storage: Storage, private ops: OptionsProvider, private menuCtrl: MenuController) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.menuCtrl.enable(false);
       this.initializeStorage().then(() => {
         this.http.getLoginInfo().then(() => {
           if (this.http.token) {

@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
 import {LibraryPage} from './library';
 import {TooltipsModule} from "ionic-tooltips";
+import {ComponentsModule} from "../../components/components.module";
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import {TooltipsModule} from "ionic-tooltips";
   ],
   imports: [
     IonicPageModule.forChild(LibraryPage),
-    TooltipsModule
+    TooltipsModule,
+    ComponentsModule
   ],
 })
 export class LibraryPageModule {

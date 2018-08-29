@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
 import {ProjectsPage} from './projects';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {ComponentsModule} from "../../components/components.module";
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
   ],
   imports: [
     IonicPageModule.forChild(ProjectsPage),
-    NgxDatatableModule
+    NgxDatatableModule,
+    ComponentsModule
   ],
 })
 export class ProjectsPageModule {

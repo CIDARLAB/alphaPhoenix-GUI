@@ -1,24 +1,5 @@
 <ion-header>
-  <ion-navbar color="white">
-    <ion-buttons end>
-      <button ion-button (click)="navCtrl.setRoot('AboutPage')">About</button>
-      <button ion-button (click)="navCtrl.setRoot('TeamPage')" class="active">Team</button>
-      <button ion-button icon-left (click)="navCtrl.setRoot('ProjectsPage')" *ngIf="http.user">
-        <ion-icon name="ios-photos-outline"></ion-icon>
-        Projects
-      </button>
-      <button ion-button icon-left (click)="http.logout();navCtrl.setRoot('WelcomePage');" *ngIf="http.user">
-        <ion-icon name="ios-exit-outline"></ion-icon>
-        Logout
-      </button>
-      <button ion-button icon-only (click)="navCtrl.push('OptionsPage')" *ngIf="http.user">
-        <ion-icon name="settings"></ion-icon>
-      </button>
-      <button ion-button (click)="navCtrl.setRoot('LoginPage')" *ngIf="!http.user">Login</button>
-      <button ion-button (click)="navCtrl.setRoot('SignupPage')" *ngIf="!http.user">Sign Up</button>
-    </ion-buttons>
-    <ion-title><img src="assets/images/logo.png"> Phoenix</ion-title>
-  </ion-navbar>
+  <navbar page="team"></navbar>
 </ion-header>
 <ion-content padding class="bg-color">
   <ion-grid>

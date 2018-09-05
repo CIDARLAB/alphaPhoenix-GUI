@@ -16,5 +16,10 @@
     <button ion-button (click)="navCtrl.setRoot('LoginPage')" *ngIf="!http.user" [ngClass]="page == 'login'?'active':''">Login</button>
     <button ion-button (click)="navCtrl.setRoot('SignupPage')" *ngIf="!http.user" [ngClass]="page == 'signup'?'active':''">Sign Up</button>
   </ion-buttons>
-  <ion-title><img src="assets/images/logo.png"> Phoenix</ion-title>
+  <ion-title *ngIf="['about','team','login','signup'].indexOf(page) > -1">
+    <img src="assets/images/logo.png"> Phoenix
+  </ion-title>
+  <ion-title *ngIf="['about','team','login','signup'].indexOf(page) == -1">
+    {{ops.projectName}}
+  </ion-title>
 </ion-navbar>

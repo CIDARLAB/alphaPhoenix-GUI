@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { HttpProvider } from "../../providers/http";
 import { App } from "ionic-angular";
+import {OptionsProvider} from "../../providers/options";
 
 @Component({
   selector: 'navbar',
@@ -14,6 +15,7 @@ export class NavbarComponent {
 
   constructor(
     private app:App,
+    public ops: OptionsProvider,
     public http:HttpProvider) {
   }
 

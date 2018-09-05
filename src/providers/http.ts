@@ -6,8 +6,8 @@ import {Storage} from '@ionic/storage';
 export class HttpProvider {
 
   private assetUrl = 'assets/';
-  private baseUrl = '/';
-  //private baseUrl = 'http://localhost:9090/';
+  //private baseUrl = '/';
+  private baseUrl = 'http://localhost:9090/';
   public token;
   public id;
   public user;

@@ -31,8 +31,8 @@ export class OptionsProvider {
   ];
   public collections = [];
 
-  public registry = this.registries[0];
-  public collection = null;
+  public registry = 'https://synbiohub.programmingbiology.org/';
+  public collection = 'https://synbiohub.programmingbiology.org/public/PhoenixReduced/PhoenixReduced_collection/1';
 
   public loadingCollection;
 

@@ -7,7 +7,6 @@ import {MyApp} from './app.component';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {MenuProvider} from '../providers/menu';
-import {LibraryProvider} from '../providers/library';
 import {HttpProvider} from '../providers/http';
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -42,7 +41,6 @@ import {IonicStorageModule} from '@ionic/storage';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MenuProvider,
-    LibraryProvider,
     HttpProvider,
     PerformanceProvider,
     StructuralProvider,

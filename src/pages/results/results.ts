@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, MenuController, NavController, NavParams, Platform} from 'ionic-angular';
+import {IonicPage, LoadingController, MenuController, NavController, NavParams, Platform} from 'ionic-angular';
 import {OptionsProvider} from "../../providers/options";
 import {HttpProvider} from "../../providers/http";
 
@@ -22,6 +22,8 @@ export class ResultsPage {
   private modules = {};
   private viewAssignment;
   private viewData;
+  private loadingData;
+  private loadingScreen;
 
   public layout = {
     autosize: true,
@@ -44,9 +46,13 @@ export class ResultsPage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl: MenuController,
-              public ops: OptionsProvider, public platform: Platform, public http: HttpProvider) {
+              private loading:LoadingController, public ops: OptionsProvider, public platform: Platform,
+              public http: HttpProvider) {
     this.height = ((this.platform.height() - 140));
     this.projectId = this.navParams.get("id");
+    this.loadingScreen = this.loading.create({
+      content: "Downloading Results...",
+    });
     this.http.getResults(this.projectId).then(data => {
       this.data = data;
       for(let result of this.data) {
@@ -67,11 +73,25 @@ export class ResultsPage {
   }
 
   setView(result) {
-    this.viewAssignment = result;
-    this.http.getResultData(this.projectId, this.viewAssignment.moduleid, this.viewAssignment.assignmentid).then((resultData) => {
-      this.viewData = resultData;
-      console.log(this.viewData);
+    this.loadingData = true;
+    this.loadingScreen = this.loading.create({
+      content: "Downloading Results...",
     });
+    this.loadingScreen.present();
+    this.viewAssignment = result;
+    if(!this.modules[this.viewAssignment.moduleid][this.viewAssignment.assignmentid]['data']) {
+      this.http.getResultData(this.projectId, this.viewAssignment.moduleid, this.viewAssignment.assignmentid).then((resultData) => {
+        this.viewData = resultData;
+        this.modules[this.viewAssignment.moduleid][this.viewAssignment.assignmentid]['data'] = resultData;
+        this.loadingScreen.dismiss();
+        this.loadingData = false;
+      });
+    } else {
+      setTimeout(() => {
+        this.viewData = this.modules[this.viewAssignment.moduleid][this.viewAssignment.assignmentid]['data'];
+        this.loadingScreen.dismiss();
+        this.loadingData = false;
+      }, 1);
+    }
   }
-
 }

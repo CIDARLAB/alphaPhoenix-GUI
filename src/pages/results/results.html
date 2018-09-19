@@ -8,8 +8,8 @@
         <ion-card>
           <ion-scroll [ngStyle]="{height: (height * topHeight) + 'px'}" scrollY="true">
             <ion-list style="height: 100%">
-              <button ion-item *ngFor="let result of data" (click)="setView(result)">
-                {{ result.name }}
+              <button text-wrap ion-item *ngFor="let result of data" (click)="setView(result)">
+                <div [ngClass]="result == viewAssignment?'active':''">{{ result.name }}</div>
               </button>
             </ion-list>
           </ion-scroll>
@@ -24,9 +24,9 @@
             <ion-segment-button value="Score">
               Score
             </ion-segment-button>
-            <ion-segment-button value="Placeholder">
+            <!--<ion-segment-button value="Placeholder">
               Placeholder
-            </ion-segment-button>
+            </ion-segment-button>-->
           </ion-segment>
           <div padding>
             <div *ngIf="viewData">
@@ -44,7 +44,7 @@
     <ion-row [ngStyle]="{height: (height * (1-topHeight)) + 'px'}">
       <ion-col>
         <ion-card>
-          <plotly *ngIf="viewData" [data]="viewData.traces" [layout]="layout"
+          <plotly *ngIf="!loadingData && viewData" [data]="viewData.traces" [layout]="layout"
                   [ngStyle]="{height: (height * (1-topHeight) - 10) + 'px !important'}"></plotly>
         </ion-card>
       </ion-col>

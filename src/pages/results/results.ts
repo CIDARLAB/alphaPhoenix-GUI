@@ -19,7 +19,9 @@ export class ResultsPage {
   private projectId;
 
   private data;
-  private activeData;
+  private modules = {};
+  private viewAssignment;
+  private viewData;
 
   public layout = {
     autosize: true,
@@ -45,9 +47,18 @@ export class ResultsPage {
               public ops: OptionsProvider, public platform: Platform, public http: HttpProvider) {
     this.height = ((this.platform.height() - 140));
     this.projectId = this.navParams.get("id");
-    this.http.getResults(this.projectId).toPromise().then(data => {
+    this.http.getResults(this.projectId).then(data => {
       this.data = data;
-      this.activeData = this.data[0];
+      for(let result of this.data) {
+        if(!this.modules[result.moduleid]) {
+          this.modules[result.moduleid] = {};
+        }
+        if(!this.modules[result.moduleid][result.assignmentid]) {
+          this.modules[result.moduleid][result.assignmentid] = {}
+        }
+        this.modules[result.moduleid][result.assignmentid]['assignment'] = result;
+      }
+      this.setView(this.data[0]);
     });
   }
 
@@ -55,8 +66,12 @@ export class ResultsPage {
     this.menuCtrl.enable(true);
   }
 
-  setView(data) {
-    this.activeData = data;
+  setView(result) {
+    this.viewAssignment = result;
+    this.http.getResultData(this.projectId, this.viewAssignment.moduleid, this.viewAssignment.assignmentid).then((resultData) => {
+      this.viewData = resultData;
+      console.log(this.viewData);
+    });
   }
 
 }

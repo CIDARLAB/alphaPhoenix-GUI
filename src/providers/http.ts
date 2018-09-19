@@ -179,4 +179,15 @@ export class HttpProvider {
     return this.http.post(this.baseUrl + 'removeProject', JSON.stringify(body)).toPromise();
   }
 
+  getResultData(project, moduleId, assignmentId) {
+    let body = {
+      token: this.token,
+      id: this.id,
+      project,
+      moduleId,
+      assignmentId
+    };
+    return this.http.post(this.baseUrl + 'assignment', JSON.stringify(body)).toPromise();
+  }
+
 }

@@ -28,7 +28,7 @@
             </ion-card-content>
           </ion-card>
           <div padding>
-            <button ion-button (click)="login()">Login</button>
+            <button ion-button (keyup.enter)="login()" (click)="login()">Login</button>
             <br>
             <button ion-button clear (click)="navCtrl.setRoot('SignupPage')"> Sign up here</button>
             <button ion-button clear (click)="navCtrl.setRoot('ForgotPage')">Forgot Password</button>

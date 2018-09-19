@@ -69,4 +69,12 @@ export class ProjectsPage {
     }
   }
 
+  deleteProject(project) {
+    this.http.deleteProject(project).then(() => {
+      console.log(this.data);
+    }).catch(err => {
+      console.error(err);
+    });
+  }
+
 }

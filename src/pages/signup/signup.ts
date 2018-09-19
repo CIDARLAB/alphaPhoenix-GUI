@@ -49,7 +49,7 @@ export class SignupPage {
       this.navCtrl.setRoot('ProjectsPage');
     }).catch(error => {
       if (error.status == 409) {
-        this.error = 'Email already in user';
+        this.error = 'Email already in use';
       } else {
         this.error = 'Server Error'
       }

@@ -6,8 +6,8 @@ import {Storage} from '@ionic/storage';
 export class HttpProvider {
 
   private assetUrl = 'assets/';
-  //private baseUrl = '/';
-  private baseUrl = 'http://localhost:9090/';
+  private baseUrl = '/';
+  //private baseUrl = 'http://localhost:9090/';
   public token;
   public id;
   public user;
@@ -161,7 +161,22 @@ export class HttpProvider {
       id: this.id,
       project: project
     };
-    return this.http.post(this.baseUrl + 'results', JSON.stringify(body));
+    /*
+    return new Promise((resolve => {
+      resolve(
+        [{"score":1,"name":"Module 0 Assignment 0","moduleid":0,"assignmentid":0},{"score":1,"name":"Module 0 Assignment 1","moduleid":0,"assignmentid":1},{"score":1,"name":"Module 0 Assignment 2","moduleid":0,"assignmentid":2}]
+      )
+    }))*/
+    return this.http.post(this.baseUrl + 'results', JSON.stringify(body)).toPromise();
+  }
+
+  deleteProject(project) {
+    let body = {
+      token: this.token,
+      id: this.id,
+      project: project
+    };
+    return this.http.post(this.baseUrl + 'removeProject', JSON.stringify(body)).toPromise();
   }
 
 }

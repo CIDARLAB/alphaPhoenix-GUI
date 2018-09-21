@@ -24,9 +24,9 @@
             <ion-segment-button value="Score">
               Score
             </ion-segment-button>
-            <!--<ion-segment-button value="Placeholder">
-              Placeholder
-            </ion-segment-button>-->
+            <ion-segment-button value="SMC">
+              Small Molecule Concentration
+            </ion-segment-button>
           </ion-segment>
           <div padding>
             <div *ngIf="viewData">
@@ -35,6 +35,11 @@
               </div>
               <div *ngIf="tabs == 'Score'">
                 {{ viewData.score }}
+              </div>
+              <div *ngIf="tabs == 'SMC'">
+                <div **ngFor="let sm of viewData.smc">
+                    {{ sm }}
+                </div>
               </div>
             </div>
           </div>

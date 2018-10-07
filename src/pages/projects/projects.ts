@@ -69,9 +69,14 @@ export class ProjectsPage {
     }
   }
 
-  deleteProject(project) {
-    this.http.deleteProject(project).then(() => {
-      console.log(this.data);
+  deleteProject(projectId) {
+    this.http.deleteProject(projectId).then(() => {
+      for(let i = 0; i < this.data.length; i++) {
+        if(this.data[i].id == projectId) {
+          this.data.splice(i, 1);
+          return;
+        }
+      }
     }).catch(err => {
       console.error(err);
     });

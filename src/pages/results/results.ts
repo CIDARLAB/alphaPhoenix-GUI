@@ -94,4 +94,9 @@ export class ResultsPage {
       }, 1);
     }
   }
+
+  download() {
+    this.http.download(this.projectId, this.viewAssignment.moduleid, this.viewAssignment.assignmentid)
+      .then(results => console.log(results)).catch(err => console.error(err))
+  }
 }

@@ -190,4 +190,27 @@ export class HttpProvider {
     return this.http.post(this.baseUrl + 'assignment', JSON.stringify(body)).toPromise();
   }
 
+  download(project, moduleId, assignmentId) {
+    return new Promise((resolve) => {
+      let body = {
+        token: this.token,
+        id: this.id,
+        project,
+        moduleId,
+        assignmentId
+      };
+      let options = {
+        responseType: 'blob'
+      };
+      return this.http.post(this.baseUrl + 'downloadAssignment', JSON.stringify(body), <any>options).toPromise().then(results => {
+        var a = document.createElement('a');
+        var blob = new Blob([results], {'type':"application/octet-stream"});
+        a.href = URL.createObjectURL(blob);
+        a.download = `results-${project}-${moduleId}-${assignmentId}.zip`;
+        a.click();
+        resolve();
+      });
+    });
+  }
+
 }

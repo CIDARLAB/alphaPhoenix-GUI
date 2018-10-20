@@ -190,6 +190,15 @@ export class HttpProvider {
     return this.http.post(this.baseUrl + 'assignment', JSON.stringify(body)).toPromise();
   }
 
+  getProject(project) {
+    let body = {
+      token: this.token,
+      id: this.id,
+      project,
+    };
+    return this.http.post(this.baseUrl + 'viewSpecification', JSON.stringify(body)).toPromise();
+  }
+
   download(project, moduleId, assignmentId) {
     return new Promise((resolve) => {
       let body = {

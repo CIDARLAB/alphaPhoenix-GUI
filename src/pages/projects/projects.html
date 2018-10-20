@@ -35,19 +35,28 @@
           <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
             <div>
               <div *ngIf="value == 'COMPLETED'">
-                <svg height="14" width="14">
-                  <circle cx="7" cy="7" r="7" fill="limegreen"/>
-                </svg>
+                <button ion-button round (click)="navCtrl.setRoot('StructuralPage',{id: row.id})" small>
+                  <svg height="14" width="14" margin-right>
+                    <circle cx="7" cy="7" r="7" fill="limegreen"/>
+                  </svg>
+                  View
+                </button>
               </div>
               <div *ngIf="value == 'INPROGRESS'">
-                <svg height="14" width="14">
-                  <circle cx="7" cy="7" r="7" fill="gold"/>
-                </svg>
+                <button ion-button style="background-color: transparent; color: black; box-shadow: none" small>
+                  <svg height="14" width="14" margin-right>
+                    <circle cx="7" cy="7" r="7" fill="gold"/>
+                  </svg>
+                  Running
+                </button>
               </div>
               <div *ngIf="value == 'ERROR'">
-                <svg height="14" width="14">
-                  <circle cx="7" cy="7" r="7" fill="red"/>
-                </svg>
+                <button ion-button style="background-color: transparent; color: black; box-shadow: none" small>
+                  <svg height="14" width="14" margin-right>
+                    <circle cx="7" cy="7" r="7" fill="red"/>
+                  </svg>
+                  Error
+                </button>
               </div>
             </div>
           </ng-template>
@@ -57,49 +66,95 @@
             Design
           </ng-template>
           <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-            <div (click)="navCtrl.setRoot('DesignPage',{id: row.id})">
-              <div *ngIf="value == 'COMPLETED'">
-                <svg height="14" width="14">
+            <div *ngIf="value == 'COMPLETED'">
+              <button ion-button round (click)="navCtrl.setRoot('DesignPage',{id: row.id})" small>
+                <svg height="14" width="14" margin-right>
                   <circle cx="7" cy="7" r="7" fill="limegreen"/>
                 </svg>
-              </div>
-              <div *ngIf="value == 'INPROGRESS'">
-                <svg height="14" width="14">
+                View
+              </button>
+            </div>
+            <div *ngIf="value == 'INPROGRESS'">
+              <button ion-button style="background-color: transparent; color: black; box-shadow: none" small>
+                <svg height="14" width="14" margin-right>
                   <circle cx="7" cy="7" r="7" fill="gold"/>
                 </svg>
-              </div>
-              <div *ngIf="value == 'ERROR'">
-                <svg height="14" width="14">
+                Running
+              </button>
+            </div>
+            <div *ngIf="value == 'ERROR'">
+              <button ion-button style="background-color: transparent; color: black; box-shadow: none" small>
+                <svg height="14" width="14" margin-right>
                   <circle cx="7" cy="7" r="7" fill="red"/>
                 </svg>
-              </div>
+                Error
+              </button>
             </div>
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="results">
+        <ngx-datatable-column name="results" *ngIf="ops.advUser">
           <ng-template let-column="column" ngx-datatable-header-template>
             Results
           </ng-template>
           <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-            <div (click)="navCtrl.setRoot('DesignPage',{id: row.id})">
+            <div (click)="navCtrl.setRoot('ResultsPage',{id: row.id})">
               <div *ngIf="value == 'COMPLETED'">
                 <svg height="14" width="14">
                   <circle cx="7" cy="7" r="7" fill="limegreen"/>
                 </svg>
               </div>
               <div *ngIf="value == 'INPROGRESS'">
-                <svg height="14" width="14">
-                  <circle cx="7" cy="7" r="7" fill="gold"/>
-                </svg>
+                <button ion-button style="background-color: transparent; color: black; box-shadow: none" small>
+                  <svg height="14" width="14" margin-right>
+                    <circle cx="7" cy="7" r="7" fill="gold"/>
+                  </svg>
+                  Running
+                </button>
               </div>
               <div *ngIf="value == 'ERROR'">
-                <svg height="14" width="14">
-                  <circle cx="7" cy="7" r="7" fill="red"/>
-                </svg>
+                <button ion-button style="background-color: transparent; color: black; box-shadow: none" small>
+                  <svg height="14" width="14" margin-right>
+                    <circle cx="7" cy="7" r="7" fill="red"/>
+                  </svg>
+                  Error
+                </button>
               </div>
             </div>
           </ng-template>
         </ngx-datatable-column>
+
+        <ngx-datatable-column name="design" *ngIf="!ops.advUser">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            Results
+          </ng-template>
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <div *ngIf="value == 'COMPLETED'">
+              <button ion-button round (click)="navCtrl.setRoot('ResultsPage',{id: row.id})" small>
+                <svg height="14" width="14" margin-right>
+                  <circle cx="7" cy="7" r="7" fill="limegreen"/>
+                </svg>
+                View
+              </button>
+            </div>
+            <div *ngIf="value == 'INPROGRESS'">
+              <button ion-button style="background-color: transparent; color: black; box-shadow: none" small>
+                <svg height="14" width="14" margin-right>
+                  <circle cx="7" cy="7" r="7" fill="gold"/>
+                </svg>
+                Running
+              </button>
+            </div>
+            <div *ngIf="value == 'ERROR'">
+              <button ion-button style="background-color: transparent; color: black; box-shadow: none" small>
+                <svg height="14" width="14" margin-right>
+                  <circle cx="7" cy="7" r="7" fill="red"/>
+                </svg>
+                Error
+              </button>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+
         <ngx-datatable-column name="createdOn">
           <ng-template let-column="column" ngx-datatable-header-template>
             Created On
